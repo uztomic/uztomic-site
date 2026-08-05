@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+/* belt and braces: GitHub Pages' own http->https redirect can lag behind the
+   certificate, so send visitors who typed "uztomic.uz" to https ourselves */
+if(location.protocol==='http:'&&/(^|\.)uztomic\.uz$/.test(location.hostname))
+  location.replace('https://'+location.host+location.pathname+location.search+location.hash);
+</script>
 <title>Uztomic — Smart Software Solutions | Mobile apps, web platforms & business systems</title>
 <meta name="description" content="Uztomic is a software studio in Qo'qon, Fergana region. We build mobile apps, websites and platforms, enterprise systems, automation and startup MVPs — from first sketch to launch day.">
 <meta name="theme-color" content="#0B0D1A">
