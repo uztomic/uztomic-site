@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found — Uztomic</title>
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0B0D1A">
+<meta name="theme-color" content="#0A0C18">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="640x640" href="/assets/logo.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <script>
 (function(){try{
@@ -16,28 +17,28 @@
 }catch(e){}})();
 </script>
 <style>
-:root{--violet:#6C5CE7;--cyan:#1FC8E8;--grad:linear-gradient(135deg,#6C5CE7,#1FC8E8)}
-html[data-theme="dark"]{--bg:#0B0D1A;--text:#F2F4FF;--text-2:#A6ADC8;--card:rgba(255,255,255,.05);--stroke:rgba(255,255,255,.1)}
-html[data-theme="light"]{--bg:#FFFFFF;--text:#0E1020;--text-2:#5A6178;--card:#F5F6FB;--stroke:rgba(14,16,32,.1)}
+:root{--brand:#6C5CE7;--cyan:#1FC8E8;--grad:linear-gradient(135deg,#6C5CE7,#1FC8E8)}
+html[data-theme="dark"]{--bg:#0A0C18;--text:#EDEFFA;--text-2:#A2A9C8;--card:rgba(255,255,255,.05);--stroke:rgba(255,255,255,.1)}
+html[data-theme="light"]{--bg:#FFFFFF;--text:#0D1130;--text-2:#4E5478;--card:#F5F6FC;--stroke:rgba(13,17,48,.1)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{min-height:100dvh;display:grid;place-items:center;padding:32px;background:var(--bg);color:var(--text);
   font-family:system-ui,-apple-system,'Segoe UI',sans-serif;text-align:center;overflow-x:hidden}
-.glow{position:fixed;inset:0;z-index:0;pointer-events:none;filter:blur(90px);opacity:.5}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;filter:blur(100px);opacity:.42}
 .glow i{position:absolute;display:block;border-radius:50%}
 .glow i:nth-child(1){width:46vmax;height:46vmax;left:-14vmax;top:-16vmax;background:rgba(108,92,231,.5)}
 .glow i:nth-child(2){width:40vmax;height:40vmax;right:-12vmax;bottom:-14vmax;background:rgba(31,200,232,.42)}
-main{position:relative;z-index:1;max-width:480px;display:grid;gap:20px;justify-items:center}
-img{width:88px;height:88px;border-radius:24px}
+main{position:relative;z-index:1;max-width:500px;display:grid;gap:18px;justify-items:center}
+img{width:84px;height:84px;border-radius:24px}
 h1{font-size:clamp(60px,16vw,104px);line-height:1;letter-spacing:-.04em;
   background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 h2{font-size:clamp(20px,4.5vw,26px);letter-spacing:-.02em}
 p{color:var(--text-2);font-size:15.5px;line-height:1.6}
 .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
 a{display:inline-flex;align-items:center;padding:13px 24px;border-radius:999px;text-decoration:none;
-  font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s}
+  font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s;color:var(--text)}
 a:hover{transform:translateY(-2px)}
 .p{background:var(--grad);color:#fff;box-shadow:0 12px 30px -12px rgba(108,92,231,.7)}
-.g{background:var(--card);border:1px solid var(--stroke);color:var(--text)}
+.g{background:var(--card);border:1px solid var(--stroke)}
 @media(prefers-reduced-motion:reduce){a{transition:none}a:hover{transform:none}}
 </style>
 </head>
@@ -47,9 +48,10 @@ a:hover{transform:translateY(-2px)}
   <img src="/assets/favicon-512.png" alt="Uztomic">
   <h1>404</h1>
   <h2>This page doesn't exist</h2>
-  <p>The link may be old or mistyped. Everything about Uztomic lives on the home page — services, work, pricing and contacts.</p>
+  <p>The link may be old or mistyped. Everything about Uztomic lives on the home page — services, work, pricing and contacts — and our shop system has its own page.</p>
   <div class="row">
     <a class="p" href="/">Go to uztomic.uz</a>
+    <a class="g" href="/crm/">Uztomic CRM</a>
     <a class="g" href="https://t.me/uztomic_official" target="_blank" rel="noopener">Write on Telegram</a>
   </div>
 </main>

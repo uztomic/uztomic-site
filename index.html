@@ -10,8 +10,8 @@ if(location.protocol==='http:'&&/(^|\.)uztomic\.uz$/.test(location.hostname))
   location.replace('https://'+location.host+location.pathname+location.search+location.hash);
 </script>
 <title>Uztomic — Smart Software Solutions | Mobile apps, web platforms & business systems</title>
-<meta name="description" content="Uztomic is a software studio in Qo'qon, Fergana region. We build mobile apps, websites and platforms, enterprise systems, automation and startup MVPs — from first sketch to launch day.">
-<meta name="theme-color" content="#0B0D1A">
+<meta name="description" content="Uztomic is a software studio in Qo'qon, Fergana region. Mobile apps, websites and platforms, enterprise systems, automation and startup MVPs — plus Uztomic CRM, our ready-made system for shops.">
+<meta name="theme-color" content="#0A0C18">
 <link rel="canonical" href="https://uztomic.uz/">
 <link rel="alternate" hreflang="en" href="https://uztomic.uz/">
 <link rel="alternate" hreflang="uz" href="https://uztomic.uz/?lang=uz">
@@ -19,23 +19,25 @@ if(location.protocol==='http:'&&/(^|\.)uztomic\.uz$/.test(location.hostname))
 <link rel="alternate" hreflang="x-default" href="https://uztomic.uz/">
 
 <link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="manifest" href="site.webmanifest">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="640x640" href="/assets/logo.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Uztomic">
 <meta property="og:url" content="https://uztomic.uz/">
 <meta property="og:title" content="Uztomic — Smart Software Solutions">
-<meta property="og:description" content="Mobile apps, web platforms, enterprise systems and automation. Built in Qo'qon, Uzbekistan.">
+<meta property="og:description" content="Mobile apps, web platforms, enterprise systems and automation. Plus Uztomic CRM for shops. Built in Qo'qon, Uzbekistan.">
 <meta property="og:image" content="https://uztomic.uz/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Uztomic — Smart Software Solutions">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Uztomic — Smart Software Solutions">
-<meta name="twitter:description" content="Mobile apps, web platforms, enterprise systems and automation. Built in Qo'qon, Uzbekistan.">
+<meta name="twitter:description" content="Mobile apps, web platforms, enterprise systems and automation. Plus Uztomic CRM for shops.">
 <meta name="twitter:image" content="https://uztomic.uz/assets/og.jpg">
 
 <!-- theme is applied before first paint so the page never flashes the wrong colours -->
@@ -44,449 +46,147 @@ if(location.protocol==='http:'&&/(^|\.)uztomic\.uz$/.test(location.hostname))
   var t=localStorage.getItem('uztomic-theme');
   if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
   document.documentElement.dataset.theme=t;
-  document.querySelector('meta[name=theme-color]').content=t==='dark'?'#0B0D1A':'#FFFFFF';
+  document.querySelector('meta[name=theme-color]').content=t==='dark'?'#0A0C18':'#FFFFFF';
+}catch(e){}})();
+</script>
+
+<!-- brand intro: decides before first paint, and unlocks itself on a timer
+     so the page can never stay locked if ui.js fails to load -->
+<script>
+(function(){try{
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(location.hash) return;                       /* deep link: straight to the section */
+  if(sessionStorage.getItem('uztomic-intro')) return;
+  sessionStorage.setItem('uztomic-intro','1');
+  var r=document.documentElement;
+  r.classList.add('intro');
+  setTimeout(function(){ r.classList.remove('intro') },3880);
 }catch(e){}})();
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Michroma&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ui.css">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://uztomic.uz/#org","name":"Uztomic","alternateName":"Uztomic — Smart Software Solutions","url":"https://uztomic.uz","logo":"https://uztomic.uz/assets/favicon-512.png","image":"https://uztomic.uz/assets/og.jpg","description":"Mobile apps, websites and platforms, enterprise systems, automation, startup MVPs.","telephone":"+998770165963","email":"uztomic@gmail.com","priceRange":"UZS 1000000+","areaServed":{"@type":"Country","name":"Uzbekistan"},"address":{"@type":"PostalAddress","addressLocality":"Qo'qon","addressRegion":"Fergana","addressCountry":"UZ"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"22:00"},"sameAs":["https://t.me/uztomic_official"],"knowsLanguage":["en","uz","ru"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://uztomic.uz/#org","name":"Uztomic","alternateName":"Uztomic — Smart Software Solutions","url":"https://uztomic.uz","logo":"https://uztomic.uz/assets/logo.png","image":"https://uztomic.uz/assets/og.jpg","description":"Mobile apps, websites and platforms, enterprise systems, automation, startup MVPs and Uztomic CRM for retail shops.","telephone":"+998770165963","email":"uztomic@gmail.com","priceRange":"UZS 2000000+","areaServed":{"@type":"Country","name":"Uzbekistan"},"address":{"@type":"PostalAddress","addressLocality":"Qo'qon","addressRegion":"Fergana","addressCountry":"UZ"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"22:00"},"sameAs":["https://t.me/uztomic_official"],"knowsLanguage":["en","uz","ru"]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How much will my project cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on scope. A simple site starts at one week of work, a mobile app at four. After a short call we send an exact figure and date — and nothing starts until you approve it."}},
-{"@type":"Question","name":"How long does it take?","acceptedAnswer":{"@type":"Answer","text":"Landing page: 5–10 days. App or MVP: 4–8 weeks. Enterprise system: from two months. The exact date is fixed once the feature list is agreed."}},
+{"@type":"Question","name":"How much will my project cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on scope. A landing page starts at 2 000 000 UZS, a mobile app at 6 000 000, a large platform at 12 000 000. After a short call we send an exact figure and date — and nothing starts until you approve it."}},
+{"@type":"Question","name":"How long does it take?","acceptedAnswer":{"@type":"Answer","text":"Landing page: 5-10 days. App or MVP: 4-8 weeks. Large platform: 8-14 weeks. Enterprise system: from two months. The exact date is fixed once the feature list is agreed."}},
+{"@type":"Question","name":"Do you have a ready-made system for shops?","acceptedAnswer":{"@type":"Answer","text":"Yes - Uztomic CRM. Sales, stock with a size and colour matrix, a digital credit ledger, staff roles and shifts, profit reports and branches. It works offline, runs on phone and Windows, and starts from 150 000 UZS a month with a 14-day free trial."}},
 {"@type":"Question","name":"Who owns the code and the accounts?","acceptedAnswer":{"@type":"Answer","text":"You do. On final payment we hand over the source code, the domain and the store accounts. You can take them to any developer afterwards."}},
-{"@type":"Question","name":"What happens after launch?","acceptedAnswer":{"@type":"Answer","text":"Three months of free support: we fix bugs and answer questions. After that you can take a monthly maintenance agreement, or not — your call."}},
-{"@type":"Question","name":"Can we work together if I'm in another region?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work remotely across Uzbekistan and with clients abroad over Telegram, phone and video. You're welcome to visit us in Qo'qon too."}},
-{"@type":"Question","name":"I already have an app. Can you fix or continue it?","acceptedAnswer":{"@type":"Answer","text":"Often yes. Send us the code or store link and we'll review it, tell you honestly what shape it's in, and quote for the work."}}]}
+{"@type":"Question","name":"What happens after launch?","acceptedAnswer":{"@type":"Answer","text":"Three months of free support: we fix bugs and answer questions. After that you can take a monthly maintenance agreement, or not - your call."}},
+{"@type":"Question","name":"Can we work together if I am in another region?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work remotely across Uzbekistan and with clients abroad over Telegram, phone and video. You are welcome to visit us in Qo'qon too."}},
+{"@type":"Question","name":"I already have an app. Can you fix or continue it?","acceptedAnswer":{"@type":"Answer","text":"Often yes. Send us the code or store link and we will review it, tell you honestly what shape it is in, and quote for the work."}}]}
 </script>
 
 <style>
-/* ═══════════ TOKENS ═══════════ */
-:root{
-  --violet:#6C5CE7; --violet-2:#8B7BFF; --cyan:#1FC8E8; --coral:#FF7A59; --gold:#FFB020;
-  --grad:linear-gradient(135deg,#6C5CE7 0%,#7B6BF0 45%,#1FC8E8 100%);
-  --grad-soft:linear-gradient(135deg,rgba(108,92,231,.14),rgba(31,200,232,.14));
-  --display:'Manrope',system-ui,sans-serif;
-  --body:'Onest','Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --r-sm:14px; --r:20px; --r-lg:28px; --r-xl:36px;
-  --pad:clamp(20px,5vw,56px); --maxw:1220px;
-  --ease:cubic-bezier(.22,.68,.24,1);
-}
-html[data-theme="dark"]{
-  --bg:#0B0D1A; --bg-2:#101332; --bg-3:#151935;
-  --card:rgba(255,255,255,.045); --card-solid:#141834; --stroke:rgba(255,255,255,.09);
-  --stroke-2:rgba(255,255,255,.16);
-  --text:#EEF0FA; --text-2:#A7ADCC; --text-3:#7B82A6;
-  --shadow:0 24px 60px -28px rgba(0,0,0,.85);
-  --shadow-lift:0 30px 70px -30px rgba(0,0,0,.9);
-  --glow:0 18px 46px -16px rgba(108,92,231,.6);
-  --blob:.55; --hero-tint:rgba(108,92,231,.16);
-}
-html[data-theme="light"]{
-  --bg:#FFFFFF; --bg-2:#F4F5FC; --bg-3:#EDEFF9;
-  --card:#FFFFFF; --card-solid:#FFFFFF; --stroke:rgba(16,20,60,.10);
-  --stroke-2:rgba(16,20,60,.20);
-  --text:#0E1233; --text-2:#565C82; --text-3:#7A80A3;
-  --shadow:0 18px 44px -22px rgba(20,24,70,.22);
-  --shadow-lift:0 28px 60px -26px rgba(20,24,70,.28);
-  --glow:0 16px 40px -14px rgba(108,92,231,.45);
-  --blob:.4; --hero-tint:rgba(108,92,231,.1);
-}
-*{box-sizing:border-box}
-/* the decorative rings and blobs are wider than a phone screen on purpose;
-   `clip` contains them without turning the page into a scroll container
-   (which would break the sticky header). `hidden` is the fallback. */
-html{scroll-behavior:smooth;scroll-padding-top:88px;overflow-x:hidden;overflow-x:clip}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;
-  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;
-  transition:background .4s var(--ease),color .4s var(--ease)}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-button,input,textarea{font:inherit;color:inherit}
-::selection{background:var(--violet);color:#fff}
-:focus-visible{outline:2px solid var(--violet-2);outline-offset:3px;border-radius:6px}
-
-/* ═══════════ ATMOSPHERE ═══════════ */
-.blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:var(--blob)}
-.blob{position:absolute;border-radius:50%;filter:blur(90px)}
-.blob--1{width:640px;height:640px;top:-240px;right:-160px;background:radial-gradient(circle,#6C5CE7,transparent 68%)}
-.blob--2{width:520px;height:520px;top:24%;left:-220px;background:radial-gradient(circle,#1FC8E8,transparent 68%);animation:drift 22s ease-in-out infinite}
-.blob--3{width:560px;height:560px;bottom:6%;right:-200px;background:radial-gradient(circle,#FF7A59,transparent 70%);opacity:.5;animation:drift 28s ease-in-out infinite reverse}
-@keyframes drift{50%{transform:translate(60px,-50px) scale(1.12)}}
-
-/* ═══════════ TYPE ═══════════ */
-h1,h2,h3,h4{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:0}
-h1{font-size:clamp(36px,5.6vw,68px)}
-h2{font-size:clamp(29px,4.2vw,48px)}
-h3{font-size:20px;font-weight:700;letter-spacing:-.015em}
-p{margin:0 0 16px}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lede{color:var(--text-2);font-size:clamp(16px,1.9vw,19px);max-width:60ch;line-height:1.65}
-.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad);position:relative;z-index:1}
-section{padding-block:clamp(70px,9vw,124px);position:relative;z-index:1}
-.center{text-align:center}
-.center .lede{margin-inline:auto}
-.pill{display:inline-flex;align-items:center;gap:9px;padding:7px 15px 7px 11px;border-radius:999px;
-  background:var(--card);border:1px solid var(--stroke);font-size:13px;font-weight:600;
-  color:var(--text-2);font-family:var(--display);letter-spacing:.01em;backdrop-filter:blur(8px)}
-.pill i{width:7px;height:7px;border-radius:50%;background:#2ED47A;position:relative;flex:none}
-.pill i::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:#2ED47A;opacity:.3;animation:ping 2s ease-out infinite}
-@keyframes ping{70%,100%{transform:scale(2.1);opacity:0}}
-.tag{display:inline-block;font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:16px}
-
-/* ═══════════ BUTTONS ═══════════ */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:999px;
-  font-family:var(--display);font-size:15.5px;font-weight:700;border:1px solid transparent;cursor:pointer;
-  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,border-color .25s,color .25s;
-  white-space:nowrap;text-align:center}
-.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.btn--p{background:var(--grad);color:#fff;box-shadow:var(--glow)}
-.btn--p:hover{transform:translateY(-2px);box-shadow:0 26px 54px -18px rgba(108,92,231,.7)}
-.btn--g{background:var(--card);border-color:var(--stroke-2);color:var(--text);backdrop-filter:blur(8px)}
-.btn--g:hover{border-color:var(--violet-2);color:var(--violet-2);transform:translateY(-2px)}
-.btn--sm{padding:11px 20px;font-size:14.5px}
-.btn--wide{width:100%;padding:17px 26px;font-size:16.5px}
-
-/* ═══════════ PROGRESS + HEADER ═══════════ */
-#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:200;transition:width .1s linear}
-header{position:sticky;top:0;z-index:150;transition:background .35s,box-shadow .35s,border-color .35s;
-  border-bottom:1px solid transparent}
-header.stuck,header.menu{background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px) saturate(1.4);
-  border-bottom-color:var(--stroke);box-shadow:0 8px 30px -22px rgba(0,0,0,.5)}
-header.menu{background:var(--bg)}
-#burger .cl{display:none}
-header.menu #burger .cl{display:block}
-header.menu #burger .op{display:none}
-.nav{max-width:var(--maxw);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;gap:14px}
-.logo{display:flex;align-items:center;gap:10px;margin-right:auto;flex:none}
-.logo img{height:32px;width:auto}
-.logo b{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em}
-.links{display:none;gap:4px;margin-inline:auto}
-.links a{padding:9px 14px;border-radius:999px;font-family:var(--display);font-size:14.5px;font-weight:600;
-  color:var(--text-2);transition:.22s}
-.links a:hover{color:var(--text);background:var(--card)}
-.links a.here{color:var(--text);background:var(--grad-soft)}
-@media(min-width:1080px){.links{display:flex}}
-.tools{display:flex;align-items:center;gap:8px;flex:none}
-.seg{display:flex;padding:3px;border-radius:999px;background:var(--card);border:1px solid var(--stroke)}
-.seg button{background:none;border:0;padding:6px 10px;border-radius:999px;font-family:var(--display);font-size:12px;
-  font-weight:700;letter-spacing:.03em;color:var(--text-3);cursor:pointer;transition:.22s}
-.seg button.on{background:var(--grad);color:#fff}
-.seg button:not(.on):hover{color:var(--text)}
-.icobtn{width:40px;height:40px;border-radius:999px;background:var(--card);border:1px solid var(--stroke);
-  display:grid;place-items:center;cursor:pointer;transition:.22s;flex:none}
-.icobtn:hover{border-color:var(--violet-2);transform:translateY(-1px)}
-.icobtn svg{width:19px;height:19px;stroke:var(--text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-html[data-theme="dark"] .sun{display:block}html[data-theme="dark"] .moon{display:none}
-html[data-theme="light"] .sun{display:none}html[data-theme="light"] .moon{display:block}
-.nav .btn{display:none}
-@media(min-width:640px){.nav .btn{display:inline-flex}}
-#burger{display:grid}
-@media(min-width:1080px){#burger{display:none}}
-.drawer{position:fixed;inset:0;z-index:120;background:color-mix(in srgb,var(--bg) 96%,transparent);
-  backdrop-filter:blur(20px);padding:96px var(--pad) 40px;display:flex;flex-direction:column;gap:6px;
-  opacity:0;pointer-events:none;transform:translateY(-12px);transition:.3s var(--ease)}
-.drawer.open{opacity:1;pointer-events:auto;transform:none}
-.drawer a{padding:16px 4px;font-family:var(--display);font-size:23px;font-weight:700;border-bottom:1px solid var(--stroke)}
-.drawer .btn{margin-top:24px}
-
-@media(max-width:440px){
-  .nav{gap:7px;padding-inline:14px}
-  .logo{gap:8px}.logo b{font-size:17px}.logo img{height:27px}
-  .seg{padding:2px}.seg button{padding:6px 8px;font-size:11px}
-  .icobtn{width:37px;height:37px}.icobtn svg{width:17px;height:17px}
-}
-
-/* ═══════════ HERO ═══════════ */
-.hero{padding-top:clamp(30px,5vw,60px);padding-bottom:clamp(50px,7vw,90px)}
-.hero__g{display:grid;gap:clamp(44px,6vw,64px);align-items:center}
-@media(min-width:1000px){.hero__g{grid-template-columns:1.02fr .98fr}}
-.hero h1{margin:22px 0 0;font-size:clamp(34px,4.9vw,59px);max-width:15ch}
-.hero .lede{margin-top:20px}
-.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.ticks{display:flex;flex-wrap:wrap;gap:10px 22px;margin:30px 0 0;padding:0;list-style:none}
+/* ── pieces used only by this page ── */
+.hero{padding-top:clamp(26px,4.4vw,56px);padding-bottom:clamp(52px,7vw,92px)}
+.hero__g{display:grid;gap:clamp(40px,6vw,64px);align-items:center}
+@media(min-width:1000px){.hero__g{grid-template-columns:1.04fr .96fr}}
+.hero h1{margin:20px 0 0;font-size:clamp(35px,4.8vw,58px);max-width:15ch}
+.hero .lede{margin-top:19px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px}
+.ticks{display:flex;flex-wrap:wrap;gap:10px 22px;margin:28px 0 0;padding:0;list-style:none}
 .ticks li{display:flex;align-items:center;gap:8px;font-size:14.5px;color:var(--text-2);font-weight:500}
-.ticks svg{width:17px;height:17px;flex:none;stroke:var(--cyan);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ticks svg{width:17px;height:17px;flex:none;stroke:var(--cyan);fill:none;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round}
 
-/* device mockup */
-.stage{position:relative;display:grid;place-items:center;padding:26px 0}
-.stage__ring{position:absolute;inset:0;margin:auto;width:min(112%,556px);height:min(112%,556px);border-radius:50%;
-  border:1.5px solid var(--stroke-2);animation:spin 40s linear infinite}
-.stage__ring::before,.stage__ring::after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;
-  background:var(--grad);box-shadow:0 0 22px rgba(108,92,231,.9)}
-.stage__ring::before{top:-6px;left:calc(50% - 6px)}
-.stage__ring::after{bottom:-6px;left:calc(50% - 6px);background:var(--cyan);box-shadow:0 0 22px rgba(31,200,232,.9)}
-.stage__ring--b{width:min(94%,468px);height:min(94%,468px);animation-duration:26s;animation-direction:reverse;border-style:dashed;opacity:.55}
-.stage__glow{position:absolute;inset:0;margin:auto;width:min(116%,580px);height:min(116%,580px);border-radius:50%;
-  background:radial-gradient(circle,var(--hero-tint),transparent 66%)}
-@keyframes spin{to{transform:rotate(360deg)}}
+/* CRM banner */
+.crmb{position:relative;overflow:hidden;border-radius:var(--r-xl);border:1px solid var(--stroke);
+  background:var(--card-2);display:grid;gap:clamp(26px,4vw,52px);align-items:center;
+  padding:clamp(26px,4vw,52px)}
+html[data-theme="dark"] .crmb{background:linear-gradient(150deg,#141838,#0C0F26)}
+@media(min-width:960px){.crmb{grid-template-columns:1.08fr .92fr}}
+.crmb::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+  top:-190px;right:-120px;pointer-events:none;
+  background:radial-gradient(circle,var(--tint),transparent 66%)}
+.crmb__l,.crmb__r{position:relative;z-index:1}
+.crmb__f{list-style:none;margin:22px 0 28px;padding:0;display:grid;gap:10px}
+@media(min-width:560px){.crmb__f{grid-template-columns:1fr 1fr}}
+.crmb__f li{display:flex;gap:9px;font-size:15px;color:var(--text-2);align-items:flex-start}
+.crmb__f svg{width:17px;height:17px;flex:none;margin-top:4px;stroke:var(--cyan);fill:none;
+  stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.crmb__r{display:grid;place-items:center}
+.crmb__card{width:100%;max-width:340px;background:var(--bg);border:1px solid var(--stroke);
+  border-radius:var(--r-lg);padding:20px 22px;box-shadow:var(--shadow-lift)}
+.crmb__k{display:block;font-family:var(--display);font-size:11.5px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px}
+.crmb__row{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:11px 0;border-bottom:1px solid var(--stroke);font-size:14px;color:var(--text-2)}
+.crmb__row:last-of-type{border-bottom:0}
+.crmb__row b{font-family:var(--display);color:var(--text);font-variant-numeric:tabular-nums}
+.crmb__p{margin:14px 0 0;padding-top:13px;border-top:1px dashed var(--stroke);
+  font-size:13px;color:var(--text-3)}
 
-.phone{position:relative;width:min(74vw,278px);aspect-ratio:9/18.6;border-radius:42px;padding:9px;
-  background:linear-gradient(160deg,#2A2F52,#0D1024);box-shadow:0 40px 90px -30px rgba(8,10,30,.75),0 0 0 1px rgba(255,255,255,.08);
-  animation:float 7s ease-in-out infinite;z-index:2}
-html[data-theme="light"] .phone{box-shadow:0 40px 80px -34px rgba(20,24,70,.5),0 0 0 1px rgba(16,20,60,.1)}
-@keyframes float{50%{transform:translateY(-14px)}}
-.phone__notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:92px;height:22px;
-  background:#0D1024;border-radius:0 0 14px 14px;z-index:3}
-.screen{height:100%;border-radius:34px;background:#F7F8FD;overflow:hidden;display:flex;flex-direction:column;color:#141735}
-.scr__top{background:linear-gradient(135deg,#6C5CE7,#1FC8E8);padding:34px 18px 20px;color:#fff}
-.scr__top small{font-size:10.5px;opacity:.85;font-weight:500}
-.scr__top b{display:block;font-family:var(--display);font-size:23px;font-weight:800;letter-spacing:-.02em;margin-top:2px}
-.scr__chips{display:flex;gap:6px;margin-top:14px}
-.scr__chips span{font-size:9px;font-weight:700;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.22)}
-.scr__body{padding:16px 14px;display:flex;flex-direction:column;gap:12px;flex:1}
-.scr__chart{display:flex;align-items:flex-end;gap:6px;height:74px;padding:12px 12px 10px;background:#fff;
-  border-radius:16px;box-shadow:0 6px 18px -12px rgba(20,24,70,.4)}
-.scr__chart i{flex:1;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#8B7BFF,#6C5CE7);
-  animation:grow 3.4s ease-in-out infinite}
-.scr__chart i:nth-child(2){animation-delay:.2s}.scr__chart i:nth-child(3){animation-delay:.4s}
-.scr__chart i:nth-child(4){animation-delay:.6s}.scr__chart i:nth-child(5){animation-delay:.8s}
-.scr__chart i:nth-child(6){background:linear-gradient(180deg,#3FDCF5,#1FC8E8);animation-delay:1s}
-@keyframes grow{0%,100%{opacity:.85}50%{opacity:1}}
-.scr__row{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:10px 12px;
-  box-shadow:0 6px 18px -14px rgba(20,24,70,.5)}
-.scr__row u{width:28px;height:28px;border-radius:9px;background:#EDEBFF;flex:none;display:grid;place-items:center;
-  font-size:12px;text-decoration:none}
-.scr__row div{flex:1;min-width:0}
-.scr__row b{display:block;font-size:11.5px;font-weight:700;font-family:var(--display)}
-.scr__row small{font-size:9.5px;color:#7A80A3}
-.scr__row em{font-style:normal;font-size:11.5px;font-weight:800;font-family:var(--display);color:#00A870}
-.scr__nav{margin-top:auto;display:flex;justify-content:space-around;padding:11px 0 15px;background:#fff;
-  border-top:1px solid #EDEFF9}
-.scr__nav s{width:20px;height:20px;border-radius:7px;background:#E4E6F5;text-decoration:none}
-.scr__nav s:first-child{background:var(--grad)}
-
-.chip-card{position:absolute;background:var(--card-solid);border:1px solid var(--stroke);border-radius:18px;
-  padding:12px 15px;box-shadow:var(--shadow);z-index:3;backdrop-filter:blur(12px);animation:float 6s ease-in-out infinite}
-html[data-theme="dark"] .chip-card{background:rgba(20,24,52,.86)}
-.chip-card small{display:block;font-size:10.5px;color:var(--text-3);font-weight:600}
-.chip-card b{font-family:var(--display);font-size:17px;font-weight:800;letter-spacing:-.02em}
-.chip-card--a{top:11%;left:-6%;animation-delay:.6s}
-.chip-card--b{bottom:15%;right:-8%;animation-delay:1.4s;display:flex;align-items:center;gap:10px}
-.chip-card--b u{width:32px;height:32px;border-radius:11px;background:rgba(46,212,122,.14);display:grid;place-items:center;text-decoration:none}
-.chip-card--b svg{width:16px;height:16px;stroke:#2ED47A;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-@media(max-width:520px){.chip-card--a{left:-2%}.chip-card--b{right:-2%}}
-
-/* ═══════════ MARQUEE ═══════════ */
-.strip{border-block:1px solid var(--stroke);background:var(--card);overflow:hidden;padding-block:18px;position:relative;z-index:1}
-.strip__t{display:flex;gap:12px;width:max-content;animation:slide 42s linear infinite}
-.strip__t span{font-family:var(--display);font-size:13.5px;font-weight:600;color:var(--text-2);
-  padding:8px 18px;border-radius:999px;border:1px solid var(--stroke);background:var(--bg);white-space:nowrap}
-.strip:hover .strip__t{animation-play-state:paused}
-@keyframes slide{to{transform:translateX(-50%)}}
-
-/* ═══════════ STATS ═══════════ */
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-@media(min-width:820px){.stats{grid-template-columns:repeat(4,1fr)}}
-.stat{background:var(--card);border:1px solid var(--stroke);border-radius:var(--r);padding:26px 22px;
-  backdrop-filter:blur(10px);transition:.3s var(--ease)}
-.stat:hover{transform:translateY(-4px);border-color:var(--stroke-2);box-shadow:var(--shadow)}
-.stat b{display:block;font-family:var(--display);font-size:clamp(30px,4.4vw,42px);font-weight:800;
-  letter-spacing:-.04em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat span{font-size:14px;color:var(--text-2);font-weight:500}
-
-/* ═══════════ CARDS GRID ═══════════ */
-.grid{display:grid;gap:18px;margin-top:52px}
-@media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1040px){.grid--3{grid-template-columns:repeat(3,1fr)}}
-.crd{background:var(--card);border:1px solid var(--stroke);border-radius:var(--r-lg);padding:clamp(24px,3vw,34px);
-  display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(10px);position:relative;overflow:hidden;
-  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
-.crd::after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .35s;
-  background:var(--grad-soft);pointer-events:none}
-.crd:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);border-color:var(--stroke-2)}
-.crd:hover::after{opacity:1}
-.crd>*{position:relative;z-index:1}
-.ico{width:54px;height:54px;border-radius:17px;display:grid;place-items:center;flex:none;
-  background:var(--grad);box-shadow:var(--glow)}
-.ico svg{width:25px;height:25px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.ico--c{background:linear-gradient(135deg,#1FC8E8,#3FA9F5)}
-.ico--o{background:linear-gradient(135deg,#FF7A59,#FFB020)}
-.ico--g{background:linear-gradient(135deg,#12B981,#1FC8E8)}
-.ico--p{background:linear-gradient(135deg,#A855F7,#6C5CE7)}
-.crd p{color:var(--text-2);font-size:15.5px;margin:0;line-height:1.62}
-.crd__tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:6px;list-style:none;padding-inline:0;margin-bottom:0}
-.crd__tags li{font-size:12.5px;font-weight:600;font-family:var(--display);color:var(--text-3);
-  border:1px solid var(--stroke);border-radius:8px;padding:4px 10px}
-.crd--cta{background:var(--grad);border-color:transparent;justify-content:center;color:#fff}
-.crd--cta::after{display:none}
-.crd--cta h3,.crd--cta p{color:#fff}
-.crd--cta p{opacity:.9}
-.crd--cta .btn{background:#fff;color:#3B2FA8;align-self:flex-start;margin-top:6px}
-.crd--cta .btn:hover{background:#fff;transform:translateY(-2px)}
-
-/* ═══════════ PROCESS ═══════════ */
-.flow{margin-top:56px;display:grid;gap:16px}
-@media(min-width:900px){.flow{grid-template-columns:repeat(5,1fr);gap:0}}
-.stp{position:relative;padding:26px 22px;background:var(--card);border:1px solid var(--stroke);
-  border-radius:var(--r);transition:.35s var(--ease)}
-@media(min-width:900px){
-  .stp{background:none;border:0;border-radius:0;padding:0 18px 0 0}
-  .stp::before{content:"";position:absolute;top:23px;left:46px;right:0;height:2px;
-    background:linear-gradient(90deg,var(--stroke-2),transparent)}
-  .stp:last-child::before{display:none}
-}
-.stp:hover{transform:translateY(-4px)}
-.stp u{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;text-decoration:none;
-  font-family:var(--display);font-weight:800;font-size:15px;color:#fff;background:var(--grad);
-  box-shadow:var(--glow);margin-bottom:16px}
-.stp h3{font-size:18px;margin-bottom:8px}
-.stp p{color:var(--text-2);font-size:14.5px;margin:0;line-height:1.6}
-
-/* ═══════════ WORK ═══════════ */
-.wk{background:var(--card);border:1px solid var(--stroke);border-radius:var(--r-lg);overflow:hidden;
-  display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.wk:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
-.wk__top{height:168px;position:relative;overflow:hidden;display:grid;place-items:center;
-  background:linear-gradient(135deg,#6C5CE7,#1FC8E8)}
-.wk:nth-child(2) .wk__top{background:linear-gradient(135deg,#FF7A59,#FFB020)}
-.wk:nth-child(3) .wk__top{background:linear-gradient(135deg,#12B981,#1FC8E8)}
-.wk__top::before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;
-  border:26px solid rgba(255,255,255,.14);top:-70px;right:-60px}
-.wk__top svg{width:56px;height:56px;stroke:#fff;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
-  position:relative;filter:drop-shadow(0 8px 18px rgba(0,0,0,.25))}
-.wk__b{padding:26px 24px 28px;display:flex;flex-direction:column;gap:11px;flex:1}
-.wk__k{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
-.wk p{color:var(--text-2);font-size:15px;margin:0}
-.wk__r{margin-top:auto;padding-top:16px;border-top:1px solid var(--stroke);font-size:14.5px;color:var(--text-2)}
-.wk__r b{font-family:var(--display);color:var(--text)}
-
-/* ═══════════ PRICING ═══════════ */
-.price{background:var(--card);border:1px solid var(--stroke);border-radius:var(--r-lg);padding:clamp(26px,3vw,36px);
-  display:flex;flex-direction:column;gap:6px;position:relative;transition:.35s var(--ease);backdrop-filter:blur(10px)}
-.price:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
-.price--hot{border-color:transparent;background:var(--card-solid);
-  box-shadow:0 0 0 2px var(--violet),var(--shadow-lift)}
-html[data-theme="dark"] .price--hot{background:#161A3C}
-.price__badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;
-  font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  padding:6px 16px;border-radius:999px;box-shadow:var(--glow);white-space:nowrap}
-.price h3{font-size:20px}
-.price__d{color:var(--text-2);font-size:14.5px;margin:2px 0 14px;min-height:44px}
-.price__v{font-family:var(--display);font-size:clamp(25px,3.1vw,32px);font-weight:800;letter-spacing:-.04em;line-height:1.1}
-.price__v small{display:block;font-size:13px;font-weight:600;color:var(--text-3);letter-spacing:0;margin-bottom:2px}
-.price ul{list-style:none;margin:22px 0 26px;padding:0;display:grid;gap:11px}
-.price li{display:flex;gap:10px;font-size:14.5px;color:var(--text-2);line-height:1.5}
-.price li svg{width:17px;height:17px;flex:none;margin-top:3px;stroke:var(--cyan);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.price .btn{margin-top:auto}
-.note{text-align:center;color:var(--text-3);font-size:14px;margin:30px auto 0;max-width:56ch}
-
-/* ═══════════ FAQ ═══════════ */
-.faq{margin-top:48px;max-width:860px;margin-inline:auto;display:grid;gap:12px}
-.faq details{background:var(--card);border:1px solid var(--stroke);border-radius:var(--r);overflow:hidden;transition:.3s}
-.faq details[open]{border-color:var(--stroke-2);box-shadow:var(--shadow)}
-.faq summary{list-style:none;cursor:pointer;padding:20px 58px 20px 24px;position:relative;
-  font-family:var(--display);font-size:16.5px;font-weight:700;letter-spacing:-.01em}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";position:absolute;right:22px;top:22px;width:22px;height:22px;border-radius:8px;
-  background:var(--grad);transition:transform .3s}
-.faq summary::before{content:"";position:absolute;right:28px;top:31px;width:10px;height:2px;background:#fff;z-index:2;border-radius:2px}
-.faq summary span{position:absolute;right:32px;top:27px;width:2px;height:10px;background:#fff;z-index:2;border-radius:2px;transition:transform .3s}
-.faq details[open] summary span{transform:rotate(90deg)}
-.faq p{color:var(--text-2);font-size:15.5px;padding:0 24px 22px;margin:0}
-
-/* ═══════════ FORM ═══════════ */
-.formwrap{background:var(--card-solid);border:1px solid var(--stroke);border-radius:var(--r-xl);
-  padding:clamp(26px,3.6vw,44px);box-shadow:var(--shadow)}
-html[data-theme="dark"] .formwrap{background:rgba(20,24,52,.72);backdrop-filter:blur(18px)}
-.og{display:grid;gap:clamp(34px,4.5vw,58px);align-items:start}
-@media(min-width:980px){.og{grid-template-columns:.82fr 1.18fr}}
-.form{display:grid;gap:19px}
-.f{display:grid;gap:8px}
-.f>label{font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--text)}
-.f>label span{color:var(--coral)}
-.f input,.f textarea{background:var(--bg-2);border:1.5px solid var(--stroke);border-radius:var(--r-sm);
-  padding:14px 16px;font-size:16px;width:100%;transition:.22s;font-family:var(--body)}
-html[data-theme="light"] .f input,html[data-theme="light"] .f textarea{background:#fff}
-.f input::placeholder,.f textarea::placeholder{color:var(--text-3)}
-.f input:focus,.f textarea:focus{border-color:var(--violet);outline:none;box-shadow:0 0 0 4px rgba(108,92,231,.14)}
-.f textarea{resize:vertical;min-height:118px}
-.f2{display:grid;gap:19px}
-@media(min-width:600px){.f2{grid-template-columns:1fr 1fr}}
-.chips{display:flex;flex-wrap:wrap;gap:9px}
-.chip input{position:absolute;opacity:0;width:0;height:0}
-.chip span{display:block;border:1.5px solid var(--stroke);border-radius:999px;padding:10px 17px;font-size:14.5px;
-  font-weight:600;font-family:var(--display);color:var(--text-2);cursor:pointer;transition:.22s;user-select:none}
-.chip span:hover{border-color:var(--stroke-2);color:var(--text)}
-.chip input:checked+span{background:var(--grad);border-color:transparent;color:#fff;box-shadow:var(--glow)}
-.chip input:focus-visible+span{outline:2px solid var(--violet-2);outline-offset:2px}
-.hp{position:absolute;left:-9999px}
-.fnote{font-size:13.5px;color:var(--text-3);margin:0;text-align:center}
-.msg{display:none;border-radius:var(--r-sm);padding:15px 17px;font-size:15px;line-height:1.55}
-.msg.ok{display:block;background:rgba(46,212,122,.12);border:1px solid rgba(46,212,122,.4)}
-.msg.err{display:block;background:rgba(255,122,89,.11);border:1px solid rgba(255,122,89,.42)}
-.msg a{color:var(--violet-2);font-weight:600;text-decoration:underline}
-.cts{display:grid;gap:12px;margin-top:30px;list-style:none;padding:0}
-.ct{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:var(--r);
-  background:var(--card);border:1px solid var(--stroke);transition:.28s var(--ease)}
-.ct:hover{transform:translateX(4px);border-color:var(--stroke-2)}
-.ct u{width:42px;height:42px;border-radius:13px;background:var(--grad-soft);display:grid;place-items:center;
-  text-decoration:none;flex:none;border:1px solid var(--stroke)}
-.ct svg{width:19px;height:19px;stroke:var(--violet-2);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.ct b{display:block;font-family:var(--display);font-size:15.5px;font-weight:700}
-.ct small{font-size:12.5px;color:var(--text-3)}
-
-/* ═══════════ FOOTER ═══════════ */
-footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relative;z-index:1;background:var(--bg-2)}
-.fg{display:grid;gap:34px}
-@media(min-width:760px){.fg{grid-template-columns:1.5fr 1fr 1fr}}
-.fg img{height:76px;width:auto;margin-bottom:16px}
-.fg p{color:var(--text-2);font-size:14.5px;max-width:40ch}
-.fg h4{font-family:var(--display);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--text-3);margin-bottom:16px}
-.fg ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
-.fg li a{color:var(--text-2);font-size:14.5px;transition:.2s}
-.fg li a:hover{color:var(--violet-2)}
-.fbot{margin-top:40px;padding-top:24px;border-top:1px solid var(--stroke);display:flex;flex-wrap:wrap;gap:12px;
-  justify-content:space-between;font-size:13.5px;color:var(--text-3)}
-
-/* ═══════════ FLOATING ═══════════ */
-.mbar{position:fixed;left:0;right:0;bottom:0;z-index:140;display:flex;gap:10px;
-  padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
-  background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(18px);
-  border-top:1px solid var(--stroke);transition:transform .35s var(--ease)}
-.mbar.off{transform:translateY(120%)}
-.mbar .btn{flex:1}
-.mbar .tg{flex:none;width:52px;display:grid;place-items:center;border:1px solid var(--stroke);
-  border-radius:999px;background:var(--card)}
-.mbar .tg svg{width:20px;height:20px;stroke:var(--violet-2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-@media(min-width:820px){.mbar{display:none}}
-@media(max-width:819px){body{padding-bottom:84px}}
-#top{position:fixed;right:22px;bottom:22px;z-index:130;opacity:0;pointer-events:none;transform:translateY(10px);
-  transition:.3s var(--ease)}
-#top.show{opacity:1;pointer-events:auto;transform:none}
-@media(max-width:819px){#top{bottom:96px;right:16px}}
-
-/* ═══════════ REVEAL ═══════════ */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
-  .rv{opacity:1;transform:none}
-}
+/* guarantee row */
+.gr{display:grid;gap:var(--gap);margin-top:34px;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.gr div{display:flex;align-items:center;gap:11px;padding:15px 17px;border:1px solid var(--stroke);
+  border-radius:var(--r);background:var(--card);font-size:14.5px;color:var(--text-2);font-weight:500}
+.gr svg{width:18px;height:18px;flex:none;stroke:var(--green);fill:none;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round}
 </style>
-<noscript><style>
-  /* without JS the reveal observer never runs — show everything straight away */
-  .rv{opacity:1;transform:none}
-</style></noscript>
 </head>
 <body>
+
+<!-- ══ INTRO ══ (rebuilt from animation/uztomic-intro.jsx as plain SVG + CSS) -->
+<div id="intro" aria-hidden="true">
+  <div class="intro__bg"></div>
+  <div class="intro__in">
+    <svg class="intro__mark" viewBox="640 185 640 415" fill="none">
+      <defs>
+        <linearGradient id="iSpark" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+          <stop offset=".5" stop-color="#fff"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <mask id="iSlit" maskUnits="userSpaceOnUse" x="640" y="185" width="640" height="415">
+          <rect x="640" y="185" width="640" height="415" fill="#fff"/>
+          <polygon class="i-slit" points="1030,375 1140,332 1140,306 1030,349" fill="#000"/>
+        </mask>
+      </defs>
+      <rect class="i-spark" x="810" y="396.5" width="300" height="3" rx="1.5" fill="url(#iSpark)"/>
+      <g mask="url(#iSlit)">
+        <path class="i-u" pathLength="1" stroke="#fff" stroke-width="62"
+              d="M 830 240 V 415 C 830 497 888 542 960 542 C 1032 542 1090 497 1090 415 V 400"/>
+        <polygon class="i-plate" points="1059,430 1121,430 1121,216 1059,240" fill="#fff"/>
+      </g>
+      <g class="i-orbit">
+        <ellipse class="i-ring" pathLength="1" cx="960" cy="400" rx="305" ry="108"
+                 transform="rotate(-18 960 400)" stroke="#fff" stroke-width="7"/>
+        <circle class="i-dot" cx="1250" cy="306" r="17" fill="#fff"/>
+        <circle class="i-dot" cx="670" cy="494" r="17" fill="#fff"/>
+      </g>
+    </svg>
+    <div class="intro__word"><span style="--d:1.70s">U</span><span style="--d:1.75s">Z</span><span style="--d:1.80s">T</span><span style="--d:1.85s">O</span><span style="--d:1.90s">M</span><span style="--d:1.95s">I</span><span style="--d:2.00s">C</span></div>
+    <div class="intro__tag">SMART SOFTWARE SOLUTIONS</div>
+    <button class="intro__cta" type="button" id="introGo">
+      <span data-i18n="intro.cta">Enter the site</span><i>&#8594;</i>
+    </button>
+  </div>
+  <div class="intro__hint" data-i18n="intro.skip">Tap anywhere to skip</div>
+</div>
 <div id="bar"></div>
-<div class="blobs" aria-hidden="true"><div class="blob blob--1"></div><div class="blob blob--2"></div><div class="blob blob--3"></div></div>
+<div class="bg" aria-hidden="true">
+  <div class="bg__grid"></div>
+  <div class="bg__blob bg__blob--1"></div>
+  <div class="bg__blob bg__blob--2"></div>
+</div>
 
 <header id="hdr">
   <div class="nav">
-    <a class="logo" href="#hero"><img src="assets/uztomic-mark-light.png" alt="" id="markImg" width="47" height="32" decoding="async"><b>Uztomic</b></a>
+    <a class="logo" href="/" aria-label="Uztomic">
+      <img src="/assets/uztomic-mark-light.png" alt="" id="markImg" width="47" height="32" decoding="async">
+      <b>Uztomic</b>
+    </a>
     <nav class="links">
       <a href="#services" data-i18n="nav.s">Services</a>
-      <a href="#process" data-i18n="nav.p">Process</a>
+      <a href="/crm/" class="mark" data-i18n="nav.crm">CRM for shops</a>
       <a href="#work" data-i18n="nav.w">Work</a>
       <a href="#pricing" data-i18n="nav.pr">Pricing</a>
       <a href="#faq" data-i18n="nav.f">FAQ</a>
@@ -505,13 +205,14 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
         <svg class="op" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         <svg class="cl" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
-      <a class="btn btn--p btn--sm" href="#contact" data-i18n="nav.cta">Start a project</a>
+      <a class="btn btn--p btn--sm" href="#contact" data-mag data-i18n="nav.cta">Start a project</a>
     </div>
   </div>
 </header>
 
 <div class="drawer" id="drawer">
   <a href="#services" data-i18n="nav.s">Services</a>
+  <a href="/crm/" class="mark" data-i18n="nav.crm">CRM for shops</a>
   <a href="#process" data-i18n="nav.p">Process</a>
   <a href="#work" data-i18n="nav.w">Work</a>
   <a href="#pricing" data-i18n="nav.pr">Pricing</a>
@@ -525,12 +226,13 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
   <div class="wrap hero__g">
     <div>
       <span class="pill"><i></i><span data-i18n="hero.badge">Taking on new projects</span></span>
-      <h1><span data-i18n="hero.h1a">We build the</span> <span class="grad" data-i18n="hero.h1b">software</span> <span data-i18n="hero.h1c">your business runs on</span></h1>
-      <p class="lede" data-i18n="hero.lede">Uztomic is a software studio in Qo'qon, Fergana region. Mobile apps, websites, enterprise systems, automation and startup MVPs — from the first sketch to launch day.</p>
+      <h1 data-split><span data-i18n="hero.h1a">We build the</span> <span class="grad" data-i18n="hero.h1b">software</span> <span data-i18n="hero.h1c">your business runs on</span></h1>
+      <p class="lede" data-i18n="hero.lede">Uztomic is a software studio in Qo'qon, Fergana region. Mobile apps, websites, enterprise systems, automation and startup MVPs — plus Uztomic CRM, our ready-made system for shops.</p>
       <div class="hero__cta">
-        <a class="btn btn--p" href="#contact"><span data-i18n="hero.cta1">Start a project</span>
+        <a class="btn btn--p" href="#contact" data-mag><span data-i18n="hero.cta1">Start a project</span>
           <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn--g" href="#work" data-i18n="hero.cta2">See our work</a>
+        <a class="btn btn--g" href="/crm/"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="15" rx="2.4"/><path d="M3 9h18M7 14h5"/></svg>
+          <span data-i18n="hero.cta3">CRM for shops</span></a>
       </div>
       <ul class="ticks">
         <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="hero.t1">Reply within 24 hours</span></li>
@@ -539,24 +241,26 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
       </ul>
     </div>
 
-    <div class="stage" aria-hidden="true">
+    <div class="stage" aria-hidden="true" data-par="0.03">
       <div class="stage__glow"></div>
       <div class="stage__ring"></div>
-      <div class="stage__ring stage__ring--b"></div>
       <div class="phone">
         <div class="phone__notch"></div>
         <div class="screen">
           <div class="scr__top">
-            <small>Uztomic POS</small><b>12 480 000</b>
+            <small>Uztomic CRM</small><b>12 480 000</b>
             <div class="scr__chips"><span>Today</span><span>Week</span><span>Month</span></div>
           </div>
           <div class="scr__body">
-            <div class="scr__chart"><i style="height:38%"></i><i style="height:62%"></i><i style="height:47%"></i><i style="height:80%"></i><i style="height:58%"></i><i style="height:96%"></i></div>
+            <div class="scr__chart">
+              <i style="--h:38%;--n:0"></i><i style="--h:62%;--n:1"></i><i style="--h:47%;--n:2"></i>
+              <i style="--h:80%;--n:3"></i><i style="--h:58%;--n:4"></i><i style="--h:96%;--n:5"></i>
+            </div>
             <div class="scr__row"><u>🧾</u><div><b>Order #1042</b><small>3 items · card</small></div><em>+248 000</em></div>
             <div class="scr__row"><u>📦</u><div><b>Stock updated</b><small>Warehouse · 24 SKU</small></div><em>OK</em></div>
             <div class="scr__row"><u>👤</u><div><b>New customer</b><small>Credit ledger</small></div><em>+1</em></div>
           </div>
-          <div class="scr__nav"><s></s><s></s><s></s><s></s></div>
+          <div class="scr__nav"><s class="on"></s><s></s><s></s><s></s></div>
         </div>
       </div>
       <div class="chip-card chip-card--a"><small data-i18n="hero.card1">Sales this week</small><b class="grad">+32%</b></div>
@@ -569,91 +273,126 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
 </section>
 
 <!-- ══ TECH STRIP ══ -->
-<div class="strip" aria-hidden="true"><div class="strip__t" id="strip"></div></div>
+<div class="strip" aria-hidden="true"><div class="strip__t" id="strip" data-items="Flutter|Dart|Supabase|PostgreSQL|Node.js|React|Python|Firebase|Docker|REST API|Telegram Bot API|SQLite|Google Play|App Store|Figma|1C integration"></div></div>
 
 <!-- ══ STATS ══ -->
-<section style="padding-block:clamp(48px,6vw,76px)">
+<section style="padding-block:clamp(46px,6vw,74px)">
   <div class="wrap stats">
-    <div class="stat rv"><b>5+</b><span data-i18n="st.1">Products shipped</span></div>
-    <div class="stat rv"><b>6</b><span data-i18n="st.2">Weeks average launch</span></div>
-    <div class="stat rv"><b>24h</b><span data-i18n="st.3">Reply time</span></div>
-    <div class="stat rv"><b>3</b><span data-i18n="st.4">Months free support</span></div>
+    <div class="stat" data-rv="up"><b data-count="5" data-suffix="+">5+</b><span data-i18n="st.1">Products shipped</span></div>
+    <div class="stat" data-rv="up"><b data-count="6">6</b><span data-i18n="st.2">Weeks average launch</span></div>
+    <div class="stat" data-rv="up"><b data-count="24" data-suffix="h">24h</b><span data-i18n="st.3">Reply time</span></div>
+    <div class="stat" data-rv="up"><b data-count="3">3</b><span data-i18n="st.4">Months free support</span></div>
+  </div>
+</section>
+
+<!-- ══ CRM BANNER ══ -->
+<section id="crm" style="padding-block:clamp(20px,3vw,40px)">
+  <div class="wrap">
+    <div class="crmb" data-rv="up">
+      <div class="crmb__l">
+        <span class="tag" data-i18n="cb.tag">Our own product</span>
+        <h2 data-i18n="cb.h2">Uztomic CRM — a ready system for your shop</h2>
+        <p class="lede" style="margin-top:16px" data-i18n="cb.lede">Sales, stock, the credit ledger and profit in one app. It keeps working with no internet, runs on a phone and on Windows, and you can be up and running this week.</p>
+        <ul class="crmb__f">
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="cb.f1">Till, barcode scanner, Bluetooth receipts</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="cb.f2">Stock by size and colour</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="cb.f3">Digital credit ledger with reminders</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="cb.f4">Staff roles, shifts and profit reports</span></li>
+        </ul>
+        <div class="hero__cta" style="margin-top:0">
+          <a class="btn btn--p" href="/crm/" data-mag><span data-i18n="cb.cta">Open the CRM page</span>
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--g" href="/crm/#pricing" data-i18n="cb.cta2">Prices and free trial</a>
+        </div>
+      </div>
+      <div class="crmb__r">
+        <div class="crmb__card">
+          <span class="crmb__k" data-i18n="cb.k">Monthly, per shop</span>
+          <div class="crmb__row"><span data-i18n="cb.r1">Standard — 6 accounts, 2 branches</span><b>150 000</b></div>
+          <div class="crmb__row"><span data-i18n="cb.r2">Pro — 16 accounts, 3 branches, AI</span><b>400 000</b></div>
+          <div class="crmb__row"><span data-i18n="cb.r3">Setup, one time</span><b>400 000</b></div>
+          <div class="crmb__row"><span data-i18n="cb.r4">With a receipt printer</span><b>700 000</b></div>
+          <p class="crmb__p" data-i18n="cb.trial">First 14 days free — no card, no contract.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ══ SERVICES ══ -->
 <section id="services">
   <div class="wrap">
-    <div class="center">
+    <div class="center head">
       <span class="tag" data-i18n="sv.tag">What we do</span>
       <h2 data-i18n="sv.h2">Five things we build well</h2>
-      <p class="lede" style="margin-top:18px" data-i18n="sv.lede">One rule in every direction: a clear deadline, a clear price, and software that works on day one.</p>
+      <p class="lede" data-i18n="sv.lede">One rule in every direction: a clear deadline, a clear price, and software that works on day one.</p>
     </div>
     <div class="grid grid--3">
-      <article class="crd rv">
-        <div class="ico"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg></div>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--fill"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg></div>
         <h3 data-i18n="sv.1t">Mobile apps</h3>
         <p data-i18n="sv.1d">Android and iOS from one codebase. Offline mode, push notifications, payments and store release — all handled by us.</p>
-        <ul class="crd__tags"><li>Flutter</li><li>Google Play</li><li>App Store</li><li>Offline</li></ul>
+        <ul class="tags"><li>Flutter</li><li>Google Play</li><li>App Store</li><li>Offline</li></ul>
       </article>
-      <article class="crd rv">
+      <article class="crd" data-rv="up" data-tilt>
         <div class="ico ico--c"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="14" rx="2.5"/><path d="M2.5 8.5h19M8 21.5h8"/></svg></div>
         <h3 data-i18n="sv.2t">Websites &amp; platforms</h3>
         <p data-i18n="sv.2d">From a one-page site to a platform that takes orders. Loads fast, looks right on every phone, and gets found on Google.</p>
-        <ul class="crd__tags"><li>Landing</li><li>Catalog</li><li>Admin panel</li><li>SEO</li></ul>
+        <ul class="tags"><li>Landing</li><li>Catalog</li><li>Admin panel</li><li>SEO</li></ul>
       </article>
-      <article class="crd rv">
+      <article class="crd" data-rv="up" data-tilt>
         <div class="ico ico--g"><svg viewBox="0 0 24 24"><path d="M3.5 20.5V9l8.5-5.5L20.5 9v11.5z"/><path d="M9 20.5v-6h6v6"/></svg></div>
         <h3 data-i18n="sv.3t">Enterprise systems</h3>
         <p data-i18n="sv.3d">Sales, inventory, reporting and control in one place. Roles and permissions for staff, an audit trail behind every action.</p>
-        <ul class="crd__tags"><li>CRM / ERP</li><li>Inventory</li><li>Roles</li><li>Reports</li></ul>
+        <ul class="tags"><li>CRM / ERP</li><li>Inventory</li><li>Roles</li><li>Reports</li></ul>
+        <a href="/crm/" style="font-family:var(--display);font-weight:700;font-size:14.5px;color:var(--brand-2)" data-i18n="sv.3l">See Uztomic CRM →</a>
       </article>
-      <article class="crd rv">
+      <article class="crd" data-rv="up" data-tilt>
         <div class="ico ico--o"><svg viewBox="0 0 24 24"><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.4 5.4l2.1 2.1M16.5 16.5l2.1 2.1M18.6 5.4l-2.1 2.1M7.5 16.5l-2.1 2.1"/><circle cx="12" cy="12" r="3.6"/></svg></div>
         <h3 data-i18n="sv.4t">Automation</h3>
         <p data-i18n="sv.4d">Hand the repetitive work to software: reports, Telegram bots, and data moving between the systems you already use.</p>
-        <ul class="crd__tags"><li>Telegram bots</li><li>Excel / 1C</li><li>API</li><li>Integrations</li></ul>
+        <ul class="tags"><li>Telegram bots</li><li>Excel / 1C</li><li>API</li><li>Integrations</li></ul>
       </article>
-      <article class="crd rv">
+      <article class="crd" data-rv="up" data-tilt>
         <div class="ico ico--p"><svg viewBox="0 0 24 24"><path d="M12 2.5 15 9l6.5.9-4.7 4.6 1.1 6.5-5.9-3.1-5.9 3.1L7.2 14.5 2.5 9.9 9 9z"/></svg></div>
         <h3 data-i18n="sv.5t">Startup MVP</h3>
         <p data-i18n="sv.5d">In 4–8 weeks we turn an idea into a first version real users can try. Then we grow it based on what they actually do.</p>
-        <ul class="crd__tags"><li>4–8 weeks</li><li>Prototype</li><li>Analytics</li><li>Iterations</li></ul>
+        <ul class="tags"><li>4–8 weeks</li><li>Prototype</li><li>Analytics</li><li>Iterations</li></ul>
       </article>
-      <article class="crd crd--cta rv">
+      <article class="crd crd--cta" data-rv="up">
         <h3 data-i18n="sv.6t">Not sure which one you need?</h3>
         <p data-i18n="sv.6d">Describe the problem in plain words. We'll tell you honestly what it would take — or that you don't need us at all.</p>
-        <a class="btn btn--sm" href="#contact" data-i18n="sv.6c">Ask a question</a>
+        <a class="btn btn--sm btn--w" href="#contact" data-i18n="sv.6c">Ask a question</a>
       </article>
     </div>
   </div>
 </section>
 
 <!-- ══ WHY ══ -->
-<section style="background:var(--bg-2);border-block:1px solid var(--stroke)">
+<section class="band">
   <div class="wrap">
-    <div class="center">
+    <div class="center head">
       <span class="tag" data-i18n="wy.tag">Why Uztomic</span>
       <h2 data-i18n="wy.h2">No surprises, ever</h2>
     </div>
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
-      <article class="crd rv">
+    <div class="grid grid--auto">
+      <article class="crd" data-rv="up">
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M20.5 11.5V6.2L12 2.8 3.5 6.2v5.3c0 5 3.6 8.6 8.5 9.7 4.9-1.1 8.5-4.7 8.5-9.7z"/><path d="M8.6 12.2 11 14.6l4.6-4.8"/></svg></div>
         <h3 data-i18n="wy.1t">Fixed price and date</h3>
         <p data-i18n="wy.1d">You approve a feature list, a delivery date and a number before we write a single line of code.</p>
       </article>
-      <article class="crd rv">
-        <div class="ico ico--c"><svg viewBox="0 0 24 24"><path d="M9 3.5H5.5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V15"/><path d="M14.5 3.5h6v6M20.5 3.5 11 13"/></svg></div>
+      <article class="crd" data-rv="up">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3.5H5.5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V15"/><path d="M14.5 3.5h6v6M20.5 3.5 11 13"/></svg></div>
         <h3 data-i18n="wy.2t">You own everything</h3>
         <p data-i18n="wy.2d">Source code, domain and store accounts are handed over on delivery. You are never locked in to us.</p>
       </article>
-      <article class="crd rv">
-        <div class="ico ico--g"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.2"/></svg></div>
+      <article class="crd" data-rv="up">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.2"/></svg></div>
         <h3 data-i18n="wy.3t">A working build every week</h3>
         <p data-i18n="wy.3d">You see real progress on your own phone each week — not one big reveal at the very end.</p>
       </article>
-      <article class="crd rv">
-        <div class="ico ico--o"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.2-4.6A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
+      <article class="crd" data-rv="up">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.2-4.6A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
         <h3 data-i18n="wy.4t">We speak your language</h3>
         <p data-i18n="wy.4d">Uzbek, Russian or English — by phone, Telegram, or face to face over tea in Qo'qon.</p>
       </article>
@@ -664,39 +403,39 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
 <!-- ══ PROCESS ══ -->
 <section id="process">
   <div class="wrap">
-    <div class="center">
+    <div class="center head">
       <span class="tag" data-i18n="pc.tag">How we work</span>
       <h2 data-i18n="pc.h2">From idea to launch in five steps</h2>
-      <p class="lede" style="margin-top:18px" data-i18n="pc.lede">Every step ends with something concrete you can look at and approve.</p>
+      <p class="lede" data-i18n="pc.lede">Every step ends with something concrete you can look at and approve.</p>
     </div>
-    <div class="flow">
-      <div class="stp rv"><u>01</u><h3 data-i18n="pc.1t">Brief</h3><p data-i18n="pc.1d">A free call. We work out the problem, who will use it, and what result you need.</p></div>
-      <div class="stp rv"><u>02</u><h3 data-i18n="pc.2t">Quote</h3><p data-i18n="pc.2d">Feature list, timeline and a fixed price. Once you agree, we sign a contract.</p></div>
-      <div class="stp rv"><u>03</u><h3 data-i18n="pc.3t">Design</h3><p data-i18n="pc.3d">You see every screen before any code exists. Changes are cheap at this stage.</p></div>
-      <div class="stp rv"><u>04</u><h3 data-i18n="pc.4t">Build</h3><p data-i18n="pc.4d">A working version every week. You follow along and we adjust as we go.</p></div>
-      <div class="stp rv"><u>05</u><h3 data-i18n="pc.5t">Launch</h3><p data-i18n="pc.5d">We publish, train your team, and stay on call for three months free of charge.</p></div>
+    <div class="flow" style="--cols:5">
+      <div class="stp" data-rv="up"><u>01</u><h3 data-i18n="pc.1t">Brief</h3><p data-i18n="pc.1d">A free call. We work out the problem, who will use it, and what result you need.</p></div>
+      <div class="stp" data-rv="up"><u>02</u><h3 data-i18n="pc.2t">Quote</h3><p data-i18n="pc.2d">Feature list, timeline and a fixed price. Once you agree, we sign a contract.</p></div>
+      <div class="stp" data-rv="up"><u>03</u><h3 data-i18n="pc.3t">Design</h3><p data-i18n="pc.3d">You see every screen before any code exists. Changes are cheap at this stage.</p></div>
+      <div class="stp" data-rv="up"><u>04</u><h3 data-i18n="pc.4t">Build</h3><p data-i18n="pc.4d">A working version every week. You follow along and we adjust as we go.</p></div>
+      <div class="stp" data-rv="up"><u>05</u><h3 data-i18n="pc.5t">Launch</h3><p data-i18n="pc.5d">We publish, train your team, and stay on call for three months free of charge.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ══ WORK ══ -->
-<section id="work" style="background:var(--bg-2);border-block:1px solid var(--stroke)">
+<section id="work" class="band">
   <div class="wrap">
-    <div class="center">
+    <div class="center head">
       <span class="tag" data-i18n="wk.tag">Selected work</span>
       <h2 data-i18n="wk.h2">Products already in people's hands</h2>
     </div>
     <div class="grid grid--3">
-      <article class="wk rv">
+      <article class="wk" data-rv="up">
         <div class="wk__top"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2.2"/><path d="M3 10.5h18M7 15h4"/></svg></div>
         <div class="wk__b">
-          <span class="wk__k" data-i18n="wk.1k">Point of sale</span>
-          <h3 data-i18n="wk.1t">Uztomic POS</h3>
-          <p data-i18n="wk.1d">Sales, inventory and a credit ledger for small shops. Keeps working with no internet, prints receipts over Bluetooth.</p>
+          <span class="wk__k" data-i18n="wk.1k">Retail system</span>
+          <h3 data-i18n="wk.1t">Uztomic CRM</h3>
+          <p data-i18n="wk.1d">Sales, stock and a credit ledger for shops. Keeps working with no internet, prints receipts over Bluetooth, syncs to phone and Windows.</p>
           <div class="wk__r" data-i18n-html="wk.1r">Result: <b>sales, debts and stock in one phone</b></div>
         </div>
       </article>
-      <article class="wk rv">
+      <article class="wk" data-rv="up">
         <div class="wk__top"><svg viewBox="0 0 24 24"><path d="M3 6.5h6a3 3 0 0 1 3 3v10a2.4 2.4 0 0 0-2.4-2.4H3zM21 6.5h-6a3 3 0 0 0-3 3v10a2.4 2.4 0 0 1 2.4-2.4H21z"/></svg></div>
         <div class="wk__b">
           <span class="wk__k" data-i18n="wk.2k">Learning app</span>
@@ -705,7 +444,7 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
           <div class="wk__r" data-i18n-html="wk.2r">Result: <b>live on Play Store, Families-policy compliant</b></div>
         </div>
       </article>
-      <article class="wk rv">
+      <article class="wk" data-rv="up">
         <div class="wk__top"><svg viewBox="0 0 24 24"><path d="M6 3.5v7a3 3 0 0 0 6 0v-7M9 10.5v10M15.5 20.5v-7c2 0 3-1.6 3-5s-1-5-3-5z"/></svg></div>
         <div class="wk__b">
           <span class="wk__k" data-i18n="wk.3k">Content app</span>
@@ -721,68 +460,150 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
 <!-- ══ PRICING ══ -->
 <section id="pricing">
   <div class="wrap">
-    <div class="center">
+    <div class="center head">
       <span class="tag" data-i18n="pr.tag">Pricing</span>
       <h2 data-i18n="pr.h2">Know the ballpark before you call</h2>
-      <p class="lede" style="margin-top:18px" data-i18n="pr.lede">Starting points, not final numbers. After a free 20-minute call you get an exact figure and date in writing.</p>
+      <p class="lede" data-i18n="pr.lede">Starting points, not final numbers. After a free 20-minute call you get an exact figure and date in writing.</p>
     </div>
-    <div class="grid grid--3" style="margin-top:60px">
-      <article class="price rv">
-        <h3 data-i18n="pr.1t">Starter</h3>
+    <div class="grid grid--4" style="margin-top:58px">
+      <article class="price" data-rv="up" data-tilt>
+        <h3 data-i18n="pr.1t">Landing</h3>
         <p class="price__d" data-i18n="pr.1d">A site that explains what you do and collects enquiries.</p>
-        <div class="price__v"><small data-i18n="pr.from">from</small><span data-i18n="pr.1p">1 000 000 UZS</span></div>
+        <div class="price__v"><small data-i18n="pr.from">from</small><span data-i18n="pr.1p">2 000 000 UZS</span></div>
+        <p class="price__t" data-i18n="pr.1w">Ready in 5–10 days</p>
         <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f1">Ready in 5–10 days</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f2">Up to 6 sections, mobile-first</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f3">Enquiry form to your email or Telegram</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f1">Up to 6 sections, mobile-first</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f2">Enquiry form to your email or Telegram</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f3">Three languages if you need them</span></li>
           <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f4">Google setup and 1 month of support</span></li>
         </ul>
         <a class="btn btn--g btn--wide" href="#contact" data-i18n="pr.cta">Get a quote</a>
       </article>
-      <article class="price price--hot rv">
+      <article class="price price--hot" data-rv="up" data-tilt>
         <span class="price__badge" data-i18n="pr.badge">Most chosen</span>
         <h3 data-i18n="pr.2t">Business</h3>
         <p class="price__d" data-i18n="pr.2d">A mobile app or online platform your customers use daily.</p>
-        <div class="price__v"><small data-i18n="pr.from">from</small><span data-i18n="pr.2p">3 000 000 UZS</span></div>
+        <div class="price__v"><small data-i18n="pr.from">from</small><span data-i18n="pr.2p">6 000 000 UZS</span></div>
+        <p class="price__t" data-i18n="pr.2w">Ready in 4–8 weeks</p>
         <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f1">Ready in 4–8 weeks</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f2">Android and iOS from one codebase</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f3">Admin panel, payments, notifications</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f1">Android and iOS from one codebase</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f2">Admin panel, payments, notifications</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f3">Offline mode and your own design</span></li>
           <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f4">Store release and 3 months of support</span></li>
         </ul>
         <a class="btn btn--p btn--wide" href="#contact" data-i18n="pr.cta">Get a quote</a>
       </article>
-      <article class="price rv">
-        <h3 data-i18n="pr.3t">Enterprise</h3>
-        <p class="price__d" data-i18n="pr.3d">A system your whole company works inside, every single day.</p>
-        <div class="price__v"><small data-i18n="pr.from2">tailored</small><span data-i18n="pr.3p">By quote</span></div>
+      <article class="price" data-rv="up" data-tilt>
+        <h3 data-i18n="pr.3t">Pro platform</h3>
+        <p class="price__d" data-i18n="pr.3d">A large product with many roles, integrations and real analytics.</p>
+        <div class="price__v"><small data-i18n="pr.from">from</small><span data-i18n="pr.3p">12 000 000 UZS</span></div>
+        <p class="price__t" data-i18n="pr.3w">Ready in 8–14 weeks</p>
         <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f1">POS, CRM, ERP or warehouse systems</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f2">Roles, permissions and audit logs</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f3">Offline mode and 1C / API integrations</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f4">Staff training and a support agreement</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f1">Phone, web and admin panel together</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f2">Payments, API and 1C integrations</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f3">Dashboards and export to Excel</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f4">Load testing and 6 months of support</span></li>
+        </ul>
+        <a class="btn btn--g btn--wide" href="#contact" data-i18n="pr.cta">Get a quote</a>
+      </article>
+      <article class="price" data-rv="up" data-tilt>
+        <h3 data-i18n="pr.4t">Enterprise</h3>
+        <p class="price__d" data-i18n="pr.4d">A system your whole company works inside, every single day.</p>
+        <div class="price__v"><small data-i18n="pr.from2">tailored</small><span data-i18n="pr.4p">By quote</span></div>
+        <p class="price__t" data-i18n="pr.4w">From two months</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.4f1">POS, CRM, ERP or warehouse systems</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.4f2">Roles, permissions and audit logs</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.4f3">Offline mode and 1C / API integrations</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.4f4">Staff training and a support agreement</span></li>
         </ul>
         <a class="btn btn--g btn--wide" href="#contact" data-i18n="pr.cta">Get a quote</a>
       </article>
     </div>
-    <p class="note" data-i18n="pr.note">Prices depend on scope. Payment is usually 50% to start and 50% on delivery, or split across milestones on larger projects.</p>
+    <p class="note" data-i18n-html="pr.note">Already running a shop? <a href="/crm/" style="color:var(--brand-2);font-weight:600">Uztomic CRM</a> starts at 150 000 UZS a month — no development project needed.</p>
+
+    <div class="center head" style="margin-top:clamp(60px,7vw,96px)">
+      <span class="tag" data-i18n="cl.tag">Estimate</span>
+      <h2 data-i18n="cl.h2">Get a number in ten seconds</h2>
+      <p class="lede" data-i18n="cl.lede">Pick what you need and see the range straight away. It is a rough figure, not an offer — but it is honest.</p>
+    </div>
+
+    <div class="calc" data-rv="up">
+      <div class="calc__g">
+        <div class="calc__f" id="est">
+          <div>
+            <span class="calc__l" data-i18n="cl.kind">What are we building?</span>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="ekind" value="site" checked><span data-i18n="cl.k1">Website</span></label>
+              <label class="chip"><input type="radio" name="ekind" value="app"><span data-i18n="cl.k2">Mobile app</span></label>
+              <label class="chip"><input type="radio" name="ekind" value="sys"><span data-i18n="cl.k3">Business system</span></label>
+            </div>
+          </div>
+          <div>
+            <span class="calc__l" data-i18n="cl.add">What should it include?</span>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="eadd" data-lo="1500000" data-hi="2500000" data-w1="0.5" data-w2="1"><span data-i18n="cl.a1">Online payments</span></label>
+              <label class="chip"><input type="checkbox" name="eadd" data-lo="2000000" data-hi="3500000" data-w1="1" data-w2="2"><span data-i18n="cl.a2">Admin panel</span></label>
+              <label class="chip"><input type="checkbox" name="eadd" data-lo="800000" data-hi="1500000" data-w1="0.5" data-w2="1"><span data-i18n="cl.a3">Three languages</span></label>
+              <label class="chip"><input type="checkbox" name="eadd" data-lo="2500000" data-hi="4500000" data-w1="1" data-w2="2"><span data-i18n="cl.a4">1C / API integration</span></label>
+              <label class="chip"><input type="checkbox" name="eadd" data-lo="1200000" data-hi="2500000" data-w1="1" data-w2="1.5"><span data-i18n="cl.a5">Custom design</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="calc__out">
+          <small data-i18n="cl.res">Rough estimate</small>
+          <div class="calc__sum" id="estOut">2 000 000 – 4 000 000 UZS</div>
+          <ul class="calc__rows">
+            <li><span data-i18n="cl.time">Timeline</span><b id="estWeeks">1–2 weeks</b></li>
+          </ul>
+          <p class="calc__note" data-i18n="cl.note">The final price is fixed after a free 20-minute call, and only once you approve the feature list.</p>
+          <button class="btn btn--p btn--wide" id="estSend" type="button" data-i18n="cl.cta">Send this to us</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="gr">
+      <div data-rv="up"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="gr.1">Contract and a fixed date</span></div>
+      <div data-rv="up"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="gr.2">50% to start, 50% on delivery</span></div>
+      <div data-rv="up"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="gr.3">Source code handed over to you</span></div>
+      <div data-rv="up"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="gr.4">3 months of free support</span></div>
+    </div>
   </div>
 </section>
 
 <!-- ══ FAQ ══ -->
-<section id="faq" style="background:var(--bg-2);border-block:1px solid var(--stroke)">
+<section id="faq" class="band">
   <div class="wrap">
-    <div class="center">
+    <div class="center head">
       <span class="tag" data-i18n="fq.tag">Answers</span>
       <h2 data-i18n="fq.h2">Questions we get every week</h2>
     </div>
     <div class="faq">
-      <details open><summary data-i18n="fq.1q">How much will my project cost?<span></span></summary><p data-i18n="fq.1a">It depends on scope. A simple site starts at one week of work, a mobile app at four. After a short call we send an exact figure and date — and nothing starts until you approve it.</p></details>
-      <details><summary data-i18n="fq.2q">How long does it take?<span></span></summary><p data-i18n="fq.2a">Landing page: 5–10 days. App or MVP: 4–8 weeks. Enterprise system: from two months. The exact date is fixed once the feature list is agreed.</p></details>
-      <details><summary data-i18n="fq.3q">Who owns the code and the accounts?<span></span></summary><p data-i18n="fq.3a">You do. On final payment we hand over the source code, the domain and the store accounts. You can take them to any developer afterwards.</p></details>
-      <details><summary data-i18n="fq.4q">What happens after launch?<span></span></summary><p data-i18n="fq.4a">Three months of free support: we fix bugs and answer questions. After that you can take a monthly maintenance agreement, or not — your call.</p></details>
-      <details><summary data-i18n="fq.5q">Can we work together if I'm in another region?<span></span></summary><p data-i18n="fq.5a">Yes. We work remotely across Uzbekistan and with clients abroad over Telegram, phone and video. You're welcome to visit us in Qo'qon too.</p></details>
-      <details><summary data-i18n="fq.6q">I already have an app. Can you fix or continue it?<span></span></summary><p data-i18n="fq.6a">Often yes. Send us the code or store link and we'll review it, tell you honestly what shape it's in, and quote for the work.</p></details>
+      <details open><summary data-i18n="fq.1q">How much will my project cost?<span></span></summary><div class="ans"><p data-i18n="fq.1a">It depends on scope. A landing page starts at 2 000 000 UZS, a mobile app at 6 000 000, a large platform at 12 000 000. After a short call we send an exact figure and date — and nothing starts until you approve it.</p></div></details>
+      <details><summary data-i18n="fq.2q">How long does it take?<span></span></summary><div class="ans"><p data-i18n="fq.2a">Landing page: 5–10 days. App or MVP: 4–8 weeks. Large platform: 8–14 weeks. Enterprise system: from two months. The exact date is fixed once the feature list is agreed.</p></div></details>
+      <details><summary data-i18n="fq.3q">Do you have a ready-made system for shops?<span></span></summary><div class="ans"><p data-i18n-html="fq.3a">Yes — <a href="/crm/" style="color:var(--brand-2);font-weight:600">Uztomic CRM</a>. Sales, stock by size and colour, a digital credit ledger, staff roles and profit reports. It works offline, runs on phone and Windows, and starts at 150 000 UZS a month with 14 days free.</p></div></details>
+      <details><summary data-i18n="fq.4q">Who owns the code and the accounts?<span></span></summary><div class="ans"><p data-i18n="fq.4a">You do. On final payment we hand over the source code, the domain and the store accounts. You can take them to any developer afterwards.</p></div></details>
+      <details><summary data-i18n="fq.5q">What happens after launch?<span></span></summary><div class="ans"><p data-i18n="fq.5a">Three months of free support: we fix bugs and answer questions. After that you can take a monthly maintenance agreement, or not — your call.</p></div></details>
+      <details><summary data-i18n="fq.6q">Can we work together if I'm in another region?<span></span></summary><div class="ans"><p data-i18n="fq.6a">Yes. We work remotely across Uzbekistan and with clients abroad over Telegram, phone and video. You're welcome to visit us in Qo'qon too.</p></div></details>
+      <details><summary data-i18n="fq.7q">I already have an app. Can you fix or continue it?<span></span></summary><div class="ans"><p data-i18n="fq.7a">Often yes. Send us the code or store link and we'll review it, tell you honestly what shape it's in, and quote for the work.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FREE CALL ══ -->
+<section style="padding-block:clamp(44px,6vw,72px)">
+  <div class="wrap">
+    <div class="band-cta" data-rv="up">
+      <div>
+        <h2 data-i18n="cc.h2">Not ready to fill in a form?</h2>
+        <p data-i18n="cc.p">Send one line on Telegram or simply call. Twenty free minutes, and you leave with a number and a date — even if we never end up working together.</p>
+      </div>
+      <div class="row">
+        <a class="btn btn--w" href="https://t.me/uztomic_official" target="_blank" rel="noopener" data-mag>
+          <svg viewBox="0 0 24 24"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4.1 1.6l4.9 1.4 1.8 5.3c.2.7 1.1.8 1.6.3l2.6-2.6 4.9 3.6c.6.4 1.5.1 1.7-.7l3-14.2c.2-.9-.7-1.6-1.5-1.3z"/></svg>
+          <span data-i18n="cc.b1">Write on Telegram</span></a>
+        <a class="btn btn--w" style="background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.4)" href="tel:+998770165963">+998 77 016 59 63</a>
+      </div>
     </div>
   </div>
 </section>
@@ -798,15 +619,15 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
         <li><a class="ct" href="https://t.me/uztomic_official" target="_blank" rel="noopener">
           <u><svg viewBox="0 0 24 24"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4.1 1.6l4.9 1.4 1.8 5.3c.2.7 1.1.8 1.6.3l2.6-2.6 4.9 3.6c.6.4 1.5.1 1.7-.7l3-14.2c.2-.9-.7-1.6-1.5-1.3z"/><path d="m7.8 14.6 10.6-7.3-8.2 8.4"/></svg></u>
           <span><b>@uztomic_official</b><small data-i18n="ct.tg">Telegram — fastest reply</small></span></a></li>
-        <li><a class="ct" href="tel:+998770165963">
+        <li><a class="ct" href="tel:+998770165963" data-copy="+998770165963">
           <u><svg viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4.5-2 1.5a13 13 0 0 0 6 6l1.5-2 4.5 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></svg></u>
           <span><b>+998 77 016 59 63</b><small data-i18n="ct.ph">Every day, 9:00–22:00</small></span></a></li>
-        <li><a class="ct" href="mailto:uztomic@gmail.com">
+        <li><a class="ct" href="mailto:uztomic@gmail.com" data-copy="uztomic@gmail.com">
           <u><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg></u>
           <span><b>uztomic@gmail.com</b><small data-i18n="ct.em">For documents and contracts</small></span></a></li>
-        <li><a class="ct" href="#contact">
+        <li><span class="ct">
           <u><svg viewBox="0 0 24 24"><path d="M12 21.5s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10.5" r="2.6"/></svg></u>
-          <span><b data-i18n="ct.loc">Qo'qon, Fergana region</b><small data-i18n="ct.loc2">Remote across the country</small></span></a></li>
+          <span><b data-i18n="ct.loc">Qo'qon, Fergana region</b><small data-i18n="ct.loc2">Remote across the country</small></span></span></li>
       </ul>
     </div>
 
@@ -814,33 +635,36 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
       <form class="form" id="orderForm" novalidate>
         <div class="f2">
           <div class="f"><label for="name" data-i18n-html="fm.name">Your name <span>*</span></label>
-            <input id="name" name="name" required autocomplete="name" placeholder="Alisher Karimov" data-i18n-ph="fm.namePh"></div>
+            <input id="name" name="name" required autocomplete="name" placeholder="Alisher Karimov" data-i18n-ph="fm.namePh">
+            <small class="err"></small></div>
           <div class="f"><label for="phone" data-i18n-html="fm.phone">Phone <span>*</span></label>
-            <input id="phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="+998 __ ___ __ __"></div>
+            <input id="phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="+998 __ ___ __ __">
+            <small class="err"></small></div>
         </div>
         <div class="f">
           <label data-i18n="fm.svc">What do you need?</label>
           <div class="chips">
             <label class="chip"><input type="radio" name="service" value="Mobile app" checked><span data-i18n="fm.s1">Mobile app</span></label>
             <label class="chip"><input type="radio" name="service" value="Website / platform"><span data-i18n="fm.s2">Website</span></label>
-            <label class="chip"><input type="radio" name="service" value="Enterprise system"><span data-i18n="fm.s3">Enterprise system</span></label>
-            <label class="chip"><input type="radio" name="service" value="Automation"><span data-i18n="fm.s4">Automation</span></label>
-            <label class="chip"><input type="radio" name="service" value="Startup MVP"><span data-i18n="fm.s5">Startup MVP</span></label>
+            <label class="chip"><input type="radio" name="service" value="Uztomic CRM"><span data-i18n="fm.s3">Uztomic CRM</span></label>
+            <label class="chip"><input type="radio" name="service" value="Enterprise system"><span data-i18n="fm.s4">Enterprise system</span></label>
+            <label class="chip"><input type="radio" name="service" value="Automation"><span data-i18n="fm.s5">Automation</span></label>
             <label class="chip"><input type="radio" name="service" value="Not sure"><span data-i18n="fm.s6">Not sure yet</span></label>
           </div>
         </div>
         <div class="f">
           <label data-i18n="fm.bud">Approximate budget</label>
           <div class="chips">
-            <label class="chip"><input type="radio" name="budget" value="1-3 mln UZS" checked><span data-i18n="fm.b1">1–3 mln UZS</span></label>
-            <label class="chip"><input type="radio" name="budget" value="3-7 mln UZS"><span data-i18n="fm.b2">3–7 mln UZS</span></label>
-            <label class="chip"><input type="radio" name="budget" value="7-15 mln UZS"><span data-i18n="fm.b3">7–15 mln UZS</span></label>
-            <label class="chip"><input type="radio" name="budget" value="15 mln UZS +"><span data-i18n="fm.b4">15 mln UZS +</span></label>
+            <label class="chip"><input type="radio" name="budget" value="2-6 mln UZS" checked><span data-i18n="fm.b1">2–6 mln UZS</span></label>
+            <label class="chip"><input type="radio" name="budget" value="6-12 mln UZS"><span data-i18n="fm.b2">6–12 mln UZS</span></label>
+            <label class="chip"><input type="radio" name="budget" value="12-25 mln UZS"><span data-i18n="fm.b3">12–25 mln UZS</span></label>
+            <label class="chip"><input type="radio" name="budget" value="25 mln UZS +"><span data-i18n="fm.b4">25 mln UZS +</span></label>
             <label class="chip"><input type="radio" name="budget" value="not decided"><span data-i18n="fm.b5">Not decided</span></label>
           </div>
         </div>
         <div class="f"><label for="message" data-i18n-html="fm.msg">About the project <span>*</span></label>
-          <textarea id="message" name="message" required placeholder="For example: I run a shop and need an app to track sales and customer debts. We use a paper notebook now and lose track of things." data-i18n-ph="fm.msgPh"></textarea></div>
+          <textarea id="message" name="message" required placeholder="For example: I run a shop and need an app to track sales and customer debts. We use a paper notebook now and lose track of things." data-i18n-ph="fm.msgPh"></textarea>
+          <small class="err"></small></div>
         <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button type="submit" class="btn btn--p btn--wide" id="submitBtn"><span data-i18n="fm.send">Send request</span>
           <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -856,7 +680,7 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
   <div class="wrap">
     <div class="fg">
       <div>
-        <img src="assets/uztomic-logo-light.png" alt="Uztomic — Smart Software Solutions" id="footLogo" width="116" height="76" loading="lazy" decoding="async">
+        <img src="/assets/uztomic-logo-light.png" alt="Uztomic — Smart Software Solutions" id="footLogo" width="116" height="70" loading="lazy" decoding="async">
         <p data-i18n="ft.about">A small software studio in Qo'qon building mobile apps, web platforms and business systems for companies across Uzbekistan.</p>
       </div>
       <div>
@@ -866,6 +690,15 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
           <li><a href="#process" data-i18n="nav.p">Process</a></li>
           <li><a href="#work" data-i18n="nav.w">Work</a></li>
           <li><a href="#pricing" data-i18n="nav.pr">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="ft.h3">Product</h4>
+        <ul>
+          <li><a href="/crm/" data-i18n="ft.p1">Uztomic CRM</a></li>
+          <li><a href="/crm/#features" data-i18n="ft.p2">Features</a></li>
+          <li><a href="/crm/#pricing" data-i18n="ft.p3">CRM pricing</a></li>
+          <li><a href="/crm/#contact" data-i18n="ft.p4">Free 14-day trial</a></li>
         </ul>
       </div>
       <div>
@@ -886,109 +719,45 @@ footer{border-top:1px solid var(--stroke);padding-block:56px 40px;position:relat
 </footer>
 
 <div class="mbar" id="mbar">
-  <a class="btn btn--p" href="#contact" style="flex:1" data-i18n="nav.cta">Start a project</a>
-  <a class="tg" href="https://t.me/uztomic_official" target="_blank" rel="noopener" aria-label="Telegram">
+  <a class="btn btn--p" href="#contact" data-i18n="nav.cta">Start a project</a>
+  <a class="btn btn--g" href="/crm/" data-i18n="nav.crm2">CRM</a>
+  <a class="sq" href="https://t.me/uztomic_official" target="_blank" rel="noopener" aria-label="Telegram">
     <svg viewBox="0 0 24 24"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4.1 1.6l4.9 1.4 1.8 5.3c.2.7 1.1.8 1.6.3l2.6-2.6 4.9 3.6c.6.4 1.5.1 1.7-.7l3-14.2c.2-.9-.7-1.6-1.5-1.3z"/><path d="m7.8 14.6 10.6-7.3-8.2 8.4"/></svg></a>
 </div>
+
 <button class="icobtn" id="top" type="button" aria-label="Back to top">
-  <svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  <svg class="ring" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21"/></svg>
+  <svg class="arw" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
 </button>
+<div id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* ══════ SETTINGS — edit these three lines ══════ */
-const WEB3FORMS_KEY = "a72ae459-19a3-4308-a9c4-b8e4e44a5bbb";
-const TELEGRAM_USER = "uztomic_official";
-const EMAIL         = "uztomic@gmail.com";
-/* ═══════════════════════════════════════════════ */
-
-const store = {
-  get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } },
-  set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
-};
-
-/* ── theme ── */
-const root = document.documentElement;
-const markImg = document.getElementById('markImg');
-const footLogo = document.getElementById('footLogo');
-function applyTheme(t,remember){
-  root.dataset.theme = t;
-  document.querySelector('meta[name=theme-color]').content = t==='dark' ? '#0B0D1A' : '#FFFFFF';
-  markImg.src  = `assets/uztomic-mark-${t==='dark'?'light':'dark'}.png`;
-  footLogo.src = `assets/uztomic-logo-${t==='dark'?'light':'dark'}.png`;
-  if(remember) store.set('uztomic-theme',t);
-}
-applyTheme(root.dataset.theme || 'dark');   /* the inline <head> script already picked it */
-document.getElementById('theme').addEventListener('click',()=>applyTheme(root.dataset.theme==='dark'?'light':'dark',true));
-/* follow the system only while the visitor has not chosen for themselves */
-matchMedia('(prefers-color-scheme: light)').addEventListener('change',e=>{
-  if(!store.get('uztomic-theme')) applyTheme(e.matches?'light':'dark');
-});
-
-/* ── tech strip ── */
-const TECH=["Flutter","Dart","Firebase","PostgreSQL","Node.js","React","Python","Docker","REST API","Telegram Bot API","SQLite","Google Play","App Store","Figma","1C integration"];
-document.getElementById('strip').innerHTML=[...TECH,...TECH].map(t=>`<span>${t}</span>`).join('');
-document.getElementById('yr').textContent=new Date().getFullYear();
-
-/* ── header + progress + back to top ── */
-const hdr=document.getElementById('hdr'), bar=document.getElementById('bar'), topBtn=document.getElementById('top');
-function onScroll(){
-  hdr.classList.toggle('stuck',scrollY>10);
-  const max=document.body.scrollHeight-innerHeight;
-  bar.style.width=(max>0?scrollY/max*100:0)+'%';
-  topBtn.classList.toggle('show',scrollY>700);
-}
-addEventListener('scroll',onScroll,{passive:true});onScroll();
-topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-
-/* ── mobile menu ── */
-const burger=document.getElementById('burger'), drawer=document.getElementById('drawer');
-function setMenu(open){
-  drawer.classList.toggle('open',open);
-  hdr.classList.toggle('menu',open);
-  burger.setAttribute('aria-expanded',open);
-  document.body.style.overflow=open?'hidden':'';
-}
-burger.addEventListener('click',()=>setMenu(!drawer.classList.contains('open')));
-drawer.addEventListener('click',e=>{ if(e.target===drawer||e.target.closest('a')) setMenu(false) });
-addEventListener('keydown',e=>{ if(e.key==='Escape') setMenu(false) });
-
-/* ── reveal ── */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3*80)+'ms';io.observe(el)});
-
-/* ── highlight the section you are reading in the desktop nav ── */
-const navLinks=[...document.querySelectorAll('.links a')];
-const sections=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-if(sections.length){
-  const seen=new Set();
-  const spy=new IntersectionObserver(es=>{
-    es.forEach(e=>e.isIntersecting?seen.add(e.target.id):seen.delete(e.target.id));
-    const active=sections.find(s=>seen.has(s.id));
-    navLinks.forEach(a=>a.classList.toggle('here',!!active&&a.getAttribute('href')==='#'+active.id));
-  },{rootMargin:'-45% 0px -50% 0px'});
-  sections.forEach(s=>spy.observe(s));
-}
-
-/* ── hide mobile bar over the form ── */
-const mbar=document.getElementById('mbar');
-new IntersectionObserver(es=>es.forEach(e=>mbar.classList.toggle('off',e.isIntersecting)),{threshold:.1}).observe(document.getElementById('contact'));
-
-/* ══════ I18N ══════ */
-const I18N={ en:{},
+window.UZ = { page:'home', lang:'en' };
+window.I18N = {
 uz:{
-"nav.s":"Xizmatlar","nav.p":"Jarayon","nav.w":"Ishlarimiz","nav.pr":"Narxlar","nav.f":"Savollar","nav.cta":"Loyihani boshlash",
+"nav.s":"Xizmatlar","nav.crm":"Doʻkon uchun CRM","nav.crm2":"CRM","nav.p":"Jarayon","nav.w":"Ishlarimiz","nav.pr":"Narxlar","nav.f":"Savollar","nav.cta":"Loyihani boshlash",
 "hero.badge":"Yangi loyihalar qabul qilinmoqda",
 "hero.h1a":"Biznesingiz ishlaydigan","hero.h1b":"dasturni","hero.h1c":"biz quramiz",
-"hero.lede":"Uztomic — Qoʻqondagi dasturiy taʼminot studiyasi. Mobil ilovalar, veb-saytlar, korporativ tizimlar, avtomatlashtirish va startap MVP — birinchi eskizdan ishga tushirilgan kungacha.",
-"hero.cta1":"Loyihani boshlash","hero.cta2":"Ishlarimizni koʻrish",
+"hero.lede":"Uztomic — Qoʻqondagi dasturiy taʼminot studiyasi. Mobil ilovalar, veb-saytlar, korporativ tizimlar, avtomatlashtirish va startap MVP — ustiga doʻkonlar uchun tayyor mahsulotimiz Uztomic CRM.",
+"hero.cta1":"Loyihani boshlash","hero.cta3":"Doʻkon uchun CRM",
 "hero.t1":"24 soat ichida javob","hero.t2":"Aniq narx, aniq muddat","hero.t3":"Kod egasi — siz",
 "hero.card1":"Shu hafta savdo","hero.card2":"Internetsiz ishlaydi","hero.card3":"Doim tayyor",
 "st.1":"Ishga tushirilgan mahsulot","st.2":"Hafta — oʻrtacha muddat","st.3":"Javob vaqti","st.4":"Oy bepul yordam",
+"cb.tag":"Oʻz mahsulotimiz","cb.h2":"Uztomic CRM — doʻkoningiz uchun tayyor tizim",
+"cb.lede":"Savdo, ombor, nasiya daftari va foyda — bitta ilovada. Internetsiz ham ishlayveradi, telefonda ham, Windows kompyuterda ham. Shu haftadayoq ishga tushirsa boʻladi.",
+"cb.f1":"Kassa, shtrix-kod, Bluetooth chek printeri","cb.f2":"Oʻlcham va rang boʻyicha qoldiq",
+"cb.f3":"Raqamli nasiya daftari va eslatma","cb.f4":"Xodim rollari, smena va foyda hisoboti",
+"cb.cta":"CRM sahifasini ochish","cb.cta2":"Narxlar va bepul sinov",
+"cb.k":"Oyiga, bitta doʻkon uchun",
+"cb.r1":"Standard — 6 hisob, 2 filial","cb.r2":"Pro — 16 hisob, 3 filial, AI",
+"cb.r3":"Oʻrnatish, bir marta","cb.r4":"Chek printeri bilan",
+"cb.trial":"Birinchi 14 kun bepul — karta ham, shartnoma ham kerak emas.",
 "sv.tag":"Nima qilamiz","sv.h2":"Yaxshi bajaradigan beshta ish",
 "sv.lede":"Har bir yoʻnalishda bitta qoida: aniq muddat, aniq narx va birinchi kundanoq ishlaydigan dastur.",
 "sv.1t":"Mobil ilovalar","sv.1d":"Android va iOS uchun bitta koddan. Oflayn rejim, push-bildirishnoma, toʻlov tizimlari va doʻkonlarga chiqarish — hammasi bizning zimmamizda.",
 "sv.2t":"Veb-saytlar va platformalar","sv.2d":"Tanishtiruv saytidan buyurtma qabul qiluvchi platformagacha. Tez ochiladi, har qanday telefonda chiroyli, Google’da topiladi.",
 "sv.3t":"Korporativ tizimlar","sv.3d":"Savdo, ombor, hisobot va nazorat bitta joyda. Xodimlar uchun rollar va huquqlar, har bir amal ortida audit yozuvi.",
+"sv.3l":"Uztomic CRM’ni koʻrish →",
 "sv.4t":"Avtomatlashtirish","sv.4d":"Takrorlanadigan qoʻl mehnatini dasturga topshiring: hisobotlar, Telegram botlar va tizimlar orasida maʼlumot almashinuvi.",
 "sv.5t":"Startap MVP","sv.5d":"4–8 haftada gʻoyani real foydalanuvchilar sinab koʻradigan birinchi versiyaga aylantiramiz. Keyin ularning xatti-harakatiga qarab rivojlantiramiz.",
 "sv.6t":"Qaysi biri kerakligini bilmayapsizmi?","sv.6d":"Muammoni oddiy soʻz bilan yozing. Nima qilish kerakligini — yoki bizsiz ham hal boʻlishini — rostini aytamiz.","sv.6c":"Savol berish",
@@ -1005,7 +774,7 @@ uz:{
 "pc.4t":"Ishlab chiqish","pc.4d":"Har hafta ishlaydigan versiya. Siz kuzatib borasiz, biz yoʻlda tuzatamiz.",
 "pc.5t":"Ishga tushirish","pc.5d":"Doʻkonlarga chiqaramiz, xodimlaringizni oʻqitamiz va uch oy bepul yordam beramiz.",
 "wk.tag":"Tanlangan ishlar","wk.h2":"Odamlar qoʻlidagi mahsulotlar",
-"wk.1k":"Savdo tizimi","wk.1t":"Uztomic POS","wk.1d":"Kichik doʻkonlar uchun savdo, ombor va nasiya daftari. Internetsiz ham ishlayveradi, chekni Bluetooth printerdan chiqaradi.",
+"wk.1k":"Savdo tizimi","wk.1t":"Uztomic CRM","wk.1d":"Doʻkonlar uchun savdo, ombor va nasiya daftari. Internetsiz ham ishlayveradi, chekni Bluetooth printerdan chiqaradi, telefon va Windows bilan sinxronlanadi.",
 "wk.1r":"Natija: <b>sotuv, qarz va qoldiq bitta telefonda</b>",
 "wk.2k":"Taʼlim ilovasi","wk.2t":"Alifbo va Narsalarni Oʻrganamiz","wk.2d":"Bolalar uchun harf va soʻz oʻrgatuvchi ilova: olti alifbo, oʻn interfeys tili, uchta oʻyin rejimi.",
 "wk.2r":"Natija: <b>Play Market’da, Families siyosatiga mos</b>",
@@ -1013,55 +782,88 @@ uz:{
 "wk.3r":"Natija: <b>har kuni ochiladigan ilova</b>",
 "pr.tag":"Narxlar","pr.h2":"Qoʻngʻiroq qilishdan oldin taxminni biling",
 "pr.lede":"Bular boshlangʻich narxlar, yakuniy emas. Bepul 20 daqiqalik suhbatdan soʻng aniq raqam va sanani yozma ravishda olasiz.",
-"pr.1p":"1 000 000 soʻm","pr.2p":"3 000 000 soʻm","pr.from":"boshlab","pr.from2":"individual","pr.cta":"Narxni bilish","pr.badge":"Koʻp tanlanadi",
-"pr.1t":"Boshlangʻich","pr.1d":"Nima bilan shugʻullanishingizni tushuntirib, ariza yigʻadigan sayt.",
-"pr.1f1":"5–10 kunda tayyor","pr.1f2":"6 tagacha boʻlim, telefonga moslashgan",
-"pr.1f3":"Ariza formasi — pochta yoki Telegramga","pr.1f4":"Google sozlamalari va 1 oy yordam",
+"pr.from":"boshlab","pr.from2":"individual","pr.cta":"Narxni bilish","pr.badge":"Koʻp tanlanadi",
+"pr.1t":"Landing","pr.1d":"Nima bilan shugʻullanishingizni tushuntirib, ariza yigʻadigan sayt.",
+"pr.1p":"2 000 000 soʻm","pr.1w":"5–10 kunda tayyor",
+"pr.1f1":"6 tagacha boʻlim, telefonga moslashgan","pr.1f2":"Ariza formasi — pochta yoki Telegramga",
+"pr.1f3":"Kerak boʻlsa uch tilda","pr.1f4":"Google sozlamalari va 1 oy yordam",
 "pr.2t":"Biznes","pr.2d":"Mijozlaringiz har kuni ishlatadigan mobil ilova yoki platforma.",
-"pr.2f1":"4–8 haftada tayyor","pr.2f2":"Bitta koddan Android va iOS",
-"pr.2f3":"Admin panel, toʻlov, bildirishnoma","pr.2f4":"Doʻkonlarga chiqarish va 3 oy yordam",
-"pr.3t":"Korporativ","pr.3d":"Butun kompaniyangiz har kuni ichida ishlaydigan tizim.","pr.3p":"Kelishuv asosida",
-"pr.3f1":"POS, CRM, ERP yoki ombor tizimi","pr.3f2":"Rollar, huquqlar va audit yozuvlari",
-"pr.3f3":"Oflayn rejim, 1C va API integratsiya","pr.3f4":"Xodimlarni oʻqitish va yordam shartnomasi",
-"pr.note":"Narx ish hajmiga bogʻliq. Odatda 50% oldindan, 50% topshirishda; katta loyihalarda bosqichlarga boʻlinadi.",
+"pr.2p":"6 000 000 soʻm","pr.2w":"4–8 haftada tayyor",
+"pr.2f1":"Bitta koddan Android va iOS","pr.2f2":"Admin panel, toʻlov, bildirishnoma",
+"pr.2f3":"Oflayn rejim va oʻzingizning dizayn","pr.2f4":"Doʻkonlarga chiqarish va 3 oy yordam",
+"pr.3t":"Pro platforma","pr.3d":"Koʻp rolli, integratsiyali va chinakam analitikali katta mahsulot.",
+"pr.3p":"12 000 000 soʻm","pr.3w":"8–14 haftada tayyor",
+"pr.3f1":"Telefon, veb va admin panel birga","pr.3f2":"Toʻlov, API va 1C integratsiyalari",
+"pr.3f3":"Dashboardlar va Excelga eksport","pr.3f4":"Yuklama testi va 6 oy yordam",
+"pr.4t":"Korporativ","pr.4d":"Butun kompaniyangiz har kuni ichida ishlaydigan tizim.",
+"pr.4p":"Kelishuv asosida","pr.4w":"Ikki oydan",
+"pr.4f1":"POS, CRM, ERP yoki ombor tizimi","pr.4f2":"Rollar, huquqlar va audit yozuvlari",
+"pr.4f3":"Oflayn rejim, 1C va API integratsiya","pr.4f4":"Xodimlarni oʻqitish va yordam shartnomasi",
+"pr.note":"Doʻkoningiz bormi? <a href=\"/crm/\" style=\"color:var(--brand-2);font-weight:600\">Uztomic CRM</a> oyiga 150 000 soʻmdan — alohida loyiha buyurtma qilish shart emas.",
+"cl.tag":"Kalkulyator","cl.h2":"Oʻn soniyada taxminiy raqam",
+"cl.lede":"Kerakli narsalarni belgilang — narx oraligʻi darhol chiqadi. Bu taxminiy hisob, taklif emas, lekin rostini koʻrsatadi.",
+"cl.kind":"Nima quramiz?","cl.k1":"Sayt","cl.k2":"Mobil ilova","cl.k3":"Biznes tizimi",
+"cl.add":"Ichida nima boʻlsin?","cl.a1":"Onlayn toʻlov","cl.a2":"Admin panel","cl.a3":"Uch til","cl.a4":"1C / API integratsiya","cl.a5":"Individual dizayn",
+"cl.res":"Taxminiy narx","cl.time":"Muddat",
+"cl.note":"Yakuniy narx bepul 20 daqiqalik suhbatdan soʻng, siz funksiyalar roʻyxatini tasdiqlaganingizdan keyin belgilanadi.",
+"cl.cta":"Shu hisobni yuborish",
+"gr.1":"Shartnoma va aniq sana","gr.2":"50% oldindan, 50% topshirishda",
+"gr.3":"Manba kodi sizga topshiriladi","gr.4":"3 oy bepul yordam",
 "fq.tag":"Javoblar","fq.h2":"Har hafta soʻraladigan savollar",
-"fq.1q":"Loyiham qancha turadi?<span></span>","fq.1a":"Ish hajmiga bogʻliq. Oddiy sayt bir haftalik ishdan, mobil ilova toʻrt haftadan boshlanadi. Qisqa suhbatdan soʻng aniq raqam va sanani yuboramiz — siz tasdiqlamaguningizcha hech narsa boshlanmaydi.",
-"fq.2q":"Qancha vaqt ketadi?<span></span>","fq.2a":"Landing: 5–10 kun. Ilova yoki MVP: 4–8 hafta. Korporativ tizim: ikki oydan. Aniq sana funksiyalar roʻyxati kelishilgach belgilanadi.",
-"fq.3q":"Kod va akkauntlar kimniki?<span></span>","fq.3a":"Sizniki. Yakuniy toʻlovdan soʻng manba kodi, domen va doʻkon akkauntlari topshiriladi. Keyin istagan dasturchiga olib borishingiz mumkin.",
-"fq.4q":"Ishga tushgandan keyin nima boʻladi?<span></span>","fq.4a":"Uch oy bepul yordam: xatoliklarni tuzatamiz, savollarga javob beramiz. Keyin xohlasangiz oylik qoʻllab-quvvatlash shartnomasi tuzasiz, xohlamasangiz — yoʻq.",
-"fq.5q":"Boshqa viloyatdanman, ishlay olamizmi?<span></span>","fq.5a":"Ha. Oʻzbekiston boʻylab va xorijdagi mijozlar bilan Telegram, telefon va video orqali masofadan ishlaymiz. Qoʻqonga mehmon boʻlib kelishingiz ham mumkin.",
-"fq.6q":"Ilovam bor. Tuzatib yoki davom ettira olasizmi?<span></span>","fq.6a":"Koʻpincha ha. Kod yoki doʻkon havolasini yuboring — koʻrib chiqamiz, ahvolini rostini aytamiz va ish uchun narx beramiz.",
+"fq.1q":"Loyiham qancha turadi?<span></span>","fq.1a":"Ish hajmiga bogʻliq. Landing 2 000 000 soʻmdan, mobil ilova 6 000 000 dan, katta platforma 12 000 000 dan boshlanadi. Qisqa suhbatdan soʻng aniq raqam va sanani yuboramiz — siz tasdiqlamaguningizcha hech narsa boshlanmaydi.",
+"fq.2q":"Qancha vaqt ketadi?<span></span>","fq.2a":"Landing: 5–10 kun. Ilova yoki MVP: 4–8 hafta. Katta platforma: 8–14 hafta. Korporativ tizim: ikki oydan. Aniq sana funksiyalar roʻyxati kelishilgach belgilanadi.",
+"fq.3q":"Doʻkonlar uchun tayyor tizimingiz bormi?<span></span>","fq.3a":"Ha — <a href=\"/crm/\" style=\"color:var(--brand-2);font-weight:600\">Uztomic CRM</a>. Savdo, oʻlcham va rang boʻyicha qoldiq, raqamli nasiya daftari, xodim rollari va foyda hisoboti. Internetsiz ishlaydi, telefonda ham, Windowsda ham; oyiga 150 000 soʻmdan, 14 kun bepul.",
+"fq.4q":"Kod va akkauntlar kimniki?<span></span>","fq.4a":"Sizniki. Yakuniy toʻlovdan soʻng manba kodi, domen va doʻkon akkauntlari topshiriladi. Keyin istagan dasturchiga olib borishingiz mumkin.",
+"fq.5q":"Ishga tushgandan keyin nima boʻladi?<span></span>","fq.5a":"Uch oy bepul yordam: xatoliklarni tuzatamiz, savollarga javob beramiz. Keyin xohlasangiz oylik qoʻllab-quvvatlash shartnomasi tuzasiz, xohlamasangiz — yoʻq.",
+"fq.6q":"Boshqa viloyatdanman, ishlay olamizmi?<span></span>","fq.6a":"Ha. Oʻzbekiston boʻylab va xorijdagi mijozlar bilan Telegram, telefon va video orqali masofadan ishlaymiz. Qoʻqonga mehmon boʻlib kelishingiz ham mumkin.",
+"fq.7q":"Ilovam bor. Tuzatib yoki davom ettira olasizmi?<span></span>","fq.7a":"Koʻpincha ha. Kod yoki doʻkon havolasini yuboring — koʻrib chiqamiz, ahvolini rostini aytamiz va ish uchun narx beramiz.",
+"intro.cta":"Websitega kirish","intro.skip":"Oʻtkazib yuborish uchun bosing",
+"cc.h2":"Forma toʻldirishga vaqt yoʻqmi?","cc.p":"Telegramga bitta qator yozing yoki shunchaki qoʻngʻiroq qiling. Yigirma daqiqa bepul — oxirida qoʻlingizda aniq raqam va sana boʻladi, hatto biz bilan ishlamasangiz ham.","cc.b1":"Telegramda yozish",
 "ct.tag":"Shu yerdan boshlang","ct.h2":"Loyihangiz haqida gapirib bering",
 "ct.lede":"Bir necha qator yozing — 24 soat ichida savollar, taxminiy narx va real muddat bilan qaytamiz. Suhbat bepul va hech narsaga majbur qilmaydi.",
 "ct.tg":"Telegram — eng tez javob","ct.ph":"Har kuni, 9:00–22:00","ct.em":"Hujjat va shartnomalar uchun",
 "ct.loc":"Qoʻqon, Fargʻona viloyati","ct.loc2":"Butun mamlakat boʻylab masofadan",
 "fm.name":"Ismingiz <span>*</span>","fm.namePh":"Alisher Karimov","fm.phone":"Telefon <span>*</span>",
-"fm.svc":"Nima kerak?","fm.s1":"Mobil ilova","fm.s2":"Veb-sayt","fm.s3":"Korporativ tizim","fm.s4":"Avtomatlashtirish","fm.s5":"Startap MVP","fm.s6":"Hali bilmayman",
-"fm.bud":"Taxminiy byudjet","fm.b1":"1–3 mln soʻm","fm.b2":"3–7 mln soʻm","fm.b3":"7–15 mln soʻm","fm.b4":"15 mln soʻm +","fm.b5":"Hali hal qilinmagan",
+"fm.svc":"Nima kerak?","fm.s1":"Mobil ilova","fm.s2":"Veb-sayt","fm.s3":"Uztomic CRM","fm.s4":"Korporativ tizim","fm.s5":"Avtomatlashtirish","fm.s6":"Hali bilmayman",
+"fm.bud":"Taxminiy byudjet","fm.b1":"2–6 mln soʻm","fm.b2":"6–12 mln soʻm","fm.b3":"12–25 mln soʻm","fm.b4":"25 mln soʻm +","fm.b5":"Hali hal qilinmagan",
 "fm.msg":"Loyiha haqida <span>*</span>",
 "fm.msgPh":"Masalan: doʻkonim bor, sotuv va mijozlar qarzini hisoblaydigan ilova kerak. Hozir daftarda yozamiz, koʻp narsa yoʻqolib ketadi.",
 "fm.send":"Arizani yuborish","fm.note":"Maʼlumotlaringiz faqat shu loyiha yuzasidan siz bilan bogʻlanish uchun ishlatiladi. Hech kimga berilmaydi.",
 "ft.about":"Qoʻqondagi kichik dasturiy taʼminot studiyasi. Oʻzbekiston boʻylab kompaniyalar uchun mobil ilovalar, veb-platformalar va biznes tizimlarini quramiz.",
-"ft.h1":"Kompaniya","ft.h2":"Bogʻlanish","ft.city":"Qoʻqon, Oʻzbekiston",
-"_title":"Uztomic — Smart Software Solutions | Mobil ilovalar va biznes tizimlari",
-"_desc":"Uztomic — Qoʻqondagi dasturiy taʼminot studiyasi. Mobil ilovalar, veb-saytlar va platformalar, korporativ tizimlar, avtomatlashtirish va startap MVP.",
+"ft.h1":"Kompaniya","ft.h2":"Bogʻlanish","ft.h3":"Mahsulot",
+"ft.p1":"Uztomic CRM","ft.p2":"Imkoniyatlar","ft.p3":"CRM narxlari","ft.p4":"14 kun bepul sinov",
+"ft.city":"Qoʻqon, Oʻzbekiston",
+"_uzs":"soʻm","_weeks":"hafta",
+"_title":"Uztomic — Smart Software Solutions | Mobil ilovalar, biznes tizimlari va doʻkon CRM",
+"_desc":"Uztomic — Qoʻqondagi dasturiy taʼminot studiyasi. Mobil ilovalar, veb-saytlar va platformalar, korporativ tizimlar, avtomatlashtirish, startap MVP va doʻkonlar uchun Uztomic CRM.",
 "_ok":"Rahmat! Arizangiz yuborildi. 24 soat ichida bogʻlanamiz.",
-"_err":"Yuborib boʻlmadi. Bizga toʻgʻridan-toʻgʻri yozing:","_sending":"Yuborilmoqda…"
+"_err":"Yuborib boʻlmadi. Bizga toʻgʻridan-toʻgʻri yozing:","_sending":"Yuborilmoqda…",
+"_copied":"Nusxalandi:","_req":"Bu maydonni toʻldiring","_phone":"Telefon raqamini toʻliq kiriting","_short":"Biroz batafsilroq yozing"
 },
 ru:{
-"nav.s":"Услуги","nav.p":"Процесс","nav.w":"Работы","nav.pr":"Цены","nav.f":"Вопросы","nav.cta":"Начать проект",
+"nav.s":"Услуги","nav.crm":"CRM для магазина","nav.crm2":"CRM","nav.p":"Процесс","nav.w":"Работы","nav.pr":"Цены","nav.f":"Вопросы","nav.cta":"Начать проект",
 "hero.badge":"Принимаем новые проекты",
 "hero.h1a":"Создаём","hero.h1b":"программы,","hero.h1c":"на которых работает ваш бизнес",
-"hero.lede":"Uztomic — студия разработки в Коканде. Мобильные приложения, сайты, корпоративные системы, автоматизация и MVP для стартапов — от первого эскиза до дня запуска.",
-"hero.cta1":"Начать проект","hero.cta2":"Смотреть работы",
+"hero.lede":"Uztomic — студия разработки в Коканде. Мобильные приложения, сайты, корпоративные системы, автоматизация и MVP для стартапов — плюс Uztomic CRM, наш готовый продукт для магазинов.",
+"hero.cta1":"Начать проект","hero.cta3":"CRM для магазина",
 "hero.t1":"Ответ в течение 24 часов","hero.t2":"Фиксированная цена и срок","hero.t3":"Код принадлежит вам",
 "hero.card1":"Продажи за неделю","hero.card2":"Работает без интернета","hero.card3":"Всегда на связи",
 "st.1":"Запущенных продуктов","st.2":"Недель — средний срок","st.3":"Время ответа","st.4":"Месяца поддержки",
+"cb.tag":"Наш продукт","cb.h2":"Uztomic CRM — готовая система для вашего магазина",
+"cb.lede":"Продажи, склад, долговая тетрадь и прибыль в одном приложении. Работает без интернета, на телефоне и на Windows. Запустить можно уже на этой неделе.",
+"cb.f1":"Касса, штрих-код, Bluetooth-принтер чеков","cb.f2":"Остатки по размеру и цвету",
+"cb.f3":"Цифровая долговая тетрадь с напоминаниями","cb.f4":"Роли сотрудников, смены и отчёт по прибыли",
+"cb.cta":"Открыть страницу CRM","cb.cta2":"Цены и бесплатный период",
+"cb.k":"В месяц, за один магазин",
+"cb.r1":"Standard — 6 аккаунтов, 2 филиала","cb.r2":"Pro — 16 аккаунтов, 3 филиала, AI",
+"cb.r3":"Установка, разово","cb.r4":"С принтером чеков",
+"cb.trial":"Первые 14 дней бесплатно — без карты и без договора.",
 "sv.tag":"Что мы делаем","sv.h2":"Пять направлений, которые делаем хорошо",
 "sv.lede":"В каждом одно правило: точный срок, точная цена и программа, работающая с первого дня.",
 "sv.1t":"Мобильные приложения","sv.1d":"Android и iOS из одной кодовой базы. Офлайн-режим, push-уведомления, приём оплаты и публикация в магазинах — всё берём на себя.",
 "sv.2t":"Сайты и платформы","sv.2d":"От сайта-визитки до платформы с приёмом заказов. Быстро грузится, красиво на любом телефоне, находится в Google.",
 "sv.3t":"Корпоративные системы","sv.3d":"Продажи, склад, отчёты и контроль в одном месте. Роли и права для сотрудников, журнал действий за каждой операцией.",
+"sv.3l":"Посмотреть Uztomic CRM →",
 "sv.4t":"Автоматизация","sv.4d":"Передайте рутину программе: отчёты, Telegram-боты и обмен данными между системами, которыми вы уже пользуетесь.",
 "sv.5t":"MVP для стартапа","sv.5d":"За 4–8 недель превращаем идею в первую версию для реальных пользователей. Дальше развиваем по их поведению.",
 "sv.6t":"Не знаете, что именно нужно?","sv.6d":"Опишите задачу простыми словами. Честно скажем, что потребуется — или что мы вам вовсе не нужны.","sv.6c":"Задать вопрос",
@@ -1078,7 +880,7 @@ ru:{
 "pc.4t":"Разработка","pc.4d":"Рабочая версия каждую неделю. Вы следите, мы правим по ходу.",
 "pc.5t":"Запуск","pc.5d":"Публикуем, обучаем сотрудников и три месяца на связи бесплатно.",
 "wk.tag":"Избранные работы","wk.h2":"Продукты, которыми уже пользуются",
-"wk.1k":"Система продаж","wk.1t":"Uztomic POS","wk.1d":"Продажи, склад и долговая тетрадь для небольших магазинов. Работает без интернета, печатает чек на Bluetooth-принтере.",
+"wk.1k":"Система продаж","wk.1t":"Uztomic CRM","wk.1d":"Продажи, склад и долговая тетрадь для магазинов. Работает без интернета, печатает чек на Bluetooth-принтере, синхронизируется с телефоном и Windows.",
 "wk.1r":"Результат: <b>продажи, долги и остатки в одном телефоне</b>",
 "wk.2k":"Обучающее приложение","wk.2t":"Алифбо ва Нарсаларни Ўрганамиз","wk.2d":"Приложение для детей: шесть алфавитов, десять языков интерфейса, три игровых режима.",
 "wk.2r":"Результат: <b>в Play Market, соответствует политике Families</b>",
@@ -1086,98 +888,65 @@ ru:{
 "wk.3r":"Результат: <b>приложение, которое открывают каждый день</b>",
 "pr.tag":"Цены","pr.h2":"Узнайте порядок цифр до звонка",
 "pr.lede":"Это стартовые цены, а не итоговые. После бесплатного 20-минутного разговора вы получаете точную сумму и дату письменно.",
-"pr.1p":"1 000 000 сум","pr.2p":"3 000 000 сум","pr.from":"от","pr.from2":"индивидуально","pr.cta":"Узнать цену","pr.badge":"Чаще всего выбирают",
-"pr.1t":"Старт","pr.1d":"Сайт, который объясняет, чем вы занимаетесь, и собирает заявки.",
-"pr.1f1":"Готово за 5–10 дней","pr.1f2":"До 6 разделов, удобно с телефона",
-"pr.1f3":"Форма заявки на почту или в Telegram","pr.1f4":"Настройка Google и 1 месяц поддержки",
+"pr.from":"от","pr.from2":"индивидуально","pr.cta":"Узнать цену","pr.badge":"Чаще всего выбирают",
+"pr.1t":"Лендинг","pr.1d":"Сайт, который объясняет, чем вы занимаетесь, и собирает заявки.",
+"pr.1p":"2 000 000 сум","pr.1w":"Готово за 5–10 дней",
+"pr.1f1":"До 6 разделов, удобно с телефона","pr.1f2":"Форма заявки на почту или в Telegram",
+"pr.1f3":"При необходимости на трёх языках","pr.1f4":"Настройка Google и 1 месяц поддержки",
 "pr.2t":"Бизнес","pr.2d":"Мобильное приложение или платформа, которой клиенты пользуются каждый день.",
-"pr.2f1":"Готово за 4–8 недель","pr.2f2":"Android и iOS из одной кодовой базы",
-"pr.2f3":"Админ-панель, оплата, уведомления","pr.2f4":"Публикация в магазинах и 3 месяца поддержки",
-"pr.3t":"Корпоративный","pr.3d":"Система, внутри которой каждый день работает вся компания.","pr.3p":"По договорённости",
-"pr.3f1":"POS, CRM, ERP или складская система","pr.3f2":"Роли, права и журналы аудита",
-"pr.3f3":"Офлайн-режим, интеграции с 1С и API","pr.3f4":"Обучение сотрудников и договор поддержки",
-"pr.note":"Цена зависит от объёма. Обычно 50% предоплата и 50% при сдаче; на больших проектах — поэтапно.",
+"pr.2p":"6 000 000 сум","pr.2w":"Готово за 4–8 недель",
+"pr.2f1":"Android и iOS из одной кодовой базы","pr.2f2":"Админ-панель, оплата, уведомления",
+"pr.2f3":"Офлайн-режим и собственный дизайн","pr.2f4":"Публикация в магазинах и 3 месяца поддержки",
+"pr.3t":"Pro-платформа","pr.3d":"Большой продукт с ролями, интеграциями и настоящей аналитикой.",
+"pr.3p":"12 000 000 сум","pr.3w":"Готово за 8–14 недель",
+"pr.3f1":"Телефон, веб и админ-панель вместе","pr.3f2":"Оплата, API и интеграции с 1С",
+"pr.3f3":"Дашборды и экспорт в Excel","pr.3f4":"Нагрузочное тестирование и 6 месяцев поддержки",
+"pr.4t":"Корпоративный","pr.4d":"Система, внутри которой каждый день работает вся компания.",
+"pr.4p":"По договорённости","pr.4w":"От двух месяцев",
+"pr.4f1":"POS, CRM, ERP или складская система","pr.4f2":"Роли, права и журналы аудита",
+"pr.4f3":"Офлайн-режим, интеграции с 1С и API","pr.4f4":"Обучение сотрудников и договор поддержки",
+"pr.note":"У вас магазин? <a href=\"/crm/\" style=\"color:var(--brand-2);font-weight:600\">Uztomic CRM</a> — от 150 000 сум в месяц, отдельный проект заказывать не нужно.",
+"cl.tag":"Калькулятор","cl.h2":"Примерная цифра за десять секунд",
+"cl.lede":"Отметьте, что нужно, — диапазон появится сразу. Это ориентир, а не оферта, но честный.",
+"cl.kind":"Что делаем?","cl.k1":"Сайт","cl.k2":"Мобильное приложение","cl.k3":"Бизнес-система",
+"cl.add":"Что должно быть внутри?","cl.a1":"Онлайн-оплата","cl.a2":"Админ-панель","cl.a3":"Три языка","cl.a4":"Интеграция 1С / API","cl.a5":"Индивидуальный дизайн",
+"cl.res":"Примерная цена","cl.time":"Срок",
+"cl.note":"Итоговая цена фиксируется после бесплатного 20-минутного разговора и только когда вы утвердите список функций.",
+"cl.cta":"Отправить этот расчёт",
+"gr.1":"Договор и точная дата","gr.2":"50% предоплата, 50% при сдаче",
+"gr.3":"Исходный код передаётся вам","gr.4":"3 месяца бесплатной поддержки",
 "fq.tag":"Ответы","fq.h2":"Вопросы, которые задают каждую неделю",
-"fq.1q":"Сколько будет стоить мой проект?<span></span>","fq.1a":"Зависит от объёма. Простой сайт — от недели работы, мобильное приложение — от четырёх. После короткого разговора присылаем точную сумму и дату — ничего не начинается без вашего согласия.",
-"fq.2q":"Сколько времени займёт?<span></span>","fq.2a":"Лендинг: 5–10 дней. Приложение или MVP: 4–8 недель. Корпоративная система: от двух месяцев. Точная дата фиксируется после согласования функций.",
-"fq.3q":"Кому принадлежит код и аккаунты?<span></span>","fq.3a":"Вам. После финальной оплаты передаём исходный код, домен и аккаунты магазинов. Дальше можете обратиться к любому разработчику.",
-"fq.4q":"Что происходит после запуска?<span></span>","fq.4a":"Три месяца бесплатной поддержки: исправляем ошибки, отвечаем на вопросы. Дальше — ежемесячный договор сопровождения, если захотите.",
-"fq.5q":"Я из другого региона, сработаемся?<span></span>","fq.5a":"Да. Работаем удалённо по всему Узбекистану и с зарубежными клиентами — Telegram, телефон, видео. Будем рады видеть вас и у нас в Коканде.",
-"fq.6q":"У меня уже есть приложение. Почините или продолжите?<span></span>","fq.6a":"Чаще всего да. Пришлите код или ссылку на магазин — посмотрим, честно скажем, в каком оно состоянии, и назовём цену работ.",
+"fq.1q":"Сколько будет стоить мой проект?<span></span>","fq.1a":"Зависит от объёма. Лендинг — от 2 000 000 сум, мобильное приложение — от 6 000 000, большая платформа — от 12 000 000. После короткого разговора присылаем точную сумму и дату — ничего не начинается без вашего согласия.",
+"fq.2q":"Сколько времени займёт?<span></span>","fq.2a":"Лендинг: 5–10 дней. Приложение или MVP: 4–8 недель. Большая платформа: 8–14 недель. Корпоративная система: от двух месяцев. Точная дата фиксируется после согласования функций.",
+"fq.3q":"Есть ли у вас готовая система для магазинов?<span></span>","fq.3a":"Да — <a href=\"/crm/\" style=\"color:var(--brand-2);font-weight:600\">Uztomic CRM</a>. Продажи, остатки по размеру и цвету, цифровая долговая тетрадь, роли сотрудников и отчёты по прибыли. Работает без интернета, на телефоне и на Windows; от 150 000 сум в месяц, 14 дней бесплатно.",
+"fq.4q":"Кому принадлежит код и аккаунты?<span></span>","fq.4a":"Вам. После финальной оплаты передаём исходный код, домен и аккаунты магазинов. Дальше можете обратиться к любому разработчику.",
+"fq.5q":"Что происходит после запуска?<span></span>","fq.5a":"Три месяца бесплатной поддержки: исправляем ошибки, отвечаем на вопросы. Дальше — ежемесячный договор сопровождения, если захотите.",
+"fq.6q":"Я из другого региона, сработаемся?<span></span>","fq.6a":"Да. Работаем удалённо по всему Узбекистану и с зарубежными клиентами — Telegram, телефон, видео. Будем рады видеть вас и у нас в Коканде.",
+"fq.7q":"У меня уже есть приложение. Почините или продолжите?<span></span>","fq.7a":"Чаще всего да. Пришлите код или ссылку на магазин — посмотрим, честно скажем, в каком оно состоянии, и назовём цену работ.",
+"intro.cta":"Войти на сайт","intro.skip":"Нажмите, чтобы пропустить",
+"cc.h2":"Не хочется заполнять форму?","cc.p":"Напишите одну строку в Telegram или просто позвоните. Двадцать бесплатных минут — и у вас на руках цифра и дата, даже если мы так и не начнём работать вместе.","cc.b1":"Написать в Telegram",
 "ct.tag":"Начните здесь","ct.h2":"Расскажите о проекте",
 "ct.lede":"Напишите несколько строк — вернёмся в течение 24 часов с вопросами, ориентировочной ценой и реальным сроком. Разговор бесплатный и ни к чему не обязывает.",
 "ct.tg":"Telegram — отвечаем быстрее всего","ct.ph":"Ежедневно, 9:00–22:00","ct.em":"Для документов и договоров",
 "ct.loc":"Коканд, Ферганская область","ct.loc2":"Удалённо по всей стране",
 "fm.name":"Ваше имя <span>*</span>","fm.namePh":"Алишер Каримов","fm.phone":"Телефон <span>*</span>",
-"fm.svc":"Что нужно?","fm.s1":"Приложение","fm.s2":"Сайт","fm.s3":"Корп. система","fm.s4":"Автоматизация","fm.s5":"Стартап MVP","fm.s6":"Пока не знаю",
-"fm.bud":"Примерный бюджет","fm.b1":"1–3 млн сум","fm.b2":"3–7 млн сум","fm.b3":"7–15 млн сум","fm.b4":"15 млн сум +","fm.b5":"Пока не определён",
+"fm.svc":"Что нужно?","fm.s1":"Приложение","fm.s2":"Сайт","fm.s3":"Uztomic CRM","fm.s4":"Корп. система","fm.s5":"Автоматизация","fm.s6":"Пока не знаю",
+"fm.bud":"Примерный бюджет","fm.b1":"2–6 млн сум","fm.b2":"6–12 млн сум","fm.b3":"12–25 млн сум","fm.b4":"25 млн сум +","fm.b5":"Пока не определён",
 "fm.msg":"О проекте <span>*</span>",
 "fm.msgPh":"Например: у меня магазин, нужно приложение для учёта продаж и долгов клиентов. Сейчас ведём в тетради и многое теряется.",
 "fm.send":"Отправить заявку","fm.note":"Данные используются только для связи по этому проекту. Никому не передаются.",
 "ft.about":"Небольшая студия разработки в Коканде. Создаём мобильные приложения, веб-платформы и бизнес-системы для компаний по всему Узбекистану.",
-"ft.h1":"Компания","ft.h2":"Связаться","ft.city":"Коканд, Узбекистан",
-"_title":"Uztomic — Smart Software Solutions | Мобильные приложения и бизнес-системы",
-"_desc":"Uztomic — студия разработки в Коканде. Мобильные приложения, сайты и платформы, корпоративные системы, автоматизация и MVP для стартапов.",
+"ft.h1":"Компания","ft.h2":"Связаться","ft.h3":"Продукт",
+"ft.p1":"Uztomic CRM","ft.p2":"Возможности","ft.p3":"Цены CRM","ft.p4":"14 дней бесплатно",
+"ft.city":"Коканд, Узбекистан",
+"_uzs":"сум","_weeks":"недель",
+"_title":"Uztomic — Smart Software Solutions | Приложения, бизнес-системы и CRM для магазинов",
+"_desc":"Uztomic — студия разработки в Коканде. Мобильные приложения, сайты и платформы, корпоративные системы, автоматизация, MVP и Uztomic CRM для магазинов.",
 "_ok":"Спасибо! Заявка отправлена. Свяжемся в течение 24 часов.",
-"_err":"Не удалось отправить. Напишите нам напрямую:","_sending":"Отправляем…"
+"_err":"Не удалось отправить. Напишите нам напрямую:","_sending":"Отправляем…",
+"_copied":"Скопировано:","_req":"Заполните это поле","_phone":"Введите номер полностью","_short":"Напишите чуть подробнее"
 }};
-
-/* capture English as source of truth */
-document.querySelectorAll('[data-i18n]').forEach(el=>I18N.en[el.dataset.i18n]=el.innerHTML);
-document.querySelectorAll('[data-i18n-html]').forEach(el=>I18N.en[el.dataset.i18nHtml]=el.innerHTML);
-document.querySelectorAll('[data-i18n-ph]').forEach(el=>I18N.en[el.dataset.i18nPh]=el.placeholder);
-I18N.en._title=document.title;
-I18N.en._desc=document.querySelector('meta[name=description]').content;
-I18N.en._ok="Thank you! Your request has been sent. We'll be in touch within 24 hours.";
-I18N.en._err="Couldn't send the form. Please reach us directly:";
-I18N.en._sending="Sending…";
-
-let LANG='en';
-function setLang(l){
-  const d=I18N[l]; if(!d) return; LANG=l;
-  document.documentElement.lang=l;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const v=d[el.dataset.i18n];if(v!==undefined)el.innerHTML=v});
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const v=d[el.dataset.i18nHtml];if(v!==undefined)el.innerHTML=v});
-  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const v=d[el.dataset.i18nPh];if(v!==undefined)el.placeholder=v});
-  if(d._title)document.title=d._title;
-  if(d._desc)document.querySelector('meta[name=description]').content=d._desc;
-  document.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
-  store.set('uztomic-lang',l);
-}
-document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-const qLang=new URLSearchParams(location.search).get('lang');
-let saved=qLang||store.get('uztomic-lang');
-if(!saved){                                   /* first visit — follow the browser */
-  const n=(navigator.language||'').slice(0,2).toLowerCase();
-  if(I18N[n]) saved=n;
-}
-if(saved&&I18N[saved]&&saved!=='en')setLang(saved);
-
-/* ══════ FORM ══════ */
-const form=document.getElementById('orderForm'), msg=document.getElementById('formMsg'), btn=document.getElementById('submitBtn');
-form.addEventListener('submit',async e=>{
-  e.preventDefault();
-  msg.className='msg';msg.textContent='';
-  if(!form.checkValidity()){form.reportValidity();return}
-  if(form.botcheck.value)return;
-  const data=Object.fromEntries(new FormData(form).entries());
-  const label=btn.innerHTML;
-  btn.disabled=true;btn.textContent=I18N[LANG]._sending;
-  const ok=()=>{msg.className='msg ok';msg.textContent=I18N[LANG]._ok;form.reset()};
-  const fail=()=>{
-    const t=encodeURIComponent(`Uztomic — new request\nName: ${data.name}\nPhone: ${data.phone}\nService: ${data.service}\nBudget: ${data.budget}\n\n${data.message}`);
-    msg.className='msg err';
-    msg.innerHTML=`${I18N[LANG]._err} <a href="https://t.me/${TELEGRAM_USER}" target="_blank" rel="noopener">@${TELEGRAM_USER}</a> · <a href="mailto:${EMAIL}?subject=Project%20request&body=${t}">${EMAIL}</a>`;
-  };
-  if(WEB3FORMS_KEY.startsWith('YOUR-')){fail();btn.disabled=false;btn.innerHTML=label;return}
-  try{
-    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',
-      headers:{'Content-Type':'application/json',Accept:'application/json'},
-      body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:`uztomic.uz — new request: ${data.service}`,from_name:'uztomic.uz',...data})});
-    const j=await r.json(); j.success?ok():fail();
-  }catch(err){fail()}
-  btn.disabled=false;btn.innerHTML=label;
-});
 </script>
+<script src="/assets/ui.js" defer></script>
 </body>
 </html>

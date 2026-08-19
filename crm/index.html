@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+if(location.protocol==='http:'&&/(^|\.)uztomic\.uz$/.test(location.hostname))
+  location.replace('https://'+location.host+location.pathname+location.search+location.hash);
+</script>
+<title>Uztomic CRM — sales, stock and credit ledger for your shop</title>
+<meta name="description" content="Uztomic CRM: a till, stock by size and colour, a digital credit ledger, staff roles, profit reports and branches. Works offline, on Android, iOS and Windows. From 150 000 UZS a month, 14 days free.">
+<meta name="theme-color" content="#0A0C18">
+<link rel="canonical" href="https://uztomic.uz/crm/">
+<link rel="alternate" hreflang="en" href="https://uztomic.uz/crm/?lang=en">
+<link rel="alternate" hreflang="uz" href="https://uztomic.uz/crm/">
+<link rel="alternate" hreflang="ru" href="https://uztomic.uz/crm/?lang=ru">
+<link rel="alternate" hreflang="x-default" href="https://uztomic.uz/crm/">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="640x640" href="/assets/logo.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Uztomic">
+<meta property="og:url" content="https://uztomic.uz/crm/">
+<meta property="og:title" content="Uztomic CRM — one app for your whole shop">
+<meta property="og:description" content="Till, stock by size and colour, credit ledger, staff roles and profit reports. Works offline. From 150 000 UZS a month, 14 days free.">
+<meta property="og:image" content="https://uztomic.uz/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Uztomic CRM — one app for your whole shop">
+<meta name="twitter:description" content="Till, stock, credit ledger and profit reports. Works offline. 14 days free.">
+<meta name="twitter:image" content="https://uztomic.uz/assets/og.jpg">
+
+<script>
+(function(){try{
+  var t=localStorage.getItem('uztomic-theme');
+  if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+  document.documentElement.dataset.theme=t;
+  document.querySelector('meta[name=theme-color]').content=t==='dark'?'#0A0C18':'#FFFFFF';
+}catch(e){}})();
+</script>
+
+<!-- brand intro: decides before first paint, and unlocks itself on a timer
+     so the page can never stay locked if ui.js fails to load -->
+<script>
+(function(){try{
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(location.hash) return;
+  if(sessionStorage.getItem('uztomic-intro')) return;
+  sessionStorage.setItem('uztomic-intro','1');
+  var r=document.documentElement;
+  r.classList.add('intro');
+  setTimeout(function(){ r.classList.remove('intro') },3880);
+}catch(e){}})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Michroma&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ui.css">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Uztomic CRM","applicationCategory":"BusinessApplication","operatingSystem":"Android, iOS, Windows","url":"https://uztomic.uz/crm/","image":"https://uztomic.uz/assets/og.jpg","description":"Retail management system for shops: till, stock by size and colour, digital credit ledger, staff roles and shifts, profit reports, branches and an AI adviser. Works offline.","inLanguage":["uz","ru","en"],"author":{"@type":"Organization","name":"Uztomic","url":"https://uztomic.uz"},"offers":[{"@type":"Offer","name":"Standard","price":"150000","priceCurrency":"UZS","description":"Per shop, per month. 6 accounts and 2 branches included.","url":"https://uztomic.uz/crm/#pricing"},{"@type":"Offer","name":"Pro","price":"400000","priceCurrency":"UZS","description":"Per shop, per month. 16 accounts, 3 branches and the AI adviser included.","url":"https://uztomic.uz/crm/#pricing"}],"featureList":["Offline mode","Barcode scanning","Bluetooth receipt printing","Size and colour stock matrix","Credit ledger","Staff roles and shifts","Profit reports","Multiple branches","AI adviser"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Uztomic","item":"https://uztomic.uz/"},
+{"@type":"ListItem","position":2,"name":"Uztomic CRM","item":"https://uztomic.uz/crm/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Does it work without internet?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every sale, stock movement and customer is written to the phone first and synced later. Each change is stored as a difference, not a total, so two devices working offline never overwrite each other."}},
+{"@type":"Question","name":"Can another shop see my data?","acceptedAnswer":{"@type":"Answer","text":"No. Every table is protected by row level security tied to your shop id, so a query from another shop returns nothing. It is enforced by the database, not by the app."}},
+{"@type":"Question","name":"What happens if I stop paying?","acceptedAnswer":{"@type":"Answer","text":"You get a reminder 7 days before the end, then daily for the last 3. After the date the app keeps working with a banner. Only after 45 days of non-payment is access suspended - and your data is never deleted. Pay and everything is back as it was."}},
+{"@type":"Question","name":"Do I need a receipt printer?","acceptedAnswer":{"@type":"Answer","text":"No. The app works fine without one. If you want printed receipts we supply a 58 mm Bluetooth printer with the setup package for 700 000 UZS instead of 400 000."}},
+{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Setup is a one-off 400 000 UZS, or 700 000 with a receipt printer. Then 150 000 UZS a month for the Standard plan (6 accounts, 2 branches) or 400 000 for Pro (16 accounts, 3 branches, AI). The first 14 days are free."}},
+{"@type":"Question","name":"Which shops is it for?","acceptedAnswer":{"@type":"Answer","text":"Clothing and footwear shops first, with a full size and colour matrix. Grocery, plumbing and accessory shops are supported too - the app adapts its fields to the type you choose."}}]}
+</script>
+
+<style>
+/* ── pieces used only by the CRM page ── */
+.hero{padding-top:clamp(26px,4.4vw,56px);padding-bottom:clamp(48px,7vw,88px)}
+.hero__g{display:grid;gap:clamp(40px,6vw,64px);align-items:center}
+@media(min-width:1000px){.hero__g{grid-template-columns:1.06fr .94fr}}
+.hero h1{margin:20px 0 0;font-size:clamp(34px,4.6vw,56px);max-width:14ch}
+.hero .lede{margin-top:19px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px}
+.ticks{display:flex;flex-wrap:wrap;gap:10px 22px;margin:28px 0 0;padding:0;list-style:none}
+.ticks li{display:flex;align-items:center;gap:8px;font-size:14.5px;color:var(--text-2);font-weight:500}
+.ticks svg{width:17px;height:17px;flex:none;stroke:var(--cyan);fill:none;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* problem → solution */
+.pp{display:grid;gap:12px;margin-top:48px}
+.pp__r{display:grid;gap:10px;align-items:center;padding:18px 20px;border:1px solid var(--stroke);
+  border-radius:var(--r-lg);background:var(--card);transition:border-color .3s,transform .3s var(--ease)}
+.pp__r:hover{border-color:var(--stroke-2);transform:translateX(4px)}
+@media(min-width:760px){.pp__r{grid-template-columns:1fr 44px 1fr;gap:18px}}
+.pp__a{color:var(--text-3);font-size:15px;text-decoration:line-through;text-decoration-color:var(--coral)}
+.pp__i{display:grid;place-items:center}
+.pp__i svg{width:22px;height:22px;stroke:var(--brand-2);fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:759px){.pp__i{justify-items:start}.pp__i svg{transform:rotate(90deg)}}
+.pp__b{font-family:var(--display);font-size:15.5px;font-weight:700;color:var(--text)}
+
+/* live demo */
+.demo{display:grid;gap:clamp(28px,4vw,56px);align-items:center;margin-top:52px}
+@media(min-width:900px){.demo{grid-template-columns:1fr .8fr}}
+.demo__tabs{display:grid;gap:10px}
+.demo__tabs button{display:flex;gap:14px;align-items:flex-start;text-align:left;padding:16px 18px;
+  border:1px solid var(--stroke);border-radius:var(--r-lg);background:var(--card);cursor:pointer;
+  transition:.28s var(--ease);width:100%}
+.demo__tabs button:hover{border-color:var(--stroke-2)}
+.demo__tabs button.on{border-color:transparent;box-shadow:0 0 0 1.5px var(--brand);background:var(--card-2)}
+.demo__tabs u{width:38px;height:38px;border-radius:12px;flex:none;display:grid;place-items:center;
+  background:var(--grad-soft);border:1px solid var(--stroke);text-decoration:none}
+.demo__tabs button.on u{background:var(--grad);border-color:transparent}
+.demo__tabs svg{width:18px;height:18px;stroke:var(--brand-2);fill:none;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round}
+.demo__tabs button.on svg{stroke:#fff}
+.demo__tabs b{display:block;font-family:var(--display);font-size:15.5px;font-weight:700}
+.demo__tabs small{display:block;font-size:13px;color:var(--text-3);line-height:1.45;margin-top:2px}
+.demo__stage{display:grid;justify-items:center;gap:18px}
+.demo .screen{display:block;position:relative}
+.pane{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;visibility:hidden;
+  transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease),visibility .45s}
+.pane.on{opacity:1;visibility:visible;transform:none}
+.demo__bar{width:min(74vw,272px);height:3px;border-radius:3px;background:var(--stroke);overflow:hidden}
+.demo__bar i{display:block;height:100%;background:var(--grad);transform:scaleX(0);transform-origin:0 50%}
+
+/* mini size matrix inside the mock screen */
+.scr__mx{background:#fff;border-radius:14px;padding:11px;box-shadow:0 6px 16px -14px rgba(20,24,70,.5)}
+.scr__mx b{display:block;font-family:var(--display);font-size:11.5px;margin-bottom:8px}
+.scr__mx div{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.scr__mx s{text-decoration:none;font-size:9px;font-weight:700;text-align:center;padding:5px 0;
+  border-radius:6px;background:#EDEBFF;color:#4B3FBF}
+.scr__mx s.low{background:#FFEDE7;color:#D2542F}
+.scr__mx s.hd{background:none;color:#9AA0BF;font-size:8.5px;padding:2px 0}
+.scr__pay{margin-top:4px;border-radius:13px;padding:12px;text-align:center;background:var(--grad);
+  color:#fff;font-family:var(--display);font-size:12.5px;font-weight:800;
+  box-shadow:0 10px 22px -12px rgba(108,92,231,.9)}
+
+/* platforms */
+.plat{display:grid;gap:var(--gap);margin-top:50px}
+@media(min-width:820px){.plat{grid-template-columns:repeat(3,1fr)}}
+
+/* pricing add-ons */
+.addon{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:10px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.addon li{display:flex;justify-content:space-between;gap:14px;padding:14px 17px;border:1px solid var(--stroke);
+  border-radius:var(--r);background:var(--card);font-size:14.5px;color:var(--text-2)}
+.addon b{font-family:var(--display);color:var(--text);white-space:nowrap;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<!-- ══ INTRO ══ (rebuilt from animation/uztomic-intro.jsx as plain SVG + CSS) -->
+<div id="intro" aria-hidden="true">
+  <div class="intro__bg"></div>
+  <div class="intro__in">
+    <svg class="intro__mark" viewBox="640 185 640 415" fill="none">
+      <defs>
+        <linearGradient id="iSpark" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+          <stop offset=".5" stop-color="#fff"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <mask id="iSlit" maskUnits="userSpaceOnUse" x="640" y="185" width="640" height="415">
+          <rect x="640" y="185" width="640" height="415" fill="#fff"/>
+          <polygon class="i-slit" points="1030,375 1140,332 1140,306 1030,349" fill="#000"/>
+        </mask>
+      </defs>
+      <rect class="i-spark" x="810" y="396.5" width="300" height="3" rx="1.5" fill="url(#iSpark)"/>
+      <g mask="url(#iSlit)">
+        <path class="i-u" pathLength="1" stroke="#fff" stroke-width="62"
+              d="M 830 240 V 415 C 830 497 888 542 960 542 C 1032 542 1090 497 1090 415 V 400"/>
+        <polygon class="i-plate" points="1059,430 1121,430 1121,216 1059,240" fill="#fff"/>
+      </g>
+      <g class="i-orbit">
+        <ellipse class="i-ring" pathLength="1" cx="960" cy="400" rx="305" ry="108"
+                 transform="rotate(-18 960 400)" stroke="#fff" stroke-width="7"/>
+        <circle class="i-dot" cx="1250" cy="306" r="17" fill="#fff"/>
+        <circle class="i-dot" cx="670" cy="494" r="17" fill="#fff"/>
+      </g>
+    </svg>
+    <div class="intro__word"><span style="--d:1.70s">U</span><span style="--d:1.75s">Z</span><span style="--d:1.80s">T</span><span style="--d:1.85s">O</span><span style="--d:1.90s">M</span><span style="--d:1.95s">I</span><span style="--d:2.00s">C</span></div>
+    <div class="intro__tag">SMART SOFTWARE SOLUTIONS</div>
+    <button class="intro__cta" type="button" id="introGo">
+      <span data-i18n="intro.cta">Enter the site</span><i>&#8594;</i>
+    </button>
+  </div>
+  <div class="intro__hint" data-i18n="intro.skip">Tap anywhere to skip</div>
+</div>
+
+<div id="bar"></div>
+<div class="bg" aria-hidden="true">
+  <div class="bg__grid"></div>
+  <div class="bg__blob bg__blob--1"></div>
+  <div class="bg__blob bg__blob--2"></div>
+</div>
+
+<header id="hdr">
+  <div class="nav">
+    <a class="logo" href="/" aria-label="Uztomic">
+      <img src="/assets/uztomic-mark-light.png" alt="" id="markImg" width="47" height="32" decoding="async">
+      <span><b>Uztomic</b><small>CRM</small></span>
+    </a>
+    <nav class="links">
+      <a href="#features" data-i18n="c.nav.f">Features</a>
+      <a href="#demo" data-i18n="c.nav.d">Demo</a>
+      <a href="#pricing" data-i18n="c.nav.p">Pricing</a>
+      <a href="#faq" data-i18n="c.nav.q">FAQ</a>
+      <a href="/" class="mark" data-i18n="c.nav.home">Uztomic studio</a>
+    </nav>
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <button type="button" data-lang="uz">UZ</button>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <button class="icobtn" id="theme" type="button" aria-label="Switch theme">
+        <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.2 8.2 0 1 0 10.2 10.2z"/></svg>
+      </button>
+      <button class="icobtn" id="burger" type="button" aria-label="Menu" aria-expanded="false">
+        <svg class="op" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="cl" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <a class="btn btn--p btn--sm" href="#contact" data-mag data-i18n="c.nav.cta">Try free</a>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <a href="#features" data-i18n="c.nav.f">Features</a>
+  <a href="#demo" data-i18n="c.nav.d">Demo</a>
+  <a href="#pricing" data-i18n="c.nav.p">Pricing</a>
+  <a href="#faq" data-i18n="c.nav.q">FAQ</a>
+  <a href="/" class="mark" data-i18n="c.nav.home">Uztomic studio</a>
+  <a class="btn btn--p btn--wide" href="#contact" data-i18n="c.nav.cta">Try free</a>
+</div>
+
+<main>
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="wrap hero__g">
+    <div>
+      <span class="pill"><i></i><span data-i18n="c.hero.badge">First 14 days free</span></span>
+      <h1 data-split><span data-i18n="c.hero.h1a">Your whole shop in</span> <span class="grad" data-i18n="c.hero.h1b">one app</span></h1>
+      <p class="lede" data-i18n="c.hero.lede">Sales, stock, the credit ledger, staff and profit — in one place, in Uzbek, and it keeps working when the internet does not. Built by Uztomic for shops in Uzbekistan.</p>
+      <div class="hero__cta">
+        <a class="btn btn--p" href="#contact" data-mag><span data-i18n="c.hero.cta1">Start free</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--g" href="#demo" data-i18n="c.hero.cta2">See it working</a>
+      </div>
+      <ul class="ticks">
+        <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.hero.t1">Works with no internet</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.hero.t2">Phone and Windows</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.hero.t3">Uzbek, Russian, English</span></li>
+      </ul>
+    </div>
+
+    <div class="stage" aria-hidden="true" data-par="0.03">
+      <div class="stage__glow"></div>
+      <div class="stage__ring"></div>
+      <div class="phone">
+        <div class="phone__notch"></div>
+        <div class="screen">
+          <div class="scr__top">
+            <small>Bugungi savdo</small><b>3 480 000</b>
+            <div class="scr__chips"><span>Kun</span><span>Hafta</span><span>Oy</span></div>
+          </div>
+          <div class="scr__body">
+            <div class="scr__chart">
+              <i style="--h:42%;--n:0"></i><i style="--h:66%;--n:1"></i><i style="--h:51%;--n:2"></i>
+              <i style="--h:84%;--n:3"></i><i style="--h:62%;--n:4"></i><i style="--h:97%;--n:5"></i>
+            </div>
+            <div class="scr__row"><u>🧾</u><div><b>Chek #1042</b><small>3 dona · karta</small></div><em>+248 000</em></div>
+            <div class="scr__row"><u>👕</u><div><b>Futbolka (paxta)</b><small>M · oq · 12 dona</small></div><em>59 000</em></div>
+            <div class="scr__row"><u>📕</u><div><b>Nasiya · Anvar</b><small>15-oktabrgacha</small></div><em class="red">−420 000</em></div>
+          </div>
+          <div class="scr__nav"><s class="on"></s><s></s><s></s><s></s></div>
+        </div>
+      </div>
+      <div class="chip-card chip-card--a"><small data-i18n="c.hero.card1">Profit this month</small><b class="grad">+18%</b></div>
+      <div class="chip-card chip-card--b">
+        <u><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></u>
+        <div><small data-i18n="c.hero.card2">Offline sale</small><b style="font-size:14px" data-i18n="c.hero.card3">Saved</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHO FOR ══ -->
+<section style="padding-block:clamp(30px,4vw,54px)">
+  <div class="wrap">
+    <div class="center head">
+      <span class="tag" data-i18n="c.who.tag">Who it is for</span>
+      <h2 data-i18n="c.who.h2">Made for a real shop counter</h2>
+      <p class="lede" data-i18n="c.who.lede">Pick your type when you sign up and the app changes its fields to match — sizes for clothing, weight and expiry for food, metres for plumbing.</p>
+    </div>
+    <div class="grid grid--4">
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--fill"><svg viewBox="0 0 24 24"><path d="M9 3.5 4 6.2v4h2.5v10h11v-10H20v-4L15 3.5a3 3 0 0 1-6 0z"/></svg></div>
+        <h3 data-i18n="c.who.1t">Clothing &amp; footwear</h3>
+        <p data-i18n="c.who.1d">Full size × colour matrix, so you always know exactly what is left in which size.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--g"><svg viewBox="0 0 24 24"><path d="M5.5 8.5h13l-1 12h-11z"/><path d="M9 8.5V6a3 3 0 0 1 6 0v2.5"/></svg></div>
+        <h3 data-i18n="c.who.2t">Grocery</h3>
+        <p data-i18n="c.who.2d">Weighed goods, fractional quantities and expiry dates with early warnings.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--c"><svg viewBox="0 0 24 24"><path d="M4 5.5h6v5H4zM10 8h6a3 3 0 0 1 3 3v8"/><path d="M16.5 16.5 19 19l2.5-2.5"/></svg></div>
+        <h3 data-i18n="c.who.3t">Plumbing &amp; hardware</h3>
+        <p data-i18n="c.who.3d">Sold by the metre or by the piece, with wholesale price levels for bulk buyers.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--o"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3 data-i18n="c.who.4t">Accessories</h3>
+        <p data-i18n="c.who.4d">Search by model and compatibility, so a customer's question takes seconds.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEM → SOLUTION ══ -->
+<section class="band">
+  <div class="wrap">
+    <div class="center head">
+      <span class="tag" data-i18n="c.pp.tag">Why bother</span>
+      <h2 data-i18n="c.pp.h2">Six problems the notebook cannot solve</h2>
+    </div>
+    <div class="pp">
+      <div class="pp__r" data-rv="up">
+        <span class="pp__a" data-i18n="c.pp.1a">You never know how many are left in each size</span>
+        <span class="pp__i"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="pp__b" data-i18n="c.pp.1b">Exact stock by size and colour</span>
+      </div>
+      <div class="pp__r" data-rv="up">
+        <span class="pp__a" data-i18n="c.pp.2a">The credit notebook gets lost or argued over</span>
+        <span class="pp__i"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="pp__b" data-i18n="c.pp.2b">A digital ledger with dates and reminders</span>
+      </div>
+      <div class="pp__r" data-rv="up">
+        <span class="pp__a" data-i18n="c.pp.3a">You cannot tell if a seller pocketed cash</span>
+        <span class="pp__i"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="pp__b" data-i18n="c.pp.3b">Shifts, Z-reports and an audit log</span>
+      </div>
+      <div class="pp__r" data-rv="up">
+        <span class="pp__a" data-i18n="c.pp.4a">You do not know which goods actually make money</span>
+        <span class="pp__i"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="pp__b" data-i18n="c.pp.4b">Cost, margin and profit on every item</span>
+      </div>
+      <div class="pp__r" data-rv="up">
+        <span class="pp__a" data-i18n="c.pp.5a">Dead stock sits on the shelf unnoticed</span>
+        <span class="pp__i"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="pp__b" data-i18n="c.pp.5b">A slow-movers report and AI advice</span>
+      </div>
+      <div class="pp__r" data-rv="up">
+        <span class="pp__a" data-i18n="c.pp.6a">The internet drops and everything stops</span>
+        <span class="pp__i"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="pp__b" data-i18n="c.pp.6b">Full offline mode with automatic backup</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LIVE DEMO ══ -->
+<section id="demo-sec">
+  <div class="wrap">
+    <div class="center head">
+      <span class="tag" data-i18n="c.dm.tag">Inside the app</span>
+      <h2 data-i18n="c.dm.h2">Four screens you will live in</h2>
+      <p class="lede" data-i18n="c.dm.lede">Big buttons at the bottom of the screen, made to be used with one hand while a customer waits.</p>
+    </div>
+    <div class="demo" id="demo">
+      <div class="demo__tabs">
+        <button type="button" data-scr class="on">
+          <u><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M3 11h18M7 15h4"/></svg></u>
+          <span><b data-i18n="c.dm.1t">Till</b><small data-i18n="c.dm.1d">Scan or tap, take cash or card, print the receipt.</small></span>
+        </button>
+        <button type="button" data-scr>
+          <u><svg viewBox="0 0 24 24"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5 3.5 16.5z"/><path d="M3.5 7.5 12 11.5l8.5-4M12 11.5v9"/></svg></u>
+          <span><b data-i18n="c.dm.2t">Stock</b><small data-i18n="c.dm.2d">Every size and colour, with a warning before you run out.</small></span>
+        </button>
+        <button type="button" data-scr>
+          <u><svg viewBox="0 0 24 24"><path d="M5 4.5h11a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2z"/><path d="M9 9h6M9 13h4"/></svg></u>
+          <span><b data-i18n="c.dm.3t">Credit ledger</b><small data-i18n="c.dm.3d">Who owes what, since when, and who to remind today.</small></span>
+        </button>
+        <button type="button" data-scr>
+          <u><svg viewBox="0 0 24 24"><path d="M4 19.5V10M10 19.5V5M16 19.5v-6M21 19.5H3"/></svg></u>
+          <span><b data-i18n="c.dm.4t">Profit</b><small data-i18n="c.dm.4d">Revenue minus cost minus expenses — the real number.</small></span>
+        </button>
+      </div>
+      <div class="demo__stage" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__notch"></div>
+          <div class="screen">
+            <div class="pane on">
+              <div class="scr__top"><small>Kassa · savatcha</small><b>248 000</b>
+                <div class="scr__chips"><span>Naqd</span><span>Karta</span><span>Nasiya</span></div></div>
+              <div class="scr__body">
+                <div class="scr__row"><u>👕</u><div><b>Futbolka (paxta)</b><small>M · oq · 2 dona</small></div><em>118 000</em></div>
+                <div class="scr__row"><u>👖</u><div><b>Jinsi shim</b><small>32 · koʻk · 1 dona</small></div><em>130 000</em></div>
+                <div class="scr__row"><u>🔍</u><div><b>Shtrix-kod</b><small>Skaner tayyor</small></div><em>OK</em></div>
+                <div class="scr__pay">Toʻlash · 248 000</div>
+              </div>
+              <div class="scr__nav"><s></s><s class="on"></s><s></s><s></s></div>
+            </div>
+            <div class="pane">
+              <div class="scr__top"><small>Ombor · qoldiq</small><b>1 284 dona</b>
+                <div class="scr__chips"><span>Hammasi</span><span>Kam</span><span>Yoʻq</span></div></div>
+              <div class="scr__body">
+                <div class="scr__mx"><b>Futbolka (paxta)</b>
+                  <div><s class="hd">S</s><s class="hd">M</s><s class="hd">L</s><s class="hd">XL</s><s class="hd">2XL</s>
+                       <s>14</s><s>22</s><s>18</s><s class="low">3</s><s>9</s></div></div>
+                <div class="scr__row"><u>📦</u><div><b>Kirim qabul qilindi</b><small>24 SKU · 2 qop</small></div><em>+310</em></div>
+                <div class="scr__row"><u>⚠️</u><div><b>Tugayapti</b><small>Bolalar kurtkasi · XL</small></div><em class="red">3</em></div>
+                <div class="scr__row"><u>💰</u><div><b>Ombor qiymati</b><small>Tannarx boʻyicha</small></div><em>84 200 000</em></div>
+              </div>
+              <div class="scr__nav"><s></s><s></s><s class="on"></s><s></s></div>
+            </div>
+            <div class="pane">
+              <div class="scr__top"><small>Nasiya daftari</small><b>8 420 000</b>
+                <div class="scr__chips"><span>Muddat</span><span>Bugun</span><span>Kechikkan</span></div></div>
+              <div class="scr__body">
+                <div class="scr__row"><u>👤</u><div><b>Anvar Toshmatov</b><small>15-okt · 3 kun qoldi</small></div><em class="red">420 000</em></div>
+                <div class="scr__row"><u>👤</u><div><b>Dilnoza Karimova</b><small>Bugun toʻlanadi</small></div><em class="red">180 000</em></div>
+                <div class="scr__row"><u>✅</u><div><b>Sardor Aliyev</b><small>Toʻliq yopildi</small></div><em>0</em></div>
+                <div class="scr__row"><u>💵</u><div><b>Bugun toʻlandi</b><small>2 ta mijoz</small></div><em>+260 000</em></div>
+              </div>
+              <div class="scr__nav"><s></s><s></s><s></s><s class="on"></s></div>
+            </div>
+            <div class="pane">
+              <div class="scr__top"><small>Sof foyda · oktabr</small><b>4 120 000</b>
+                <div class="scr__chips"><span>Kun</span><span>Hafta</span><span>Oy</span></div></div>
+              <div class="scr__body">
+                <div class="scr__chart">
+                  <i style="--h:48%;--n:0"></i><i style="--h:72%;--n:1"></i><i style="--h:58%;--n:2"></i>
+                  <i style="--h:88%;--n:3"></i><i style="--h:69%;--n:4"></i><i style="--h:99%;--n:5"></i>
+                </div>
+                <div class="scr__row"><u>💰</u><div><b>Savdo</b><small>Oktabr</small></div><em>12 480 000</em></div>
+                <div class="scr__row"><u>🧮</u><div><b>Tannarx va xarajat</b><small>Oktabr</small></div><em class="red">−8 360 000</em></div>
+                <div class="scr__row"><u>⭐</u><div><b>Eng foydali tovar</b><small>Bolalar kurtkasi</small></div><em>+38%</em></div>
+              </div>
+              <div class="scr__nav"><s class="on"></s><s></s><s></s><s></s></div>
+            </div>
+          </div>
+        </div>
+        <div class="demo__bar"><i id="demoFill"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURES ══ -->
+<section id="features" class="band">
+  <div class="wrap">
+    <div class="center head">
+      <span class="tag" data-i18n="c.fe.tag">Features</span>
+      <h2 data-i18n="c.fe.h2">Everything a shop needs, nothing it does not</h2>
+      <p class="lede" data-i18n="c.fe.lede">Built from three years of sitting behind real counters in Qo'qon and asking what actually gets in the way.</p>
+    </div>
+    <div class="grid grid--3">
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--fill"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M3 11h18M7 15h4"/></svg></div>
+        <h3 data-i18n="c.f1t">Till</h3>
+        <p data-i18n="c.f1d">Sell in three taps: scan or search, choose cash, card or credit, done. Quick-cash buttons for 50 000, 100 000 and 200 000.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--c"><svg viewBox="0 0 24 24"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5 3.5 16.5z"/><path d="M3.5 7.5 12 11.5l8.5-4M12 11.5v9"/></svg></div>
+        <h3 data-i18n="c.f2t">Stock by size and colour</h3>
+        <p data-i18n="c.f2d">A full matrix per product, a separate price per variant if you need it, and a warning before a size runs out.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--o"><svg viewBox="0 0 24 24"><path d="M5 4.5h11a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2z"/><path d="M9 9h6M9 13h4"/></svg></div>
+        <h3 data-i18n="c.f3t">Credit ledger</h3>
+        <p data-i18n="c.f3d">Every debt with a date and a history of payments. The app tells you who to call today, so nothing quietly disappears.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--g"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M16 5.5a3.4 3.4 0 0 1 0 6.6M18 20c0-2.6-1-4.4-2.6-5.4"/></svg></div>
+        <h3 data-i18n="c.f4t">Staff, roles and shifts</h3>
+        <p data-i18n="c.f4d">A seller never sees your cost price. Open and close a shift, print a Z-report, and every action stays in the audit log.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--p"><svg viewBox="0 0 24 24"><path d="M4 19.5V10M10 19.5V5M16 19.5v-6M21 19.5H3"/></svg></div>
+        <h3 data-i18n="c.f5t">Profit and reports</h3>
+        <p data-i18n="c.f5d">Revenue minus cost minus expenses, per day, product, seller or branch. Export to Excel whenever your accountant asks.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--c"><svg viewBox="0 0 24 24"><path d="M12 21.5s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10.5" r="2.6"/></svg></div>
+        <h3 data-i18n="c.f6t">Branches and transfers</h3>
+        <p data-i18n="c.f6d">Move goods between shops or to the warehouse and both sides confirm it. Every report can be read per branch or for everything at once.</p>
+      </article>
+    </div>
+    <div class="grid grid--3" style="margin-top:var(--gap)">
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--p"><svg viewBox="0 0 24 24"><path d="M12 3.5 13.8 9l5.7.2-4.5 3.5 1.6 5.5L12 15l-4.6 3.2L9 12.7 4.5 9.2 10.2 9z"/></svg></div>
+        <h3 data-i18n="c.f7t">AI adviser</h3>
+        <p data-i18n="c.f7d">Ask in plain Uzbek which goods are stuck, what to reorder and where the price is wrong. Included in the Pro plan.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--g"><svg viewBox="0 0 24 24"><path d="M5 12.5a7 7 0 0 1 14 0"/><path d="M8.5 15.5a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="18.5" r="1.2"/><path d="M3 6.5 21 19"/></svg></div>
+        <h3 data-i18n="c.f8t">Real offline mode</h3>
+        <p data-i18n="c.f8d">Sales are written to the phone first and synced later. Changes travel as differences, so two devices offline never wipe each other's work.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--fill"><svg viewBox="0 0 24 24"><path d="M7 8.5V4h10v4.5"/><rect x="4" y="8.5" width="16" height="7" rx="2"/><path d="M7 15.5h10V20H7z"/></svg></div>
+        <h3 data-i18n="c.f9t">Bluetooth receipts</h3>
+        <p data-i18n="c.f9d">Any 58 mm ESC/POS printer. Your shop name, the items, the total and the debt left — printed in seconds.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--o"><svg viewBox="0 0 24 24"><path d="M4 5.5v13M8 5.5v13M11.5 5.5v13M15 5.5v13M20 5.5v13"/></svg></div>
+        <h3 data-i18n="c.f10t">Barcode scanning</h3>
+        <p data-i18n="c.f10d">Use the phone camera or a USB scanner. No barcode on the item? The app prints one for you.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--c"><svg viewBox="0 0 24 24"><path d="M18 8.5a6 6 0 1 0-12 0c0 6-2.5 7.5-2.5 7.5h17S18 14.5 18 8.5z"/><path d="M10.3 19.5a2 2 0 0 0 3.4 0"/></svg></div>
+        <h3 data-i18n="c.f11t">Notifications</h3>
+        <p data-i18n="c.f11d">A daily summary, a debt coming due, stock running low, a subscription about to end — on the phone, not buried in a menu.</p>
+      </article>
+      <article class="crd" data-rv="up" data-tilt>
+        <div class="ico ico--p"><svg viewBox="0 0 24 24"><path d="M20.5 12.5 12.5 20.5a2 2 0 0 1-2.8 0L3.5 14.3a2 2 0 0 1-.6-1.4V4.5h8.4a2 2 0 0 1 1.4.6l7.8 7.8a1.6 1.6 0 0 1 0 2.3z"/><circle cx="8" cy="9" r="1.4"/></svg></div>
+        <h3 data-i18n="c.f12t">Discounts and promotions</h3>
+        <p data-i18n="c.f12d">A percentage or a fixed amount, on one product or the whole basket, with a start and end date so nothing runs forever by accident.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLATFORMS ══ -->
+<section>
+  <div class="wrap">
+    <div class="center head">
+      <span class="tag" data-i18n="c.pl.tag">Where it runs</span>
+      <h2 data-i18n="c.pl.h2">Three apps, one database</h2>
+      <p class="lede" data-i18n="c.pl.lede">The owner on a phone, the cashier on a computer, and everything updating on both at the same second.</p>
+    </div>
+    <div class="plat">
+      <article class="crd crd--solid" data-rv="up" data-tilt>
+        <div class="ico ico--fill"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg></div>
+        <h3 data-i18n="c.pl.1t">Phone — Android and iOS</h3>
+        <p data-i18n="c.pl.1d">The main app. Sell, check stock, look at profit, all from behind the counter or from home.</p>
+      </article>
+      <article class="crd crd--solid" data-rv="up" data-tilt>
+        <div class="ico ico--c"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3 data-i18n="c.pl.2t">Windows computer</h3>
+        <p data-i18n="c.pl.2d">A big screen for the till and for entering deliveries quickly, with a keyboard and a USB scanner.</p>
+      </article>
+      <article class="crd crd--solid" data-rv="up" data-tilt>
+        <div class="ico ico--g"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg></div>
+        <h3 data-i18n="c.pl.3t">Support panel</h3>
+        <p data-i18n="c.pl.3d">Our side: your subscription, payments and support tickets. You write from inside the app and we answer there.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST ══ -->
+<section class="band">
+  <div class="wrap">
+    <div class="center head">
+      <span class="tag" data-i18n="c.tr.tag">Your data</span>
+      <h2 data-i18n="c.tr.h2">Safe, separate and yours</h2>
+    </div>
+    <div class="grid grid--4">
+      <article class="crd" data-rv="up">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M20.5 11.5V6.2L12 2.8 3.5 6.2v5.3c0 5 3.6 8.6 8.5 9.7 4.9-1.1 8.5-4.7 8.5-9.7z"/><path d="M8.6 12.2 11 14.6l4.6-4.8"/></svg></div>
+        <h3 data-i18n="c.tr.1t">One shop cannot see another</h3>
+        <p data-i18n="c.tr.1d">Every table is locked to your shop id by the database itself, not by the app. A query from another shop simply returns nothing.</p>
+      </article>
+      <article class="crd" data-rv="up">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7.5c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7.5v9c0 1.7 3.6 3 8 3s8-1.3 8-3v-9M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+        <h3 data-i18n="c.tr.2t">Backup you can see</h3>
+        <p data-i18n="c.tr.2d">Backup runs by itself whenever there is internet. If it fails you get a visible warning — a silent failure is the dangerous kind.</p>
+      </article>
+      <article class="crd" data-rv="up">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3.5v7M8.5 7l3.5 3.5L15.5 7"/><path d="M4 14v4.5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V14"/></svg></div>
+        <h3 data-i18n="c.tr.3t">Export whenever you want</h3>
+        <p data-i18n="c.tr.3d">Products, sales, debts and reports go out to Excel in one tap. The numbers are yours to take anywhere.</p>
+      </article>
+      <article class="crd" data-rv="up">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.2"/></svg></div>
+        <h3 data-i18n="c.tr.4t">Stopping never deletes anything</h3>
+        <p data-i18n="c.tr.4d">If a subscription lapses, access pauses — the data stays exactly where it was. Pay and everything comes back untouched.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="center head">
+      <span class="tag" data-i18n="c.pr.tag">Pricing</span>
+      <h2 data-i18n="c.pr.h2">One price for the shop, not per seller</h2>
+      <p class="lede" data-i18n="c.pr.lede">Whether one person or five stand behind the counter, the monthly figure is the same. The first 14 days cost nothing.</p>
+    </div>
+    <div class="grid grid--2" style="margin-top:56px;max-width:820px;margin-inline:auto">
+      <article class="price" data-rv="up" data-tilt>
+        <h3 data-i18n="c.pr.1t">Standard</h3>
+        <p class="price__d" data-i18n="c.pr.1d">For a single shop, or a shop with a warehouse behind it.</p>
+        <div class="price__v"><small data-i18n="c.pr.per">per month</small><span data-i18n="c.pr.1p">150 000 UZS</span></div>
+        <p class="price__t" data-i18n="c.pr.1w">6 accounts · 2 branches</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.pr.1f1">Till, stock, credit ledger, reports</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.pr.1f2">Offline mode and automatic backup</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.pr.1f3">Phone and Windows, unlimited devices</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.pr.1f4">Support from inside the app</span></li>
+        </ul>
+        <a class="btn btn--g btn--wide" href="#contact" data-i18n="c.pr.cta">Start free</a>
+      </article>
+      <article class="price price--hot" data-rv="up" data-tilt>
+        <span class="price__badge" data-i18n="c.pr.badge">With AI</span>
+        <h3 data-i18n="c.pr.2t">Pro</h3>
+        <p class="price__d" data-i18n="c.pr.2d">For a growing business with several points and a bigger team.</p>
+        <div class="price__v"><small data-i18n="c.pr.per">per month</small><span data-i18n="c.pr.2p">400 000 UZS</span></div>
+        <p class="price__t" data-i18n="c.pr.2w">16 accounts · 3 branches</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.pr.2f1">Everything in Standard</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.pr.2f2">AI adviser, 100 questions a month</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.pr.2f3">Three branches and transfers included</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="c.pr.2f4">Priority answers on support</span></li>
+        </ul>
+        <a class="btn btn--p btn--wide" href="#contact" data-i18n="c.pr.cta">Start free</a>
+      </article>
+    </div>
+
+    <ul class="addon" style="max-width:820px;margin-inline:auto">
+      <li><span data-i18n="c.ad.1">Setup and training, one time</span><b>400 000</b></li>
+      <li><span data-i18n="c.ad.2">Setup with a receipt printer</span><b>700 000</b></li>
+      <li><span data-i18n="c.ad.3">Each extra branch, per month</span><b>+100 000</b></li>
+      <li><span data-i18n="c.ad.4">Extra 5 accounts, per month</span><b>+50 000</b></li>
+    </ul>
+    <p class="note" data-i18n="c.ad.note">Open three or more extra branches and each one costs less. Extra accounts are sold in packs of five: the first pack 50 000, every pack after it 45 000.</p>
+
+    <div class="center head" style="margin-top:clamp(56px,7vw,92px)">
+      <span class="tag" data-i18n="c.cl.tag">Calculator</span>
+      <h2 data-i18n="c.cl.h2">What would your shop pay?</h2>
+    </div>
+    <div class="calc" data-rv="up">
+      <div class="calc__g">
+        <div class="calc__f" id="crmCalc">
+          <div>
+            <span class="calc__l" data-i18n="c.cl.tier">Plan</span>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="ctier" value="std" checked><span data-i18n="c.pr.1t">Standard</span></label>
+              <label class="chip"><input type="radio" name="ctier" value="pro"><span data-i18n="c.pr.2t">Pro</span></label>
+            </div>
+          </div>
+          <div>
+            <span class="calc__l" data-i18n="c.cl.br">Branches (shops and warehouses)</span>
+            <div class="step" data-min="1" data-max="10">
+              <button type="button" data-d="-1" aria-label="minus">&#8722;</button>
+              <output id="cBranch" data-v="1">1</output>
+              <button type="button" data-d="1" aria-label="plus">+</button>
+            </div>
+          </div>
+          <div>
+            <span class="calc__l" data-i18n="c.cl.us">Accounts (you and your staff)</span>
+            <div class="step" data-min="1" data-max="40">
+              <button type="button" data-d="-1" aria-label="minus">&#8722;</button>
+              <output id="cUsers" data-v="3">3</output>
+              <button type="button" data-d="1" aria-label="plus">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="calc__out">
+          <small data-i18n="c.cl.total">Total per month</small>
+          <div class="calc__sum" id="crmSum">150 000 UZS</div>
+          <ul class="calc__rows">
+            <li><span data-i18n="c.cl.r1">Plan</span><b id="crmBase">150 000</b></li>
+            <li><span data-i18n="c.cl.r2">Extra branches</span><b id="crmBranch">0</b></li>
+            <li><span data-i18n="c.cl.r3">Extra accounts</span><b id="crmSlot">0</b></li>
+          </ul>
+          <p class="calc__note" id="crmLimit" data-i18n="crm.cl.inc">{u} accounts and {b} branches are included in the price.</p>
+          <p class="calc__note" data-i18n="c.cl.note">Setup is charged once and separately: 400 000, or 700 000 with a receipt printer.</p>
+          <a class="btn btn--p btn--wide" href="#contact" data-i18n="c.cl.cta">Start the 14 free days</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW TO START ══ -->
+<section class="band">
+  <div class="wrap">
+    <div class="center head">
+      <span class="tag" data-i18n="c.st.tag">Getting started</span>
+      <h2 data-i18n="c.st.h2">From a phone call to a working till</h2>
+      <p class="lede" data-i18n="c.st.lede">Most shops are selling through the app on the same day they call.</p>
+    </div>
+    <div class="flow" style="--cols:4">
+      <div class="stp" data-rv="up"><u>01</u><h3 data-i18n="c.st.1t">You get in touch</h3><p data-i18n="c.st.1d">Leave a request or write on Telegram. We call back within 24 hours and ask about your shop.</p></div>
+      <div class="stp" data-rv="up"><u>02</u><h3 data-i18n="c.st.2t">We set it up</h3><p data-i18n="c.st.2d">We create your shop, add your staff accounts and set the printer and scanner up with you.</p></div>
+      <div class="stp" data-rv="up"><u>03</u><h3 data-i18n="c.st.3t">We move your data</h3><p data-i18n="c.st.3d">Products, prices and open debts come across from your Excel file or notebook — we do it, not you.</p></div>
+      <div class="stp" data-rv="up"><u>04</u><h3 data-i18n="c.st.4t">We stay with you</h3><p data-i18n="c.st.4d">Training for your sellers, then support from inside the app whenever something is unclear.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="center head">
+      <span class="tag" data-i18n="c.fq.tag">Answers</span>
+      <h2 data-i18n="c.fq.h2">What shopkeepers ask us first</h2>
+    </div>
+    <div class="faq">
+      <details open><summary data-i18n="c.fq.1q">Does it really work without internet?<span></span></summary><div class="ans"><p data-i18n="c.fq.1a">Yes. Every sale, delivery and customer is written to the phone first, and syncs when the connection comes back. Each change travels as a difference rather than a total — so if a seller sells three offline while the storekeeper receives five, you end up with the right number, not one of them overwritten.</p></div></details>
+      <details><summary data-i18n="c.fq.2q">Can another shop see my numbers?<span></span></summary><div class="ans"><p data-i18n="c.fq.2a">No. Every table is protected at the database level and tied to your shop id. Even a request sent by hand from another account returns nothing. Your prices, customers and profit stay yours.</p></div></details>
+      <details><summary data-i18n="c.fq.3q">What if I miss a payment?<span></span></summary><div class="ans"><p data-i18n="c.fq.3a">A reminder arrives 7 days before the end, then daily for the last 3. After the date the app keeps working with a banner on top. Only after about 45 days is access paused — and even then nothing is deleted. Pay and everything comes back as it was.</p></div></details>
+      <details><summary data-i18n="c.fq.4q">Do I have to buy a receipt printer?<span></span></summary><div class="ans"><p data-i18n="c.fq.4a">No. The app works perfectly without one and many shops start that way. If you want printed receipts, the setup package with a 58 mm Bluetooth printer is 700 000 instead of 400 000.</p></div></details>
+      <details><summary data-i18n="c.fq.5q">My sellers are not good with phones.<span></span></summary><div class="ans"><p data-i18n="c.fq.5a">That is who it was designed for. Big buttons at the bottom of the screen, plain Uzbek instead of error codes, everything reachable with one thumb, and a mistake can always be corrected. We train your team as part of the setup.</p></div></details>
+      <details><summary data-i18n="c.fq.6q">Is my old data lost?<span></span></summary><div class="ans"><p data-i18n="c.fq.6a">No. Send us your Excel file, or photos of the notebook, and we move the products, prices and open debts across for you before you start.</p></div></details>
+      <details><summary data-i18n="c.fq.7q">Which shops does it suit?<span></span></summary><div class="ans"><p data-i18n="c.fq.7a">Clothing and footwear first — that is where the size and colour matrix matters most. Grocery, plumbing and accessory shops work too: choose your type when you sign up and the fields change to match.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="band">
+  <div class="wrap og">
+    <div>
+      <span class="tag" data-i18n="c.ct.tag">Free trial</span>
+      <h2 data-i18n="c.ct.h2">Try it for 14 days, on your own goods</h2>
+      <p class="lede" style="margin-top:18px" data-i18n="c.ct.lede">Leave your number and we will call within 24 hours, set the shop up with you and load your products. If it does not suit you after two weeks, you owe nothing.</p>
+      <ul class="cts">
+        <li><a class="ct" href="https://t.me/uztomic_official" target="_blank" rel="noopener">
+          <u><svg viewBox="0 0 24 24"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4.1 1.6l4.9 1.4 1.8 5.3c.2.7 1.1.8 1.6.3l2.6-2.6 4.9 3.6c.6.4 1.5.1 1.7-.7l3-14.2c.2-.9-.7-1.6-1.5-1.3z"/><path d="m7.8 14.6 10.6-7.3-8.2 8.4"/></svg></u>
+          <span><b>@uztomic_official</b><small data-i18n="c.ct.tg">Telegram — fastest reply</small></span></a></li>
+        <li><a class="ct" href="tel:+998770165963" data-copy="+998770165963">
+          <u><svg viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4.5-2 1.5a13 13 0 0 0 6 6l1.5-2 4.5 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></svg></u>
+          <span><b>+998 77 016 59 63</b><small data-i18n="c.ct.ph">Every day, 9:00–22:00</small></span></a></li>
+        <li><span class="ct">
+          <u><svg viewBox="0 0 24 24"><path d="M12 21.5s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10.5" r="2.6"/></svg></u>
+          <span><b data-i18n="c.ct.loc">Qo'qon, Fergana region</b><small data-i18n="c.ct.loc2">We set shops up remotely across the country</small></span></span></li>
+      </ul>
+    </div>
+
+    <div class="formwrap">
+      <form class="form" id="orderForm" novalidate>
+        <input type="hidden" name="service" value="Uztomic CRM">
+        <div class="f2">
+          <div class="f"><label for="name" data-i18n-html="c.fm.name">Your name <span>*</span></label>
+            <input id="name" name="name" required autocomplete="name" placeholder="Alisher Karimov" data-i18n-ph="c.fm.namePh">
+            <small class="err"></small></div>
+          <div class="f"><label for="phone" data-i18n-html="c.fm.phone">Phone <span>*</span></label>
+            <input id="phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="+998 __ ___ __ __">
+            <small class="err"></small></div>
+        </div>
+        <div class="f">
+          <label data-i18n="c.fm.type">What kind of shop?</label>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="shop" value="Kiyim / oyoq kiyim" checked><span data-i18n="c.fm.t1">Clothing / footwear</span></label>
+            <label class="chip"><input type="radio" name="shop" value="Oziq-ovqat"><span data-i18n="c.fm.t2">Grocery</span></label>
+            <label class="chip"><input type="radio" name="shop" value="Santexnika"><span data-i18n="c.fm.t3">Plumbing</span></label>
+            <label class="chip"><input type="radio" name="shop" value="Aksesuar"><span data-i18n="c.fm.t4">Accessories</span></label>
+            <label class="chip"><input type="radio" name="shop" value="Boshqa"><span data-i18n="c.fm.t5">Something else</span></label>
+          </div>
+        </div>
+        <div class="f">
+          <label data-i18n="c.fm.staff">How many people work there?</label>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="staff" value="1-2" checked><span>1–2</span></label>
+            <label class="chip"><input type="radio" name="staff" value="3-6"><span>3–6</span></label>
+            <label class="chip"><input type="radio" name="staff" value="7-15"><span>7–15</span></label>
+            <label class="chip"><input type="radio" name="staff" value="15+"><span>15+</span></label>
+          </div>
+        </div>
+        <div class="f"><label for="message" data-i18n="c.fm.msg">Anything we should know?</label>
+          <textarea id="message" name="message" placeholder="For example: two shops and one warehouse, we keep debts in a notebook, we have an Excel file with the products." data-i18n-ph="c.fm.msgPh"></textarea></div>
+        <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn btn--p btn--wide" id="submitBtn"><span data-i18n="c.fm.send">Start the free trial</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="fnote" data-i18n="c.fm.note">No card, no contract, no automatic charge. We call, you decide.</p>
+        <div class="msg" id="formMsg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <img src="/assets/uztomic-logo-light.png" alt="Uztomic — Smart Software Solutions" id="footLogo" width="116" height="70" loading="lazy" decoding="async">
+        <p data-i18n="c.ft.about">Uztomic CRM is built and supported by Uztomic, a software studio in Qo'qon. Same people who answer the phone write the code.</p>
+      </div>
+      <div>
+        <h4 data-i18n="c.ft.h1">The product</h4>
+        <ul>
+          <li><a href="#features" data-i18n="c.nav.f">Features</a></li>
+          <li><a href="#demo" data-i18n="c.nav.d">Demo</a></li>
+          <li><a href="#pricing" data-i18n="c.nav.p">Pricing</a></li>
+          <li><a href="#faq" data-i18n="c.nav.q">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="c.ft.h2">Uztomic</h4>
+        <ul>
+          <li><a href="/" data-i18n="c.ft.l1">Home page</a></li>
+          <li><a href="/#services" data-i18n="c.ft.l2">Services</a></li>
+          <li><a href="/#work" data-i18n="c.ft.l3">Work</a></li>
+          <li><a href="/#pricing" data-i18n="c.ft.l4">Project pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="c.ft.h3">Get in touch</h4>
+        <ul>
+          <li><a href="https://t.me/uztomic_official" target="_blank" rel="noopener">Telegram — @uztomic_official</a></li>
+          <li><a href="tel:+998770165963">+998 77 016 59 63</a></li>
+          <li><a href="mailto:uztomic@gmail.com">uztomic@gmail.com</a></li>
+          <li><a href="#contact" data-i18n="c.nav.cta">Try free</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr">2026</span> Uztomic · <span data-i18n="c.ft.city">Qo'qon, Uzbekistan</span></span>
+      <span>uztomic.uz/crm</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar">
+  <a class="btn btn--p" href="#contact" data-i18n="c.nav.cta">Try free</a>
+  <a class="btn btn--g" href="#pricing" data-i18n="c.nav.p">Pricing</a>
+  <a class="sq" href="https://t.me/uztomic_official" target="_blank" rel="noopener" aria-label="Telegram">
+    <svg viewBox="0 0 24 24"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4.1 1.6l4.9 1.4 1.8 5.3c.2.7 1.1.8 1.6.3l2.6-2.6 4.9 3.6c.6.4 1.5.1 1.7-.7l3-14.2c.2-.9-.7-1.6-1.5-1.3z"/><path d="m7.8 14.6 10.6-7.3-8.2 8.4"/></svg></a>
+</div>
+
+<button class="icobtn" id="top" type="button" aria-label="Back to top">
+  <svg class="ring" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21"/></svg>
+  <svg class="arw" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+window.UZ = { page:'crm', lang:'uz' };
+window.I18N = {
+uz:{
+"intro.cta":"Websitega kirish","intro.skip":"Oʻtkazib yuborish uchun bosing",
+"c.nav.f":"Imkoniyatlar","c.nav.d":"Demo","c.nav.p":"Narxlar","c.nav.q":"Savollar","c.nav.home":"Uztomic studiya","c.nav.cta":"Bepul sinash",
+"c.hero.badge":"Birinchi 14 kun bepul",
+"c.hero.h1a":"Butun doʻkoningiz","c.hero.h1b":"bitta ilovada",
+"c.hero.lede":"Savdo, ombor, nasiya daftari, xodimlar va foyda — bitta joyda, oʻzbek tilida va internet uzilganda ham ishlayveradi. Uztomic tomonidan Oʻzbekiston doʻkonlari uchun yaratilgan.",
+"c.hero.cta1":"Bepul boshlash","c.hero.cta2":"Ishlayotganini koʻrish",
+"c.hero.t1":"Internetsiz ishlaydi","c.hero.t2":"Telefon va Windows","c.hero.t3":"Oʻzbek, rus, ingliz",
+"c.hero.card1":"Shu oyda foyda","c.hero.card2":"Oflayn sotuv","c.hero.card3":"Saqlandi",
+"c.who.tag":"Kimlar uchun","c.who.h2":"Haqiqiy doʻkon peshtaxtasi uchun",
+"c.who.lede":"Roʻyxatdan oʻtayotganda yoʻnalishni tanlaysiz va ilova maydonlarini oʻshanga moslaydi — kiyimga oʻlcham, oziq-ovqatga tarozi va yaroqlilik muddati, santexnikaga metr.",
+"c.who.1t":"Kiyim va oyoq kiyim","c.who.1d":"Toʻliq oʻlcham × rang matritsasi — qaysi oʻlchamdan nechta qolganini aniq bilasiz.",
+"c.who.2t":"Oziq-ovqat","c.who.2d":"Tarozili tovar, kasrli miqdor va yaroqlilik muddati — oldindan ogohlantirish bilan.",
+"c.who.3t":"Santexnika va qurilish","c.who.3d":"Metrlab yoki donalab sotish, katta olib ketadiganlar uchun ulgurji narx darajalari.",
+"c.who.4t":"Aksesuarlar","c.who.4d":"Model va moslik boʻyicha qidiruv — mijozning savoliga soniyalarda javob topasiz.",
+"c.pp.tag":"Nega kerak","c.pp.h2":"Daftar hal qila olmaydigan oltita muammo",
+"c.pp.1a":"Qaysi oʻlchamdan nechta qolganini bilmaysiz","c.pp.1b":"Oʻlcham va rang boʻyicha aniq qoldiq",
+"c.pp.2a":"Nasiya daftari yoʻqoladi yoki janjalga sabab boʻladi","c.pp.2b":"Sana va eslatmali raqamli daftar",
+"c.pp.3a":"Sotuvchi pul olib qoʻyganini bilib boʻlmaydi","c.pp.3b":"Smena, Z-hisobot va audit yozuvi",
+"c.pp.4a":"Qaysi tovar foyda keltirayotgani nomaʼlum","c.pp.4b":"Har bir tovarda tannarx, ustama va foyda",
+"c.pp.5a":"Qotib qolgan tovar javonda sezilmay turadi","c.pp.5b":"Sekin sotiladiganlar hisoboti va AI maslahati",
+"c.pp.6a":"Internet uzilsa hamma ish toʻxtaydi","c.pp.6b":"Toʻliq oflayn rejim va avtomatik backup",
+"c.dm.tag":"Ilova ichida","c.dm.h2":"Kunning koʻp qismi shu toʻrt ekranda oʻtadi",
+"c.dm.lede":"Katta tugmalar ekranning pastida — mijoz kutib turganda bitta qoʻl bilan ishlash uchun.",
+"c.dm.1t":"Kassa","c.dm.1d":"Skanerlang yoki bosing, naqd yoki karta oling, chekni chiqaring.",
+"c.dm.2t":"Ombor","c.dm.2d":"Har bir oʻlcham va rang, tugashidan oldin ogohlantirish bilan.",
+"c.dm.3t":"Nasiya daftari","c.dm.3d":"Kim qancha qarzdor, qachondan beri va bugun kimga qoʻngʻiroq qilish kerak.",
+"c.dm.4t":"Foyda","c.dm.4d":"Savdo minus tannarx minus xarajat — haqiqiy raqam.",
+"c.fe.tag":"Imkoniyatlar","c.fe.h2":"Doʻkonga kerak boʻlgan hamma narsa, ortiqchasisiz",
+"c.fe.lede":"Qoʻqondagi haqiqiy peshtaxtalar ortida oʻtirib, nima toʻsqinlik qilishini soʻrab yigʻilgan tajriba asosida.",
+"c.f1t":"Kassa","c.f1d":"Uch bosishda sotuv: skanerlang yoki qidiring, naqd, karta yoki nasiyani tanlang — tamom. Tez toʻlov tugmalari: 50 000, 100 000, 200 000.",
+"c.f2t":"Oʻlcham va rang boʻyicha ombor","c.f2d":"Har bir mahsulot uchun toʻliq matritsa, kerak boʻlsa variantga alohida narx, va oʻlcham tugashidan oldin ogohlantirish.",
+"c.f3t":"Nasiya daftari","c.f3d":"Har bir qarz sanasi va toʻlovlar tarixi bilan. Ilova bugun kimga qoʻngʻiroq qilish kerakligini oʻzi aytadi — hech narsa yoʻqolib ketmaydi.",
+"c.f4t":"Xodimlar, rollar va smena","c.f4d":"Sotuvchi tannarxni hech qachon koʻrmaydi. Smenani ochish-yopish, Z-hisobot, va har bir amal audit yozuvida qoladi.",
+"c.f5t":"Foyda va hisobotlar","c.f5d":"Savdo minus tannarx minus xarajat — kun, mahsulot, sotuvchi yoki filial kesimida. Hisobchi soʻraganda Excelga chiqarasiz.",
+"c.f6t":"Filiallar va koʻchirish","c.f6d":"Tovarni doʻkonlar orasida yoki omborga koʻchiring — ikkala tomon tasdiqlaydi. Hisobotni bitta filial yoki hammasi boʻyicha koʻrasiz.",
+"c.f7t":"AI maslahatchi","c.f7d":"Oddiy oʻzbek tilida soʻrang: qaysi tovar qotib qolgan, nimani qayta olish kerak, qayerda narx notoʻgʻri. Pro tarifga kiradi.",
+"c.f8t":"Haqiqiy oflayn rejim","c.f8d":"Sotuv avval telefonga yoziladi, keyin sinxronlanadi. Oʻzgarish farq sifatida yuboriladi — ikkita qurilma oflaynda bir-birining ishini oʻchirmaydi.",
+"c.f9t":"Bluetooth chek","c.f9d":"Har qanday 58 mm ESC/POS printer. Doʻkon nomi, tovarlar, jami summa va qolgan qarz — soniyalarda chop etiladi.",
+"c.f10t":"Shtrix-kod","c.f10d":"Telefon kamerasi yoki USB skaner. Tovarda shtrix-kod boʻlmasa — ilova oʻzi chiqarib beradi.",
+"c.f11t":"Bildirishnomalar","c.f11d":"Kunlik xulosa, muddati kelayotgan qarz, tugab qolgan tovar, obuna muddati — telefonda, menyu ichida koʻmilib qolmaydi.",
+"c.f12t":"Chegirma va aksiyalar","c.f12d":"Foiz yoki aniq summa, bitta tovarga yoki butun savatchaga, boshlanish va tugash sanasi bilan — tasodifan abadiy qolib ketmaydi.",
+"c.pl.tag":"Qayerda ishlaydi","c.pl.h2":"Uchta ilova, bitta baza",
+"c.pl.lede":"Ega telefonda, kassir kompyuterda — ikkalasida ham hammasi bir soniyada yangilanadi.",
+"c.pl.1t":"Telefon — Android va iOS","c.pl.1d":"Asosiy ilova. Peshtaxta ortida ham, uydan ham: sotuv, qoldiq, foyda.",
+"c.pl.2t":"Windows kompyuter","c.pl.2d":"Kassa va tez kirim uchun katta ekran, klaviatura va USB skaner bilan.",
+"c.pl.3t":"Yordam paneli","c.pl.3d":"Bizning tomon: obunangiz, toʻlovlar va murojaatlar. Siz ilova ichidan yozasiz, biz oʻsha yerda javob beramiz.",
+"c.tr.tag":"Maʼlumotlaringiz","c.tr.h2":"Xavfsiz, ajratilgan va sizniki",
+"c.tr.1t":"Bir doʻkon ikkinchisini koʻrmaydi","c.tr.1d":"Har bir jadval bazaning oʻzida sizning doʻkon raqamingizga bogʻlangan — ilovada emas. Boshqa doʻkondan yuborilgan soʻrov hech narsa qaytarmaydi.",
+"c.tr.2t":"Koʻrinadigan backup","c.tr.2d":"Internet boʻlganda backup oʻzi ishlaydi. Bajarilmasa — koʻzga tashlanadigan ogohlantirish chiqadi, chunki jimgina xato eng xavflisi.",
+"c.tr.3t":"Istagan payt eksport","c.tr.3d":"Mahsulot, sotuv, qarz va hisobotlar bitta bosishda Excelga chiqadi. Raqamlar sizniki — istagan joyga olib ketasiz.",
+"c.tr.4t":"Toʻxtatish hech narsani oʻchirmaydi","c.tr.4d":"Obuna tugasa kirish toʻxtatiladi, maʼlumot esa joyida qoladi. Toʻlaganingizdan keyin hammasi avvalgidek qaytadi.",
+"c.pr.tag":"Narxlar","c.pr.h2":"Narx doʻkonga, sotuvchi boshiga emas",
+"c.pr.lede":"Peshtaxta ortida bir kishi tursa ham, besh kishi tursa ham oylik summa bir xil. Birinchi 14 kun bepul.",
+"c.pr.per":"oyiga","c.pr.cta":"Bepul boshlash","c.pr.badge":"AI bilan",
+"c.pr.1t":"Standard","c.pr.1d":"Bitta doʻkon yoki doʻkon va uning ombori uchun.",
+"c.pr.1p":"150 000 soʻm","c.pr.1w":"6 hisob · 2 filial",
+"c.pr.1f1":"Kassa, ombor, nasiya, hisobotlar","c.pr.1f2":"Oflayn rejim va avtomatik backup",
+"c.pr.1f3":"Telefon va Windows, qurilma soni cheklanmagan","c.pr.1f4":"Ilova ichidan yordam",
+"c.pr.2t":"Pro","c.pr.2d":"Bir nechta nuqta va kattaroq jamoasi bor oʻsayotgan biznes uchun.",
+"c.pr.2p":"400 000 soʻm","c.pr.2w":"16 hisob · 3 filial",
+"c.pr.2f1":"Standarddagi hamma narsa","c.pr.2f2":"AI maslahatchi, oyiga 100 ta soʻrov",
+"c.pr.2f3":"Uch filial va koʻchirish narxga kiradi","c.pr.2f4":"Yordamda birinchi navbatda javob",
+"c.ad.1":"Oʻrnatish va oʻqitish, bir marta","c.ad.2":"Chek printeri bilan oʻrnatish",
+"c.ad.3":"Har bir qoʻshimcha filial, oyiga","c.ad.4":"Qoʻshimcha 5 hisob, oyiga",
+"c.ad.note":"Uch va undan koʻp qoʻshimcha filial ochsangiz donasi arzonlashadi. Hisoblar beshtalik paketda sotiladi: birinchi paket 50 000, keyingilari 45 000 dan.",
+"c.cl.tag":"Kalkulyator","c.cl.h2":"Doʻkoningiz qancha toʻlaydi?",
+"c.cl.tier":"Tarif","c.cl.br":"Filiallar (doʻkon va ombor)","c.cl.us":"Hisoblar (siz va xodimlaringiz)",
+"c.cl.total":"Oyiga jami","c.cl.r1":"Tarif","c.cl.r2":"Qoʻshimcha filial","c.cl.r3":"Qoʻshimcha hisob",
+"crm.cl.inc":"Narxga {u} ta hisob va {b} ta filial kiradi.",
+"c.cl.note":"Oʻrnatish alohida va bir marta toʻlanadi: 400 000, chek printeri bilan 700 000.",
+"c.cl.cta":"14 kunlik bepul sinovni boshlash",
+"c.st.tag":"Qanday boshlanadi","c.st.h2":"Qoʻngʻiroqdan ishlayotgan kassagacha",
+"c.st.lede":"Koʻpchilik doʻkonlar qoʻngʻiroq qilgan kunining oʻzida ilova orqali sota boshlaydi.",
+"c.st.1t":"Siz bogʻlanasiz","c.st.1d":"Ariza qoldiring yoki Telegramga yozing. 24 soat ichida qoʻngʻiroq qilib, doʻkoningiz haqida soʻraymiz.",
+"c.st.2t":"Biz sozlab beramiz","c.st.2d":"Doʻkoningizni ochamiz, xodimlar hisobini qoʻshamiz, printer va skanerni siz bilan birga sozlaymiz.",
+"c.st.3t":"Maʼlumotni koʻchiramiz","c.st.3d":"Mahsulot, narx va ochiq qarzlar Excel faylingizdan yoki daftardan oʻtkaziladi — buni siz emas, biz qilamiz.",
+"c.st.4t":"Yoningizda qolamiz","c.st.4d":"Sotuvchilarni oʻqitamiz, keyin tushunarsiz narsa boʻlsa ilova ichidan yordam beramiz.",
+"c.fq.tag":"Javoblar","c.fq.h2":"Doʻkonchilar birinchi boʻlib soʻraydigan savollar",
+"c.fq.1q":"Rostdan internetsiz ishlaydimi?<span></span>","c.fq.1a":"Ha. Har bir sotuv, kirim va mijoz avval telefonga yoziladi, aloqa tiklanganda sinxronlanadi. Oʻzgarish umumiy son emas, farq sifatida yuboriladi — sotuvchi oflaynda uchta sotib, omborchi beshta kirim qilsa, natija toʻgʻri chiqadi va biri ikkinchisini oʻchirmaydi.",
+"c.fq.2q":"Boshqa doʻkon mening raqamlarimni koʻradimi?<span></span>","c.fq.2a":"Yoʻq. Har bir jadval baza darajasida himoyalangan va sizning doʻkon raqamingizga bogʻlangan. Boshqa hisobdan qoʻlda yuborilgan soʻrov ham hech narsa qaytarmaydi. Narxlaringiz, mijozlaringiz va foydangiz faqat sizniki.",
+"c.fq.3q":"Toʻlovni kechiktirsam nima boʻladi?<span></span>","c.fq.3a":"Muddat tugashiga 7 kun qolganda eslatma, oxirgi 3 kunda esa har kuni keladi. Sana oʻtgach ilova banner bilan ishlayveradi. Faqat taxminan 45 kundan keyin kirish toʻxtatiladi — va hatto shunda ham hech narsa oʻchirilmaydi. Toʻlaganingizdan keyin hammasi joyiga qaytadi.",
+"c.fq.4q":"Chek printeri sotib olish shartmi?<span></span>","c.fq.4a":"Yoʻq. Ilova printersiz ham mukammal ishlaydi va koʻp doʻkon shunday boshlaydi. Chek chiqarishni xohlasangiz, 58 mm Bluetooth printer bilan oʻrnatish paketi 400 000 emas, 700 000 boʻladi.",
+"c.fq.5q":"Sotuvchilarim telefonni yaxshi bilmaydi.<span></span>","c.fq.5a":"Ilova aynan ular uchun ishlangan. Katta tugmalar ekranning pastida, xato kodi emas oddiy oʻzbekcha yozuv, hammasi bitta bosh barmoq bilan yetadi, va xato qilsa qayta tuzatsa boʻladi. Oʻrnatish paytida jamoangizni oʻqitamiz.",
+"c.fq.6q":"Eski maʼlumotlarim yoʻqoladimi?<span></span>","c.fq.6a":"Yoʻq. Excel faylingizni yoki daftar rasmlarini yuboring — boshlashdan oldin mahsulot, narx va ochiq qarzlarni biz oʻzimiz koʻchirib beramiz.",
+"c.fq.7q":"Qaysi doʻkonlarga toʻgʻri keladi?<span></span>","c.fq.7a":"Avvalo kiyim va oyoq kiyim — oʻlcham va rang matritsasi eng koʻp shu yerda kerak. Oziq-ovqat, santexnika va aksesuar doʻkonlari ham ishlaydi: roʻyxatdan oʻtishda yoʻnalishni tanlaysiz va maydonlar oʻzgaradi.",
+"c.ct.tag":"Bepul sinov","c.ct.h2":"14 kun oʻz tovaringizda sinab koʻring",
+"c.ct.lede":"Raqamingizni qoldiring — 24 soat ichida qoʻngʻiroq qilamiz, doʻkonni siz bilan birga sozlaymiz va mahsulotlaringizni yuklaymiz. Ikki haftadan keyin toʻgʻri kelmasa, hech narsa toʻlamaysiz.",
+"c.ct.tg":"Telegram — eng tez javob","c.ct.ph":"Har kuni, 9:00–22:00",
+"c.ct.loc":"Qoʻqon, Fargʻona viloyati","c.ct.loc2":"Butun mamlakat boʻylab masofadan sozlaymiz",
+"c.fm.name":"Ismingiz <span>*</span>","c.fm.namePh":"Alisher Karimov","c.fm.phone":"Telefon <span>*</span>",
+"c.fm.type":"Qanday doʻkon?","c.fm.t1":"Kiyim / oyoq kiyim","c.fm.t2":"Oziq-ovqat","c.fm.t3":"Santexnika","c.fm.t4":"Aksesuar","c.fm.t5":"Boshqa",
+"c.fm.staff":"Nechta odam ishlaydi?",
+"c.fm.msg":"Yana nima bilishimiz kerak?",
+"c.fm.msgPh":"Masalan: ikkita doʻkon va bitta ombor, qarzlarni daftarda yuritamiz, mahsulotlar Excel faylda bor.",
+"c.fm.send":"Bepul sinovni boshlash","c.fm.note":"Karta ham, shartnoma ham, avtomatik yechib olish ham yoʻq. Biz qoʻngʻiroq qilamiz, qarorni siz qabul qilasiz.",
+"c.ft.about":"Uztomic CRM’ni Qoʻqondagi Uztomic studiyasi ishlab chiqadi va qoʻllab-quvvatlaydi. Telefonga javob beradigan odamlar kodni ham oʻzlari yozadi.",
+"c.ft.h1":"Mahsulot","c.ft.h2":"Uztomic","c.ft.h3":"Bogʻlanish",
+"c.ft.l1":"Bosh sahifa","c.ft.l2":"Xizmatlar","c.ft.l3":"Ishlarimiz","c.ft.l4":"Loyiha narxlari",
+"c.ft.city":"Qoʻqon, Oʻzbekiston",
+"_uzs":"soʻm","_weeks":"hafta",
+"_title":"Uztomic CRM — doʻkon uchun savdo, ombor va nasiya tizimi",
+"_desc":"Uztomic CRM: kassa, oʻlcham va rang boʻyicha ombor, raqamli nasiya daftari, xodim rollari, foyda hisoboti va filiallar. Internetsiz ishlaydi; Android, iOS va Windows. Oyiga 150 000 soʻmdan, 14 kun bepul.",
+"_ok":"Rahmat! Arizangiz yuborildi. 24 soat ichida bogʻlanamiz.",
+"_err":"Yuborib boʻlmadi. Bizga toʻgʻridan-toʻgʻri yozing:","_sending":"Yuborilmoqda…",
+"_copied":"Nusxalandi:","_req":"Bu maydonni toʻldiring","_phone":"Telefon raqamini toʻliq kiriting","_short":"Biroz batafsilroq yozing"
+},
+ru:{
+"intro.cta":"Войти на сайт","intro.skip":"Нажмите, чтобы пропустить",
+"c.nav.f":"Возможности","c.nav.d":"Демо","c.nav.p":"Цены","c.nav.q":"Вопросы","c.nav.home":"Студия Uztomic","c.nav.cta":"Попробовать",
+"c.hero.badge":"Первые 14 дней бесплатно",
+"c.hero.h1a":"Весь ваш магазин","c.hero.h1b":"в одном приложении",
+"c.hero.lede":"Продажи, склад, долговая тетрадь, сотрудники и прибыль — в одном месте и на понятном языке. Работает, даже когда интернета нет. Сделано Uztomic для магазинов Узбекистана.",
+"c.hero.cta1":"Начать бесплатно","c.hero.cta2":"Посмотреть в работе",
+"c.hero.t1":"Работает без интернета","c.hero.t2":"Телефон и Windows","c.hero.t3":"Узбекский, русский, английский",
+"c.hero.card1":"Прибыль за месяц","c.hero.card2":"Продажа офлайн","c.hero.card3":"Сохранено",
+"c.who.tag":"Для кого","c.who.h2":"Сделано для настоящего прилавка",
+"c.who.lede":"При регистрации вы выбираете направление, и приложение подстраивает поля — размеры для одежды, вес и срок годности для продуктов, метры для сантехники.",
+"c.who.1t":"Одежда и обувь","c.who.1d":"Полная матрица размер × цвет — вы всегда знаете, сколько осталось в каждом размере.",
+"c.who.2t":"Продукты","c.who.2d":"Весовой товар, дробные количества и сроки годности с предупреждением заранее.",
+"c.who.3t":"Сантехника и стройматериалы","c.who.3d":"Продажа метрами или штуками, оптовые уровни цен для крупных покупателей.",
+"c.who.4t":"Аксессуары","c.who.4d":"Поиск по модели и совместимости — ответ на вопрос клиента за секунды.",
+"c.pp.tag":"Зачем это нужно","c.pp.h2":"Шесть задач, которые тетрадь не решает",
+"c.pp.1a":"Неизвестно, сколько осталось в каждом размере","c.pp.1b":"Точный остаток по размеру и цвету",
+"c.pp.2a":"Долговая тетрадь теряется или вызывает споры","c.pp.2b":"Цифровая тетрадь с датами и напоминаниями",
+"c.pp.3a":"Не понять, взял ли продавец деньги себе","c.pp.3b":"Смены, Z-отчёт и журнал действий",
+"c.pp.4a":"Непонятно, какой товар приносит прибыль","c.pp.4b":"Себестоимость, наценка и прибыль по каждому товару",
+"c.pp.5a":"Залежавшийся товар стоит незамеченным","c.pp.5b":"Отчёт по медленным товарам и совет AI",
+"c.pp.6a":"Пропал интернет — работа встала","c.pp.6b":"Полный офлайн-режим и автоматический бэкап",
+"c.dm.tag":"Внутри приложения","c.dm.h2":"Четыре экрана, в которых проходит день",
+"c.dm.lede":"Большие кнопки внизу экрана — чтобы работать одной рукой, пока клиент ждёт.",
+"c.dm.1t":"Касса","c.dm.1d":"Отсканируйте или нажмите, примите наличные или карту, напечатайте чек.",
+"c.dm.2t":"Склад","c.dm.2d":"Каждый размер и цвет, с предупреждением до того, как закончится.",
+"c.dm.3t":"Долговая тетрадь","c.dm.3d":"Кто сколько должен, с какого числа и кому звонить сегодня.",
+"c.dm.4t":"Прибыль","c.dm.4d":"Выручка минус себестоимость минус расходы — настоящая цифра.",
+"c.fe.tag":"Возможности","c.fe.h2":"Всё, что нужно магазину, и ничего лишнего",
+"c.fe.lede":"Собрано из трёх лет работы за настоящими прилавками в Коканде и разговоров о том, что реально мешает.",
+"c.f1t":"Касса","c.f1d":"Продажа в три нажатия: отсканируйте или найдите, выберите наличные, карту или долг — готово. Быстрые кнопки: 50 000, 100 000, 200 000.",
+"c.f2t":"Склад по размеру и цвету","c.f2d":"Полная матрица по каждому товару, отдельная цена за вариант при необходимости и предупреждение до того, как размер закончится.",
+"c.f3t":"Долговая тетрадь","c.f3d":"Каждый долг с датой и историей платежей. Приложение само подсказывает, кому звонить сегодня — ничего не теряется тихо.",
+"c.f4t":"Сотрудники, роли и смены","c.f4d":"Продавец никогда не видит себестоимость. Открытие и закрытие смены, Z-отчёт, и каждое действие остаётся в журнале.",
+"c.f5t":"Прибыль и отчёты","c.f5d":"Выручка минус себестоимость минус расходы — по дню, товару, продавцу или филиалу. Выгрузка в Excel, когда попросит бухгалтер.",
+"c.f6t":"Филиалы и перемещения","c.f6d":"Переместите товар между магазинами или на склад — обе стороны подтверждают. Отчёт можно смотреть по филиалу или сразу по всем.",
+"c.f7t":"AI-советник","c.f7d":"Спросите обычными словами: какой товар залежался, что дозаказать, где цена неверна. Входит в тариф Pro.",
+"c.f8t":"Настоящий офлайн-режим","c.f8d":"Продажа сначала пишется в телефон, потом синхронизируется. Изменение передаётся как разница — два устройства офлайн не затирают работу друг друга.",
+"c.f9t":"Чек по Bluetooth","c.f9d":"Любой 58 мм ESC/POS-принтер. Название магазина, товары, итог и остаток долга — печать за секунды.",
+"c.f10t":"Штрих-код","c.f10d":"Камера телефона или USB-сканер. Нет штрих-кода на товаре — приложение напечатает свой.",
+"c.f11t":"Уведомления","c.f11d":"Дневная сводка, подходящий срок долга, заканчивающийся товар, окончание подписки — на телефон, а не где-то в меню.",
+"c.f12t":"Скидки и акции","c.f12d":"Процент или фиксированная сумма, на один товар или на всю корзину, с датой начала и конца — ничего не останется включённым навсегда.",
+"c.pl.tag":"Где работает","c.pl.h2":"Три приложения, одна база",
+"c.pl.lede":"Владелец на телефоне, кассир на компьютере — и всё обновляется у обоих в одну и ту же секунду.",
+"c.pl.1t":"Телефон — Android и iOS","c.pl.1d":"Основное приложение. Продажи, остатки и прибыль — и за прилавком, и из дома.",
+"c.pl.2t":"Компьютер на Windows","c.pl.2d":"Большой экран для кассы и быстрого приёма товара, с клавиатурой и USB-сканером.",
+"c.pl.3t":"Панель поддержки","c.pl.3d":"Наша сторона: подписка, платежи и обращения. Вы пишете прямо из приложения, мы там же отвечаем.",
+"c.tr.tag":"Ваши данные","c.tr.h2":"Защищены, отделены и принадлежат вам",
+"c.tr.1t":"Один магазин не видит другой","c.tr.1d":"Каждая таблица привязана к идентификатору вашего магазина на уровне базы, а не приложения. Запрос из другого магазина не вернёт ничего.",
+"c.tr.2t":"Бэкап, который видно","c.tr.2d":"Резервная копия делается сама, когда есть интернет. Если не удалась — вы увидите заметное предупреждение: тихая ошибка самая опасная.",
+"c.tr.3t":"Выгрузка в любой момент","c.tr.3d":"Товары, продажи, долги и отчёты уходят в Excel одним нажатием. Цифры ваши — забирайте их куда угодно.",
+"c.tr.4t":"Остановка ничего не удаляет","c.tr.4d":"Если подписка закончилась, доступ приостановлен, а данные остаются на месте. После оплаты всё возвращается как было.",
+"c.pr.tag":"Цены","c.pr.h2":"Цена за магазин, а не за продавца",
+"c.pr.lede":"За прилавком один человек или пятеро — сумма в месяц одна и та же. Первые 14 дней бесплатно.",
+"c.pr.per":"в месяц","c.pr.cta":"Начать бесплатно","c.pr.badge":"С AI",
+"c.pr.1t":"Standard","c.pr.1d":"Для одного магазина или магазина со складом.",
+"c.pr.1p":"150 000 сум","c.pr.1w":"6 аккаунтов · 2 филиала",
+"c.pr.1f1":"Касса, склад, долги, отчёты","c.pr.1f2":"Офлайн-режим и автоматический бэкап",
+"c.pr.1f3":"Телефон и Windows, без ограничения устройств","c.pr.1f4":"Поддержка прямо из приложения",
+"c.pr.2t":"Pro","c.pr.2d":"Для растущего бизнеса с несколькими точками и большей командой.",
+"c.pr.2p":"400 000 сум","c.pr.2w":"16 аккаунтов · 3 филиала",
+"c.pr.2f1":"Всё, что есть в Standard","c.pr.2f2":"AI-советник, 100 запросов в месяц",
+"c.pr.2f3":"Три филиала и перемещения включены","c.pr.2f4":"Приоритетный ответ поддержки",
+"c.ad.1":"Установка и обучение, разово","c.ad.2":"Установка с принтером чеков",
+"c.ad.3":"Каждый дополнительный филиал, в месяц","c.ad.4":"Дополнительные 5 аккаунтов, в месяц",
+"c.ad.note":"Откроете три и более дополнительных филиала — каждый обойдётся дешевле. Аккаунты продаются пакетами по пять: первый пакет 50 000, каждый следующий 45 000.",
+"c.cl.tag":"Калькулятор","c.cl.h2":"Сколько платил бы ваш магазин?",
+"c.cl.tier":"Тариф","c.cl.br":"Филиалы (магазины и склады)","c.cl.us":"Аккаунты (вы и сотрудники)",
+"c.cl.total":"Итого в месяц","c.cl.r1":"Тариф","c.cl.r2":"Доп. филиалы","c.cl.r3":"Доп. аккаунты",
+"crm.cl.inc":"В цену входит {u} аккаунтов и {b} филиала.",
+"c.cl.note":"Установка оплачивается отдельно и один раз: 400 000, с принтером чеков — 700 000.",
+"c.cl.cta":"Начать 14 бесплатных дней",
+"c.st.tag":"С чего начать","c.st.h2":"От звонка до работающей кассы",
+"c.st.lede":"Большинство магазинов начинают продавать через приложение в тот же день, когда позвонили.",
+"c.st.1t":"Вы связываетесь","c.st.1d":"Оставьте заявку или напишите в Telegram. Перезвоним в течение 24 часов и расспросим про магазин.",
+"c.st.2t":"Мы настраиваем","c.st.2d":"Создаём магазин, добавляем аккаунты сотрудников, вместе с вами настраиваем принтер и сканер.",
+"c.st.3t":"Переносим данные","c.st.3d":"Товары, цены и открытые долги переносим из вашего Excel или тетради — это делаем мы, а не вы.",
+"c.st.4t":"Остаёмся рядом","c.st.4d":"Обучаем продавцов, дальше помогаем прямо из приложения, когда что-то непонятно.",
+"c.fq.tag":"Ответы","c.fq.h2":"О чём спрашивают в первую очередь",
+"c.fq.1q":"Правда работает без интернета?<span></span>","c.fq.1a":"Да. Каждая продажа, приход и клиент сначала пишутся в телефон, а синхронизируются, когда связь вернётся. Изменение передаётся как разница, а не как итог: если продавец офлайн продал три, а кладовщик принял пять, результат будет верным и ничего не затрётся.",
+"c.fq.2q":"Другой магазин увидит мои цифры?<span></span>","c.fq.2a":"Нет. Каждая таблица защищена на уровне базы и привязана к идентификатору вашего магазина. Даже запрос, отправленный вручную из другого аккаунта, вернёт пустоту. Ваши цены, клиенты и прибыль остаются вашими.",
+"c.fq.3q":"Что будет, если задержу оплату?<span></span>","c.fq.3a":"Напоминание приходит за 7 дней до конца, последние 3 дня — ежедневно. После даты приложение продолжает работать с баннером сверху. Только примерно через 45 дней доступ приостанавливается — и даже тогда ничего не удаляется. После оплаты всё возвращается как было.",
+"c.fq.4q":"Обязательно покупать принтер чеков?<span></span>","c.fq.4a":"Нет. Приложение отлично работает и без него, многие так и начинают. Если нужны печатные чеки, пакет установки с 58 мм Bluetooth-принтером стоит 700 000 вместо 400 000.",
+"c.fq.5q":"Мои продавцы плохо ладят с телефоном.<span></span>","c.fq.5a":"Приложение и делалось для них. Большие кнопки внизу экрана, понятные фразы вместо кодов ошибок, всё достаётся одним большим пальцем, а ошибку всегда можно исправить. Обучение входит в установку.",
+"c.fq.6q":"Мои старые данные пропадут?<span></span>","c.fq.6a":"Нет. Пришлите файл Excel или фотографии тетради — товары, цены и открытые долги мы перенесём до того, как вы начнёте работать.",
+"c.fq.7q":"Каким магазинам подходит?<span></span>","c.fq.7a":"В первую очередь одежде и обуви — там матрица размеров и цветов нужнее всего. Продукты, сантехника и аксессуары тоже работают: при регистрации выбираете направление, и поля меняются под него.",
+"c.ct.tag":"Бесплатный период","c.ct.h2":"Попробуйте 14 дней на своём товаре",
+"c.ct.lede":"Оставьте номер — перезвоним в течение 24 часов, вместе настроим магазин и загрузим ваши товары. Если через две недели не подойдёт, вы ничего не платите.",
+"c.ct.tg":"Telegram — отвечаем быстрее всего","c.ct.ph":"Ежедневно, 9:00–22:00",
+"c.ct.loc":"Коканд, Ферганская область","c.ct.loc2":"Настраиваем удалённо по всей стране",
+"c.fm.name":"Ваше имя <span>*</span>","c.fm.namePh":"Алишер Каримов","c.fm.phone":"Телефон <span>*</span>",
+"c.fm.type":"Какой у вас магазин?","c.fm.t1":"Одежда / обувь","c.fm.t2":"Продукты","c.fm.t3":"Сантехника","c.fm.t4":"Аксессуары","c.fm.t5":"Другое",
+"c.fm.staff":"Сколько человек работает?",
+"c.fm.msg":"Что нам ещё стоит знать?",
+"c.fm.msgPh":"Например: два магазина и склад, долги ведём в тетради, товары есть в файле Excel.",
+"c.fm.send":"Начать бесплатный период","c.fm.note":"Без карты, без договора и без автосписаний. Мы звоним, решаете вы.",
+"c.ft.about":"Uztomic CRM создаёт и поддерживает студия Uztomic из Коканда. Те же люди, что берут трубку, пишут и код.",
+"c.ft.h1":"Продукт","c.ft.h2":"Uztomic","c.ft.h3":"Связаться",
+"c.ft.l1":"Главная","c.ft.l2":"Услуги","c.ft.l3":"Работы","c.ft.l4":"Цены на проекты",
+"c.ft.city":"Коканд, Узбекистан",
+"_uzs":"сум","_weeks":"недель",
+"_title":"Uztomic CRM — продажи, склад и долги для вашего магазина",
+"_desc":"Uztomic CRM: касса, остатки по размеру и цвету, цифровая долговая тетрадь, роли сотрудников, отчёты по прибыли и филиалы. Работает офлайн; Android, iOS и Windows. От 150 000 сум в месяц, 14 дней бесплатно.",
+"_ok":"Спасибо! Заявка отправлена. Свяжемся в течение 24 часов.",
+"_err":"Не удалось отправить. Напишите нам напрямую:","_sending":"Отправляем…",
+"_copied":"Скопировано:","_req":"Заполните это поле","_phone":"Введите номер полностью","_short":"Напишите чуть подробнее"
+}};
+</script>
+<script src="/assets/ui.js" defer></script>
+</body>
+</html>

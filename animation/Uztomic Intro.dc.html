@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@400;500;600&display=swap" />
+<style>
+  html, body { margin: 0; padding: 0; background: #05070a; }
+  a { color: #5b7cfa; text-decoration: none; }
+  a:hover { color: #93a7ff; }
+</style>
+<script>window.OM_SCENES = '[{"name":"Nol","dur":1.8,"desc":"Qorong\u2019ulikdan brend foni ochiladi va markazda nur chizig\u2019i tug\u2019iladi"},{"name":"Qurilish","dur":3.2,"desc":"\u201cU\u201d belgisi bir chizgida chiziladi, keyin ikki plastina joyiga urilib tushadi"},{"name":"Orbita","dur":2.4,"desc":"Orbita halqasi aylanib chiziladi, ikki nuqta u bo\u2019ylab harakatlanadi"},{"name":"Nom","dur":2.6,"desc":"UZTOMIC harflari birma-bir yig\u2019iladi, tagline harflari yoyilib ochiladi"},{"name":"Kirish","dur":3.0,"desc":"Logotip yuqoriga ko\u2019tariladi va \u201cWebsitega kirish\u201d tugmasi porlaydi"}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"loop"}';</script>
+</helmet>
+<div style="width: 100%; height: 100vh; background: #05070a; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+  <x-import component-from-global-scope="IntroStage" from="./animations-v3.jsx ./uztomic-intro.jsx" accent-color="{{ accentColor }}" cta-label="{{ ctaLabel }}" hint-size="100%,100%"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#5b7cfa&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#5b7cfa&quot;,&quot;#22d3ee&quot;,&quot;#a78bfa&quot;,&quot;#ffffff&quot;]},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Websitega kirish&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;motionEditor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accentColor: this.props.accentColor ?? '#5b7cfa',
+      ctaLabel: this.props.ctaLabel ?? 'Websitega kirish',
+    };
+  }
+}
+</script>
+</body>
+</html>

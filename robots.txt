@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /animation/
 
 Sitemap: https://uztomic.uz/sitemap.xml
