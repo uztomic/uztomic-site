@@ -7,8 +7,9 @@ Ikki sahifali statik sayt. **Server, maʼlumotlar bazasi yoki oylik toʻlov kera
 | `uztomic.uz` | Studiya: xizmatlar, ishlar, narxlar, ariza formasi |
 | `uztomic.uz/crm` | **Uztomic CRM** — doʻkonlar uchun tayyor tizim: imkoniyatlar, jonli demo, narxlar, bepul sinov |
 
-- Uch til: **EN / UZ / RU**. Bosh sahifa birinchi kirganda brauzer tiliga qarab ochiladi,
-  `/crm` esa **oʻzbekcha** (auditoriya — doʻkonchilar). Foydalanuvchi tanlovi brauzerda saqlanadi.
+- Uch til: **EN / UZ / RU**. Ikkala sahifa ham birinchi kirganda **oʻzbekcha** ochiladi —
+  brauzer tili qasddan hisobga olinmaydi. Foydalanuvchi EN yoki RU ni bir marta tanlasa,
+  tanlovi brauzerda saqlanadi va keyin oʻsha tilda ochiladi.
 - Qorongʻi/yorugʻ rejim tizim sozlamasi boʻyicha tanlanadi, keyin foydalanuvchi tanlovi eslab qolinadi.
 - `uztomic.uz/?lang=ru`, `uztomic.uz/crm/?lang=en` — toʻgʻridan-toʻgʻri kerakli tildagi havola.
 - Brend **kirish animatsiyasi** har bir brauzer seansida **bir marta** koʻrsatiladi (~3,9 soniya),
@@ -25,7 +26,9 @@ crm/index.html        — Uztomic CRM sahifasi
 assets/
   ui.css              — UMUMIY dizayn tizimi (ranglar, tugmalar, kartalar, animatsiyalar)
   ui.js               — UMUMIY skript (mavzu, tillar, animatsiya, forma, kalkulyatorlar)
-  logo.png            — asosiy logotip (ikonka va ulashish uchun)
+  logo.png            — asosiy logotip (ulashish va manba sifatida)
+  mark-dark-*.png     — brauzer yorligʻi uchun belgi (yorugʻ tizimda)
+  mark-light-*.png    — xuddi shu belgi (qorongʻi tizimda)
   uztomic-logo-*.png  — toʻliq logo (oq / qora)
   uztomic-mark-*.png  — faqat "U" belgisi (menyu uchun)
   favicon-*.png, icon-192.png, apple-touch-icon.png, favicon.ico
@@ -128,6 +131,9 @@ Maxsus kalitlar: `_title` (sahifa sarlavhasi), `_desc` (Google uchun tavsif),
 
 ## 6. Kirish animatsiyasi
 
+Orbita halqasi logotipdagi burchakda (−18°) qotib turadi — u aylanmaydi.
+Ilgari sekin aylanardi va bir necha soniyadan keyin brend burchagidan chiqib ketardi.
+
 `animation/` papkasida animatsiyaning **dizayn manbasi** turadi (Claude Design kompozitsiyasi,
 JSX + 70 KB pleyer). Saytda **u ishlatilmaydi** — oʻsha animatsiya sof SVG va CSS bilan
 qaytadan yigʻilgan: `assets/ui.css` oxiridagi `INTRO` boʻlimi va sahifalardagi `<div id="intro">`.
@@ -182,7 +188,7 @@ git push
 ## 8. Ishga tushirishdan oldin tekshirish roʻyxati
 
 1. Ikkala sahifa ochiladi: `/` va `/crm/`, konsolda xato yoʻq (`F12 → Console`)
-2. Uch til: EN / UZ / RU — tarjimasiz matn qolmagan; `/crm/` oʻzbekcha ochiladi
+2. Uch til: EN / UZ / RU — tarjimasiz matn qolmagan; ikkala sahifa ham oʻzbekcha ochiladi
 3. Ikki mavzu: qorongʻi va yorugʻ, qayta yuklaganda tanlov saqlanadi
 4. Kengliklar: 360, 768, 1024, 1440 px — gorizontal scroll yoʻq
 5. Kirish animatsiyasi bir marta chiqadi, bosilganda yopiladi; yangi tabda yana chiqadi
@@ -217,5 +223,9 @@ matnini oʻzgartiring va `window.I18N` ichiga `wk.4.*` kalitlari bilan tarjimasi
 
 **Statistika raqamlari** — `index.html` da `data-count` atributlari (ekranga kelganda sanaladi).
 
-**Logotipni almashtirsangiz** — `assets/` dagi `favicon-*.png`, `icon-192.png`,
+**Brauzer yorligʻidagi ikonka** — `assets/uztomic-mark-dark.png` dan yasalgan
+`favicon.ico` (16/32/48) va `assets/mark-dark-48.png`. Tizim qorongʻi rejimda boʻlsa
+skript uni `mark-light-48.png` ga almashtiradi, aks holda belgi qora fonda koʻrinmasdi.
+
+**Logotipni almashtirsangiz** — `assets/` dagi `mark-*`, `favicon.ico`, `icon-192.png`,
 `apple-touch-icon.png` va `og.jpg` ni ham qayta yasash kerak.

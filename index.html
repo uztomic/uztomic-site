@@ -18,11 +18,10 @@ if(location.protocol==='http:'&&/(^|\.)uztomic\.uz$/.test(location.hostname))
 <link rel="alternate" hreflang="ru" href="https://uztomic.uz/?lang=ru">
 <link rel="alternate" hreflang="x-default" href="https://uztomic.uz/">
 
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
-<link rel="icon" type="image/png" sizes="640x640" href="/assets/logo.png">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/mark-dark-16.png" data-swap>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/mark-dark-32.png" data-swap>
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/mark-dark-48.png" data-swap>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
@@ -133,6 +132,11 @@ html[data-theme="dark"] .crmb{background:linear-gradient(150deg,#141838,#0C0F26)
 </style>
 </head>
 <body>
+<a class="promo" href="/crm/">
+  <b data-i18n="pb.badge">New</b>
+  <span data-i18n="pb.text">Uztomic CRM — a ready-made system for your shop. First 14 days free.</span>
+  <i aria-hidden="true">&#8594;</i>
+</a>
 
 <!-- ══ INTRO ══ (rebuilt from animation/uztomic-intro.jsx as plain SVG + CSS) -->
 <div id="intro" aria-hidden="true">
@@ -231,7 +235,7 @@ html[data-theme="dark"] .crmb{background:linear-gradient(150deg,#141838,#0C0F26)
       <div class="hero__cta">
         <a class="btn btn--p" href="#contact" data-mag><span data-i18n="hero.cta1">Start a project</span>
           <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn--g" href="/crm/"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="15" rx="2.4"/><path d="M3 9h18M7 14h5"/></svg>
+        <a class="btn btn--o" href="/crm/" data-mag><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="15" rx="2.4"/><path d="M3 9h18M7 14h5"/></svg>
           <span data-i18n="hero.cta3">CRM for shops</span></a>
       </div>
       <ul class="ticks">
@@ -272,19 +276,6 @@ html[data-theme="dark"] .crmb{background:linear-gradient(150deg,#141838,#0C0F26)
   </div>
 </section>
 
-<!-- ══ TECH STRIP ══ -->
-<div class="strip" aria-hidden="true"><div class="strip__t" id="strip" data-items="Flutter|Dart|Supabase|PostgreSQL|Node.js|React|Python|Firebase|Docker|REST API|Telegram Bot API|SQLite|Google Play|App Store|Figma|1C integration"></div></div>
-
-<!-- ══ STATS ══ -->
-<section style="padding-block:clamp(46px,6vw,74px)">
-  <div class="wrap stats">
-    <div class="stat" data-rv="up"><b data-count="5" data-suffix="+">5+</b><span data-i18n="st.1">Products shipped</span></div>
-    <div class="stat" data-rv="up"><b data-count="6">6</b><span data-i18n="st.2">Weeks average launch</span></div>
-    <div class="stat" data-rv="up"><b data-count="24" data-suffix="h">24h</b><span data-i18n="st.3">Reply time</span></div>
-    <div class="stat" data-rv="up"><b data-count="3">3</b><span data-i18n="st.4">Months free support</span></div>
-  </div>
-</section>
-
 <!-- ══ CRM BANNER ══ -->
 <section id="crm" style="padding-block:clamp(20px,3vw,40px)">
   <div class="wrap">
@@ -316,6 +307,19 @@ html[data-theme="dark"] .crmb{background:linear-gradient(150deg,#141838,#0C0F26)
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══ TECH STRIP ══ -->
+<div class="strip" aria-hidden="true"><div class="strip__t" id="strip" data-items="Flutter|Dart|Supabase|PostgreSQL|Node.js|React|Python|Firebase|Docker|REST API|Telegram Bot API|SQLite|Google Play|App Store|Figma|1C integration"></div></div>
+
+<!-- ══ STATS ══ -->
+<section style="padding-block:clamp(46px,6vw,74px)">
+  <div class="wrap stats">
+    <div class="stat" data-rv="up"><b data-count="5" data-suffix="+">5+</b><span data-i18n="st.1">Products shipped</span></div>
+    <div class="stat" data-rv="up"><b data-count="6">6</b><span data-i18n="st.2">Weeks average launch</span></div>
+    <div class="stat" data-rv="up"><b data-count="24" data-suffix="h">24h</b><span data-i18n="st.3">Reply time</span></div>
+    <div class="stat" data-rv="up"><b data-count="3">3</b><span data-i18n="st.4">Months free support</span></div>
   </div>
 </section>
 
@@ -732,9 +736,10 @@ html[data-theme="dark"] .crmb{background:linear-gradient(150deg,#141838,#0C0F26)
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script>
-window.UZ = { page:'home', lang:'en' };
+window.UZ = { page:'home', lang:'uz' };
 window.I18N = {
 uz:{
+"pb.badge":"Yangi","pb.text":"Uztomic CRM — doʻkoningiz uchun tayyor tizim. Birinchi 14 kun bepul.",
 "nav.s":"Xizmatlar","nav.crm":"Doʻkon uchun CRM","nav.crm2":"CRM","nav.p":"Jarayon","nav.w":"Ishlarimiz","nav.pr":"Narxlar","nav.f":"Savollar","nav.cta":"Loyihani boshlash",
 "hero.badge":"Yangi loyihalar qabul qilinmoqda",
 "hero.h1a":"Biznesingiz ishlaydigan","hero.h1b":"dasturni","hero.h1c":"biz quramiz",
@@ -841,6 +846,7 @@ uz:{
 "_copied":"Nusxalandi:","_req":"Bu maydonni toʻldiring","_phone":"Telefon raqamini toʻliq kiriting","_short":"Biroz batafsilroq yozing"
 },
 ru:{
+"pb.badge":"Новое","pb.text":"Uztomic CRM — готовая система для вашего магазина. Первые 14 дней бесплатно.",
 "nav.s":"Услуги","nav.crm":"CRM для магазина","nav.crm2":"CRM","nav.p":"Процесс","nav.w":"Работы","nav.pr":"Цены","nav.f":"Вопросы","nav.cta":"Начать проект",
 "hero.badge":"Принимаем новые проекты",
 "hero.h1a":"Создаём","hero.h1b":"программы,","hero.h1c":"на которых работает ваш бизнес",

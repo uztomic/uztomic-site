@@ -62,20 +62,101 @@ var themeBtn = $('#theme');
 if(themeBtn) themeBtn.addEventListener('click',function(e){
   applyTheme(root.dataset.theme==='dark'?'light':'dark', true, e);
 });
+/* the browser tab sits in the OS chrome, so the icon follows the OS colour
+   scheme rather than the theme chosen on the page */
+var iconLinks = $$('link[rel="icon"][data-swap]');
+var mqDark = matchMedia('(prefers-color-scheme: dark)');
+function paintIcon(dark){
+  var tone = dark ? 'light' : 'dark';
+  iconLinks.forEach(function(l){
+    l.href = '/assets/mark-' + tone + '-' + l.getAttribute('sizes').split('x')[0] + '.png';
+  });
+}
+paintIcon(mqDark.matches);
+mqDark.addEventListener('change',function(e){ paintIcon(e.matches) });
+
 /* follow the system only while the visitor has not chosen for themselves */
 matchMedia('(prefers-color-scheme: light)').addEventListener('change',function(e){
   if(!store.get('uztomic-theme')) paintTheme(e.matches?'light':'dark');
 });
 
+/* ══════════════════ I18N ══════════════════ */
+var I18N = window.I18N || {};
+I18N.en = I18N.en || {};
+var descMeta = $('meta[name=description]');
+
+/* English is the source of truth and lives in the markup */
+$$('[data-i18n]').forEach(function(el){ I18N.en[el.dataset.i18n] = el.innerHTML });
+$$('[data-i18n-html]').forEach(function(el){ I18N.en[el.dataset.i18nHtml] = el.innerHTML });
+$$('[data-i18n-ph]').forEach(function(el){ I18N.en[el.dataset.i18nPh] = el.placeholder });
+I18N.en._title = document.title;
+I18N.en._desc  = descMeta ? descMeta.content : '';
+
+var EN_FALLBACK = {
+  _ok:"Thank you! Your request has been sent. We'll be in touch within 24 hours.",
+  _err:"Couldn't send the form. Please reach us directly:",
+  _sending:"Sending…", _copied:"Copied:", _uzs:"UZS", _weeks:"weeks",
+  _req:"Please fill this in", _phone:"Enter the full phone number",
+  _short:"Please write a little more"
+};
+Object.keys(EN_FALLBACK).forEach(function(k){
+  if(I18N.en[k] === undefined) I18N.en[k] = EN_FALLBACK[k];
+});
+
+var LANG = 'en';
+function T(k){
+  var d = I18N[LANG] || {};
+  return d[k] !== undefined ? d[k] : (I18N.en[k] !== undefined ? I18N.en[k] : k);
+}
+function setLang(l){
+  var d = I18N[l];
+  if(!d) return;
+  LANG = l;
+  root.lang = l;
+  $$('[data-i18n]').forEach(function(el){
+    var v = d[el.dataset.i18n]; if(v !== undefined) el.innerHTML = v;
+  });
+  $$('[data-i18n-html]').forEach(function(el){
+    var v = d[el.dataset.i18nHtml]; if(v !== undefined) el.innerHTML = v;
+  });
+  $$('[data-i18n-ph]').forEach(function(el){
+    var v = d[el.dataset.i18nPh]; if(v !== undefined) el.placeholder = v;
+  });
+  if(d._title) document.title = d._title;
+  if(d._desc && descMeta) descMeta.content = d._desc;
+  $$('.seg button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang === l) });
+  store.set('uztomic-lang',l);
+  splitWords();
+  refreshCalcs();
+}
+$$('.seg button').forEach(function(b){
+  b.addEventListener('click',function(){ setLang(b.dataset.lang) });
+});
+
+/* ══════════════════ LANGUAGE — first visit ══════════════════ */
+var qLang = new URLSearchParams(location.search).get('lang');
+/* the site opens in Uzbek for everyone. The browser language is deliberately
+   ignored: the audience is here, and anyone who wants EN or RU picks it once
+   and the choice is remembered. */
+var saved = qLang || store.get('uztomic-lang') || CFG.lang || 'uz';
+if(I18N[saved]) setLang(saved);
+else { splitWords(); refreshCalcs() }
+
 /* ══════════════════ HEADER · PROGRESS · TOP ══════════════════ */
 var hdr = $('#hdr'), bar = $('#bar'), topBtn = $('#top');
 var ring = topBtn && topBtn.querySelector('.ring circle');
 var RING = 132;                                   /* 2πr, r = 21 */
-var ticking = false;
+var ticking = false, docH = 0;
+
+/* reading scrollHeight inside the scroll handler forces a layout on every
+   frame — measure it only when the page actually changes size */
+function measure(){ docH = document.documentElement.scrollHeight - innerHeight }
+measure();
+if(window.ResizeObserver) new ResizeObserver(measure).observe(document.body);
+addEventListener('load',measure);
 
 function onScroll(){
-  var max = document.documentElement.scrollHeight - innerHeight;
-  var p   = max > 0 ? Math.min(scrollY/max,1) : 0;
+  var p = docH > 0 ? Math.min(scrollY/docH,1) : 0;
   if(hdr)    hdr.classList.toggle('stuck', scrollY > 12);
   if(bar)    bar.style.transform = 'scaleX('+p+')';
   if(topBtn) topBtn.classList.toggle('show', scrollY > 700);
@@ -86,7 +167,7 @@ function onScroll(){
 addEventListener('scroll',function(){
   if(!ticking){ ticking = true; requestAnimationFrame(onScroll) }
 },{passive:true});
-addEventListener('resize',onScroll,{passive:true});
+addEventListener('resize',function(){ measure(); onScroll() },{passive:true});
 if(topBtn) topBtn.addEventListener('click',function(){
   scrollTo({top:0,behavior:reduced?'auto':'smooth'});
 });
@@ -286,59 +367,6 @@ $$('.faq details').forEach(function(d){
         {duration:300,easing:'cubic-bezier(.16,1,.3,1)'});
     }
   });
-});
-
-/* ══════════════════ I18N ══════════════════ */
-var I18N = window.I18N || {};
-I18N.en = I18N.en || {};
-var descMeta = $('meta[name=description]');
-
-/* English is the source of truth and lives in the markup */
-$$('[data-i18n]').forEach(function(el){ I18N.en[el.dataset.i18n] = el.innerHTML });
-$$('[data-i18n-html]').forEach(function(el){ I18N.en[el.dataset.i18nHtml] = el.innerHTML });
-$$('[data-i18n-ph]').forEach(function(el){ I18N.en[el.dataset.i18nPh] = el.placeholder });
-I18N.en._title = document.title;
-I18N.en._desc  = descMeta ? descMeta.content : '';
-
-var EN_FALLBACK = {
-  _ok:"Thank you! Your request has been sent. We'll be in touch within 24 hours.",
-  _err:"Couldn't send the form. Please reach us directly:",
-  _sending:"Sending…", _copied:"Copied:", _uzs:"UZS", _weeks:"weeks",
-  _req:"Please fill this in", _phone:"Enter the full phone number",
-  _short:"Please write a little more"
-};
-Object.keys(EN_FALLBACK).forEach(function(k){
-  if(I18N.en[k] === undefined) I18N.en[k] = EN_FALLBACK[k];
-});
-
-var LANG = 'en';
-function T(k){
-  var d = I18N[LANG] || {};
-  return d[k] !== undefined ? d[k] : (I18N.en[k] !== undefined ? I18N.en[k] : k);
-}
-function setLang(l){
-  var d = I18N[l];
-  if(!d) return;
-  LANG = l;
-  root.lang = l;
-  $$('[data-i18n]').forEach(function(el){
-    var v = d[el.dataset.i18n]; if(v !== undefined) el.innerHTML = v;
-  });
-  $$('[data-i18n-html]').forEach(function(el){
-    var v = d[el.dataset.i18nHtml]; if(v !== undefined) el.innerHTML = v;
-  });
-  $$('[data-i18n-ph]').forEach(function(el){
-    var v = d[el.dataset.i18nPh]; if(v !== undefined) el.placeholder = v;
-  });
-  if(d._title) document.title = d._title;
-  if(d._desc && descMeta) descMeta.content = d._desc;
-  $$('.seg button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang === l) });
-  store.set('uztomic-lang',l);
-  splitWords();
-  refreshCalcs();
-}
-$$('.seg button').forEach(function(b){
-  b.addEventListener('click',function(){ setLang(b.dataset.lang) });
 });
 
 /* ══════════════════ COPY TO CLIPBOARD ══════════════════ */
@@ -619,19 +647,6 @@ if(form){
   });
 }
 
-/* ══════════════════ LANGUAGE — first visit ══════════════════ */
-var qLang = new URLSearchParams(location.search).get('lang');
-var saved = qLang || store.get('uztomic-lang');
-if(!saved){
-  /* only uz and ru are auto-detected from the browser. Anything else falls
-     back to the page default (window.UZ.lang): English on the studio page,
-     Uzbek on the CRM page, which is written for local shopkeepers. */
-  var nav2 = (navigator.language || '').slice(0,2).toLowerCase();
-  saved = (nav2 === 'uz' || nav2 === 'ru') ? nav2 : (CFG.lang || 'en');
-}
-if(saved && I18N[saved]) setLang(saved);
-else { splitWords(); refreshCalcs() }
-
 /* ══════════════════ PAGE FADE between / and /crm ══════════════════ */
 if(!reduced){
   document.addEventListener('click',function(e){
@@ -662,6 +677,8 @@ if(intro && root.classList.contains('intro')){
        (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ')) endIntro();
   });
 }
+
+refreshCalcs();
 
 var yr = $('#yr');
  if(yr) yr.textContent = new Date().getFullYear();
