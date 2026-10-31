@@ -1,958 +1,769 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="uz">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-/* belt and braces: GitHub Pages' own http->https redirect can lag behind the
-   certificate, so send visitors who typed "uztomic.uz" to https ourselves */
-if(location.protocol==='http:'&&/(^|\.)uztomic\.uz$/.test(location.hostname))
-  location.replace('https://'+location.host+location.pathname+location.search+location.hash);
-</script>
-<title>Uztomic — Smart Software Solutions | Mobile apps, web platforms & business systems</title>
-<meta name="description" content="Uztomic is a software studio in Qo'qon, Fergana region. Mobile apps, websites and platforms, enterprise systems, automation and startup MVPs — plus Uztomic CRM, our ready-made system for shops.">
-<meta name="theme-color" content="#0A0C18">
+<title>Uztomic — dasturiy ta'minot studiyasi, Qo'qon</title>
+<meta name="description" content="Uztomic — Qo'qondagi dasturiy ta'minot studiyasi. Mobil ilovalar, saytlar, CRM va ERP tizimlar, Telegram botlar. Qat'iy narx va muddat, kod sizniki, 3 oy bepul qo'llab-quvvatlash.">
+<meta property="og:title" content="Uztomic — biznesingiz uchun dastur">
+<meta property="og:description" content="Mobil ilova, sayt, CRM, Telegram bot. Narxni saytning o'zida hisoblang.">
+<meta property="og:image" content="https://uztomic.uz/assets/og.jpg">
+<meta name="theme-color" content="#0E1033">
 <link rel="canonical" href="https://uztomic.uz/">
-<link rel="alternate" hreflang="en" href="https://uztomic.uz/">
-<link rel="alternate" hreflang="uz" href="https://uztomic.uz/?lang=uz">
+<link rel="alternate" hreflang="uz" href="https://uztomic.uz/">
 <link rel="alternate" hreflang="ru" href="https://uztomic.uz/?lang=ru">
-<link rel="alternate" hreflang="x-default" href="https://uztomic.uz/">
-
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/mark-dark-16.png" data-swap>
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/mark-dark-32.png" data-swap>
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/mark-dark-48.png" data-swap>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Uztomic">
 <meta property="og:url" content="https://uztomic.uz/">
-<meta property="og:title" content="Uztomic — Smart Software Solutions">
-<meta property="og:description" content="Mobile apps, web platforms, enterprise systems and automation. Plus Uztomic CRM for shops. Built in Qo'qon, Uzbekistan.">
-<meta property="og:image" content="https://uztomic.uz/assets/og.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Uztomic — Smart Software Solutions">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Uztomic — Smart Software Solutions">
-<meta name="twitter:description" content="Mobile apps, web platforms, enterprise systems and automation. Plus Uztomic CRM for shops.">
-<meta name="twitter:image" content="https://uztomic.uz/assets/og.jpg">
-
-<!-- theme is applied before first paint so the page never flashes the wrong colours -->
-<script>
-(function(){try{
-  var t=localStorage.getItem('uztomic-theme');
-  if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
-  document.documentElement.dataset.theme=t;
-  document.querySelector('meta[name=theme-color]').content=t==='dark'?'#0A0C18':'#FFFFFF';
-}catch(e){}})();
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Uztomic","url":"https://uztomic.uz","logo":"https://uztomic.uz/assets/logo.png","email":"uztomic@gmail.com","telephone":"+998770165963","address":{"@type":"PostalAddress","addressLocality":"Qo'qon","addressRegion":"Farg'ona","addressCountry":"UZ"},"sameAs":["https://t.me/uztomic_official","https://www.instagram.com/uztomic"]}
 </script>
-
-<!-- brand intro: decides before first paint, and unlocks itself on a timer
-     so the page can never stay locked if ui.js fails to load -->
-<script>
-(function(){try{
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if(location.hash) return;                       /* deep link: straight to the section */
-  if(sessionStorage.getItem('uztomic-intro')) return;
-  sessionStorage.setItem('uztomic-intro','1');
-  var r=document.documentElement;
-  r.classList.add('intro');
-  setTimeout(function(){ r.classList.remove('intro') },3880);
-}catch(e){}})();
-</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Michroma&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/ui.css">
-
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://uztomic.uz/#org","name":"Uztomic","alternateName":"Uztomic — Smart Software Solutions","url":"https://uztomic.uz","logo":"https://uztomic.uz/assets/logo.png","image":"https://uztomic.uz/assets/og.jpg","description":"Mobile apps, websites and platforms, enterprise systems, automation, startup MVPs and Uztomic CRM for retail shops.","telephone":"+998770165963","email":"uztomic@gmail.com","priceRange":"UZS 2000000+","areaServed":{"@type":"Country","name":"Uzbekistan"},"address":{"@type":"PostalAddress","addressLocality":"Qo'qon","addressRegion":"Fergana","addressCountry":"UZ"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"22:00"},"sameAs":["https://t.me/uztomic_official"],"knowsLanguage":["en","uz","ru"]}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How much will my project cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on scope. A landing page starts at 2 000 000 UZS, a mobile app at 6 000 000, a large platform at 12 000 000. After a short call we send an exact figure and date — and nothing starts until you approve it."}},
-{"@type":"Question","name":"How long does it take?","acceptedAnswer":{"@type":"Answer","text":"Landing page: 5-10 days. App or MVP: 4-8 weeks. Large platform: 8-14 weeks. Enterprise system: from two months. The exact date is fixed once the feature list is agreed."}},
-{"@type":"Question","name":"Do you have a ready-made system for shops?","acceptedAnswer":{"@type":"Answer","text":"Yes - Uztomic CRM. Sales, stock with a size and colour matrix, a digital credit ledger, staff roles and shifts, profit reports and branches. It works offline, runs on phone and Windows, and starts from 150 000 UZS a month with a 14-day free trial."}},
-{"@type":"Question","name":"Who owns the code and the accounts?","acceptedAnswer":{"@type":"Answer","text":"You do. On final payment we hand over the source code, the domain and the store accounts. You can take them to any developer afterwards."}},
-{"@type":"Question","name":"What happens after launch?","acceptedAnswer":{"@type":"Answer","text":"Three months of free support: we fix bugs and answer questions. After that you can take a monthly maintenance agreement, or not - your call."}},
-{"@type":"Question","name":"Can we work together if I am in another region?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work remotely across Uzbekistan and with clients abroad over Telegram, phone and video. You are welcome to visit us in Qo'qon too."}},
-{"@type":"Question","name":"I already have an app. Can you fix or continue it?","acceptedAnswer":{"@type":"Answer","text":"Often yes. Send us the code or store link and we will review it, tell you honestly what shape it is in, and quote for the work."}}]}
-</script>
-
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ── pieces used only by this page ── */
-.hero{padding-top:clamp(26px,4.4vw,56px);padding-bottom:clamp(52px,7vw,92px)}
-.hero__g{display:grid;gap:clamp(40px,6vw,64px);align-items:center}
-@media(min-width:1000px){.hero__g{grid-template-columns:1.04fr .96fr}}
-.hero h1{margin:20px 0 0;font-size:clamp(35px,4.8vw,58px);max-width:15ch}
-.hero .lede{margin-top:19px}
-.hero__cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px}
-.ticks{display:flex;flex-wrap:wrap;gap:10px 22px;margin:28px 0 0;padding:0;list-style:none}
-.ticks li{display:flex;align-items:center;gap:8px;font-size:14.5px;color:var(--text-2);font-weight:500}
-.ticks svg{width:17px;height:17px;flex:none;stroke:var(--cyan);fill:none;stroke-width:2.4;
-  stroke-linecap:round;stroke-linejoin:round}
+:root{
+  --night:#0E1033; --night-2:#161A4A; --violet:#7B6CF6; --teal:#1F8A95; --orange:#FF8A3D;
+  --orange-ink:#C2560F; --paper:#F4F5FB; --ink:#141737; --muted:#5B6185; --line:#DADDF0;
+  --on-night:#ECEEFF; --on-night-2:#A9AED6; --card:#FFFFFF;
+  --r-sm:10px; --r-md:16px; --r-lg:26px;
+  --display:'Unbounded',system-ui,sans-serif; --body:'Manrope',system-ui,sans-serif;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--paper);overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.12;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(28px,4vw,46px)}
+h3{font-size:19px;line-height:1.3}
+p{margin:0}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:60ch}
+.night{background:radial-gradient(1200px 600px at 85% 110%,rgba(31,138,149,.45),transparent 60%),radial-gradient(900px 500px at 10% -10%,rgba(123,108,246,.35),transparent 60%),var(--night);color:var(--on-night)}
+.night .lead{color:var(--on-night-2)}
+section{padding:clamp(72px,9vw,120px) 0}
+.sec-head{display:grid;gap:16px;margin-bottom:48px;max-width:760px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:0;font:700 16px/1 var(--body);text-decoration:none;cursor:pointer;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.98)}
+.btn--orange{background:var(--orange);color:#1b0c00}
+.btn--orange:hover{background:#ff9b57}
+.btn--ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+.btn--ghost:hover{background:rgba(255,255,255,.08)}
+.btn svg{width:20px;height:20px}
 
-/* CRM banner */
-.crmb{position:relative;overflow:hidden;border-radius:var(--r-xl);border:1px solid var(--stroke);
-  background:var(--card-2);display:grid;gap:clamp(26px,4vw,52px);align-items:center;
-  padding:clamp(26px,4vw,52px)}
-html[data-theme="dark"] .crmb{background:linear-gradient(150deg,#141838,#0C0F26)}
-@media(min-width:960px){.crmb{grid-template-columns:1.08fr .92fr}}
-.crmb::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;
-  top:-190px;right:-120px;pointer-events:none;
-  background:radial-gradient(circle,var(--tint),transparent 66%)}
-.crmb__l,.crmb__r{position:relative;z-index:1}
-.crmb__f{list-style:none;margin:22px 0 28px;padding:0;display:grid;gap:10px}
-@media(min-width:560px){.crmb__f{grid-template-columns:1fr 1fr}}
-.crmb__f li{display:flex;gap:9px;font-size:15px;color:var(--text-2);align-items:flex-start}
-.crmb__f svg{width:17px;height:17px;flex:none;margin-top:4px;stroke:var(--cyan);fill:none;
-  stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.crmb__r{display:grid;place-items:center}
-.crmb__card{width:100%;max-width:340px;background:var(--bg);border:1px solid var(--stroke);
-  border-radius:var(--r-lg);padding:20px 22px;box-shadow:var(--shadow-lift)}
-.crmb__k{display:block;font-family:var(--display);font-size:11.5px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px}
-.crmb__row{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:11px 0;border-bottom:1px solid var(--stroke);font-size:14px;color:var(--text-2)}
-.crmb__row:last-of-type{border-bottom:0}
-.crmb__row b{font-family:var(--display);color:var(--text);font-variant-numeric:tabular-nums}
-.crmb__p{margin:14px 0 0;padding-top:13px;border-top:1px dashed var(--stroke);
-  font-size:13px;color:var(--text-3)}
+/* Header */
+.top{position:sticky;top:0;z-index:50;background:rgba(14,16,51,.86);backdrop-filter:blur(14px);color:var(--on-night);border-bottom:1px solid rgba(255,255,255,.07)}
+.top__in{display:flex;align-items:center;gap:24px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:500;letter-spacing:.22em;font-size:15px}
+.logo img{width:38px;height:26px;object-fit:contain}
+.nav{display:flex;gap:22px;margin-left:auto}
+.nav a{text-decoration:none;color:var(--on-night-2);font-weight:600;font-size:15px}
+.nav a:hover{color:#fff}
+.lang{display:flex;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);overflow:hidden}
+.lang button{background:none;border:0;color:var(--on-night-2);font:700 13px var(--body);padding:8px 12px;cursor:pointer}
+.lang button[aria-pressed=true]{background:#fff;color:var(--night)}
+.top .btn{min-height:42px;padding:0 18px;font-size:15px}
+.burger{display:none;background:none;border:0;color:#fff;padding:8px;margin-left:auto;cursor:pointer}
+@media (max-width:980px){
+  .nav{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:var(--night);padding:8px 20px 20px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .nav.open{display:flex}
+  .nav a{padding:12px 0;font-size:17px}
+  .burger{display:block}
+  .top .btn{display:none}
+  .lang{margin-left:0}
+}
 
-/* guarantee row */
-.gr{display:grid;gap:var(--gap);margin-top:34px;
-  grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
-.gr div{display:flex;align-items:center;gap:11px;padding:15px 17px;border:1px solid var(--stroke);
-  border-radius:var(--r);background:var(--card);font-size:14.5px;color:var(--text-2);font-weight:500}
-.gr svg{width:18px;height:18px;flex:none;stroke:var(--green);fill:none;stroke-width:2.4;
-  stroke-linecap:round;stroke-linejoin:round}
+/* Hero */
+.hero{padding:clamp(48px,7vw,96px) 0 clamp(64px,8vw,110px)}
+.hero__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(36px,5.6vw,72px);font-weight:700}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero .lead{margin:24px 0 32px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero__facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:40px;color:var(--on-night-2);font-weight:600;font-size:15px}
+.hero__facts span{display:flex;align-items:center;gap:8px}
+.hero__facts span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(31,138,149,.25)}
+.phone{position:relative;justify-self:center;width:min(330px,80vw);aspect-ratio:9/16;border-radius:38px;padding:10px;background:linear-gradient(160deg,#2a2f73,#0b0d2a);box-shadow:0 40px 80px -30px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.12)}
+.phone video{width:100%;height:100%;object-fit:cover;border-radius:30px;background:#000}
+.phone__sound{position:absolute;bottom:22px;right:22px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(14,16,51,.75);color:#fff;cursor:pointer;display:grid;place-items:center}
+.phone__tag{position:absolute;left:-36px;top:18%;background:#fff;color:var(--ink);border-radius:var(--r-md);padding:12px 16px;box-shadow:0 20px 40px -18px rgba(0,0,0,.6);font-weight:700;font-size:14px;line-height:1.3}
+.phone__tag b{display:block;font-family:var(--display);font-size:22px;color:var(--orange-ink)}
+@media (max-width:860px){.hero__grid{grid-template-columns:1fr}.phone__tag{left:-10px}}
+
+/* About */
+.about__grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about__text{display:grid;gap:18px;font-size:18px}
+.about__text p{max-width:62ch}
+.values{display:grid;gap:0;border-top:1px solid var(--line)}
+.values > div{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--line)}
+.values svg{width:30px;height:30px;color:var(--violet)}
+.values h3{margin-bottom:4px}
+.values p{color:var(--muted);font-size:16px}
+@media (max-width:860px){.about__grid{grid-template-columns:1fr}}
+
+/* Services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border-radius:var(--r-lg);overflow:hidden}
+.svc article{background:var(--card);padding:30px 28px;display:grid;gap:10px;align-content:start}
+.svc article p{color:var(--muted);font-size:16px}
+.svc small{font-weight:700;color:var(--orange-ink);font-size:14px}
+@media (max-width:900px){.svc{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.svc{grid-template-columns:1fr}}
+
+/* Reels */
+.reels{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(200px,22vw,250px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 18px;margin:0 -20px;scrollbar-width:thin}
+.reel{scroll-snap-align:start;position:relative;aspect-ratio:9/16;border-radius:var(--r-md);overflow:hidden;background:#000;border:0;padding:0;cursor:pointer;color:#fff;text-align:left}
+.reel img,.reel video{width:100%;height:100%;object-fit:cover}
+.reel__cap{position:absolute;left:0;right:0;bottom:0;padding:40px 14px 14px;background:linear-gradient(transparent,rgba(5,6,25,.92));font-weight:700;font-size:15px;line-height:1.3}
+.reel__play{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--night);display:grid;place-items:center}
+.reel.playing .reel__play,.reel.playing .reel__cap{display:none}
+.reels-note{margin-top:14px;color:var(--on-night-2);font-size:15px}
+.reels-note a{color:#fff;font-weight:700}
+
+/* Portfolio */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filters button{border:0;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);border-radius:999px;padding:10px 18px;font:700 15px var(--body);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed=true]{background:var(--night);color:#fff;box-shadow:none}
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.work{background:var(--card);border-radius:var(--r-md);overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column}
+.work__cover{aspect-ratio:16/9;display:grid;place-items:center;position:relative;color:#fff;overflow:hidden}
+.work__cover b{font-family:var(--display);font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-.02em;position:relative}
+.work__cover::after{content:"";position:absolute;inset:auto -20% -60% auto;width:70%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.12)}
+.work__body{padding:20px 22px 22px;display:grid;gap:8px;flex:1;align-content:start}
+.work__body p{color:var(--muted);font-size:15.5px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tags span{font-size:13px;font-weight:700;color:var(--muted);background:var(--paper);border-radius:6px;padding:3px 8px}
+.work--featured{grid-column:span 2}
+.work--featured .work__cover{aspect-ratio:auto;min-height:220px}
+@media (max-width:900px){.works{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.works{grid-template-columns:1fr}.work--featured{grid-column:auto}}
+
+/* CRM */
+.crm__grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.verticals{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.verticals span{background:rgba(255,255,255,.08);border-radius:999px;padding:8px 14px;font-weight:600;font-size:15px}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tier{background:rgba(255,255,255,.06);border-radius:var(--r-md);padding:20px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.tier--hot{box-shadow:inset 0 0 0 2px var(--orange)}
+.tier h3{font-size:16px}
+.tier strong{display:block;font-family:var(--display);font-size:24px;margin:8px 0 2px}
+.tier small{color:var(--on-night-2)}
+.tier ul{margin:12px 0 0;padding:0;list-style:none;font-size:14.5px;color:var(--on-night-2);display:grid;gap:4px}
+.crm__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+@media (max-width:900px){.crm__grid{grid-template-columns:1fr}}
+@media (max-width:460px){.tiers{grid-template-columns:1fr}}
+
+/* Calculator */
+.calc{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:start}
+.calc fieldset{border:0;margin:0 0 28px;padding:0}
+.calc legend{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:14px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.opts--feat{grid-template-columns:repeat(2,1fr)}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.opt label{display:grid;gap:2px;height:100%;padding:14px 16px;border-radius:var(--r-sm);background:var(--card);box-shadow:inset 0 0 0 1px var(--line);cursor:pointer;transition:box-shadow .12s,background .12s}
+.opt label b{font-size:15.5px}
+.opt label span{font-size:13.5px;color:var(--muted)}
+.opt input:checked+label{box-shadow:inset 0 0 0 2px var(--violet);background:#F1EFFF}
+.opt input:focus-visible+label{outline:3px solid var(--orange);outline-offset:2px}
+.receipt{position:sticky;top:88px;border-radius:var(--r-lg);padding:28px;color:var(--on-night)}
+.receipt h3{font-size:16px;color:var(--on-night-2);font-family:var(--body);font-weight:700}
+.receipt__sum{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.2vw,40px);color:var(--orange);margin:6px 0 2px;line-height:1.15}
+.receipt__time{color:var(--on-night-2);font-weight:600}
+.receipt ul{list-style:none;margin:20px 0;padding:16px 0;border-top:1px dashed rgba(255,255,255,.2);border-bottom:1px dashed rgba(255,255,255,.2);display:grid;gap:6px;font-size:15px}
+.receipt li{display:flex;justify-content:space-between;gap:12px}
+.receipt li span:last-child{color:var(--on-night-2);white-space:nowrap}
+.receipt .btn{width:100%}
+.receipt__note{font-size:13.5px;color:var(--on-night-2);margin-top:14px}
+.copied{font-size:14px;color:#8ff0c7;margin-top:8px;min-height:20px}
+@media (max-width:980px){.calc{grid-template-columns:1fr}.receipt{position:static}}
+@media (max-width:640px){.opts{grid-template-columns:1fr 1fr}.opts--feat{grid-template-columns:1fr}}
+
+/* Process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;counter-reset:s}
+.steps li{counter-increment:s;padding-top:20px;border-top:3px solid var(--violet)}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:34px;font-weight:700;color:var(--violet);display:block;margin-bottom:8px}
+.steps p{color:var(--muted);font-size:15.5px;margin-top:6px}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* Guarantees */
+.promise{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.promise div{display:grid;gap:8px}
+.promise b{font-family:var(--display);font-size:clamp(26px,3vw,36px);color:var(--orange)}
+.promise p{color:var(--on-night-2);font-size:15.5px}
+@media (max-width:860px){.promise{grid-template-columns:1fr 1fr}}
+
+/* FAQ */
+.faq{max-width:820px;display:grid;gap:10px}
+.faq details{background:var(--card);border-radius:var(--r-md);box-shadow:inset 0 0 0 1px var(--line);padding:0 22px}
+.faq summary{cursor:pointer;list-style:none;padding:20px 0;font-weight:800;font-size:17px;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";font-family:var(--display);color:var(--violet);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 0 20px;color:var(--muted)}
+
+/* Contact */
+.contact__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
+.ways{display:grid;gap:12px;margin-top:28px}
+.ways a{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:center;text-decoration:none;padding:14px;border-radius:var(--r-md);background:rgba(255,255,255,.06)}
+.ways a:hover{background:rgba(255,255,255,.1)}
+.ways i{width:46px;height:46px;border-radius:12px;background:var(--violet);display:grid;place-items:center;font-style:normal}
+.ways i svg{width:22px;height:22px}
+.ways small{display:block;color:var(--on-night-2);font-size:14px}
+.ways b{font-size:17px}
+form.lead-form{background:var(--card);color:var(--ink);border-radius:var(--r-lg);padding:30px;display:grid;gap:16px}
+.field{display:grid;gap:6px}
+.field label{font-weight:700;font-size:14.5px}
+.field input,.field select,.field textarea{font:500 16px var(--body);padding:13px 14px;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--paper);color:var(--ink);width:100%}
+.field textarea{min-height:110px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-note{font-size:13.5px;color:var(--muted)}
+@media (max-width:860px){.contact__grid{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
+
+footer{background:#0A0C27;color:var(--on-night-2);padding:40px 0;font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+footer a{color:#fff;text-decoration:none;font-weight:600}
+.float-tg{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#2AABEE;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.5)}
+.float-tg svg{width:28px;height:28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
 </head>
 <body>
-<a class="promo" href="/crm/">
-  <b data-i18n="pb.badge">New</b>
-  <span data-i18n="pb.text">Uztomic CRM — a ready-made system for your shop. First 14 days free.</span>
-  <i aria-hidden="true">&#8594;</i>
-</a>
 
-<!-- ══ INTRO ══ (rebuilt from animation/uztomic-intro.jsx as plain SVG + CSS) -->
-<div id="intro" aria-hidden="true">
-  <div class="intro__bg"></div>
-  <div class="intro__in">
-    <svg class="intro__mark" viewBox="640 185 640 415" fill="none">
-      <defs>
-        <linearGradient id="iSpark" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#fff" stop-opacity="0"/>
-          <stop offset=".5" stop-color="#fff"/>
-          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-        </linearGradient>
-        <mask id="iSlit" maskUnits="userSpaceOnUse" x="640" y="185" width="640" height="415">
-          <rect x="640" y="185" width="640" height="415" fill="#fff"/>
-          <polygon class="i-slit" points="1030,375 1140,332 1140,306 1030,349" fill="#000"/>
-        </mask>
-      </defs>
-      <rect class="i-spark" x="810" y="396.5" width="300" height="3" rx="1.5" fill="url(#iSpark)"/>
-      <g mask="url(#iSlit)">
-        <path class="i-u" pathLength="1" stroke="#fff" stroke-width="62"
-              d="M 830 240 V 415 C 830 497 888 542 960 542 C 1032 542 1090 497 1090 415 V 400"/>
-        <polygon class="i-plate" points="1059,430 1121,430 1121,216 1059,240" fill="#fff"/>
-      </g>
-      <g class="i-orbit">
-        <ellipse class="i-ring" pathLength="1" cx="960" cy="400" rx="305" ry="108"
-                 transform="rotate(-18 960 400)" stroke="#fff" stroke-width="7"/>
-        <circle class="i-dot" cx="1250" cy="306" r="17" fill="#fff"/>
-        <circle class="i-dot" cx="670" cy="494" r="17" fill="#fff"/>
-      </g>
-    </svg>
-    <div class="intro__word"><span style="--d:1.70s">U</span><span style="--d:1.75s">Z</span><span style="--d:1.80s">T</span><span style="--d:1.85s">O</span><span style="--d:1.90s">M</span><span style="--d:1.95s">I</span><span style="--d:2.00s">C</span></div>
-    <div class="intro__tag">SMART SOFTWARE SOLUTIONS</div>
-    <button class="intro__cta" type="button" id="introGo">
-      <span data-i18n="intro.cta">Enter the site</span><i>&#8594;</i>
-    </button>
-  </div>
-  <div class="intro__hint" data-i18n="intro.skip">Tap anywhere to skip</div>
-</div>
-<div id="bar"></div>
-<div class="bg" aria-hidden="true">
-  <div class="bg__grid"></div>
-  <div class="bg__blob bg__blob--1"></div>
-  <div class="bg__blob bg__blob--2"></div>
-</div>
-
-<header id="hdr">
-  <div class="nav">
-    <a class="logo" href="/" aria-label="Uztomic">
-      <img src="/assets/uztomic-mark-light.png" alt="" id="markImg" width="47" height="32" decoding="async">
-      <b>Uztomic</b>
+<header class="top">
+  <div class="wrap top__in">
+    <a class="logo" href="#" aria-label="Uztomic">
+      <img src="/assets/uztomic-mark-light.png" alt="" width="38" height="26">
+      UZTOMIC
     </a>
-    <nav class="links">
-      <a href="#services" data-i18n="nav.s">Services</a>
-      <a href="/crm/" class="mark" data-i18n="nav.crm">CRM for shops</a>
-      <a href="#work" data-i18n="nav.w">Work</a>
-      <a href="#pricing" data-i18n="nav.pr">Pricing</a>
-      <a href="#faq" data-i18n="nav.f">FAQ</a>
+    <nav class="nav" id="nav">
+      <a href="#about" data-i18n="nav.about">Biz haqimizda</a>
+      <a href="#works" data-i18n="nav.works">Ishlarimiz</a>
+      <a href="#crm">Uztomic CRM</a>
+      <a href="#calc" data-i18n="nav.calc">Narxni hisoblash</a>
+      <a href="#faq" data-i18n="nav.faq">Savollar</a>
     </nav>
-    <div class="tools">
-      <div class="seg" role="group" aria-label="Language">
-        <button type="button" data-lang="en" class="on">EN</button>
-        <button type="button" data-lang="uz">UZ</button>
-        <button type="button" data-lang="ru">RU</button>
-      </div>
-      <button class="icobtn" id="theme" type="button" aria-label="Switch theme">
-        <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
-        <svg class="moon" viewBox="0 0 24 24"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.2 8.2 0 1 0 10.2 10.2z"/></svg>
-      </button>
-      <button class="icobtn" id="burger" type="button" aria-label="Menu" aria-expanded="false">
-        <svg class="op" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        <svg class="cl" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-      <a class="btn btn--p btn--sm" href="#contact" data-mag data-i18n="nav.cta">Start a project</a>
+    <div class="lang" role="group" aria-label="Til">
+      <button type="button" data-lang="uz" aria-pressed="true">UZ</button>
+      <button type="button" data-lang="ru" aria-pressed="false">RU</button>
     </div>
+    <a class="btn btn--orange" href="#contact" data-i18n="cta.short">Bog'lanish</a>
+    <button class="burger" type="button" aria-label="Menyu" aria-expanded="false" aria-controls="nav">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
 </header>
 
-<div class="drawer" id="drawer">
-  <a href="#services" data-i18n="nav.s">Services</a>
-  <a href="/crm/" class="mark" data-i18n="nav.crm">CRM for shops</a>
-  <a href="#process" data-i18n="nav.p">Process</a>
-  <a href="#work" data-i18n="nav.w">Work</a>
-  <a href="#pricing" data-i18n="nav.pr">Pricing</a>
-  <a href="#faq" data-i18n="nav.f">FAQ</a>
-  <a class="btn btn--p btn--wide" href="#contact" data-i18n="nav.cta">Start a project</a>
-</div>
-
 <main>
-<!-- ══ HERO ══ -->
-<section class="hero" id="hero">
-  <div class="wrap hero__g">
+<section class="night hero">
+  <div class="wrap hero__grid">
     <div>
-      <span class="pill"><i></i><span data-i18n="hero.badge">Taking on new projects</span></span>
-      <h1 data-split><span data-i18n="hero.h1a">We build the</span> <span class="grad" data-i18n="hero.h1b">software</span> <span data-i18n="hero.h1c">your business runs on</span></h1>
-      <p class="lede" data-i18n="hero.lede">Uztomic is a software studio in Qo'qon, Fergana region. Mobile apps, websites, enterprise systems, automation and startup MVPs — plus Uztomic CRM, our ready-made system for shops.</p>
+      <h1 data-i18n-html="hero.title">Daftar va Exceldan <em>tizimga</em> o'ting</h1>
+      <p class="lead" data-i18n="hero.lead">Uztomic — Qo'qondagi dasturiy ta'minot studiyasi. Do'kon, o'quv markaz, klinika va kichik biznes uchun mobil ilova, sayt, CRM va Telegram bot qilamiz. Narx va muddat shartnomada qat'iy, kod esa sizniki.</p>
       <div class="hero__cta">
-        <a class="btn btn--p" href="#contact" data-mag><span data-i18n="hero.cta1">Start a project</span>
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn--o" href="/crm/" data-mag><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="15" rx="2.4"/><path d="M3 9h18M7 14h5"/></svg>
-          <span data-i18n="hero.cta3">CRM for shops</span></a>
+        <a class="btn btn--orange" href="#calc" data-i18n="hero.cta1">Loyiha narxini hisoblash</a>
+        <a class="btn btn--ghost" href="https://t.me/uztomic_official" target="_blank" rel="noopener" data-i18n="hero.cta2">Telegramda yozish</a>
       </div>
-      <ul class="ticks">
-        <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="hero.t1">Reply within 24 hours</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="hero.t2">Fixed price, fixed date</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="hero.t3">You own the code</span></li>
-      </ul>
-    </div>
-
-    <div class="stage" aria-hidden="true" data-par="0.03">
-      <div class="stage__glow"></div>
-      <div class="stage__ring"></div>
-      <div class="phone">
-        <div class="phone__notch"></div>
-        <div class="screen">
-          <div class="scr__top">
-            <small>Uztomic CRM</small><b>12 480 000</b>
-            <div class="scr__chips"><span>Today</span><span>Week</span><span>Month</span></div>
-          </div>
-          <div class="scr__body">
-            <div class="scr__chart">
-              <i style="--h:38%;--n:0"></i><i style="--h:62%;--n:1"></i><i style="--h:47%;--n:2"></i>
-              <i style="--h:80%;--n:3"></i><i style="--h:58%;--n:4"></i><i style="--h:96%;--n:5"></i>
-            </div>
-            <div class="scr__row"><u>🧾</u><div><b>Order #1042</b><small>3 items · card</small></div><em>+248 000</em></div>
-            <div class="scr__row"><u>📦</u><div><b>Stock updated</b><small>Warehouse · 24 SKU</small></div><em>OK</em></div>
-            <div class="scr__row"><u>👤</u><div><b>New customer</b><small>Credit ledger</small></div><em>+1</em></div>
-          </div>
-          <div class="scr__nav"><s class="on"></s><s></s><s></s><s></s></div>
-        </div>
-      </div>
-      <div class="chip-card chip-card--a"><small data-i18n="hero.card1">Sales this week</small><b class="grad">+32%</b></div>
-      <div class="chip-card chip-card--b">
-        <u><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></u>
-        <div><small data-i18n="hero.card2">Works offline</small><b style="font-size:14px" data-i18n="hero.card3">Always on</b></div>
+      <div class="hero__facts">
+        <span data-i18n="hero.f1">24 soat ichida javob</span>
+        <span data-i18n="hero.f2">Har hafta ishlaydigan versiya</span>
+        <span data-i18n="hero.f3">3 oy bepul qo'llab-quvvatlash</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ══ CRM BANNER ══ -->
-<section id="crm" style="padding-block:clamp(20px,3vw,40px)">
-  <div class="wrap">
-    <div class="crmb" data-rv="up">
-      <div class="crmb__l">
-        <span class="tag" data-i18n="cb.tag">Our own product</span>
-        <h2 data-i18n="cb.h2">Uztomic CRM — a ready system for your shop</h2>
-        <p class="lede" style="margin-top:16px" data-i18n="cb.lede">Sales, stock, the credit ledger and profit in one app. It keeps working with no internet, runs on a phone and on Windows, and you can be up and running this week.</p>
-        <ul class="crmb__f">
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="cb.f1">Till, barcode scanner, Bluetooth receipts</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="cb.f2">Stock by size and colour</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="cb.f3">Digital credit ledger with reminders</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="cb.f4">Staff roles, shifts and profit reports</span></li>
-        </ul>
-        <div class="hero__cta" style="margin-top:0">
-          <a class="btn btn--p" href="/crm/" data-mag><span data-i18n="cb.cta">Open the CRM page</span>
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn--g" href="/crm/#pricing" data-i18n="cb.cta2">Prices and free trial</a>
-        </div>
-      </div>
-      <div class="crmb__r">
-        <div class="crmb__card">
-          <span class="crmb__k" data-i18n="cb.k">Monthly, per shop</span>
-          <div class="crmb__row"><span data-i18n="cb.r1">Standard — 6 accounts, 2 branches</span><b>150 000</b></div>
-          <div class="crmb__row"><span data-i18n="cb.r2">Pro — 16 accounts, 3 branches, AI</span><b>400 000</b></div>
-          <div class="crmb__row"><span data-i18n="cb.r3">Setup, one time</span><b>400 000</b></div>
-          <div class="crmb__row"><span data-i18n="cb.r4">With a receipt printer</span><b>700 000</b></div>
-          <p class="crmb__p" data-i18n="cb.trial">First 14 days free — no card, no contract.</p>
-        </div>
-      </div>
+    <div class="phone">
+      <video id="heroVideo" src="/media/v01.mp4" poster="/media/v01.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Uztomic haqida qisqa video"></video>
+      <button class="phone__sound" type="button" id="heroSound" aria-label="Ovozni yoqish">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.59 3L19 9.59 17.59 8.17 15.17 10.6 12.76 8.17 11.34 9.59 13.76 12l-2.42 2.41 1.42 1.42 2.41-2.42 2.42 2.42 1.41-1.42z"/></svg>
+      </button>
+      <div class="phone__tag"><b>20</b><span data-i18n="hero.tag">daqiqada aniq narx</span></div>
     </div>
   </div>
 </section>
 
-<!-- ══ TECH STRIP ══ -->
-<div class="strip" aria-hidden="true"><div class="strip__t" id="strip" data-items="Flutter|Dart|Supabase|PostgreSQL|Node.js|React|Python|Firebase|Docker|REST API|Telegram Bot API|SQLite|Google Play|App Store|Figma|1C integration"></div></div>
-
-<!-- ══ STATS ══ -->
-<section style="padding-block:clamp(46px,6vw,74px)">
-  <div class="wrap stats">
-    <div class="stat" data-rv="up"><b data-count="5" data-suffix="+">5+</b><span data-i18n="st.1">Products shipped</span></div>
-    <div class="stat" data-rv="up"><b data-count="6">6</b><span data-i18n="st.2">Weeks average launch</span></div>
-    <div class="stat" data-rv="up"><b data-count="24" data-suffix="h">24h</b><span data-i18n="st.3">Reply time</span></div>
-    <div class="stat" data-rv="up"><b data-count="3">3</b><span data-i18n="st.4">Months free support</span></div>
-  </div>
-</section>
-
-<!-- ══ SERVICES ══ -->
-<section id="services">
-  <div class="wrap">
-    <div class="center head">
-      <span class="tag" data-i18n="sv.tag">What we do</span>
-      <h2 data-i18n="sv.h2">Five things we build well</h2>
-      <p class="lede" data-i18n="sv.lede">One rule in every direction: a clear deadline, a clear price, and software that works on day one.</p>
+<section id="about">
+  <div class="wrap about__grid">
+    <div class="about__text">
+      <h2 data-i18n="about.title">Biz — Qo'qondagi kichik, lekin jiddiy jamoa</h2>
+      <p data-i18n="about.p1">Uztomic'ni Flutter dasturchisi va asoschi Gaabi boshlagan. Bugun studiya O'zbekistondagi bizneslar uchun mobil ilovalar, veb-platformalar, CRM tizimlar va avtomatlashtirish vositalarini yaratadi.</p>
+      <p data-i18n="about.p2">Biz mijoz bilan o'zbek tilida, tushunarli qilib gaplashamiz: avval muammoni eshitamiz, keyin ekranlarni ko'rsatamiz, so'ng kod yozamiz. Har hafta ishlab turgan versiyani qo'lingizga beramiz — loyiha qayerdaligini doim ko'rib turasiz.</p>
+      <p data-i18n="about.p3">O'zimizning mahsulotimiz ham bor: Uztomic CRM — do'konlar uchun kassa, ombor va nasiya tizimi. Shuning uchun biznes dasturi qanday ishlashi kerakligini nazariyadan emas, kundalik ishdan bilamiz.</p>
     </div>
-    <div class="grid grid--3">
-      <article class="crd" data-rv="up" data-tilt>
-        <div class="ico ico--fill"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg></div>
-        <h3 data-i18n="sv.1t">Mobile apps</h3>
-        <p data-i18n="sv.1d">Android and iOS from one codebase. Offline mode, push notifications, payments and store release — all handled by us.</p>
-        <ul class="tags"><li>Flutter</li><li>Google Play</li><li>App Store</li><li>Offline</li></ul>
-      </article>
-      <article class="crd" data-rv="up" data-tilt>
-        <div class="ico ico--c"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="14" rx="2.5"/><path d="M2.5 8.5h19M8 21.5h8"/></svg></div>
-        <h3 data-i18n="sv.2t">Websites &amp; platforms</h3>
-        <p data-i18n="sv.2d">From a one-page site to a platform that takes orders. Loads fast, looks right on every phone, and gets found on Google.</p>
-        <ul class="tags"><li>Landing</li><li>Catalog</li><li>Admin panel</li><li>SEO</li></ul>
-      </article>
-      <article class="crd" data-rv="up" data-tilt>
-        <div class="ico ico--g"><svg viewBox="0 0 24 24"><path d="M3.5 20.5V9l8.5-5.5L20.5 9v11.5z"/><path d="M9 20.5v-6h6v6"/></svg></div>
-        <h3 data-i18n="sv.3t">Enterprise systems</h3>
-        <p data-i18n="sv.3d">Sales, inventory, reporting and control in one place. Roles and permissions for staff, an audit trail behind every action.</p>
-        <ul class="tags"><li>CRM / ERP</li><li>Inventory</li><li>Roles</li><li>Reports</li></ul>
-        <a href="/crm/" style="font-family:var(--display);font-weight:700;font-size:14.5px;color:var(--brand-2)" data-i18n="sv.3l">See Uztomic CRM →</a>
-      </article>
-      <article class="crd" data-rv="up" data-tilt>
-        <div class="ico ico--o"><svg viewBox="0 0 24 24"><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.4 5.4l2.1 2.1M16.5 16.5l2.1 2.1M18.6 5.4l-2.1 2.1M7.5 16.5l-2.1 2.1"/><circle cx="12" cy="12" r="3.6"/></svg></div>
-        <h3 data-i18n="sv.4t">Automation</h3>
-        <p data-i18n="sv.4d">Hand the repetitive work to software: reports, Telegram bots, and data moving between the systems you already use.</p>
-        <ul class="tags"><li>Telegram bots</li><li>Excel / 1C</li><li>API</li><li>Integrations</li></ul>
-      </article>
-      <article class="crd" data-rv="up" data-tilt>
-        <div class="ico ico--p"><svg viewBox="0 0 24 24"><path d="M12 2.5 15 9l6.5.9-4.7 4.6 1.1 6.5-5.9-3.1-5.9 3.1L7.2 14.5 2.5 9.9 9 9z"/></svg></div>
-        <h3 data-i18n="sv.5t">Startup MVP</h3>
-        <p data-i18n="sv.5d">In 4–8 weeks we turn an idea into a first version real users can try. Then we grow it based on what they actually do.</p>
-        <ul class="tags"><li>4–8 weeks</li><li>Prototype</li><li>Analytics</li><li>Iterations</li></ul>
-      </article>
-      <article class="crd crd--cta" data-rv="up">
-        <h3 data-i18n="sv.6t">Not sure which one you need?</h3>
-        <p data-i18n="sv.6d">Describe the problem in plain words. We'll tell you honestly what it would take — or that you don't need us at all.</p>
-        <a class="btn btn--sm btn--w" href="#contact" data-i18n="sv.6c">Ask a question</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══ WHY ══ -->
-<section class="band">
-  <div class="wrap">
-    <div class="center head">
-      <span class="tag" data-i18n="wy.tag">Why Uztomic</span>
-      <h2 data-i18n="wy.h2">No surprises, ever</h2>
-    </div>
-    <div class="grid grid--auto">
-      <article class="crd" data-rv="up">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M20.5 11.5V6.2L12 2.8 3.5 6.2v5.3c0 5 3.6 8.6 8.5 9.7 4.9-1.1 8.5-4.7 8.5-9.7z"/><path d="M8.6 12.2 11 14.6l4.6-4.8"/></svg></div>
-        <h3 data-i18n="wy.1t">Fixed price and date</h3>
-        <p data-i18n="wy.1d">You approve a feature list, a delivery date and a number before we write a single line of code.</p>
-      </article>
-      <article class="crd" data-rv="up">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3.5H5.5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V15"/><path d="M14.5 3.5h6v6M20.5 3.5 11 13"/></svg></div>
-        <h3 data-i18n="wy.2t">You own everything</h3>
-        <p data-i18n="wy.2d">Source code, domain and store accounts are handed over on delivery. You are never locked in to us.</p>
-      </article>
-      <article class="crd" data-rv="up">
-        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.2"/></svg></div>
-        <h3 data-i18n="wy.3t">A working build every week</h3>
-        <p data-i18n="wy.3d">You see real progress on your own phone each week — not one big reveal at the very end.</p>
-      </article>
-      <article class="crd" data-rv="up">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.2-4.6A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
-        <h3 data-i18n="wy.4t">We speak your language</h3>
-        <p data-i18n="wy.4d">Uzbek, Russian or English — by phone, Telegram, or face to face over tea in Qo'qon.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PROCESS ══ -->
-<section id="process">
-  <div class="wrap">
-    <div class="center head">
-      <span class="tag" data-i18n="pc.tag">How we work</span>
-      <h2 data-i18n="pc.h2">From idea to launch in five steps</h2>
-      <p class="lede" data-i18n="pc.lede">Every step ends with something concrete you can look at and approve.</p>
-    </div>
-    <div class="flow" style="--cols:5">
-      <div class="stp" data-rv="up"><u>01</u><h3 data-i18n="pc.1t">Brief</h3><p data-i18n="pc.1d">A free call. We work out the problem, who will use it, and what result you need.</p></div>
-      <div class="stp" data-rv="up"><u>02</u><h3 data-i18n="pc.2t">Quote</h3><p data-i18n="pc.2d">Feature list, timeline and a fixed price. Once you agree, we sign a contract.</p></div>
-      <div class="stp" data-rv="up"><u>03</u><h3 data-i18n="pc.3t">Design</h3><p data-i18n="pc.3d">You see every screen before any code exists. Changes are cheap at this stage.</p></div>
-      <div class="stp" data-rv="up"><u>04</u><h3 data-i18n="pc.4t">Build</h3><p data-i18n="pc.4d">A working version every week. You follow along and we adjust as we go.</p></div>
-      <div class="stp" data-rv="up"><u>05</u><h3 data-i18n="pc.5t">Launch</h3><p data-i18n="pc.5d">We publish, train your team, and stay on call for three months free of charge.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ WORK ══ -->
-<section id="work" class="band">
-  <div class="wrap">
-    <div class="center head">
-      <span class="tag" data-i18n="wk.tag">Selected work</span>
-      <h2 data-i18n="wk.h2">Products already in people's hands</h2>
-    </div>
-    <div class="grid grid--3">
-      <article class="wk" data-rv="up">
-        <div class="wk__top"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2.2"/><path d="M3 10.5h18M7 15h4"/></svg></div>
-        <div class="wk__b">
-          <span class="wk__k" data-i18n="wk.1k">Retail system</span>
-          <h3 data-i18n="wk.1t">Uztomic CRM</h3>
-          <p data-i18n="wk.1d">Sales, stock and a credit ledger for shops. Keeps working with no internet, prints receipts over Bluetooth, syncs to phone and Windows.</p>
-          <div class="wk__r" data-i18n-html="wk.1r">Result: <b>sales, debts and stock in one phone</b></div>
-        </div>
-      </article>
-      <article class="wk" data-rv="up">
-        <div class="wk__top"><svg viewBox="0 0 24 24"><path d="M3 6.5h6a3 3 0 0 1 3 3v10a2.4 2.4 0 0 0-2.4-2.4H3zM21 6.5h-6a3 3 0 0 0-3 3v10a2.4 2.4 0 0 1 2.4-2.4H21z"/></svg></div>
-        <div class="wk__b">
-          <span class="wk__k" data-i18n="wk.2k">Learning app</span>
-          <h3 data-i18n="wk.2t">Alifbo va Narsalarni Oʻrganamiz</h3>
-          <p data-i18n="wk.2d">An alphabet and vocabulary app for children: six alphabets, ten interface languages, three learning modes.</p>
-          <div class="wk__r" data-i18n-html="wk.2r">Result: <b>live on Play Store, Families-policy compliant</b></div>
-        </div>
-      </article>
-      <article class="wk" data-rv="up">
-        <div class="wk__top"><svg viewBox="0 0 24 24"><path d="M6 3.5v7a3 3 0 0 0 6 0v-7M9 10.5v10M15.5 20.5v-7c2 0 3-1.6 3-5s-1-5-3-5z"/></svg></div>
-        <div class="wk__b">
-          <span class="wk__k" data-i18n="wk.3k">Content app</span>
-          <h3 data-i18n="wk.3t">Taomlar</h3>
-          <p data-i18n="wk.3d">Uzbek and international recipes with step-by-step instructions, video lessons and four interface languages.</p>
-          <div class="wk__r" data-i18n-html="wk.3r">Result: <b>an app people open every day</b></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PRICING ══ -->
-<section id="pricing">
-  <div class="wrap">
-    <div class="center head">
-      <span class="tag" data-i18n="pr.tag">Pricing</span>
-      <h2 data-i18n="pr.h2">Know the ballpark before you call</h2>
-      <p class="lede" data-i18n="pr.lede">Starting points, not final numbers. After a free 20-minute call you get an exact figure and date in writing.</p>
-    </div>
-    <div class="grid grid--4" style="margin-top:58px">
-      <article class="price" data-rv="up" data-tilt>
-        <h3 data-i18n="pr.1t">Landing</h3>
-        <p class="price__d" data-i18n="pr.1d">A site that explains what you do and collects enquiries.</p>
-        <div class="price__v"><small data-i18n="pr.from">from</small><span data-i18n="pr.1p">2 000 000 UZS</span></div>
-        <p class="price__t" data-i18n="pr.1w">Ready in 5–10 days</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f1">Up to 6 sections, mobile-first</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f2">Enquiry form to your email or Telegram</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f3">Three languages if you need them</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.1f4">Google setup and 1 month of support</span></li>
-        </ul>
-        <a class="btn btn--g btn--wide" href="#contact" data-i18n="pr.cta">Get a quote</a>
-      </article>
-      <article class="price price--hot" data-rv="up" data-tilt>
-        <span class="price__badge" data-i18n="pr.badge">Most chosen</span>
-        <h3 data-i18n="pr.2t">Business</h3>
-        <p class="price__d" data-i18n="pr.2d">A mobile app or online platform your customers use daily.</p>
-        <div class="price__v"><small data-i18n="pr.from">from</small><span data-i18n="pr.2p">6 000 000 UZS</span></div>
-        <p class="price__t" data-i18n="pr.2w">Ready in 4–8 weeks</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f1">Android and iOS from one codebase</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f2">Admin panel, payments, notifications</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f3">Offline mode and your own design</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.2f4">Store release and 3 months of support</span></li>
-        </ul>
-        <a class="btn btn--p btn--wide" href="#contact" data-i18n="pr.cta">Get a quote</a>
-      </article>
-      <article class="price" data-rv="up" data-tilt>
-        <h3 data-i18n="pr.3t">Pro platform</h3>
-        <p class="price__d" data-i18n="pr.3d">A large product with many roles, integrations and real analytics.</p>
-        <div class="price__v"><small data-i18n="pr.from">from</small><span data-i18n="pr.3p">12 000 000 UZS</span></div>
-        <p class="price__t" data-i18n="pr.3w">Ready in 8–14 weeks</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f1">Phone, web and admin panel together</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f2">Payments, API and 1C integrations</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f3">Dashboards and export to Excel</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.3f4">Load testing and 6 months of support</span></li>
-        </ul>
-        <a class="btn btn--g btn--wide" href="#contact" data-i18n="pr.cta">Get a quote</a>
-      </article>
-      <article class="price" data-rv="up" data-tilt>
-        <h3 data-i18n="pr.4t">Enterprise</h3>
-        <p class="price__d" data-i18n="pr.4d">A system your whole company works inside, every single day.</p>
-        <div class="price__v"><small data-i18n="pr.from2">tailored</small><span data-i18n="pr.4p">By quote</span></div>
-        <p class="price__t" data-i18n="pr.4w">From two months</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.4f1">POS, CRM, ERP or warehouse systems</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.4f2">Roles, permissions and audit logs</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.4f3">Offline mode and 1C / API integrations</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="pr.4f4">Staff training and a support agreement</span></li>
-        </ul>
-        <a class="btn btn--g btn--wide" href="#contact" data-i18n="pr.cta">Get a quote</a>
-      </article>
-    </div>
-    <p class="note" data-i18n-html="pr.note">Already running a shop? <a href="/crm/" style="color:var(--brand-2);font-weight:600">Uztomic CRM</a> starts at 150 000 UZS a month — no development project needed.</p>
-
-    <div class="center head" style="margin-top:clamp(60px,7vw,96px)">
-      <span class="tag" data-i18n="cl.tag">Estimate</span>
-      <h2 data-i18n="cl.h2">Get a number in ten seconds</h2>
-      <p class="lede" data-i18n="cl.lede">Pick what you need and see the range straight away. It is a rough figure, not an offer — but it is honest.</p>
-    </div>
-
-    <div class="calc" data-rv="up">
-      <div class="calc__g">
-        <div class="calc__f" id="est">
-          <div>
-            <span class="calc__l" data-i18n="cl.kind">What are we building?</span>
-            <div class="chips">
-              <label class="chip"><input type="radio" name="ekind" value="site" checked><span data-i18n="cl.k1">Website</span></label>
-              <label class="chip"><input type="radio" name="ekind" value="app"><span data-i18n="cl.k2">Mobile app</span></label>
-              <label class="chip"><input type="radio" name="ekind" value="sys"><span data-i18n="cl.k3">Business system</span></label>
-            </div>
-          </div>
-          <div>
-            <span class="calc__l" data-i18n="cl.add">What should it include?</span>
-            <div class="chips">
-              <label class="chip"><input type="checkbox" name="eadd" data-lo="1500000" data-hi="2500000" data-w1="0.5" data-w2="1"><span data-i18n="cl.a1">Online payments</span></label>
-              <label class="chip"><input type="checkbox" name="eadd" data-lo="2000000" data-hi="3500000" data-w1="1" data-w2="2"><span data-i18n="cl.a2">Admin panel</span></label>
-              <label class="chip"><input type="checkbox" name="eadd" data-lo="800000" data-hi="1500000" data-w1="0.5" data-w2="1"><span data-i18n="cl.a3">Three languages</span></label>
-              <label class="chip"><input type="checkbox" name="eadd" data-lo="2500000" data-hi="4500000" data-w1="1" data-w2="2"><span data-i18n="cl.a4">1C / API integration</span></label>
-              <label class="chip"><input type="checkbox" name="eadd" data-lo="1200000" data-hi="2500000" data-w1="1" data-w2="1.5"><span data-i18n="cl.a5">Custom design</span></label>
-            </div>
-          </div>
-        </div>
-        <div class="calc__out">
-          <small data-i18n="cl.res">Rough estimate</small>
-          <div class="calc__sum" id="estOut">2 000 000 – 4 000 000 UZS</div>
-          <ul class="calc__rows">
-            <li><span data-i18n="cl.time">Timeline</span><b id="estWeeks">1–2 weeks</b></li>
-          </ul>
-          <p class="calc__note" data-i18n="cl.note">The final price is fixed after a free 20-minute call, and only once you approve the feature list.</p>
-          <button class="btn btn--p btn--wide" id="estSend" type="button" data-i18n="cl.cta">Send this to us</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="gr">
-      <div data-rv="up"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="gr.1">Contract and a fixed date</span></div>
-      <div data-rv="up"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="gr.2">50% to start, 50% on delivery</span></div>
-      <div data-rv="up"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="gr.3">Source code handed over to you</span></div>
-      <div data-rv="up"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="gr.4">3 months of free support</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FAQ ══ -->
-<section id="faq" class="band">
-  <div class="wrap">
-    <div class="center head">
-      <span class="tag" data-i18n="fq.tag">Answers</span>
-      <h2 data-i18n="fq.h2">Questions we get every week</h2>
-    </div>
-    <div class="faq">
-      <details open><summary data-i18n="fq.1q">How much will my project cost?<span></span></summary><div class="ans"><p data-i18n="fq.1a">It depends on scope. A landing page starts at 2 000 000 UZS, a mobile app at 6 000 000, a large platform at 12 000 000. After a short call we send an exact figure and date — and nothing starts until you approve it.</p></div></details>
-      <details><summary data-i18n="fq.2q">How long does it take?<span></span></summary><div class="ans"><p data-i18n="fq.2a">Landing page: 5–10 days. App or MVP: 4–8 weeks. Large platform: 8–14 weeks. Enterprise system: from two months. The exact date is fixed once the feature list is agreed.</p></div></details>
-      <details><summary data-i18n="fq.3q">Do you have a ready-made system for shops?<span></span></summary><div class="ans"><p data-i18n-html="fq.3a">Yes — <a href="/crm/" style="color:var(--brand-2);font-weight:600">Uztomic CRM</a>. Sales, stock by size and colour, a digital credit ledger, staff roles and profit reports. It works offline, runs on phone and Windows, and starts at 150 000 UZS a month with 14 days free.</p></div></details>
-      <details><summary data-i18n="fq.4q">Who owns the code and the accounts?<span></span></summary><div class="ans"><p data-i18n="fq.4a">You do. On final payment we hand over the source code, the domain and the store accounts. You can take them to any developer afterwards.</p></div></details>
-      <details><summary data-i18n="fq.5q">What happens after launch?<span></span></summary><div class="ans"><p data-i18n="fq.5a">Three months of free support: we fix bugs and answer questions. After that you can take a monthly maintenance agreement, or not — your call.</p></div></details>
-      <details><summary data-i18n="fq.6q">Can we work together if I'm in another region?<span></span></summary><div class="ans"><p data-i18n="fq.6a">Yes. We work remotely across Uzbekistan and with clients abroad over Telegram, phone and video. You're welcome to visit us in Qo'qon too.</p></div></details>
-      <details><summary data-i18n="fq.7q">I already have an app. Can you fix or continue it?<span></span></summary><div class="ans"><p data-i18n="fq.7a">Often yes. Send us the code or store link and we'll review it, tell you honestly what shape it's in, and quote for the work.</p></div></details>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FREE CALL ══ -->
-<section style="padding-block:clamp(44px,6vw,72px)">
-  <div class="wrap">
-    <div class="band-cta" data-rv="up">
+    <div class="values">
       <div>
-        <h2 data-i18n="cc.h2">Not ready to fill in a form?</h2>
-        <p data-i18n="cc.p">Send one line on Telegram or simply call. Twenty free minutes, and you leave with a number and a date — even if we never end up working together.</p>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        <div><h3 data-i18n="v1.t">Qat'iy narx va muddat</h3><p data-i18n="v1.p">Ishlar ro'yxati, narx va topshirish sanasi shartnomaga yoziladi. Jarayonda narx oshmaydi.</p></div>
       </div>
-      <div class="row">
-        <a class="btn btn--w" href="https://t.me/uztomic_official" target="_blank" rel="noopener" data-mag>
-          <svg viewBox="0 0 24 24"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4.1 1.6l4.9 1.4 1.8 5.3c.2.7 1.1.8 1.6.3l2.6-2.6 4.9 3.6c.6.4 1.5.1 1.7-.7l3-14.2c.2-.9-.7-1.6-1.5-1.3z"/></svg>
-          <span data-i18n="cc.b1">Write on Telegram</span></a>
-        <a class="btn btn--w" style="background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.4)" href="tel:+998770165963">+998 77 016 59 63</a>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+        <div><h3 data-i18n="v2.t">Kod sizniki</h3><p data-i18n="v2.p">To'liq to'lovdan keyin manba kodi, domen va Play Market/App Store akkauntlari sizga o'tadi.</p></div>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
+        <div><h3 data-i18n="v3.t">Har hafta natija</h3><p data-i18n="v3.p">Yarim yo'lda "hali tayyor emas" degan gap yo'q — har hafta ishlab turgan versiyani sinab ko'rasiz.</p></div>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4z"/></svg>
+        <div><h3 data-i18n="v4.t">Ishga tushgandan keyin ham yoningizdamiz</h3><p data-i18n="v4.p">3 oy bepul qo'llab-quvvatlash, xodimlaringizni o'qitish va kerak bo'lsa doimiy xizmat shartnomasi.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
-<section id="contact">
-  <div class="wrap og">
-    <div>
-      <span class="tag" data-i18n="ct.tag">Start here</span>
-      <h2 data-i18n="ct.h2">Tell us about your project</h2>
-      <p class="lede" style="margin-top:18px" data-i18n="ct.lede">Write a few lines and we'll come back within 24 hours with questions, a ballpark price and a realistic date. The call is free and commits you to nothing.</p>
-      <ul class="cts">
-        <li><a class="ct" href="https://t.me/uztomic_official" target="_blank" rel="noopener">
-          <u><svg viewBox="0 0 24 24"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4.1 1.6l4.9 1.4 1.8 5.3c.2.7 1.1.8 1.6.3l2.6-2.6 4.9 3.6c.6.4 1.5.1 1.7-.7l3-14.2c.2-.9-.7-1.6-1.5-1.3z"/><path d="m7.8 14.6 10.6-7.3-8.2 8.4"/></svg></u>
-          <span><b>@uztomic_official</b><small data-i18n="ct.tg">Telegram — fastest reply</small></span></a></li>
-        <li><a class="ct" href="tel:+998770165963" data-copy="+998770165963">
-          <u><svg viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4.5-2 1.5a13 13 0 0 0 6 6l1.5-2 4.5 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></svg></u>
-          <span><b>+998 77 016 59 63</b><small data-i18n="ct.ph">Every day, 9:00–22:00</small></span></a></li>
-        <li><a class="ct" href="mailto:uztomic@gmail.com" data-copy="uztomic@gmail.com">
-          <u><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg></u>
-          <span><b>uztomic@gmail.com</b><small data-i18n="ct.em">For documents and contracts</small></span></a></li>
-        <li><span class="ct">
-          <u><svg viewBox="0 0 24 24"><path d="M12 21.5s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10.5" r="2.6"/></svg></u>
-          <span><b data-i18n="ct.loc">Qo'qon, Fergana region</b><small data-i18n="ct.loc2">Remote across the country</small></span></span></li>
-      </ul>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="svc.title">Nima qilamiz</h2>
+      <p class="lead" data-i18n="svc.lead">Bitta muammo — bitta to'g'ri yechim. Kerak bo'lmagan narsani sotmaymiz.</p>
     </div>
+    <div class="svc">
+      <article><h3 data-i18n="s1.t">Mobil ilova</h3><p data-i18n="s1.p">Android va iOS uchun bitta koddan (Flutter). Oflayn rejim, push-bildirishnoma, to'lovlar, Play Market va App Store'ga joylash.</p><small data-i18n="s1.m">4–8 hafta</small></article>
+      <article><h3 data-i18n="s2.t">Sayt va platforma</h3><p data-i18n="s2.p">Landing, katalog, onlayn do'kon, admin panel. Telefonda tez ochiladi, Google'da topiladi.</p><small data-i18n="s2.m">5 kundan</small></article>
+      <article><h3 data-i18n="s3.t">CRM va ERP tizim</h3><p data-i18n="s3.p">Savdo, ombor, xodimlar, mijozlar, hisobotlar — biznesingiz jarayonlariga moslab.</p><small data-i18n="s3.m">2 oydan</small></article>
+      <article><h3 data-i18n="s4.t">Telegram bot</h3><p data-i18n="s4.p">Buyurtma qabul qilish, yozilish, eslatmalar va hisobotlar — mijozlaringiz turgan joyda.</p><small data-i18n="s4.m">1–2 hafta</small></article>
+      <article><h3 data-i18n="s5.t">Avtomatlashtirish</h3><p data-i18n="s5.p">Excel, 1C, to'lov tizimlari va boshqa xizmatlarni bog'lash. Qo'lda qilinadigan ishni dastur qiladi.</p><small data-i18n="s5.m">1 haftadan</small></article>
+      <article><h3 data-i18n="s6.t">Startap MVP</h3><p data-i18n="s6.p">G'oyaning birinchi ishlaydigan versiyasi — keyin foydalanuvchilarga qarab rivojlantiramiz.</p><small data-i18n="s6.m">4–8 hafta</small></article>
+    </div>
+  </div>
+</section>
 
-    <div class="formwrap">
-      <form class="form" id="orderForm" novalidate>
-        <div class="f2">
-          <div class="f"><label for="name" data-i18n-html="fm.name">Your name <span>*</span></label>
-            <input id="name" name="name" required autocomplete="name" placeholder="Alisher Karimov" data-i18n-ph="fm.namePh">
-            <small class="err"></small></div>
-          <div class="f"><label for="phone" data-i18n-html="fm.phone">Phone <span>*</span></label>
-            <input id="phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="+998 __ ___ __ __">
-            <small class="err"></small></div>
-        </div>
-        <div class="f">
-          <label data-i18n="fm.svc">What do you need?</label>
-          <div class="chips">
-            <label class="chip"><input type="radio" name="service" value="Mobile app" checked><span data-i18n="fm.s1">Mobile app</span></label>
-            <label class="chip"><input type="radio" name="service" value="Website / platform"><span data-i18n="fm.s2">Website</span></label>
-            <label class="chip"><input type="radio" name="service" value="Uztomic CRM"><span data-i18n="fm.s3">Uztomic CRM</span></label>
-            <label class="chip"><input type="radio" name="service" value="Enterprise system"><span data-i18n="fm.s4">Enterprise system</span></label>
-            <label class="chip"><input type="radio" name="service" value="Automation"><span data-i18n="fm.s5">Automation</span></label>
-            <label class="chip"><input type="radio" name="service" value="Not sure"><span data-i18n="fm.s6">Not sure yet</span></label>
-          </div>
-        </div>
-        <div class="f">
-          <label data-i18n="fm.bud">Approximate budget</label>
-          <div class="chips">
-            <label class="chip"><input type="radio" name="budget" value="2-6 mln UZS" checked><span data-i18n="fm.b1">2–6 mln UZS</span></label>
-            <label class="chip"><input type="radio" name="budget" value="6-12 mln UZS"><span data-i18n="fm.b2">6–12 mln UZS</span></label>
-            <label class="chip"><input type="radio" name="budget" value="12-25 mln UZS"><span data-i18n="fm.b3">12–25 mln UZS</span></label>
-            <label class="chip"><input type="radio" name="budget" value="25 mln UZS +"><span data-i18n="fm.b4">25 mln UZS +</span></label>
-            <label class="chip"><input type="radio" name="budget" value="not decided"><span data-i18n="fm.b5">Not decided</span></label>
-          </div>
-        </div>
-        <div class="f"><label for="message" data-i18n-html="fm.msg">About the project <span>*</span></label>
-          <textarea id="message" name="message" required placeholder="For example: I run a shop and need an app to track sales and customer debts. We use a paper notebook now and lose track of things." data-i18n-ph="fm.msgPh"></textarea>
-          <small class="err"></small></div>
-        <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button type="submit" class="btn btn--p btn--wide" id="submitBtn"><span data-i18n="fm.send">Send request</span>
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <p class="fnote" data-i18n="fm.note">Your details are used only to contact you about this project. Never shared with anyone else.</p>
-        <div class="msg" id="formMsg" role="status" aria-live="polite"></div>
-      </form>
+<section class="night" id="videos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="vid.title">Bir daqiqada tushuntiramiz</h2>
+      <p class="lead" data-i18n="vid.lead">Instagram'dagi qisqa videolarimiz: qaysi biznesga qanday dastur kerak, qancha turadi va qanday ishlaymiz.</p>
     </div>
+    <div class="reels" id="reels"></div>
+    <p class="reels-note"><span data-i18n="vid.more">Yangi videolar Instagram va Telegram'da:</span> <a href="https://www.instagram.com/uztomic" target="_blank" rel="noopener">@uztomic</a> · <a href="https://t.me/uztomic_official" target="_blank" rel="noopener">@uztomic_official</a></p>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="works.title">Qilgan ishlarimiz</h2>
+      <p class="lead" data-i18n="works.lead">Ta'lim, savdo, xizmat ko'rsatish va o'yin sohasidagi loyihalar — mijozlar uchun va o'zimizning mahsulotlar.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filtr"></div>
+    <div class="works" id="workList"></div>
+  </div>
+</section>
+
+<section class="night" id="crm">
+  <div class="wrap crm__grid">
+    <div>
+      <h2>Uztomic CRM</h2>
+      <p class="lead" style="margin-top:18px" data-i18n="crm.lead">Tayyor do'kon tizimi: kassa, ombor, nasiya daftari, xodimlar va foyda hisoboti. Internet bo'lmasa ham ishlaydi, telefon va kompyuterda bir xil. Skaner va chek printeri bilan.</p>
+      <p style="margin-top:22px;font-weight:700" data-i18n="crm.vert">10 xil biznes uchun moslashadi:</p>
+      <div class="verticals">
+        <span data-i18n="vt.kiyim">Kiyim</span><span data-i18n="vt.oziq">Oziq-ovqat</span><span data-i18n="vt.sant">Santexnika</span><span data-i18n="vt.aks">Aksessuarlar</span><span data-i18n="vt.avto">Avtoservis</span><span data-i18n="vt.gul">Gul do'koni</span><span data-i18n="vt.dori">Dorixona</span><span data-i18n="vt.elek">Elektronika va telefon</span><span data-i18n="vt.kosm">Kosmetika</span><span data-i18n="vt.ehtiyot">Avto ehtiyot qismlar</span>
+      </div>
+      <div class="crm__cta">
+        <a class="btn btn--orange" href="https://uztomic-web.vercel.app" target="_blank" rel="noopener" data-i18n="crm.open">CRM'ni ochish</a>
+        <a class="btn btn--ghost" href="#contact" data-i18n="crm.demo">Ko'rsatib berishni so'rash</a>
+      </div>
+    </div>
+    <div class="tiers">
+      <div class="tier"><h3>Standart</h3><strong>150 000</strong><small data-i18n="crm.mo">so'm / oy</small><ul><li data-i18n="t1.a">1 filial, 3 xodim</li><li data-i18n="t1.b">4 000 tovar</li></ul></div>
+      <div class="tier tier--hot"><h3>Biznes</h3><strong>300 000</strong><small data-i18n="crm.mo">so'm / oy</small><ul><li data-i18n="t2.a">2 filial + 1 ombor, 7 xodim</li><li data-i18n="t2.b">8 000 tovar</li></ul></div>
+      <div class="tier"><h3>Pro</h3><strong>500 000</strong><small data-i18n="crm.mo">so'm / oy</small><ul><li data-i18n="t3.a">3 filial + 2 ombor, 16 xodim</li><li data-i18n="t3.b">15 000 tovar, rasmlar, AI tahlil</li></ul></div>
+      <div class="tier"><h3 data-i18n="t4.n">Korporativ</h3><strong>1 070 000</strong><small data-i18n="crm.mo">so'm / oy</small><ul><li data-i18n="t4.a">10 filial + 5 ombor, 130 xodim</li><li data-i18n="t4.b">500 000 tovar</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="calc">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="calc.title">Loyihangiz narxini hozir biling</h2>
+      <p class="lead" data-i18n="calc.lead">Nima kerakligini belgilang — taxminiy narx va muddat darhol chiqadi. Aniq narxni 20 daqiqalik bepul suhbatdan keyin shartnomaga yozamiz.</p>
+    </div>
+    <div class="calc">
+      <form id="calcForm" onsubmit="return false">
+        <fieldset><legend data-i18n="calc.type">1. Nima qilamiz?</legend><div class="opts" id="types"></div></fieldset>
+        <fieldset><legend data-i18n="calc.feat">2. Qanday imkoniyatlar kerak?</legend><div class="opts opts--feat" id="feats"></div></fieldset>
+        <fieldset style="margin:0"><legend data-i18n="calc.sup">3. Ishga tushgandan keyin</legend><div class="opts" id="support"></div></fieldset>
+      </form>
+      <aside class="receipt night" aria-live="polite">
+        <h3 data-i18n="calc.est">Taxminiy narx</h3>
+        <div class="receipt__sum" id="sum">—</div>
+        <div class="receipt__time" id="time"></div>
+        <ul id="lines"></ul>
+        <button class="btn btn--orange" type="button" id="sendCalc" data-i18n="calc.send">Hisobni Telegramda yuborish</button>
+        <div class="copied" id="copied"></div>
+        <p class="receipt__note" data-i18n="calc.note">To'lov: 50% boshlanishda, 50% topshirishda. Manba kodi sizga o'tadi.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2 data-i18n="proc.title">Qanday ishlaymiz</h2></div>
+    <ol class="steps">
+      <li><h3 data-i18n="p1.t">Suhbat</h3><p data-i18n="p1.p">20 daqiqalik bepul qo'ng'iroq: muammo va maqsadni aniqlaymiz.</p></li>
+      <li><h3 data-i18n="p2.t">Taklif</h3><p data-i18n="p2.p">Imkoniyatlar ro'yxati, muddat, qat'iy narx va shartnoma.</p></li>
+      <li><h3 data-i18n="p3.t">Dizayn</h3><p data-i18n="p3.p">Ekranlarni siz tasdiqlaysiz, keyin kod yoziladi.</p></li>
+      <li><h3 data-i18n="p4.t">Ishlab chiqish</h3><p data-i18n="p4.p">Har hafta ishlab turgan versiya va qisqa hisobot.</p></li>
+      <li><h3 data-i18n="p5.t">Ishga tushirish</h3><p data-i18n="p5.p">Joylash, xodimlarni o'qitish va 3 oy bepul yordam.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="night">
+  <div class="wrap">
+    <div class="sec-head"><h2 data-i18n="pr.title">Sizga beradigan va'dalarimiz</h2></div>
+    <div class="promise">
+      <div><b>24 <span data-i18n="pr.h">soat</span></b><p data-i18n="pr.1">Har qanday murojaatga birinchi javob.</p></div>
+      <div><b>50 / 50</b><p data-i18n="pr.2">To'lovning yarmi boshida, yarmi ish qabul qilingandan keyin.</p></div>
+      <div><b>100%</b><p data-i18n="pr.3">Manba kodi, domen va do'kon akkauntlari sizniki.</p></div>
+      <div><b>3 <span data-i18n="pr.m">oy</span></b><p data-i18n="pr.4">Topshirilgandan keyin bepul tuzatish va yordam.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head"><h2 data-i18n="faq.title">Ko'p beriladigan savollar</h2></div>
+    <div class="faq">
+      <details><summary data-i18n="q1">Dastur qancha turadi?</summary><p data-i18n="a1">Hajmiga bog'liq. Landing 2 mln so'mdan, mobil ilova 6 mln so'mdan, katta platforma 12 mln so'mdan boshlanadi. Yuqoridagi kalkulyator taxminiy narxni ko'rsatadi, aniq narx suhbatdan keyin shartnomaga yoziladi.</p></details>
+      <details><summary data-i18n="q2">Qancha vaqtda tayyor bo'ladi?</summary><p data-i18n="a2">Landing 5–10 kun, ilova yoki MVP 4–8 hafta, katta platforma 8–14 hafta, korporativ tizim 2 oydan.</p></details>
+      <details><summary data-i18n="q3">Kod va akkauntlar kimga tegishli bo'ladi?</summary><p data-i18n="a3">To'liq to'lovdan keyin manba kodi, domen, server va Play Market/App Store akkauntlari to'liq sizniki.</p></details>
+      <details><summary data-i18n="q4">Boshqa shahardaman — ishlay olamizmi?</summary><p data-i18n="a4">Ha. O'zbekiston bo'ylab va chet eldagi mijozlar bilan Telegram, telefon va video qo'ng'iroq orqali ishlaymiz.</p></details>
+      <details><summary data-i18n="q5">Tayyor do'kon dasturi bormi?</summary><p data-i18n="a5">Ha, Uztomic CRM. Oyiga 150 000 so'mdan. Kiyim, oziq-ovqat, avtoservis, gul do'koni, dorixona va boshqa 10 xil biznes uchun moslashadi.</p></details>
+      <details><summary data-i18n="q6">Boshqa jamoa qilgan dasturni davom ettirasizmi?</summary><p data-i18n="a6">Ha. Kodni yoki do'kondagi havolani ko'rib chiqamiz, keyin tuzatish yoki rivojlantirish rejasini beramiz.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="night" id="contact">
+  <div class="wrap contact__grid">
+    <div>
+      <h2 data-i18n="c.title">Loyihangizni gaplashamiz</h2>
+      <p class="lead" style="margin-top:16px" data-i18n="c.lead">Yozing yoki qo'ng'iroq qiling — 24 soat ichida javob beramiz. Birinchi suhbat bepul va hech narsaga majburlamaydi.</p>
+      <div class="ways">
+        <a href="https://t.me/uztomic_official" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M9.8 15.3l-.4 4.1c.6 0 .8-.3 1.1-.6l2.6-2.5 5.4 4c1 .5 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7L1.4 9.8C0 10.4 0 11.2 1.2 11.6l5.4 1.7L19 5.4c.6-.4 1.1-.2.7.2z"/></svg></i><span><small data-i18n="c.tg">Telegram — eng tez javob</small><b>@uztomic_official</b></span></a>
+        <a href="tel:+998770165963"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></i><span><small data-i18n="c.ph">Har kuni 9:00–22:00</small><b>+998 77 016 59 63</b></span></a>
+        <a href="mailto:uztomic@gmail.com"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></i><span><small data-i18n="c.em">Hujjat va shartnomalar uchun</small><b>uztomic@gmail.com</b></span></a>
+      </div>
+    </div>
+    <form class="lead-form" id="leadForm">
+      <div class="row2">
+        <div class="field"><label for="fName" data-i18n="f.name">Ismingiz</label><input id="fName" required autocomplete="name"></div>
+        <div class="field"><label for="fPhone" data-i18n="f.phone">Telefon</label><input id="fPhone" required inputmode="tel" autocomplete="tel" placeholder="+998"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="fType" data-i18n="f.type">Nima kerak</label>
+          <select id="fType"><option data-i18n="o1">Mobil ilova</option><option data-i18n="o2">Sayt</option><option data-i18n="o3">CRM / ERP tizim</option><option data-i18n="o4">Telegram bot</option><option>Uztomic CRM</option><option data-i18n="o5">Hali bilmayman</option></select></div>
+        <div class="field"><label for="fBudget" data-i18n="f.budget">Byudjet</label>
+          <select id="fBudget"><option>2–6 mln</option><option>6–12 mln</option><option>12–25 mln</option><option>25 mln+</option><option data-i18n="o6">Hali aniq emas</option></select></div>
+      </div>
+      <div class="field"><label for="fMsg" data-i18n="f.msg">Loyiha haqida qisqacha</label><textarea id="fMsg" data-i18n-ph="f.msgph" placeholder="Masalan: 3 ta filialli do'konimiz bor, ombor va nasiyani hisoblash kerak"></textarea></div>
+      <button class="btn btn--orange" type="submit" data-i18n="f.send">Telegram orqali yuborish</button>
+      <div class="copied" id="formCopied" style="color:#0b8a54"></div>
+      <p class="form-note" data-i18n="f.note">Xabar matni nusxalanadi va Telegram ochiladi — uni @uztomic_official ga joylab yuboring. Ma'lumotlaringiz faqat siz bilan bog'lanish uchun.</p>
+    </form>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="fg">
-      <div>
-        <img src="/assets/uztomic-logo-light.png" alt="Uztomic — Smart Software Solutions" id="footLogo" width="116" height="70" loading="lazy" decoding="async">
-        <p data-i18n="ft.about">A small software studio in Qo'qon building mobile apps, web platforms and business systems for companies across Uzbekistan.</p>
-      </div>
-      <div>
-        <h4 data-i18n="ft.h1">Company</h4>
-        <ul>
-          <li><a href="#services" data-i18n="nav.s">Services</a></li>
-          <li><a href="#process" data-i18n="nav.p">Process</a></li>
-          <li><a href="#work" data-i18n="nav.w">Work</a></li>
-          <li><a href="#pricing" data-i18n="nav.pr">Pricing</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 data-i18n="ft.h3">Product</h4>
-        <ul>
-          <li><a href="/crm/" data-i18n="ft.p1">Uztomic CRM</a></li>
-          <li><a href="/crm/#features" data-i18n="ft.p2">Features</a></li>
-          <li><a href="/crm/#pricing" data-i18n="ft.p3">CRM pricing</a></li>
-          <li><a href="/crm/#contact" data-i18n="ft.p4">Free 14-day trial</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 data-i18n="ft.h2">Get in touch</h4>
-        <ul>
-          <li><a href="https://t.me/uztomic_official" target="_blank" rel="noopener">Telegram — @uztomic_official</a></li>
-          <li><a href="tel:+998770165963">+998 77 016 59 63</a></li>
-          <li><a href="mailto:uztomic@gmail.com">uztomic@gmail.com</a></li>
-          <li><a href="#contact" data-i18n="nav.cta">Start a project</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="fbot">
-      <span>© <span id="yr">2026</span> Uztomic · <span data-i18n="ft.city">Qo'qon, Uzbekistan</span></span>
-      <span>uztomic.uz</span>
-    </div>
+    <span>© 2026 Uztomic · <span data-i18n="ft.addr">Qo'qon, Farg'ona viloyati</span></span>
+    <span><a href="https://t.me/uztomic_official" target="_blank" rel="noopener">Telegram</a> &nbsp; <a href="https://www.instagram.com/uztomic" target="_blank" rel="noopener">Instagram</a> &nbsp; <a href="tel:+998770165963">+998 77 016 59 63</a></span>
   </div>
 </footer>
 
-<div class="mbar" id="mbar">
-  <a class="btn btn--p" href="#contact" data-i18n="nav.cta">Start a project</a>
-  <a class="btn btn--g" href="/crm/" data-i18n="nav.crm2">CRM</a>
-  <a class="sq" href="https://t.me/uztomic_official" target="_blank" rel="noopener" aria-label="Telegram">
-    <svg viewBox="0 0 24 24"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4.1 1.6l4.9 1.4 1.8 5.3c.2.7 1.1.8 1.6.3l2.6-2.6 4.9 3.6c.6.4 1.5.1 1.7-.7l3-14.2c.2-.9-.7-1.6-1.5-1.3z"/><path d="m7.8 14.6 10.6-7.3-8.2 8.4"/></svg></a>
-</div>
-
-<button class="icobtn" id="top" type="button" aria-label="Back to top">
-  <svg class="ring" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21"/></svg>
-  <svg class="arw" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
-</button>
-<div id="toast" role="status" aria-live="polite"></div>
+<a class="float-tg" href="https://t.me/uztomic_official" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.3l-.4 4.1c.6 0 .8-.3 1.1-.6l2.6-2.5 5.4 4c1 .5 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7L1.4 9.8C0 10.4 0 11.2 1.2 11.6l5.4 1.7L19 5.4c.6-.4 1.1-.2.7.2z"/></svg></a>
 
 <script>
-window.UZ = { page:'home', lang:'uz' };
-window.I18N = {
-uz:{
-"pb.badge":"Yangi","pb.text":"Uztomic CRM — doʻkoningiz uchun tayyor tizim. Birinchi 14 kun bepul.",
-"nav.s":"Xizmatlar","nav.crm":"Doʻkon uchun CRM","nav.crm2":"CRM","nav.p":"Jarayon","nav.w":"Ishlarimiz","nav.pr":"Narxlar","nav.f":"Savollar","nav.cta":"Loyihani boshlash",
-"hero.badge":"Yangi loyihalar qabul qilinmoqda",
-"hero.h1a":"Biznesingiz ishlaydigan","hero.h1b":"dasturni","hero.h1c":"biz quramiz",
-"hero.lede":"Uztomic — Qoʻqondagi dasturiy taʼminot studiyasi. Mobil ilovalar, veb-saytlar, korporativ tizimlar, avtomatlashtirish va startap MVP — ustiga doʻkonlar uchun tayyor mahsulotimiz Uztomic CRM.",
-"hero.cta1":"Loyihani boshlash","hero.cta3":"Doʻkon uchun CRM",
-"hero.t1":"24 soat ichida javob","hero.t2":"Aniq narx, aniq muddat","hero.t3":"Kod egasi — siz",
-"hero.card1":"Shu hafta savdo","hero.card2":"Internetsiz ishlaydi","hero.card3":"Doim tayyor",
-"st.1":"Ishga tushirilgan mahsulot","st.2":"Hafta — oʻrtacha muddat","st.3":"Javob vaqti","st.4":"Oy bepul yordam",
-"cb.tag":"Oʻz mahsulotimiz","cb.h2":"Uztomic CRM — doʻkoningiz uchun tayyor tizim",
-"cb.lede":"Savdo, ombor, nasiya daftari va foyda — bitta ilovada. Internetsiz ham ishlayveradi, telefonda ham, Windows kompyuterda ham. Shu haftadayoq ishga tushirsa boʻladi.",
-"cb.f1":"Kassa, shtrix-kod, Bluetooth chek printeri","cb.f2":"Oʻlcham va rang boʻyicha qoldiq",
-"cb.f3":"Raqamli nasiya daftari va eslatma","cb.f4":"Xodim rollari, smena va foyda hisoboti",
-"cb.cta":"CRM sahifasini ochish","cb.cta2":"Narxlar va bepul sinov",
-"cb.k":"Oyiga, bitta doʻkon uchun",
-"cb.r1":"Standard — 6 hisob, 2 filial","cb.r2":"Pro — 16 hisob, 3 filial, AI",
-"cb.r3":"Oʻrnatish, bir marta","cb.r4":"Chek printeri bilan",
-"cb.trial":"Birinchi 14 kun bepul — karta ham, shartnoma ham kerak emas.",
-"sv.tag":"Nima qilamiz","sv.h2":"Yaxshi bajaradigan beshta ish",
-"sv.lede":"Har bir yoʻnalishda bitta qoida: aniq muddat, aniq narx va birinchi kundanoq ishlaydigan dastur.",
-"sv.1t":"Mobil ilovalar","sv.1d":"Android va iOS uchun bitta koddan. Oflayn rejim, push-bildirishnoma, toʻlov tizimlari va doʻkonlarga chiqarish — hammasi bizning zimmamizda.",
-"sv.2t":"Veb-saytlar va platformalar","sv.2d":"Tanishtiruv saytidan buyurtma qabul qiluvchi platformagacha. Tez ochiladi, har qanday telefonda chiroyli, Google’da topiladi.",
-"sv.3t":"Korporativ tizimlar","sv.3d":"Savdo, ombor, hisobot va nazorat bitta joyda. Xodimlar uchun rollar va huquqlar, har bir amal ortida audit yozuvi.",
-"sv.3l":"Uztomic CRM’ni koʻrish →",
-"sv.4t":"Avtomatlashtirish","sv.4d":"Takrorlanadigan qoʻl mehnatini dasturga topshiring: hisobotlar, Telegram botlar va tizimlar orasida maʼlumot almashinuvi.",
-"sv.5t":"Startap MVP","sv.5d":"4–8 haftada gʻoyani real foydalanuvchilar sinab koʻradigan birinchi versiyaga aylantiramiz. Keyin ularning xatti-harakatiga qarab rivojlantiramiz.",
-"sv.6t":"Qaysi biri kerakligini bilmayapsizmi?","sv.6d":"Muammoni oddiy soʻz bilan yozing. Nima qilish kerakligini — yoki bizsiz ham hal boʻlishini — rostini aytamiz.","sv.6c":"Savol berish",
-"wy.tag":"Nega Uztomic","wy.h2":"Hech qanday kutilmagan holat yoʻq",
-"wy.1t":"Narx ham, muddat ham qatʼiy","wy.1d":"Bitta qator kod yozilishidan oldin funksiyalar roʻyxati, topshirish sanasi va summani siz tasdiqlaysiz.",
-"wy.2t":"Hammasi sizniki","wy.2d":"Manba kodi, domen va doʻkon akkauntlari topshirishda sizga oʻtadi. Bizga bogʻlanib qolmaysiz.",
-"wy.3t":"Har hafta ishlaydigan versiya","wy.3d":"Har hafta oʻz telefoningizda haqiqiy natijani koʻrasiz — hammasi oxirida emas.",
-"wy.4t":"Tilingizda gaplashamiz","wy.4d":"Oʻzbek, rus yoki ingliz tilida — telefon, Telegram yoki Qoʻqonda choy ustida yuzma-yuz.",
-"pc.tag":"Qanday ishlaymiz","pc.h2":"Gʻoyadan ishga tushirishgacha besh qadam",
-"pc.lede":"Har bosqich oxirida siz koʻrib, tasdiqlaydigan aniq natija boʻladi.",
-"pc.1t":"Brif","pc.1d":"Bepul suhbat. Muammo nima, kim foydalanadi va qanday natija kerakligini aniqlaymiz.",
-"pc.2t":"Smeta","pc.2d":"Funksiyalar roʻyxati, muddat va qatʼiy narx. Kelishilsa — shartnoma imzolanadi.",
-"pc.3t":"Dizayn","pc.3d":"Har bir ekranni kod paydo boʻlishidan oldin koʻrasiz. Bu bosqichda oʻzgartirish arzon.",
-"pc.4t":"Ishlab chiqish","pc.4d":"Har hafta ishlaydigan versiya. Siz kuzatib borasiz, biz yoʻlda tuzatamiz.",
-"pc.5t":"Ishga tushirish","pc.5d":"Doʻkonlarga chiqaramiz, xodimlaringizni oʻqitamiz va uch oy bepul yordam beramiz.",
-"wk.tag":"Tanlangan ishlar","wk.h2":"Odamlar qoʻlidagi mahsulotlar",
-"wk.1k":"Savdo tizimi","wk.1t":"Uztomic CRM","wk.1d":"Doʻkonlar uchun savdo, ombor va nasiya daftari. Internetsiz ham ishlayveradi, chekni Bluetooth printerdan chiqaradi, telefon va Windows bilan sinxronlanadi.",
-"wk.1r":"Natija: <b>sotuv, qarz va qoldiq bitta telefonda</b>",
-"wk.2k":"Taʼlim ilovasi","wk.2t":"Alifbo va Narsalarni Oʻrganamiz","wk.2d":"Bolalar uchun harf va soʻz oʻrgatuvchi ilova: olti alifbo, oʻn interfeys tili, uchta oʻyin rejimi.",
-"wk.2r":"Natija: <b>Play Market’da, Families siyosatiga mos</b>",
-"wk.3k":"Kontent ilovasi","wk.3t":"Taomlar","wk.3d":"Oʻzbek va jahon taomlari retseptlari: qadamma-qadam koʻrsatma, video darslik va toʻrt tilli interfeys.",
-"wk.3r":"Natija: <b>har kuni ochiladigan ilova</b>",
-"pr.tag":"Narxlar","pr.h2":"Qoʻngʻiroq qilishdan oldin taxminni biling",
-"pr.lede":"Bular boshlangʻich narxlar, yakuniy emas. Bepul 20 daqiqalik suhbatdan soʻng aniq raqam va sanani yozma ravishda olasiz.",
-"pr.from":"boshlab","pr.from2":"individual","pr.cta":"Narxni bilish","pr.badge":"Koʻp tanlanadi",
-"pr.1t":"Landing","pr.1d":"Nima bilan shugʻullanishingizni tushuntirib, ariza yigʻadigan sayt.",
-"pr.1p":"2 000 000 soʻm","pr.1w":"5–10 kunda tayyor",
-"pr.1f1":"6 tagacha boʻlim, telefonga moslashgan","pr.1f2":"Ariza formasi — pochta yoki Telegramga",
-"pr.1f3":"Kerak boʻlsa uch tilda","pr.1f4":"Google sozlamalari va 1 oy yordam",
-"pr.2t":"Biznes","pr.2d":"Mijozlaringiz har kuni ishlatadigan mobil ilova yoki platforma.",
-"pr.2p":"6 000 000 soʻm","pr.2w":"4–8 haftada tayyor",
-"pr.2f1":"Bitta koddan Android va iOS","pr.2f2":"Admin panel, toʻlov, bildirishnoma",
-"pr.2f3":"Oflayn rejim va oʻzingizning dizayn","pr.2f4":"Doʻkonlarga chiqarish va 3 oy yordam",
-"pr.3t":"Pro platforma","pr.3d":"Koʻp rolli, integratsiyali va chinakam analitikali katta mahsulot.",
-"pr.3p":"12 000 000 soʻm","pr.3w":"8–14 haftada tayyor",
-"pr.3f1":"Telefon, veb va admin panel birga","pr.3f2":"Toʻlov, API va 1C integratsiyalari",
-"pr.3f3":"Dashboardlar va Excelga eksport","pr.3f4":"Yuklama testi va 6 oy yordam",
-"pr.4t":"Korporativ","pr.4d":"Butun kompaniyangiz har kuni ichida ishlaydigan tizim.",
-"pr.4p":"Kelishuv asosida","pr.4w":"Ikki oydan",
-"pr.4f1":"POS, CRM, ERP yoki ombor tizimi","pr.4f2":"Rollar, huquqlar va audit yozuvlari",
-"pr.4f3":"Oflayn rejim, 1C va API integratsiya","pr.4f4":"Xodimlarni oʻqitish va yordam shartnomasi",
-"pr.note":"Doʻkoningiz bormi? <a href=\"/crm/\" style=\"color:var(--brand-2);font-weight:600\">Uztomic CRM</a> oyiga 150 000 soʻmdan — alohida loyiha buyurtma qilish shart emas.",
-"cl.tag":"Kalkulyator","cl.h2":"Oʻn soniyada taxminiy raqam",
-"cl.lede":"Kerakli narsalarni belgilang — narx oraligʻi darhol chiqadi. Bu taxminiy hisob, taklif emas, lekin rostini koʻrsatadi.",
-"cl.kind":"Nima quramiz?","cl.k1":"Sayt","cl.k2":"Mobil ilova","cl.k3":"Biznes tizimi",
-"cl.add":"Ichida nima boʻlsin?","cl.a1":"Onlayn toʻlov","cl.a2":"Admin panel","cl.a3":"Uch til","cl.a4":"1C / API integratsiya","cl.a5":"Individual dizayn",
-"cl.res":"Taxminiy narx","cl.time":"Muddat",
-"cl.note":"Yakuniy narx bepul 20 daqiqalik suhbatdan soʻng, siz funksiyalar roʻyxatini tasdiqlaganingizdan keyin belgilanadi.",
-"cl.cta":"Shu hisobni yuborish",
-"gr.1":"Shartnoma va aniq sana","gr.2":"50% oldindan, 50% topshirishda",
-"gr.3":"Manba kodi sizga topshiriladi","gr.4":"3 oy bepul yordam",
-"fq.tag":"Javoblar","fq.h2":"Har hafta soʻraladigan savollar",
-"fq.1q":"Loyiham qancha turadi?<span></span>","fq.1a":"Ish hajmiga bogʻliq. Landing 2 000 000 soʻmdan, mobil ilova 6 000 000 dan, katta platforma 12 000 000 dan boshlanadi. Qisqa suhbatdan soʻng aniq raqam va sanani yuboramiz — siz tasdiqlamaguningizcha hech narsa boshlanmaydi.",
-"fq.2q":"Qancha vaqt ketadi?<span></span>","fq.2a":"Landing: 5–10 kun. Ilova yoki MVP: 4–8 hafta. Katta platforma: 8–14 hafta. Korporativ tizim: ikki oydan. Aniq sana funksiyalar roʻyxati kelishilgach belgilanadi.",
-"fq.3q":"Doʻkonlar uchun tayyor tizimingiz bormi?<span></span>","fq.3a":"Ha — <a href=\"/crm/\" style=\"color:var(--brand-2);font-weight:600\">Uztomic CRM</a>. Savdo, oʻlcham va rang boʻyicha qoldiq, raqamli nasiya daftari, xodim rollari va foyda hisoboti. Internetsiz ishlaydi, telefonda ham, Windowsda ham; oyiga 150 000 soʻmdan, 14 kun bepul.",
-"fq.4q":"Kod va akkauntlar kimniki?<span></span>","fq.4a":"Sizniki. Yakuniy toʻlovdan soʻng manba kodi, domen va doʻkon akkauntlari topshiriladi. Keyin istagan dasturchiga olib borishingiz mumkin.",
-"fq.5q":"Ishga tushgandan keyin nima boʻladi?<span></span>","fq.5a":"Uch oy bepul yordam: xatoliklarni tuzatamiz, savollarga javob beramiz. Keyin xohlasangiz oylik qoʻllab-quvvatlash shartnomasi tuzasiz, xohlamasangiz — yoʻq.",
-"fq.6q":"Boshqa viloyatdanman, ishlay olamizmi?<span></span>","fq.6a":"Ha. Oʻzbekiston boʻylab va xorijdagi mijozlar bilan Telegram, telefon va video orqali masofadan ishlaymiz. Qoʻqonga mehmon boʻlib kelishingiz ham mumkin.",
-"fq.7q":"Ilovam bor. Tuzatib yoki davom ettira olasizmi?<span></span>","fq.7a":"Koʻpincha ha. Kod yoki doʻkon havolasini yuboring — koʻrib chiqamiz, ahvolini rostini aytamiz va ish uchun narx beramiz.",
-"intro.cta":"Websitega kirish","intro.skip":"Oʻtkazib yuborish uchun bosing",
-"cc.h2":"Forma toʻldirishga vaqt yoʻqmi?","cc.p":"Telegramga bitta qator yozing yoki shunchaki qoʻngʻiroq qiling. Yigirma daqiqa bepul — oxirida qoʻlingizda aniq raqam va sana boʻladi, hatto biz bilan ishlamasangiz ham.","cc.b1":"Telegramda yozish",
-"ct.tag":"Shu yerdan boshlang","ct.h2":"Loyihangiz haqida gapirib bering",
-"ct.lede":"Bir necha qator yozing — 24 soat ichida savollar, taxminiy narx va real muddat bilan qaytamiz. Suhbat bepul va hech narsaga majbur qilmaydi.",
-"ct.tg":"Telegram — eng tez javob","ct.ph":"Har kuni, 9:00–22:00","ct.em":"Hujjat va shartnomalar uchun",
-"ct.loc":"Qoʻqon, Fargʻona viloyati","ct.loc2":"Butun mamlakat boʻylab masofadan",
-"fm.name":"Ismingiz <span>*</span>","fm.namePh":"Alisher Karimov","fm.phone":"Telefon <span>*</span>",
-"fm.svc":"Nima kerak?","fm.s1":"Mobil ilova","fm.s2":"Veb-sayt","fm.s3":"Uztomic CRM","fm.s4":"Korporativ tizim","fm.s5":"Avtomatlashtirish","fm.s6":"Hali bilmayman",
-"fm.bud":"Taxminiy byudjet","fm.b1":"2–6 mln soʻm","fm.b2":"6–12 mln soʻm","fm.b3":"12–25 mln soʻm","fm.b4":"25 mln soʻm +","fm.b5":"Hali hal qilinmagan",
-"fm.msg":"Loyiha haqida <span>*</span>",
-"fm.msgPh":"Masalan: doʻkonim bor, sotuv va mijozlar qarzini hisoblaydigan ilova kerak. Hozir daftarda yozamiz, koʻp narsa yoʻqolib ketadi.",
-"fm.send":"Arizani yuborish","fm.note":"Maʼlumotlaringiz faqat shu loyiha yuzasidan siz bilan bogʻlanish uchun ishlatiladi. Hech kimga berilmaydi.",
-"ft.about":"Qoʻqondagi kichik dasturiy taʼminot studiyasi. Oʻzbekiston boʻylab kompaniyalar uchun mobil ilovalar, veb-platformalar va biznes tizimlarini quramiz.",
-"ft.h1":"Kompaniya","ft.h2":"Bogʻlanish","ft.h3":"Mahsulot",
-"ft.p1":"Uztomic CRM","ft.p2":"Imkoniyatlar","ft.p3":"CRM narxlari","ft.p4":"14 kun bepul sinov",
-"ft.city":"Qoʻqon, Oʻzbekiston",
-"_uzs":"soʻm","_weeks":"hafta",
-"_title":"Uztomic — Smart Software Solutions | Mobil ilovalar, biznes tizimlari va doʻkon CRM",
-"_desc":"Uztomic — Qoʻqondagi dasturiy taʼminot studiyasi. Mobil ilovalar, veb-saytlar va platformalar, korporativ tizimlar, avtomatlashtirish, startap MVP va doʻkonlar uchun Uztomic CRM.",
-"_ok":"Rahmat! Arizangiz yuborildi. 24 soat ichida bogʻlanamiz.",
-"_err":"Yuborib boʻlmadi. Bizga toʻgʻridan-toʻgʻri yozing:","_sending":"Yuborilmoqda…",
-"_copied":"Nusxalandi:","_req":"Bu maydonni toʻldiring","_phone":"Telefon raqamini toʻliq kiriting","_short":"Biroz batafsilroq yozing"
-},
-ru:{
-"pb.badge":"Новое","pb.text":"Uztomic CRM — готовая система для вашего магазина. Первые 14 дней бесплатно.",
-"nav.s":"Услуги","nav.crm":"CRM для магазина","nav.crm2":"CRM","nav.p":"Процесс","nav.w":"Работы","nav.pr":"Цены","nav.f":"Вопросы","nav.cta":"Начать проект",
-"hero.badge":"Принимаем новые проекты",
-"hero.h1a":"Создаём","hero.h1b":"программы,","hero.h1c":"на которых работает ваш бизнес",
-"hero.lede":"Uztomic — студия разработки в Коканде. Мобильные приложения, сайты, корпоративные системы, автоматизация и MVP для стартапов — плюс Uztomic CRM, наш готовый продукт для магазинов.",
-"hero.cta1":"Начать проект","hero.cta3":"CRM для магазина",
-"hero.t1":"Ответ в течение 24 часов","hero.t2":"Фиксированная цена и срок","hero.t3":"Код принадлежит вам",
-"hero.card1":"Продажи за неделю","hero.card2":"Работает без интернета","hero.card3":"Всегда на связи",
-"st.1":"Запущенных продуктов","st.2":"Недель — средний срок","st.3":"Время ответа","st.4":"Месяца поддержки",
-"cb.tag":"Наш продукт","cb.h2":"Uztomic CRM — готовая система для вашего магазина",
-"cb.lede":"Продажи, склад, долговая тетрадь и прибыль в одном приложении. Работает без интернета, на телефоне и на Windows. Запустить можно уже на этой неделе.",
-"cb.f1":"Касса, штрих-код, Bluetooth-принтер чеков","cb.f2":"Остатки по размеру и цвету",
-"cb.f3":"Цифровая долговая тетрадь с напоминаниями","cb.f4":"Роли сотрудников, смены и отчёт по прибыли",
-"cb.cta":"Открыть страницу CRM","cb.cta2":"Цены и бесплатный период",
-"cb.k":"В месяц, за один магазин",
-"cb.r1":"Standard — 6 аккаунтов, 2 филиала","cb.r2":"Pro — 16 аккаунтов, 3 филиала, AI",
-"cb.r3":"Установка, разово","cb.r4":"С принтером чеков",
-"cb.trial":"Первые 14 дней бесплатно — без карты и без договора.",
-"sv.tag":"Что мы делаем","sv.h2":"Пять направлений, которые делаем хорошо",
-"sv.lede":"В каждом одно правило: точный срок, точная цена и программа, работающая с первого дня.",
-"sv.1t":"Мобильные приложения","sv.1d":"Android и iOS из одной кодовой базы. Офлайн-режим, push-уведомления, приём оплаты и публикация в магазинах — всё берём на себя.",
-"sv.2t":"Сайты и платформы","sv.2d":"От сайта-визитки до платформы с приёмом заказов. Быстро грузится, красиво на любом телефоне, находится в Google.",
-"sv.3t":"Корпоративные системы","sv.3d":"Продажи, склад, отчёты и контроль в одном месте. Роли и права для сотрудников, журнал действий за каждой операцией.",
-"sv.3l":"Посмотреть Uztomic CRM →",
-"sv.4t":"Автоматизация","sv.4d":"Передайте рутину программе: отчёты, Telegram-боты и обмен данными между системами, которыми вы уже пользуетесь.",
-"sv.5t":"MVP для стартапа","sv.5d":"За 4–8 недель превращаем идею в первую версию для реальных пользователей. Дальше развиваем по их поведению.",
-"sv.6t":"Не знаете, что именно нужно?","sv.6d":"Опишите задачу простыми словами. Честно скажем, что потребуется — или что мы вам вовсе не нужны.","sv.6c":"Задать вопрос",
-"wy.tag":"Почему Uztomic","wy.h2":"Никаких сюрпризов",
-"wy.1t":"Фиксированные цена и срок","wy.1d":"Список функций, дату сдачи и сумму вы утверждаете до того, как написана первая строка кода.",
-"wy.2t":"Всё принадлежит вам","wy.2d":"Исходный код, домен и аккаунты магазинов передаются при сдаче. Вы не привязаны к нам.",
-"wy.3t":"Рабочая версия каждую неделю","wy.3d":"Реальный прогресс на вашем телефоне каждую неделю — а не одно большое открытие в конце.",
-"wy.4t":"Говорим на вашем языке","wy.4d":"Узбекский, русский или английский — по телефону, в Telegram или лично за чаем в Коканде.",
-"pc.tag":"Как работаем","pc.h2":"От идеи до запуска за пять шагов",
-"pc.lede":"В конце каждого этапа есть конкретный результат, который вы видите и утверждаете.",
-"pc.1t":"Бриф","pc.1d":"Бесплатный разговор. Выясняем задачу, кто будет пользоваться и какой нужен результат.",
-"pc.2t":"Смета","pc.2d":"Список функций, срок и фиксированная цена. Договорились — подписываем договор.",
-"pc.3t":"Дизайн","pc.3d":"Вы видите каждый экран до появления кода. На этом этапе правки дёшевы.",
-"pc.4t":"Разработка","pc.4d":"Рабочая версия каждую неделю. Вы следите, мы правим по ходу.",
-"pc.5t":"Запуск","pc.5d":"Публикуем, обучаем сотрудников и три месяца на связи бесплатно.",
-"wk.tag":"Избранные работы","wk.h2":"Продукты, которыми уже пользуются",
-"wk.1k":"Система продаж","wk.1t":"Uztomic CRM","wk.1d":"Продажи, склад и долговая тетрадь для магазинов. Работает без интернета, печатает чек на Bluetooth-принтере, синхронизируется с телефоном и Windows.",
-"wk.1r":"Результат: <b>продажи, долги и остатки в одном телефоне</b>",
-"wk.2k":"Обучающее приложение","wk.2t":"Алифбо ва Нарсаларни Ўрганамиз","wk.2d":"Приложение для детей: шесть алфавитов, десять языков интерфейса, три игровых режима.",
-"wk.2r":"Результат: <b>в Play Market, соответствует политике Families</b>",
-"wk.3k":"Контент-приложение","wk.3t":"Taomlar","wk.3d":"Рецепты узбекской и мировой кухни: пошаговые инструкции, видеоуроки и четыре языка интерфейса.",
-"wk.3r":"Результат: <b>приложение, которое открывают каждый день</b>",
-"pr.tag":"Цены","pr.h2":"Узнайте порядок цифр до звонка",
-"pr.lede":"Это стартовые цены, а не итоговые. После бесплатного 20-минутного разговора вы получаете точную сумму и дату письменно.",
-"pr.from":"от","pr.from2":"индивидуально","pr.cta":"Узнать цену","pr.badge":"Чаще всего выбирают",
-"pr.1t":"Лендинг","pr.1d":"Сайт, который объясняет, чем вы занимаетесь, и собирает заявки.",
-"pr.1p":"2 000 000 сум","pr.1w":"Готово за 5–10 дней",
-"pr.1f1":"До 6 разделов, удобно с телефона","pr.1f2":"Форма заявки на почту или в Telegram",
-"pr.1f3":"При необходимости на трёх языках","pr.1f4":"Настройка Google и 1 месяц поддержки",
-"pr.2t":"Бизнес","pr.2d":"Мобильное приложение или платформа, которой клиенты пользуются каждый день.",
-"pr.2p":"6 000 000 сум","pr.2w":"Готово за 4–8 недель",
-"pr.2f1":"Android и iOS из одной кодовой базы","pr.2f2":"Админ-панель, оплата, уведомления",
-"pr.2f3":"Офлайн-режим и собственный дизайн","pr.2f4":"Публикация в магазинах и 3 месяца поддержки",
-"pr.3t":"Pro-платформа","pr.3d":"Большой продукт с ролями, интеграциями и настоящей аналитикой.",
-"pr.3p":"12 000 000 сум","pr.3w":"Готово за 8–14 недель",
-"pr.3f1":"Телефон, веб и админ-панель вместе","pr.3f2":"Оплата, API и интеграции с 1С",
-"pr.3f3":"Дашборды и экспорт в Excel","pr.3f4":"Нагрузочное тестирование и 6 месяцев поддержки",
-"pr.4t":"Корпоративный","pr.4d":"Система, внутри которой каждый день работает вся компания.",
-"pr.4p":"По договорённости","pr.4w":"От двух месяцев",
-"pr.4f1":"POS, CRM, ERP или складская система","pr.4f2":"Роли, права и журналы аудита",
-"pr.4f3":"Офлайн-режим, интеграции с 1С и API","pr.4f4":"Обучение сотрудников и договор поддержки",
-"pr.note":"У вас магазин? <a href=\"/crm/\" style=\"color:var(--brand-2);font-weight:600\">Uztomic CRM</a> — от 150 000 сум в месяц, отдельный проект заказывать не нужно.",
-"cl.tag":"Калькулятор","cl.h2":"Примерная цифра за десять секунд",
-"cl.lede":"Отметьте, что нужно, — диапазон появится сразу. Это ориентир, а не оферта, но честный.",
-"cl.kind":"Что делаем?","cl.k1":"Сайт","cl.k2":"Мобильное приложение","cl.k3":"Бизнес-система",
-"cl.add":"Что должно быть внутри?","cl.a1":"Онлайн-оплата","cl.a2":"Админ-панель","cl.a3":"Три языка","cl.a4":"Интеграция 1С / API","cl.a5":"Индивидуальный дизайн",
-"cl.res":"Примерная цена","cl.time":"Срок",
-"cl.note":"Итоговая цена фиксируется после бесплатного 20-минутного разговора и только когда вы утвердите список функций.",
-"cl.cta":"Отправить этот расчёт",
-"gr.1":"Договор и точная дата","gr.2":"50% предоплата, 50% при сдаче",
-"gr.3":"Исходный код передаётся вам","gr.4":"3 месяца бесплатной поддержки",
-"fq.tag":"Ответы","fq.h2":"Вопросы, которые задают каждую неделю",
-"fq.1q":"Сколько будет стоить мой проект?<span></span>","fq.1a":"Зависит от объёма. Лендинг — от 2 000 000 сум, мобильное приложение — от 6 000 000, большая платформа — от 12 000 000. После короткого разговора присылаем точную сумму и дату — ничего не начинается без вашего согласия.",
-"fq.2q":"Сколько времени займёт?<span></span>","fq.2a":"Лендинг: 5–10 дней. Приложение или MVP: 4–8 недель. Большая платформа: 8–14 недель. Корпоративная система: от двух месяцев. Точная дата фиксируется после согласования функций.",
-"fq.3q":"Есть ли у вас готовая система для магазинов?<span></span>","fq.3a":"Да — <a href=\"/crm/\" style=\"color:var(--brand-2);font-weight:600\">Uztomic CRM</a>. Продажи, остатки по размеру и цвету, цифровая долговая тетрадь, роли сотрудников и отчёты по прибыли. Работает без интернета, на телефоне и на Windows; от 150 000 сум в месяц, 14 дней бесплатно.",
-"fq.4q":"Кому принадлежит код и аккаунты?<span></span>","fq.4a":"Вам. После финальной оплаты передаём исходный код, домен и аккаунты магазинов. Дальше можете обратиться к любому разработчику.",
-"fq.5q":"Что происходит после запуска?<span></span>","fq.5a":"Три месяца бесплатной поддержки: исправляем ошибки, отвечаем на вопросы. Дальше — ежемесячный договор сопровождения, если захотите.",
-"fq.6q":"Я из другого региона, сработаемся?<span></span>","fq.6a":"Да. Работаем удалённо по всему Узбекистану и с зарубежными клиентами — Telegram, телефон, видео. Будем рады видеть вас и у нас в Коканде.",
-"fq.7q":"У меня уже есть приложение. Почините или продолжите?<span></span>","fq.7a":"Чаще всего да. Пришлите код или ссылку на магазин — посмотрим, честно скажем, в каком оно состоянии, и назовём цену работ.",
-"intro.cta":"Войти на сайт","intro.skip":"Нажмите, чтобы пропустить",
-"cc.h2":"Не хочется заполнять форму?","cc.p":"Напишите одну строку в Telegram или просто позвоните. Двадцать бесплатных минут — и у вас на руках цифра и дата, даже если мы так и не начнём работать вместе.","cc.b1":"Написать в Telegram",
-"ct.tag":"Начните здесь","ct.h2":"Расскажите о проекте",
-"ct.lede":"Напишите несколько строк — вернёмся в течение 24 часов с вопросами, ориентировочной ценой и реальным сроком. Разговор бесплатный и ни к чему не обязывает.",
-"ct.tg":"Telegram — отвечаем быстрее всего","ct.ph":"Ежедневно, 9:00–22:00","ct.em":"Для документов и договоров",
-"ct.loc":"Коканд, Ферганская область","ct.loc2":"Удалённо по всей стране",
-"fm.name":"Ваше имя <span>*</span>","fm.namePh":"Алишер Каримов","fm.phone":"Телефон <span>*</span>",
-"fm.svc":"Что нужно?","fm.s1":"Приложение","fm.s2":"Сайт","fm.s3":"Uztomic CRM","fm.s4":"Корп. система","fm.s5":"Автоматизация","fm.s6":"Пока не знаю",
-"fm.bud":"Примерный бюджет","fm.b1":"2–6 млн сум","fm.b2":"6–12 млн сум","fm.b3":"12–25 млн сум","fm.b4":"25 млн сум +","fm.b5":"Пока не определён",
-"fm.msg":"О проекте <span>*</span>",
-"fm.msgPh":"Например: у меня магазин, нужно приложение для учёта продаж и долгов клиентов. Сейчас ведём в тетради и многое теряется.",
-"fm.send":"Отправить заявку","fm.note":"Данные используются только для связи по этому проекту. Никому не передаются.",
-"ft.about":"Небольшая студия разработки в Коканде. Создаём мобильные приложения, веб-платформы и бизнес-системы для компаний по всему Узбекистану.",
-"ft.h1":"Компания","ft.h2":"Связаться","ft.h3":"Продукт",
-"ft.p1":"Uztomic CRM","ft.p2":"Возможности","ft.p3":"Цены CRM","ft.p4":"14 дней бесплатно",
-"ft.city":"Коканд, Узбекистан",
-"_uzs":"сум","_weeks":"недель",
-"_title":"Uztomic — Smart Software Solutions | Приложения, бизнес-системы и CRM для магазинов",
-"_desc":"Uztomic — студия разработки в Коканде. Мобильные приложения, сайты и платформы, корпоративные системы, автоматизация, MVP и Uztomic CRM для магазинов.",
-"_ok":"Спасибо! Заявка отправлена. Свяжемся в течение 24 часов.",
-"_err":"Не удалось отправить. Напишите нам напрямую:","_sending":"Отправляем…",
-"_copied":"Скопировано:","_req":"Заполните это поле","_phone":"Введите номер полностью","_short":"Напишите чуть подробнее"
-}};
+/* ===================== Ma'lumotlar — shu yerdan tahrirlang ===================== */
+
+// Instagram videolari (media/ papkasida).
+const REELS = [
+  {n:'01', uz:"Daftar va Excel o'rniga dastur", ru:'Программа вместо тетради и Excel'},
+  {n:'02', uz:'Telegram bot biznesga nima beradi', ru:'Что даёт бизнесу Telegram-бот'},
+  {n:'03', uz:'Mobil ilova kerakmi?', ru:'Нужно ли мобильное приложение?'},
+  {n:'04', uz:'Sayt mijoz olib keladimi', ru:'Приводит ли сайт клиентов'},
+  {n:'05', uz:"Do'kon uchun CRM", ru:'CRM для магазина'},
+  {n:'06', uz:"O'quv markaz uchun tizim", ru:'Система для учебного центра'},
+  {n:'07', uz:'Klinika uchun dastur', ru:'Программа для клиники'},
+  {n:'08', uz:'Kafolat va ishonch', ru:'Гарантии и доверие'},
+  {n:'09', uz:'Besh qadamda tayyor dastur', ru:'Готовая программа за пять шагов'},
+  {n:'10', uz:'Narx va aloqa', ru:'Цена и контакты'},
+];
+
+// Portfolio. cat: crm | app | web | edu
+const WORKS = [
+  {name:'Uztomic CRM', mono:'CRM', bg:'linear-gradient(135deg,#7B6CF6,#1F8A95)', cat:['crm','web','app'], featured:true,
+   uz:"Do'konlar uchun kassa, ombor, nasiya va hisobotlar. Oflayn ishlaydi, 10 xil biznes yo'nalishiga moslashadi: avtoservis naryadlari, gul buyurtmalari, IMEI kafolati, omborlar orasida ko'chirish.",
+   ru:'Касса, склад, долги и отчёты для магазинов. Работает офлайн, подстраивается под 10 видов бизнеса: заказ-наряды автосервиса, заказы цветочного, гарантия по IMEI, перемещения между складами.',
+   tags:['Flutter','React','Supabase','Offline']},
+  {name:'Uztomic Admin', mono:'ADM', bg:'linear-gradient(135deg,#161A4A,#7B6CF6)', cat:['web','crm'],
+   uz:"CRM uchun boshqaruv paneli: do'konlar, tariflar, to'lov cheklarini tasdiqlash va statistika.", ru:'Панель управления CRM: магазины, тарифы, подтверждение оплат и статистика.', tags:['React','Admin']},
+  {name:'Alifbo va Narsalarni O‘rganamiz', mono:'Aa', bg:'linear-gradient(135deg,#FF8A3D,#F2B230)', cat:['app','edu'],
+   uz:"Bolalar uchun alifbo va so'z boyligi ilovasi: 6 alifbo, 10 interfeys tili, 3 o'rganish rejimi. Play Market'da.", ru:'Приложение для детей: 6 алфавитов, 10 языков интерфейса, 3 режима обучения. В Play Market.', tags:['Flutter','Play Market']},
+  {name:'Taomlar', mono:'Tm', bg:'linear-gradient(135deg,#C2560F,#FF8A3D)', cat:['app'],
+   uz:"Retseptlar ilovasi: qadam-baqadam ko'rsatma, video darslar, 4 til.", ru:'Приложение рецептов: пошаговые инструкции, видеоуроки, 4 языка.', tags:['Flutter']},
+  {name:'Maktab Moliya CRM', mono:'MM', bg:'linear-gradient(135deg,#1F8A95,#0E1033)', cat:['crm','edu'],
+   uz:"Xususiy maktablar uchun moliya va boshqaruv tizimi: to'lovlar, qarzdorlik, xarajatlar va hisobotlar.", ru:'Финансы и управление для частных школ: оплаты, задолженности, расходы и отчёты.', tags:['ERP']},
+  {name:'Turon Maktab', mono:'TM', bg:'linear-gradient(135deg,#2B3A8C,#7B6CF6)', cat:['edu','app'],
+   uz:"Maktab uchun ilova: o'quvchilar, sinflar va ota-onalar bilan aloqa.", ru:'Приложение для школы: ученики, классы и связь с родителями.', tags:['Flutter']},
+  {name:'School System', mono:'SS', bg:'linear-gradient(135deg,#0E1033,#2B3A8C)', cat:['edu','crm'],
+   uz:"Ta'lim muassasasi uchun boshqaruv tizimi: guruhlar, jadval, o'qituvchilar.", ru:'Система управления учебным заведением: группы, расписание, преподаватели.', tags:['Flutter']},
+  {name:'Davomad', mono:'Dv', bg:'linear-gradient(135deg,#1F8A95,#5FC4C0)', cat:['edu','app'],
+   uz:"O'quvchi va xodimlar davomatini hisobga olish ilovasi.", ru:'Учёт посещаемости учеников и сотрудников.', tags:['Flutter']},
+  {name:'Salon Booking', mono:'SB', bg:'linear-gradient(135deg,#B83A72,#FF8A3D)', cat:['web','crm'],
+   uz:"Salon va sartaroshxonalar uchun onlayn yozilish: usta, xizmat va vaqtni tanlash.", ru:'Онлайн-запись в салоны и барбершопы: мастер, услуга и время.', tags:['Flutter Web','Supabase']},
+  {name:'Gamer Hub', mono:'GH', bg:'linear-gradient(135deg,#3A1F8C,#B83A72)', cat:['app','web'],
+   uz:"O'zbekistondagi o'yinchilar uchun platforma va mobil ilova.", ru:'Платформа и мобильное приложение для геймеров Узбекистана.', tags:['React']},
+  {name:'Sharq Reklama Markazi', mono:'SR', bg:'linear-gradient(135deg,#C2560F,#7B6CF6)', cat:['crm','app'],
+   uz:"Reklama markazi uchun buyurtmalar va ishlab chiqarishni boshqarish ilovasi.", ru:'Приложение для рекламного центра: заказы и производство.', tags:['Flutter']},
+  {name:'AgroBill', mono:'AB', bg:'linear-gradient(135deg,#2E7D4F,#9CCB5A)', cat:['crm','app'],
+   uz:"Qishloq xo'jaligi korxonasi uchun hisob-kitob va hisob-faktura ilovasi.", ru:'Учёт и счета для сельхозпредприятия.', tags:['Flutter']},
+  {name:'Optika CRM', mono:'Op', bg:'linear-gradient(135deg,#2B3A8C,#1F8A95)', cat:['crm'],
+   uz:"Optika do'koni uchun mijozlar, retsept (diopter) va buyurtmalar hisobi.", ru:'Учёт клиентов, рецептов и заказов для оптики.', tags:['CRM']},
+  {name:'UzTomicS', mono:'US', bg:'linear-gradient(135deg,#0E1033,#1F8A95)', cat:['crm','app'],
+   uz:"Santexnika do'koni uchun kassa va ombor dasturi.", ru:'Касса и склад для магазина сантехники.', tags:['Flutter','POS']},
+  {name:'Ziyrak', mono:'Zy', bg:'linear-gradient(135deg,#F2B230,#1F8A95)', cat:['app','edu'],
+   uz:"Bilim va mantiqni rivojlantiruvchi mobil ilova.", ru:'Мобильное приложение для развития знаний и логики.', tags:['Flutter','Play Market']},
+  {name:'ZIKO', mono:'ZK', bg:'linear-gradient(135deg,#7B6CF6,#FF8A3D)', cat:['app'],
+   uz:"Mijoz uchun yaratilgan mobil ilova.", ru:'Мобильное приложение, сделанное для клиента.', tags:['Flutter']},
+  {name:'Uztomic Telegram botlar', mono:'Bot', bg:'linear-gradient(135deg,#2AABEE,#1F8A95)', cat:['web'],
+   uz:"Buyurtma qabul qilish, eslatma va hisobot yuboradigan botlar.", ru:'Боты для приёма заказов, напоминаний и отчётов.', tags:['Telegram']},
+];
+const CATS = [
+  {k:'all', uz:'Hammasi', ru:'Все'}, {k:'crm', uz:'CRM va ERP', ru:'CRM и ERP'},
+  {k:'app', uz:'Mobil ilovalar', ru:'Мобильные приложения'}, {k:'web', uz:'Veb', ru:'Веб'}, {k:'edu', uz:"Ta'lim", ru:'Образование'},
+];
+
+// Kalkulyator narxlari (so'm). weeks — taxminiy muddat.
+const TYPES = [
+  {k:'landing', uz:'Landing sahifa', ru:'Лендинг', price:2000000, w:[1,2]},
+  {k:'site', uz:'Sayt / katalog', ru:'Сайт / каталог', price:4000000, w:[2,4]},
+  {k:'bot', uz:'Telegram bot', ru:'Telegram-бот', price:1500000, w:[1,2]},
+  {k:'app', uz:'Mobil ilova', ru:'Мобильное приложение', price:6000000, w:[4,8]},
+  {k:'crm', uz:'CRM / ERP tizim', ru:'CRM / ERP система', price:8000000, w:[6,10]},
+  {k:'platform', uz:'Ilova + sayt + admin', ru:'Приложение + сайт + админка', price:12000000, w:[8,14]},
+];
+const FEATS = [
+  {k:'admin', uz:'Admin panel', ru:'Админ-панель', price:1500000, w:1},
+  {k:'pay', uz:"Onlayn to'lov (Payme, Click)", ru:'Онлайн-оплата (Payme, Click)', price:1500000, w:1},
+  {k:'lang', uz:'3 til (uz, ru, en)', ru:'3 языка (uz, ru, en)', price:800000, w:0},
+  {k:'design', uz:'Maxsus dizayn', ru:'Индивидуальный дизайн', price:1000000, w:1},
+  {k:'push', uz:'Push-bildirishnomalar', ru:'Push-уведомления', price:700000, w:0},
+  {k:'offline', uz:'Internetsiz ishlash', ru:'Работа без интернета', price:1500000, w:1},
+  {k:'reports', uz:'Hisobot va grafiklar', ru:'Отчёты и графики', price:1500000, w:1},
+  {k:'roles', uz:'Xodimlar va ruxsatlar', ru:'Сотрудники и права', price:1000000, w:0},
+  {k:'tgbot', uz:"Telegram bot qo'shimcha", ru:'Дополнительный Telegram-бот', price:1200000, w:1},
+  {k:'api', uz:'1C / API integratsiya', ru:'Интеграция 1C / API', price:2500000, w:2},
+  {k:'pos', uz:'Skaner va chek printeri', ru:'Сканер и чековый принтер', price:1000000, w:0},
+  {k:'seo', uz:"Google'da chiqish (SEO)", ru:'Продвижение в Google (SEO)', price:600000, w:0},
+];
+const SUPPORT = [
+  {k:'s3', uz:'3 oy bepul', ru:'3 месяца бесплатно', price:0},
+  {k:'s6', uz:'6 oy', ru:'6 месяцев', price:1500000},
+  {k:'s12', uz:'12 oy', ru:'12 месяцев', price:3500000},
+];
+
+/* ===================== Tarjimalar ===================== */
+const RU = {
+  'nav.about':'О нас','nav.works':'Работы','nav.calc':'Рассчитать цену','nav.faq':'Вопросы','cta.short':'Связаться',
+  'hero.title':'Из тетради и Excel — <em>в систему</em>',
+  'hero.lead':'Uztomic — студия разработки из Коканда. Делаем мобильные приложения, сайты, CRM и Telegram-ботов для магазинов, учебных центров, клиник и малого бизнеса. Цена и срок фиксируются в договоре, код остаётся у вас.',
+  'hero.cta1':'Рассчитать стоимость','hero.cta2':'Написать в Telegram','hero.f1':'Ответ в течение 24 часов','hero.f2':'Рабочая версия каждую неделю','hero.f3':'3 месяца бесплатной поддержки','hero.tag':'минут до точной цены',
+  'about.title':'Мы — небольшая, но серьёзная команда из Коканда',
+  'about.p1':'Uztomic основал Flutter-разработчик Gaabi. Сегодня студия создаёт мобильные приложения, веб-платформы, CRM и инструменты автоматизации для бизнеса Узбекистана.',
+  'about.p2':'Говорим с клиентом понятным языком: сначала слушаем задачу, потом показываем экраны и только потом пишем код. Каждую неделю вы получаете рабочую версию и видите, где находится проект.',
+  'about.p3':'У нас есть и свой продукт — Uztomic CRM для магазинов. Поэтому мы знаем, как должна работать бизнес-программа, не по теории, а по ежедневной работе.',
+  'v1.t':'Фиксированная цена и срок','v1.p':'Список работ, цена и дата сдачи прописываются в договоре. Цена в процессе не растёт.',
+  'v2.t':'Код ваш','v2.p':'После полной оплаты исходный код, домен и аккаунты Play Market/App Store переходят к вам.',
+  'v3.t':'Результат каждую неделю','v3.p':'Никаких «ещё не готово» на полпути — каждую неделю вы тестируете рабочую версию.',
+  'v4.t':'Рядом и после запуска','v4.p':'3 месяца бесплатной поддержки, обучение сотрудников и при необходимости договор на обслуживание.',
+  'svc.title':'Что мы делаем','svc.lead':'Одна задача — одно правильное решение. Не продаём лишнего.',
+  's1.t':'Мобильное приложение','s1.p':'Android и iOS из одного кода (Flutter). Офлайн-режим, push, платежи, публикация в Play Market и App Store.','s1.m':'4–8 недель',
+  's2.t':'Сайт и платформа','s2.p':'Лендинг, каталог, интернет-магазин, админ-панель. Быстро открывается с телефона и находится в Google.','s2.m':'от 5 дней',
+  's3.t':'CRM и ERP','s3.p':'Продажи, склад, сотрудники, клиенты, отчёты — под процессы вашего бизнеса.','s3.m':'от 2 месяцев',
+  's4.t':'Telegram-бот','s4.p':'Приём заказов, запись, напоминания и отчёты — там, где уже есть ваши клиенты.','s4.m':'1–2 недели',
+  's5.t':'Автоматизация','s5.p':'Связываем Excel, 1C, платёжные системы и другие сервисы. Ручную работу делает программа.','s5.m':'от 1 недели',
+  's6.t':'MVP для стартапа','s6.p':'Первая рабочая версия идеи — дальше развиваем по поведению пользователей.','s6.m':'4–8 недель',
+  'vid.title':'Объясняем за минуту','vid.lead':'Наши короткие видео из Instagram: какому бизнесу какая программа нужна, сколько стоит и как мы работаем.','vid.more':'Новые видео в Instagram и Telegram:',
+  'works.title':'Наши работы','works.lead':'Проекты в образовании, торговле, услугах и играх — для клиентов и собственные продукты.',
+  'crm.lead':'Готовая система для магазина: касса, склад, тетрадь долгов, сотрудники и отчёт о прибыли. Работает без интернета, одинаково на телефоне и компьютере. Со сканером и чековым принтером.',
+  'crm.vert':'Подстраивается под 10 видов бизнеса:','crm.open':'Открыть CRM','crm.demo':'Попросить демонстрацию','crm.mo':'сум / мес',
+  'vt.kiyim':'Одежда','vt.oziq':'Продукты','vt.sant':'Сантехника','vt.aks':'Аксессуары','vt.avto':'Автосервис','vt.gul':'Цветочный','vt.dori':'Аптека','vt.elek':'Электроника и телефоны','vt.kosm':'Косметика','vt.ehtiyot':'Автозапчасти',
+  't1.a':'1 филиал, 3 сотрудника','t1.b':'4 000 товаров','t2.a':'2 филиала + 1 склад, 7 сотрудников','t2.b':'8 000 товаров','t3.a':'3 филиала + 2 склада, 16 сотрудников','t3.b':'15 000 товаров, фото, AI-анализ','t4.n':'Корпоративный','t4.a':'10 филиалов + 5 складов, 130 сотрудников','t4.b':'500 000 товаров',
+  'calc.title':'Узнайте цену проекта сейчас','calc.lead':'Отметьте, что нужно — примерная цена и срок появятся сразу. Точную цену запишем в договор после бесплатного 20-минутного звонка.',
+  'calc.type':'1. Что делаем?','calc.feat':'2. Какие возможности нужны?','calc.sup':'3. После запуска','calc.est':'Примерная цена','calc.send':'Отправить расчёт в Telegram','calc.note':'Оплата: 50% в начале, 50% при сдаче. Исходный код переходит к вам.',
+  'proc.title':'Как мы работаем','p1.t':'Звонок','p1.p':'Бесплатные 20 минут: определяем задачу и цель.','p2.t':'Предложение','p2.p':'Список функций, срок, фиксированная цена и договор.','p3.t':'Дизайн','p3.p':'Вы утверждаете экраны, затем пишется код.','p4.t':'Разработка','p4.p':'Рабочая версия и короткий отчёт каждую неделю.','p5.t':'Запуск','p5.p':'Публикация, обучение сотрудников и 3 месяца поддержки.',
+  'pr.title':'Что мы вам обещаем','pr.h':'часа','pr.m':'месяца','pr.1':'Первый ответ на любое обращение.','pr.2':'Половина оплаты в начале, половина после приёмки.','pr.3':'Исходный код, домен и аккаунты магазинов — ваши.','pr.4':'Бесплатные исправления и помощь после сдачи.',
+  'faq.title':'Частые вопросы',
+  'q1':'Сколько стоит программа?','a1':'Зависит от объёма. Лендинг от 2 млн сум, мобильное приложение от 6 млн, большая платформа от 12 млн. Калькулятор выше покажет примерную цену, точная фиксируется в договоре после звонка.',
+  'q2':'Сколько времени займёт?','a2':'Лендинг 5–10 дней, приложение или MVP 4–8 недель, большая платформа 8–14 недель, корпоративная система от 2 месяцев.',
+  'q3':'Кому принадлежат код и аккаунты?','a3':'После полной оплаты исходный код, домен, сервер и аккаунты Play Market/App Store полностью ваши.',
+  'q4':'Я в другом городе — сможем работать?','a4':'Да. Работаем по всему Узбекистану и с зарубежными клиентами через Telegram, телефон и видеозвонки.',
+  'q5':'Есть готовая программа для магазина?','a5':'Да, Uztomic CRM. От 150 000 сум в месяц. Подходит для одежды, продуктов, автосервиса, цветочного, аптеки и ещё 10 видов бизнеса.',
+  'q6':'Продолжите программу другой команды?','a6':'Да. Посмотрим код или ссылку в магазине и дадим план исправлений или развития.',
+  'c.title':'Обсудим ваш проект','c.lead':'Напишите или позвоните — ответим в течение 24 часов. Первая консультация бесплатна и ни к чему не обязывает.',
+  'c.tg':'Telegram — самый быстрый ответ','c.ph':'Ежедневно 9:00–22:00','c.em':'Для документов и договоров',
+  'f.name':'Ваше имя','f.phone':'Телефон','f.type':'Что нужно','f.budget':'Бюджет','f.msg':'Коротко о проекте','f.msgph':'Например: у нас магазин с 3 филиалами, нужен учёт склада и долгов','f.send':'Отправить через Telegram',
+  'f.note':'Текст сообщения скопируется и откроется Telegram — вставьте его в чат @uztomic_official. Данные используются только для связи с вами.',
+  'o1':'Мобильное приложение','o2':'Сайт','o3':'CRM / ERP система','o4':'Telegram-бот','o5':'Пока не знаю','o6':'Пока не определён','ft.addr':'Коканд, Ферганская область',
+};
+const UI = {
+  uz:{mln:"mln so'm", sum:"so'm", from:'dan', weeks:'hafta', time:'Muddat', copied:"Matn nusxalandi — Telegram'da @uztomic_official ga joylang.", calcHead:'Uztomic — loyiha hisobi', type:'Loyiha', feats:'Imkoniyatlar', support:"Qo'llab-quvvatlash", total:'Taxminiy narx', formHead:'Uztomic — yangi murojaat', play:"Ko'rish", soundOn:'Ovozni yoqish', soundOff:"Ovozni o'chirish"},
+  ru:{mln:'млн сум', sum:'сум', from:'', weeks:'недель', time:'Срок', copied:'Текст скопирован — вставьте его в Telegram в чат @uztomic_official.', calcHead:'Uztomic — расчёт проекта', type:'Проект', feats:'Функции', support:'Поддержка', total:'Примерная цена', formHead:'Uztomic — новая заявка', play:'Смотреть', soundOn:'Включить звук', soundOff:'Выключить звук'},
+};
+
+/* ===================== Ilova mantiqi ===================== */
+let lang = 'uz';
+try { const s = localStorage.getItem('uztomic-lang'); if (s === 'ru' || s === 'uz') lang = s; } catch (e) {}
+const qLang = new URLSearchParams(location.search).get('lang'); if (qLang === 'ru' || qLang === 'uz') lang = qLang;
+const ORIG = new Map();
+const $ = (s, r = document) => r.querySelector(s);
+const fmt = (n) => Math.round(n).toLocaleString('ru-RU').replace(/ /g, ' ');
+const mln = (n) => (n / 1e6).toLocaleString('ru-RU', {maximumFractionDigits: 1});
+const round100k = (n) => Math.round(n / 100000) * 100000;
+
+function applyLang() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const k = el.dataset.i18n;
+    if (!ORIG.has(el)) ORIG.set(el, el.textContent);
+    el.textContent = lang === 'ru' && RU[k] ? RU[k] : ORIG.get(el);
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+    const k = el.dataset.i18nHtml;
+    if (!ORIG.has(el)) ORIG.set(el, el.innerHTML);
+    el.innerHTML = lang === 'ru' && RU[k] ? RU[k] : ORIG.get(el);
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach((el) => {
+    const k = el.dataset.i18nPh;
+    if (!ORIG.has(el)) ORIG.set(el, el.placeholder);
+    el.placeholder = lang === 'ru' && RU[k] ? RU[k] : ORIG.get(el);
+  });
+  document.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  renderReels(); renderWorks(); renderCalc();
+}
+
+// Videolar
+function renderReels() {
+  const box = $('#reels');
+  box.innerHTML = REELS.map((r) => `
+    <button class="reel" type="button" data-n="${r.n}" aria-label="${UI[lang].play}: ${r[lang]}">
+      <img src="/media/v${r.n}.jpg" alt="" loading="lazy" width="540" height="960">
+      <span class="reel__play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="reel__cap">${r[lang]}</span>
+    </button>`).join('');
+}
+$('#reels').addEventListener('click', (e) => {
+  const btn = e.target.closest('.reel');
+  if (!btn || btn.classList.contains('playing')) return;
+  document.querySelectorAll('.reel.playing').forEach((p) => {
+    const n = p.dataset.n; p.classList.remove('playing');
+    p.querySelector('video')?.replaceWith(Object.assign(document.createElement('img'), {src: `/media/v${n}.jpg`, alt: ''}));
+  });
+  const v = document.createElement('video');
+  Object.assign(v, {src: `/media/v${btn.dataset.n}.mp4`, controls: true, autoplay: true, playsInline: true});
+  btn.querySelector('img').replaceWith(v);
+  btn.classList.add('playing');
+  heroVideo.muted = true;
+});
+
+// Portfolio
+let cat = 'all';
+function renderWorks() {
+  $('#filters').innerHTML = CATS.map((c) => `<button type="button" data-cat="${c.k}" aria-pressed="${c.k === cat}">${c[lang]}</button>`).join('');
+  const list = WORKS.filter((w) => cat === 'all' || w.cat.includes(cat));
+  $('#workList').innerHTML = list.map((w) => `
+    <article class="work ${w.featured && cat === 'all' ? 'work--featured' : ''}">
+      <div class="work__cover" style="background:${w.bg}"><b>${w.mono}</b></div>
+      <div class="work__body"><h3>${w.name}</h3><p>${w[lang]}</p><div class="tags">${w.tags.map((t) => `<span>${t}</span>`).join('')}</div></div>
+    </article>`).join('');
+}
+$('#filters').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  cat = b.dataset.cat; renderWorks();
+});
+
+// Kalkulyator
+const state = {type: 'app', feats: new Set(['admin', 'push']), support: 's3'};
+function opt(name, kind, item, checked, sub) {
+  const id = `${name}-${item.k}`;
+  return `<div class="opt"><input type="${kind}" name="${name}" id="${id}" value="${item.k}" ${checked ? 'checked' : ''}>
+    <label for="${id}"><b>${item[lang]}</b><span>${sub}</span></label></div>`;
+}
+function renderCalc() {
+  const u = UI[lang];
+  $('#types').innerHTML = TYPES.map((t) => opt('type', 'radio', t, state.type === t.k, `${fmt(t.price)} ${u.sum}${u.from ? ' ' + u.from : ''}`)).join('');
+  $('#feats').innerHTML = FEATS.map((f) => opt('feat', 'checkbox', f, state.feats.has(f.k), `+${fmt(f.price)} ${u.sum}`)).join('');
+  $('#support').innerHTML = SUPPORT.map((s) => opt('support', 'radio', s, state.support === s.k, s.price ? `+${fmt(s.price)} ${u.sum}` : '0')).join('');
+  updateCalc();
+}
+function calc() {
+  const t = TYPES.find((x) => x.k === state.type);
+  const feats = FEATS.filter((f) => state.feats.has(f.k));
+  const sup = SUPPORT.find((s) => s.k === state.support);
+  const base = t.price + feats.reduce((s, f) => s + f.price, 0) + sup.price;
+  const w = feats.reduce((s, f) => s + f.w, 0);
+  return {t, feats, sup, lo: round100k(base), hi: round100k(base * 1.3), w1: t.w[0] + Math.ceil(w / 2), w2: t.w[1] + w};
+}
+function updateCalc() {
+  const u = UI[lang], r = calc();
+  $('#sum').textContent = `${mln(r.lo)}–${mln(r.hi)} ${u.mln}`;
+  $('#time').textContent = `${u.time}: ${r.w1}–${r.w2} ${u.weeks}`;
+  $('#lines').innerHTML = [[r.t[lang], fmt(r.t.price)], ...r.feats.map((f) => [f[lang], '+' + fmt(f.price)]), ...(r.sup.price ? [[u.support + ': ' + r.sup[lang], '+' + fmt(r.sup.price)]] : [])]
+    .map(([a, b]) => `<li><span>${a}</span><span>${b}</span></li>`).join('');
+}
+$('#calcForm').addEventListener('change', (e) => {
+  const i = e.target;
+  if (i.name === 'type') state.type = i.value;
+  if (i.name === 'support') state.support = i.value;
+  if (i.name === 'feat') i.checked ? state.feats.add(i.value) : state.feats.delete(i.value);
+  updateCalc();
+});
+
+async function copyAndOpen(text, out) {
+  let ok = false;
+  try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {}
+  out.textContent = ok ? UI[lang].copied : '';
+  window.open('https://t.me/uztomic_official', '_blank', 'noopener');
+  if (!ok) window.prompt('Telegram:', text);
+}
+$('#sendCalc').addEventListener('click', () => {
+  const u = UI[lang], r = calc();
+  const text = [u.calcHead, `${u.type}: ${r.t[lang]}`, r.feats.length ? `${u.feats}: ${r.feats.map((f) => f[lang]).join(', ')}` : '',
+    `${u.support}: ${r.sup[lang]}`, `${u.total}: ${fmt(r.lo)} – ${fmt(r.hi)} ${u.sum}`, `${u.time}: ${r.w1}–${r.w2} ${u.weeks}`].filter(Boolean).join('\n');
+  copyAndOpen(text, $('#copied'));
+});
+$('#leadForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const text = [UI[lang].formHead, `${$('#fName').value} · ${$('#fPhone').value}`, `${$('#fType').value} · ${$('#fBudget').value}`, $('#fMsg').value].filter(Boolean).join('\n');
+  copyAndOpen(text, $('#formCopied'));
+});
+
+// Til, menyu, hero ovozi
+document.querySelectorAll('[data-lang]').forEach((b) => b.addEventListener('click', () => {
+  lang = b.dataset.lang; try { localStorage.setItem('uztomic-lang', lang); } catch (e) {} applyLang();
+}));
+const burger = $('.burger'), nav = $('#nav');
+burger.addEventListener('click', () => { const o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', String(o)); });
+nav.addEventListener('click', (e) => { if (e.target.tagName === 'A') { nav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } });
+const heroVideo = $('#heroVideo'), heroSound = $('#heroSound');
+heroSound.addEventListener('click', () => {
+  heroVideo.muted = !heroVideo.muted;
+  if (!heroVideo.muted) { heroVideo.currentTime = 0; heroVideo.play(); }
+  heroSound.setAttribute('aria-label', heroVideo.muted ? UI[lang].soundOn : UI[lang].soundOff);
+});
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) { heroVideo.removeAttribute('autoplay'); heroVideo.pause(); }
+
+applyLang();
 </script>
-<script src="/assets/ui.js" defer></script>
 </body>
 </html>

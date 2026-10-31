@@ -1,5 +1,13 @@
 # Uztomic — rasmiy sayt (uztomic.uz)
 
+> **2026-10-31 yangilanishi.** Bosh sahifa qayta yozildi: kompaniya haqida, Instagram videolari (`media/`),
+> 17 ta ish, Uztomic CRM 4 tarifi va 10 yo'nalishi, narx kalkulyatori, UZ/RU.
+> Hammasi bitta `index.html` da. Portfolio, videolar va kalkulyator narxlari faylning pastidagi
+> `REELS`, `WORKS`, `TYPES`, `FEATS`, `SUPPORT` ro'yxatlarida — o'sha joyni tahrirlash kifoya.
+> `crm/` endi `/#crm` ga yo'naltiradi (eski sahifada eski tariflar bor edi).
+> Pastdagi eski hujjat avvalgi versiya uchun (`assets/ui.css`, `ui.js` endi bosh sahifada ishlatilmaydi).
+
+
 Ikki sahifali statik sayt. **Server, maʼlumotlar bazasi yoki oylik toʻlov kerak emas.**
 
 | Sahifa | Nima uchun |
