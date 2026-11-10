@@ -105,6 +105,7 @@ Saytdagi raqamlar **ilovadagi haqiqiy narxlar** bilan bir xil:
 
 | Nima | Hozirgi qiymat |
 |---|---|
+| Aloqa shaxsi | Rahmatilloh Ganiyev — asoschi, Flutter dasturchisi |
 | Telefon | `+998 77 016 59 63` |
 | Telegram | `@uztomic_official` |
 | Email | `uztomic@gmail.com` |

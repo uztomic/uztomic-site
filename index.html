@@ -20,7 +20,7 @@
 <meta property="og:url" content="https://uztomic.uz/">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Uztomic","url":"https://uztomic.uz","logo":"https://uztomic.uz/assets/logo.png","email":"uztomic@gmail.com","telephone":"+998770165963","address":{"@type":"PostalAddress","addressLocality":"Qo'qon","addressRegion":"Farg'ona","addressCountry":"UZ"},"sameAs":["https://t.me/uztomic_official","https://www.instagram.com/uztomic"]}
+{"@context":"https://schema.org","@type":"Organization","name":"Uztomic","url":"https://uztomic.uz","logo":"https://uztomic.uz/assets/logo.png","email":"uztomic@gmail.com","telephone":"+998770165963","address":{"@type":"PostalAddress","addressLocality":"Qo'qon","addressRegion":"Farg'ona","addressCountry":"UZ"},"founder":{"@type":"Person","name":"Rahmatilloh Ganiyev","jobTitle":"Founder, Flutter developer"},"contactPoint":{"@type":"ContactPoint","telephone":"+998770165963","contactType":"customer service","areaServed":"UZ","availableLanguage":["uz","ru"]},"sameAs":["https://t.me/uztomic_official","https://www.instagram.com/uztomic"]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +59,15 @@ section{padding:clamp(72px,9vw,120px) 0}
 .btn--ghost:hover{background:rgba(255,255,255,.08)}
 .btn svg{width:20px;height:20px}
 
+/* Aloqa tasmasi — sahifaning eng tepasida */
+.strip{background:#0A0C27;color:var(--on-night-2);font-size:14px;font-weight:600}
+.strip .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2px 20px;min-height:40px;padding-top:6px;padding-bottom:6px}
+.strip__links{display:flex;flex-wrap:wrap;gap:2px 22px}
+.strip a{display:inline-flex;align-items:center;gap:7px;min-height:28px;color:#fff;text-decoration:none;font-weight:700}
+.strip a:hover{color:var(--orange)}
+.strip svg{width:15px;height:15px;color:var(--orange);flex:none}
+@media (max-width:640px){.strip__hours{display:none}.strip .wrap{justify-content:center}}
+
 /* Header */
 .top{position:sticky;top:0;z-index:50;background:rgba(14,16,51,.86);backdrop-filter:blur(14px);color:var(--on-night);border-bottom:1px solid rgba(255,255,255,.07)}
 .top__in{display:flex;align-items:center;gap:24px;height:68px}
@@ -67,6 +76,7 @@ section{padding:clamp(72px,9vw,120px) 0}
 .nav{display:flex;gap:22px;margin-left:auto}
 .nav a{text-decoration:none;color:var(--on-night-2);font-weight:600;font-size:15px}
 .nav a:hover{color:#fff}
+.nav .nav__m{display:none}
 .lang{display:flex;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);overflow:hidden}
 .lang button{background:none;border:0;color:var(--on-night-2);font:700 13px var(--body);padding:8px 12px;cursor:pointer}
 .lang button[aria-pressed=true]{background:#fff;color:var(--night)}
@@ -76,6 +86,7 @@ section{padding:clamp(72px,9vw,120px) 0}
   .nav{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:var(--night);padding:8px 20px 20px;border-bottom:1px solid rgba(255,255,255,.1)}
   .nav.open{display:flex}
   .nav a{padding:12px 0;font-size:17px}
+  .nav .nav__m{display:block;color:var(--orange);font-weight:800}
   .burger{display:block}
   .top .btn{display:none}
   .lang{margin-left:0}
@@ -211,13 +222,22 @@ section{padding:clamp(72px,9vw,120px) 0}
 
 /* Contact */
 .contact__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
-.ways{display:grid;gap:12px;margin-top:28px}
-.ways a{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:center;text-decoration:none;padding:14px;border-radius:var(--r-md);background:rgba(255,255,255,.06)}
+.person{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:center;margin-top:28px}
+.person__av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--teal));display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:17px;color:#fff}
+.person b{display:block;font-family:var(--display);font-weight:600;font-size:19px;line-height:1.25}
+.person small{display:block;color:var(--on-night-2);font-size:14.5px;margin-top:2px}
+.ways{display:grid;gap:12px;margin-top:20px}
+.ways > *{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:center;text-decoration:none;padding:14px;border-radius:var(--r-md);background:rgba(255,255,255,.06)}
 .ways a:hover{background:rgba(255,255,255,.1)}
 .ways i{width:46px;height:46px;border-radius:12px;background:var(--violet);display:grid;place-items:center;font-style:normal}
 .ways i svg{width:22px;height:22px}
 .ways small{display:block;color:var(--on-night-2);font-size:14px}
 .ways b{font-size:17px}
+.ways .way--call{background:rgba(255,138,61,.14);box-shadow:inset 0 0 0 2px var(--orange)}
+.ways .way--call:hover{background:rgba(255,138,61,.22)}
+.ways .way--call i{background:var(--orange)}
+.ways .way--call b{font-family:var(--display);font-weight:600;font-size:clamp(18px,2.2vw,22px);white-space:nowrap}
+@media (max-width:360px){.ways .way--call b{font-size:15.5px}}
 form.lead-form{background:var(--card);color:var(--ink);border-radius:var(--r-lg);padding:30px;display:grid;gap:16px}
 .field{display:grid;gap:6px}
 .field label{font-weight:700;font-size:14.5px}
@@ -237,6 +257,16 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
 </head>
 <body>
 
+<div class="strip">
+  <div class="wrap">
+    <span class="strip__hours" data-i18n="strip.hours">Qo'qon · har kuni 9:00–22:00</span>
+    <span class="strip__links">
+      <a href="tel:+998770165963"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>+998 77 016 59 63</a>
+      <a href="https://t.me/uztomic_official" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.8 15.3l-.4 4.1c.6 0 .8-.3 1.1-.6l2.6-2.5 5.4 4c1 .5 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7L1.4 9.8C0 10.4 0 11.2 1.2 11.6l5.4 1.7L19 5.4c.6-.4 1.1-.2.7.2z"/></svg>Telegram</a>
+    </span>
+  </div>
+</div>
+
 <header class="top">
   <div class="wrap top__in">
     <a class="logo" href="#" aria-label="Uztomic">
@@ -249,6 +279,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
       <a href="#crm">Uztomic CRM</a>
       <a href="#calc" data-i18n="nav.calc">Narxni hisoblash</a>
       <a href="#faq" data-i18n="nav.faq">Savollar</a>
+      <a class="nav__m" href="#contact" data-i18n="nav.contact">Biz bilan bog'lanish</a>
     </nav>
     <div class="lang" role="group" aria-label="Til">
       <button type="button" data-lang="uz" aria-pressed="true">UZ</button>
@@ -291,7 +322,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
   <div class="wrap about__grid">
     <div class="about__text">
       <h2 data-i18n="about.title">Biz — Qo'qondagi kichik, lekin jiddiy jamoa</h2>
-      <p data-i18n="about.p1">Uztomic'ni Flutter dasturchisi va asoschi Gaabi boshlagan. Bugun studiya O'zbekistondagi bizneslar uchun mobil ilovalar, veb-platformalar, CRM tizimlar va avtomatlashtirish vositalarini yaratadi.</p>
+      <p data-i18n="about.p1">Uztomic'ni Flutter dasturchisi va asoschi Rahmatilloh Ganiyev boshlagan. Bugun studiya O'zbekistondagi bizneslar uchun mobil ilovalar, veb-platformalar, CRM tizimlar va avtomatlashtirish vositalarini yaratadi.</p>
       <p data-i18n="about.p2">Biz mijoz bilan o'zbek tilida, tushunarli qilib gaplashamiz: avval muammoni eshitamiz, keyin ekranlarni ko'rsatamiz, so'ng kod yozamiz. Har hafta ishlab turgan versiyani qo'lingizga beramiz — loyiha qayerdaligini doim ko'rib turasiz.</p>
       <p data-i18n="about.p3">O'zimizning mahsulotimiz ham bor: Uztomic CRM — do'konlar uchun kassa, ombor va nasiya tizimi. Shuning uchun biznes dasturi qanday ishlashi kerakligini nazariyadan emas, kundalik ishdan bilamiz.</p>
     </div>
@@ -445,12 +476,17 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
 <section class="night" id="contact">
   <div class="wrap contact__grid">
     <div>
-      <h2 data-i18n="c.title">Loyihangizni gaplashamiz</h2>
+      <h2 data-i18n="c.title">Biz bilan bog'lanish</h2>
       <p class="lead" style="margin-top:16px" data-i18n="c.lead">Yozing yoki qo'ng'iroq qiling — 24 soat ichida javob beramiz. Birinchi suhbat bepul va hech narsaga majburlamaydi.</p>
+      <div class="person">
+        <span class="person__av" aria-hidden="true">RG</span>
+        <span><b data-i18n="c.name">Rahmatilloh Ganiyev</b><small data-i18n="c.role">Uztomic asoschisi, Flutter dasturchisi</small></span>
+      </div>
       <div class="ways">
+        <a class="way--call" href="tel:+998770165963"><i><svg viewBox="0 0 24 24" fill="#1b0c00"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></i><span><small data-i18n="c.ph">Qo'ng'iroq qiling — har kuni 9:00–22:00</small><b>+998 77 016 59 63</b></span></a>
         <a href="https://t.me/uztomic_official" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M9.8 15.3l-.4 4.1c.6 0 .8-.3 1.1-.6l2.6-2.5 5.4 4c1 .5 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7L1.4 9.8C0 10.4 0 11.2 1.2 11.6l5.4 1.7L19 5.4c.6-.4 1.1-.2.7.2z"/></svg></i><span><small data-i18n="c.tg">Telegram — eng tez javob</small><b>@uztomic_official</b></span></a>
-        <a href="tel:+998770165963"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></i><span><small data-i18n="c.ph">Har kuni 9:00–22:00</small><b>+998 77 016 59 63</b></span></a>
         <a href="mailto:uztomic@gmail.com"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></i><span><small data-i18n="c.em">Hujjat va shartnomalar uchun</small><b>uztomic@gmail.com</b></span></a>
+        <div><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></i><span><small data-i18n="c.addr">Manzil</small><b data-i18n="ft.addr">Qo'qon, Farg'ona viloyati</b></span></div>
       </div>
     </div>
     <form class="lead-form" id="leadForm">
@@ -476,7 +512,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
 <footer>
   <div class="wrap">
     <span>© 2026 Uztomic · <span data-i18n="ft.addr">Qo'qon, Farg'ona viloyati</span></span>
-    <span><a href="https://t.me/uztomic_official" target="_blank" rel="noopener">Telegram</a> &nbsp; <a href="https://www.instagram.com/uztomic" target="_blank" rel="noopener">Instagram</a> &nbsp; <a href="tel:+998770165963">+998 77 016 59 63</a></span>
+    <span><a href="tel:+998770165963">+998 77 016 59 63</a> &nbsp; <a href="https://t.me/uztomic_official" target="_blank" rel="noopener">Telegram</a> &nbsp; <a href="https://www.instagram.com/uztomic" target="_blank" rel="noopener">Instagram</a> &nbsp; <a href="mailto:uztomic@gmail.com">uztomic@gmail.com</a></span>
   </div>
 </footer>
 
@@ -574,12 +610,13 @@ const SUPPORT = [
 
 /* ===================== Tarjimalar ===================== */
 const RU = {
-  'nav.about':'О нас','nav.works':'Работы','nav.calc':'Рассчитать цену','nav.faq':'Вопросы','cta.short':'Связаться',
+  'nav.about':'О нас','nav.works':'Работы','nav.calc':'Рассчитать цену','nav.faq':'Вопросы','nav.contact':'Связаться с нами','cta.short':'Связаться',
+  'strip.hours':'Коканд · ежедневно 9:00–22:00',
   'hero.title':'Из тетради и Excel — <em>в систему</em>',
   'hero.lead':'Uztomic — студия разработки из Коканда. Делаем мобильные приложения, сайты, CRM и Telegram-ботов для магазинов, учебных центров, клиник и малого бизнеса. Цена и срок фиксируются в договоре, код остаётся у вас.',
   'hero.cta1':'Рассчитать стоимость','hero.cta2':'Написать в Telegram','hero.f1':'Ответ в течение 24 часов','hero.f2':'Рабочая версия каждую неделю','hero.f3':'3 месяца бесплатной поддержки','hero.tag':'минут до точной цены',
   'about.title':'Мы — небольшая, но серьёзная команда из Коканда',
-  'about.p1':'Uztomic основал Flutter-разработчик Gaabi. Сегодня студия создаёт мобильные приложения, веб-платформы, CRM и инструменты автоматизации для бизнеса Узбекистана.',
+  'about.p1':'Uztomic основал Flutter-разработчик Рахматиллох Ганиев. Сегодня студия создаёт мобильные приложения, веб-платформы, CRM и инструменты автоматизации для бизнеса Узбекистана.',
   'about.p2':'Говорим с клиентом понятным языком: сначала слушаем задачу, потом показываем экраны и только потом пишем код. Каждую неделю вы получаете рабочую версию и видите, где находится проект.',
   'about.p3':'У нас есть и свой продукт — Uztomic CRM для магазинов. Поэтому мы знаем, как должна работать бизнес-программа, не по теории, а по ежедневной работе.',
   'v1.t':'Фиксированная цена и срок','v1.p':'Список работ, цена и дата сдачи прописываются в договоре. Цена в процессе не растёт.',
@@ -610,8 +647,8 @@ const RU = {
   'q4':'Я в другом городе — сможем работать?','a4':'Да. Работаем по всему Узбекистану и с зарубежными клиентами через Telegram, телефон и видеозвонки.',
   'q5':'Есть готовая программа для магазина?','a5':'Да, Uztomic CRM. От 150 000 сум в месяц. Подходит для одежды, продуктов, автосервиса, цветочного, аптеки и ещё 10 видов бизнеса.',
   'q6':'Продолжите программу другой команды?','a6':'Да. Посмотрим код или ссылку в магазине и дадим план исправлений или развития.',
-  'c.title':'Обсудим ваш проект','c.lead':'Напишите или позвоните — ответим в течение 24 часов. Первая консультация бесплатна и ни к чему не обязывает.',
-  'c.tg':'Telegram — самый быстрый ответ','c.ph':'Ежедневно 9:00–22:00','c.em':'Для документов и договоров',
+  'c.title':'Свяжитесь с нами','c.name':'Рахматиллох Ганиев','c.role':'Основатель Uztomic, Flutter-разработчик','c.addr':'Адрес','c.lead':'Напишите или позвоните — ответим в течение 24 часов. Первая консультация бесплатна и ни к чему не обязывает.',
+  'c.tg':'Telegram — самый быстрый ответ','c.ph':'Звоните — ежедневно 9:00–22:00','c.em':'Для документов и договоров',
   'f.name':'Ваше имя','f.phone':'Телефон','f.type':'Что нужно','f.budget':'Бюджет','f.msg':'Коротко о проекте','f.msgph':'Например: у нас магазин с 3 филиалами, нужен учёт склада и долгов','f.send':'Отправить через Telegram',
   'f.note':'Текст сообщения скопируется и откроется Telegram — вставьте его в чат @uztomic_official. Данные используются только для связи с вами.',
   'o1':'Мобильное приложение','o2':'Сайт','o3':'CRM / ERP система','o4':'Telegram-бот','o5':'Пока не знаю','o6':'Пока не определён','ft.addr':'Коканд, Ферганская область',
