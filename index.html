@@ -241,6 +241,11 @@ form.lead-form{background:var(--card);color:var(--ink);border-radius:var(--r-lg)
 .field textarea{min-height:110px;resize:vertical}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-note{font-size:13.5px;color:var(--muted)}
+.form-status{font-weight:700;font-size:15px;min-height:22px;margin:0}
+.form-status.is-ok{color:#0b8a54}
+.form-status.is-err{color:#c0392b}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+form.lead-form button[disabled]{opacity:.6;cursor:wait}
 @media (max-width:860px){.contact__grid{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
 
 footer{background:#0A0C27;color:var(--on-night-2);padding:40px 0;font-size:15px}
@@ -375,7 +380,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
   <div class="wrap">
     <div class="sec-head">
       <h2 data-i18n="works.title">Qilgan ishlarimiz</h2>
-      <p class="lead" data-i18n="works.lead">Ta'lim, savdo, xizmat ko'rsatish va o'yin sohasidagi loyihalar — mijozlar uchun va o'zimizning mahsulotlar.</p>
+      <p class="lead" data-i18n="works.lead">Savdo, ishlab chiqarish, ta'lim va xizmat ko'rsatish sohasidagi 15 ta loyiha — mijozlar uchun va o'zimizning mahsulotlar.</p>
     </div>
     <div class="filters" id="filters" role="group" aria-label="Filtr"></div>
     <div class="works" id="workList"></div>
@@ -422,7 +427,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
         <div class="receipt__sum" id="sum">—</div>
         <div class="receipt__time" id="time"></div>
         <ul id="lines"></ul>
-        <button class="btn btn--orange" type="button" id="sendCalc" data-i18n="calc.send">Hisobni Telegramda yuborish</button>
+        <button class="btn btn--orange" type="button" id="sendCalc" data-i18n="calc.send">Shu hisob bilan murojaat qilish</button>
         <div class="copied" id="copied"></div>
         <p class="receipt__note" data-i18n="calc.note">To'lov: 50% boshlanishda, 50% topshirishda. Manba kodi sizga o'tadi.</p>
       </aside>
@@ -481,7 +486,8 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
         <div><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></i><span><small data-i18n="c.addr">Manzil</small><b data-i18n="ft.addr">Qo'qon, Farg'ona viloyati</b></span></div>
       </div>
     </div>
-    <form class="lead-form" id="leadForm">
+    <form class="lead-form" id="leadForm" novalidate>
+      <div class="hp" aria-hidden="true"><label>Website<input id="fSite" tabindex="-1" autocomplete="off"></label></div>
       <div class="row2">
         <div class="field"><label for="fName" data-i18n="f.name">Ismingiz</label><input id="fName" required autocomplete="name"></div>
         <div class="field"><label for="fPhone" data-i18n="f.phone">Telefon</label><input id="fPhone" required inputmode="tel" autocomplete="tel" placeholder="+998"></div>
@@ -493,9 +499,9 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
           <select id="fBudget"><option>2–6 mln</option><option>6–12 mln</option><option>12–25 mln</option><option>25 mln+</option><option data-i18n="o6">Hali aniq emas</option></select></div>
       </div>
       <div class="field"><label for="fMsg" data-i18n="f.msg">Loyiha haqida qisqacha</label><textarea id="fMsg" data-i18n-ph="f.msgph" placeholder="Masalan: 3 ta filialli do'konimiz bor, ombor va nasiyani hisoblash kerak"></textarea></div>
-      <button class="btn btn--orange" type="submit" data-i18n="f.send">Telegram orqali yuborish</button>
-      <div class="copied" id="formCopied" style="color:#0b8a54"></div>
-      <p class="form-note" data-i18n="f.note">Xabar matni nusxalanadi va Telegram ochiladi — uni @uztomic_official ga joylab yuboring. Ma'lumotlaringiz faqat siz bilan bog'lanish uchun.</p>
+      <button class="btn btn--orange" type="submit" id="leadSend" data-i18n="f.send">Yuborish</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      <p class="form-note" data-i18n="f.note">Xabaringiz to'g'ridan-to'g'ri bizga keladi, 24 soat ichida o'zimiz bog'lanamiz. Ma'lumotlaringiz faqat siz bilan bog'lanish uchun.</p>
     </form>
   </div>
 </section>
@@ -530,41 +536,43 @@ const REELS = [
 // Portfolio. cat: crm | app | web | edu
 const WORKS = [
   {name:'Uztomic CRM', mono:'CRM', bg:'linear-gradient(135deg,#7B6CF6,#1F8A95)', cat:['crm','web','app'], featured:true,
-   uz:"Do'konlar uchun kassa, ombor, nasiya va hisobotlar. Oflayn ishlaydi, 10 xil biznes yo'nalishiga moslashadi: avtoservis naryadlari, gul buyurtmalari, IMEI kafolati, omborlar orasida ko'chirish.",
-   ru:'Касса, склад, долги и отчёты для магазинов. Работает офлайн, подстраивается под 10 видов бизнеса: заказ-наряды автосервиса, заказы цветочного, гарантия по IMEI, перемещения между складами.',
+   uz:"Do'konlar uchun kassa, ombor, nasiya va hisobotlar. Oflayn ishlaydi, 10 xil biznes yo'nalishiga moslashadi: avtoservis naryadlari, gul buyurtmalari, IMEI kafolati, nasiyani bo'lib to'lash, omborlar orasida ko'chirish.",
+   ru:'Касса, склад, долги и отчёты для магазинов. Работает офлайн, подстраивается под 10 видов бизнеса: заказ-наряды автосервиса, заказы цветочного, гарантия по IMEI, рассрочка, перемещения между складами.',
    tags:['Flutter','React','Supabase','Offline']},
   {name:'Uztomic Admin', mono:'ADM', bg:'linear-gradient(135deg,#161A4A,#7B6CF6)', cat:['web','crm'],
    uz:"CRM uchun boshqaruv paneli: do'konlar, tariflar, to'lov cheklarini tasdiqlash va statistika.", ru:'Панель управления CRM: магазины, тарифы, подтверждение оплат и статистика.', tags:['React','Admin']},
-  {name:'Alifbo va Narsalarni O‘rganamiz', mono:'Aa', bg:'linear-gradient(135deg,#FF8A3D,#F2B230)', cat:['app','edu'],
+  {name:'Sharq Reklama Markazi', mono:'SR', bg:'linear-gradient(135deg,#C2560F,#7B6CF6)', cat:['crm','web'], featured:true,
+   uz:"Reklama ishlab chiqarish kompaniyasi uchun ERP: lid → taklif → buyurtma → ishlab chiqarish bosqichlari, ombor (FIFO), har bir buyurtmaning sof foydasi, kassa va xodimlar ishbayi.",
+   ru:'ERP для рекламного производства: лид → предложение → заказ → этапы производства, склад (FIFO), чистая прибыль по каждому заказу, касса и сдельная оплата.', tags:['Next.js','Supabase','ERP']},
+  {name:'Maktab Moliya CRM', mono:'MF', bg:'linear-gradient(135deg,#1F8A95,#0E1033)', cat:['crm','edu'],
+   uz:"Xususiy maktablar uchun moliya tizimi: o'quvchi to'lovlari va qarzdorlik, kassa, o'qituvchilar oyligi formulalari, Excel'ga chiqadigan hisobotlar.",
+   ru:'Финансовая система для частных школ: оплаты учеников и задолженности, касса, формулы зарплаты учителей, отчёты с выгрузкой в Excel.', tags:['React','Supabase','ERP']},
+  {name:'Uztomic POS', mono:'POS', bg:'linear-gradient(135deg,#0E1033,#7B6CF6)', cat:['crm','app'],
+   uz:"Kichik do'konlar uchun internetsiz ishlaydigan mobil kassa: Bluetooth chek printeri, nasiya, smena va harakatlar jurnali.",
+   ru:'Офлайн мобильная касса для небольших магазинов: Bluetooth-принтер чеков, долги, смены и журнал действий.', tags:['Flutter','Offline']},
+  {name:'UzTomicS', mono:'US', bg:'linear-gradient(135deg,#0E1033,#1F8A95)', cat:['crm','app'],
+   uz:"Santexnika do'koni uchun tizim: sotuvchi uchun Windows kassa dasturi va ega uchun mobil boshqaruv ilovasi.",
+   ru:'Система для магазина сантехники: касса для продавца на Windows и мобильное приложение для владельца.', tags:['Flutter','Windows']},
+  {name:'Optika CRM', mono:'Op', bg:'linear-gradient(135deg,#2B3A8C,#1F8A95)', cat:['crm','app'],
+   uz:"Optika do'konlari uchun CRM: bir nechta filial, mijozlar va buyurtmalar, SMS xabarnomalar.",
+   ru:'CRM для оптик: несколько филиалов, клиенты и заказы, SMS-уведомления.', tags:['Flutter','Firebase','SMS']},
+  {name:'Ziyrak', mono:'Zy', bg:'linear-gradient(135deg,#F2B230,#1F8A95)', cat:['app','edu'],
+   uz:"Bolalar uchun ta'lim ilovasi: bola bilim bilan ekran vaqtini yutadi, ota-ona vaqtni va hisobotlarni boshqaradi. Yo'ldosh qahramon — Ziko.",
+   ru:'Обучающее приложение для детей: ребёнок зарабатывает экранное время знаниями, родители управляют временем и отчётами. Персонаж-помощник — Зико.', tags:['Flutter','Supabase']},
+  {name:'Alifbo va Narsalarni O\u2018rganamiz', mono:'Aa', bg:'linear-gradient(135deg,#FF8A3D,#F2B230)', cat:['app','edu'],
    uz:"Bolalar uchun alifbo va so'z boyligi ilovasi: 6 alifbo, 10 interfeys tili, 3 o'rganish rejimi. Play Market'da.", ru:'Приложение для детей: 6 алфавитов, 10 языков интерфейса, 3 режима обучения. В Play Market.', tags:['Flutter','Play Market']},
   {name:'Taomlar', mono:'Tm', bg:'linear-gradient(135deg,#C2560F,#FF8A3D)', cat:['app'],
    uz:"Retseptlar ilovasi: qadam-baqadam ko'rsatma, video darslar, 4 til.", ru:'Приложение рецептов: пошаговые инструкции, видеоуроки, 4 языка.', tags:['Flutter']},
-  {name:'Maktab Moliya CRM', mono:'MM', bg:'linear-gradient(135deg,#1F8A95,#0E1033)', cat:['crm','edu'],
-   uz:"Xususiy maktablar uchun moliya va boshqaruv tizimi: to'lovlar, qarzdorlik, xarajatlar va hisobotlar.", ru:'Финансы и управление для частных школ: оплаты, задолженности, расходы и отчёты.', tags:['ERP']},
-  {name:'Turon Maktab', mono:'TM', bg:'linear-gradient(135deg,#2B3A8C,#7B6CF6)', cat:['edu','app'],
-   uz:"Maktab uchun ilova: o'quvchilar, sinflar va ota-onalar bilan aloqa.", ru:'Приложение для школы: ученики, классы и связь с родителями.', tags:['Flutter']},
+  {name:'Davomad (SmartAttend)', mono:'Dv', bg:'linear-gradient(135deg,#1F8A95,#5FC4C0)', cat:['crm','app'],
+   uz:"Xodimlar davomatini boshqarish ilovasi: kim qachon kelgani va ketgani.", ru:'Учёт посещаемости сотрудников: кто когда пришёл и ушёл.', tags:['Flutter']},
   {name:'School System', mono:'SS', bg:'linear-gradient(135deg,#0E1033,#2B3A8C)', cat:['edu','crm'],
-   uz:"Ta'lim muassasasi uchun boshqaruv tizimi: guruhlar, jadval, o'qituvchilar.", ru:'Система управления учебным заведением: группы, расписание, преподаватели.', tags:['Flutter']},
-  {name:'Davomad', mono:'Dv', bg:'linear-gradient(135deg,#1F8A95,#5FC4C0)', cat:['edu','app'],
-   uz:"O'quvchi va xodimlar davomatini hisobga olish ilovasi.", ru:'Учёт посещаемости учеников и сотрудников.', tags:['Flutter']},
+   uz:"Maktab uchun kompyuter dasturi.", ru:'Программа для школы на компьютер.', tags:['Flutter','Windows']},
   {name:'Salon Booking', mono:'SB', bg:'linear-gradient(135deg,#B83A72,#FF8A3D)', cat:['web','crm'],
    uz:"Salon va sartaroshxonalar uchun onlayn yozilish: usta, xizmat va vaqtni tanlash.", ru:'Онлайн-запись в салоны и барбершопы: мастер, услуга и время.', tags:['Flutter Web','Supabase']},
   {name:'Gamer Hub', mono:'GH', bg:'linear-gradient(135deg,#3A1F8C,#B83A72)', cat:['app','web'],
    uz:"O'zbekistondagi o'yinchilar uchun platforma va mobil ilova.", ru:'Платформа и мобильное приложение для геймеров Узбекистана.', tags:['React']},
-  {name:'Sharq Reklama Markazi', mono:'SR', bg:'linear-gradient(135deg,#C2560F,#7B6CF6)', cat:['crm','app'],
-   uz:"Reklama markazi uchun buyurtmalar va ishlab chiqarishni boshqarish ilovasi.", ru:'Приложение для рекламного центра: заказы и производство.', tags:['Flutter']},
-  {name:'AgroBill', mono:'AB', bg:'linear-gradient(135deg,#2E7D4F,#9CCB5A)', cat:['crm','app'],
-   uz:"Qishloq xo'jaligi korxonasi uchun hisob-kitob va hisob-faktura ilovasi.", ru:'Учёт и счета для сельхозпредприятия.', tags:['Flutter']},
-  {name:'Optika CRM', mono:'Op', bg:'linear-gradient(135deg,#2B3A8C,#1F8A95)', cat:['crm'],
-   uz:"Optika do'koni uchun mijozlar, retsept (diopter) va buyurtmalar hisobi.", ru:'Учёт клиентов, рецептов и заказов для оптики.', tags:['CRM']},
-  {name:'UzTomicS', mono:'US', bg:'linear-gradient(135deg,#0E1033,#1F8A95)', cat:['crm','app'],
-   uz:"Santexnika do'koni uchun kassa va ombor dasturi.", ru:'Касса и склад для магазина сантехники.', tags:['Flutter','POS']},
-  {name:'Ziyrak', mono:'Zy', bg:'linear-gradient(135deg,#F2B230,#1F8A95)', cat:['app','edu'],
-   uz:"Bilim va mantiqni rivojlantiruvchi mobil ilova.", ru:'Мобильное приложение для развития знаний и логики.', tags:['Flutter','Play Market']},
-  {name:'ZIKO', mono:'ZK', bg:'linear-gradient(135deg,#7B6CF6,#FF8A3D)', cat:['app'],
-   uz:"Mijoz uchun yaratilgan mobil ilova.", ru:'Мобильное приложение, сделанное для клиента.', tags:['Flutter']},
-  {name:'Uztomic Telegram botlar', mono:'Bot', bg:'linear-gradient(135deg,#2AABEE,#1F8A95)', cat:['web'],
-   uz:"Buyurtma qabul qilish, eslatma va hisobot yuboradigan botlar.", ru:'Боты для приёма заказов, напоминаний и отчётов.', tags:['Telegram']},
+  {name:'AgroBill', mono:'AB', bg:'linear-gradient(135deg,#2E7D4F,#9CCB5A)', cat:['app'],
+   uz:"Qishloq xo'jaligi ilovasi dizayni: Figma'da 17 ta ekran va 24 ekranli interaktiv prototip.", ru:'Дизайн приложения для сельского хозяйства: 17 экранов в Figma и интерактивный прототип на 24 экрана.', tags:['Figma','UI/UX']},
 ];
 const CATS = [
   {k:'all', uz:'Hammasi', ru:'Все'}, {k:'crm', uz:'CRM va ERP', ru:'CRM и ERP'},
@@ -623,13 +631,13 @@ const RU = {
   's5.t':'Автоматизация','s5.p':'Связываем Excel, 1C, платёжные системы и другие сервисы. Ручную работу делает программа.','s5.m':'от 1 недели',
   's6.t':'MVP для стартапа','s6.p':'Первая рабочая версия идеи — дальше развиваем по поведению пользователей.','s6.m':'4–8 недель',
   'vid.title':'Объясняем за минуту','vid.lead':'Наши короткие видео из Instagram: какому бизнесу какая программа нужна, сколько стоит и как мы работаем.','vid.more':'Новые видео в Instagram и Telegram:',
-  'works.title':'Наши работы','works.lead':'Проекты в образовании, торговле, услугах и играх — для клиентов и собственные продукты.',
+  'works.title':'Наши работы','works.lead':'15 проектов в торговле, производстве, образовании и услугах — для клиентов и собственные продукты.',
   'crm.lead':'Готовая система для магазина: касса, склад, тетрадь долгов, сотрудники и отчёт о прибыли. Работает без интернета, одинаково на телефоне и компьютере. Со сканером и чековым принтером.',
   'crm.vert':'Подстраивается под 10 видов бизнеса:','crm.open':'Открыть CRM','crm.demo':'Попросить демонстрацию','crm.mo':'сум / мес',
   'vt.kiyim':'Одежда','vt.oziq':'Продукты','vt.sant':'Сантехника','vt.aks':'Аксессуары','vt.avto':'Автосервис','vt.gul':'Цветочный','vt.dori':'Аптека','vt.elek':'Электроника и телефоны','vt.kosm':'Косметика','vt.ehtiyot':'Автозапчасти',
   't1.a':'1 филиал, 3 сотрудника','t1.b':'4 000 товаров','t2.a':'2 филиала + 1 склад, 7 сотрудников','t2.b':'8 000 товаров','t3.a':'3 филиала + 2 склада, 16 сотрудников','t3.b':'15 000 товаров, фото, AI-анализ','t4.n':'Корпоративный','t4.a':'10 филиалов + 5 складов, 130 сотрудников','t4.b':'500 000 товаров',
   'calc.title':'Узнайте цену проекта сейчас','calc.lead':'Отметьте, что нужно — примерная цена и срок появятся сразу. Точную цену запишем в договор после бесплатного 20-минутного звонка.',
-  'calc.type':'1. Что делаем?','calc.feat':'2. Какие возможности нужны?','calc.sup':'3. После запуска','calc.est':'Примерная цена','calc.send':'Отправить расчёт в Telegram','calc.note':'Оплата: 50% в начале, 50% при сдаче. Исходный код переходит к вам.',
+  'calc.type':'1. Что делаем?','calc.feat':'2. Какие возможности нужны?','calc.sup':'3. После запуска','calc.est':'Примерная цена','calc.send':'Оставить заявку с этим расчётом','calc.note':'Оплата: 50% в начале, 50% при сдаче. Исходный код переходит к вам.',
   'proc.title':'Как мы работаем','p1.t':'Звонок','p1.p':'Бесплатные 20 минут: определяем задачу и цель.','p2.t':'Предложение','p2.p':'Список функций, срок, фиксированная цена и договор.','p3.t':'Дизайн','p3.p':'Вы утверждаете экраны, затем пишется код.','p4.t':'Разработка','p4.p':'Рабочая версия и короткий отчёт каждую неделю.','p5.t':'Запуск','p5.p':'Публикация, обучение сотрудников и 3 месяца поддержки.',
   'pr.title':'Что мы вам обещаем','pr.h':'часа','pr.m':'месяца','pr.1':'Первый ответ на любое обращение.','pr.2':'Половина оплаты в начале, половина после приёмки.','pr.3':'Исходный код, домен и аккаунты магазинов — ваши.','pr.4':'Бесплатные исправления и помощь после сдачи.',
   'faq.title':'Частые вопросы',
@@ -641,13 +649,13 @@ const RU = {
   'q6':'Продолжите программу другой команды?','a6':'Да. Посмотрим код или ссылку в магазине и дадим план исправлений или развития.',
   'c.title':'Свяжитесь с нами','c.addr':'Адрес','c.lead':'Напишите или позвоните — ответим в течение 24 часов. Первая консультация бесплатна и ни к чему не обязывает.',
   'c.tg':'Telegram — самый быстрый ответ','c.ph':'Рахматиллох Ганиев · ежедневно 9:00–22:00','c.em':'Для документов и договоров',
-  'f.name':'Ваше имя','f.phone':'Телефон','f.type':'Что нужно','f.budget':'Бюджет','f.msg':'Коротко о проекте','f.msgph':'Например: у нас магазин с 3 филиалами, нужен учёт склада и долгов','f.send':'Отправить через Telegram',
-  'f.note':'Текст сообщения скопируется и откроется Telegram — вставьте его в чат @uztomic_official. Данные используются только для связи с вами.',
+  'f.name':'Ваше имя','f.phone':'Телефон','f.type':'Что нужно','f.budget':'Бюджет','f.msg':'Коротко о проекте','f.msgph':'Например: у нас магазин с 3 филиалами, нужен учёт склада и долгов','f.send':'Отправить',
+  'f.note':'Заявка придёт прямо к нам, мы свяжемся с вами в течение 24 часов. Данные используются только для связи с вами.',
   'o1':'Мобильное приложение','o2':'Сайт','o3':'CRM / ERP система','o4':'Telegram-бот','o5':'Пока не знаю','o6':'Пока не определён','ft.addr':'Коканд, Ферганская область',
 };
 const UI = {
-  uz:{mln:"mln so'm", sum:"so'm", from:'dan', weeks:'hafta', time:'Muddat', copied:"Matn nusxalandi — Telegram'da @uztomic_official ga joylang.", calcHead:'Uztomic — loyiha hisobi', type:'Loyiha', feats:'Imkoniyatlar', support:"Qo'llab-quvvatlash", total:'Taxminiy narx', formHead:'Uztomic — yangi murojaat', play:"Ko'rish", soundOn:'Ovozni yoqish', soundOff:"Ovozni o'chirish"},
-  ru:{mln:'млн сум', sum:'сум', from:'', weeks:'недель', time:'Срок', copied:'Текст скопирован — вставьте его в Telegram в чат @uztomic_official.', calcHead:'Uztomic — расчёт проекта', type:'Проект', feats:'Функции', support:'Поддержка', total:'Примерная цена', formHead:'Uztomic — новая заявка', play:'Смотреть', soundOn:'Включить звук', soundOff:'Выключить звук'},
+  uz:{mln:"mln so'm", sum:"so'm", from:'dan', weeks:'hafta', time:'Muddat', calcAdded:"Hisob murojaatga qo'shildi — ism va telefoningizni yozib, «Yuborish»ni bosing.", sending:'Yuborilmoqda...', sent:"Yuborildi! Rahmat, tez orada siz bilan bog'lanamiz.", sendErr:"Yuborilmadi. Internetni tekshirib, qayta urinib ko'ring yoki +998 77 016 59 63 ga qo'ng'iroq qiling.", needFields:'Ism va telefon raqamingizni yozing.', calcHead:'Uztomic — loyiha hisobi', type:'Loyiha', feats:'Imkoniyatlar', support:"Qo'llab-quvvatlash", total:'Taxminiy narx', formHead:'Uztomic — yangi murojaat', play:"Ko'rish", soundOn:'Ovozni yoqish', soundOff:"Ovozni o'chirish"},
+  ru:{mln:'млн сум', sum:'сум', from:'', weeks:'недель', time:'Срок', calcAdded:'Расчёт добавлен в заявку — укажите имя и телефон и нажмите «Отправить».', sending:'Отправляем...', sent:'Отправлено! Спасибо, скоро свяжемся с вами.', sendErr:'Не отправилось. Проверьте интернет и попробуйте ещё раз или позвоните +998 77 016 59 63.', needFields:'Укажите имя и номер телефона.', calcHead:'Uztomic — расчёт проекта', type:'Проект', feats:'Функции', support:'Поддержка', total:'Примерная цена', formHead:'Uztomic — новая заявка', play:'Смотреть', soundOn:'Включить звук', soundOff:'Выключить звук'},
 };
 
 /* ===================== Ilova mantiqi ===================== */
@@ -758,23 +766,48 @@ $('#calcForm').addEventListener('change', (e) => {
   updateCalc();
 });
 
-async function copyAndOpen(text, out) {
-  let ok = false;
-  try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {}
-  out.textContent = ok ? UI[lang].copied : '';
-  window.open('https://t.me/uztomic_official', '_blank', 'noopener');
-  if (!ok) window.prompt('Telegram:', text);
+// Murojaatlar Telegram bot orqali to'g'ridan-to'g'ri Uztomic'ga keladi
+const TG = { token: '9048753641:AAGwexzKJWPU4HYeXWdNcZcURNiMraK0AaI', chat: '8121648709' };
+async function sendToTelegram(text) {
+  const body = new URLSearchParams({ chat_id: TG.chat, text, disable_web_page_preview: 'true' });
+  const r = await fetch(`https://api.telegram.org/bot${TG.token}/sendMessage`, { method: 'POST', body });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || !j.ok) throw new Error(j.description || 'HTTP ' + r.status);
+}
+function setStatus(msg, kind) {
+  const el = $('#formStatus');
+  el.textContent = msg; el.className = 'form-status' + (kind ? ' is-' + kind : '');
 }
 $('#sendCalc').addEventListener('click', () => {
   const u = UI[lang], r = calc();
   const text = [u.calcHead, `${u.type}: ${r.t[lang]}`, r.feats.length ? `${u.feats}: ${r.feats.map((f) => f[lang]).join(', ')}` : '',
     `${u.support}: ${r.sup[lang]}`, `${u.total}: ${fmt(r.lo)} – ${fmt(r.hi)} ${u.sum}`, `${u.time}: ${r.w1}–${r.w2} ${u.weeks}`].filter(Boolean).join('\n');
-  copyAndOpen(text, $('#copied'));
+  const msg = $('#fMsg');
+  msg.value = msg.value.trim() ? msg.value.trim() + '\n\n' + text : text;
+  $('#copied').textContent = u.calcAdded;
+  $('#contact').scrollIntoView({ behavior: 'smooth' });
+  setStatus(u.calcAdded, '');
+  setTimeout(() => $('#fName').focus({ preventScroll: true }), 600);
 });
-$('#leadForm').addEventListener('submit', (e) => {
+let lastSent = 0;
+$('#leadForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const text = [UI[lang].formHead, `${$('#fName').value} · ${$('#fPhone').value}`, `${$('#fType').value} · ${$('#fBudget').value}`, $('#fMsg').value].filter(Boolean).join('\n');
-  copyAndOpen(text, $('#formCopied'));
+  const u = UI[lang], btn = $('#leadSend');
+  if ($('#fSite').value) { setStatus(u.sent, 'ok'); return; } // spam-bot
+  const name = $('#fName').value.trim(), phone = $('#fPhone').value.trim();
+  if (!name || !phone) { setStatus(u.needFields, 'err'); (name ? $('#fPhone') : $('#fName')).focus(); return; }
+  if (Date.now() - lastSent < 15000) { setStatus(u.sent, 'ok'); return; }
+  const text = ['🆕 ' + u.formHead + ' (uztomic.uz)', `👤 ${name}`, `📞 ${phone}`, `🧩 ${$('#fType').value}`, `💰 ${$('#fBudget').value}`,
+    $('#fMsg').value.trim() ? `📝 ${$('#fMsg').value.trim()}` : '', `🌐 ${lang.toUpperCase()}`].filter(Boolean).join('\n').slice(0, 4000);
+  btn.disabled = true; setStatus(u.sending, '');
+  try {
+    await sendToTelegram(text);
+    lastSent = Date.now();
+    e.target.reset();
+    setStatus(u.sent, 'ok');
+  } catch (err) {
+    setStatus(u.sendErr, 'err');
+  } finally { btn.disabled = false; }
 });
 
 // Til, menyu, hero ovozi
