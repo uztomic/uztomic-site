@@ -5,19 +5,43 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0A0C18",
+  "background_color": "#0A0A0A",
   "theme_color": "#0A0C18",
   "lang": "en",
   "icons": [
-    { "src": "/assets/favicon-32.png",  "sizes": "32x32",   "type": "image/png" },
-    { "src": "/assets/icon-192.png",    "sizes": "192x192", "type": "image/png" },
-    { "src": "/assets/favicon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
-    { "src": "/assets/logo.png",        "sizes": "640x640", "type": "image/png" }
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
-    { "name": "Uztomic CRM", "short_name": "CRM", "url": "/crm/",
-      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Start a project", "short_name": "Contact", "url": "/#contact" }
+    {
+      "name": "Uztomic CRM",
+      "short_name": "CRM",
+      "url": "/crm/",
+      "icons": [
+        {
+          "src": "/assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Start a project",
+      "short_name": "Contact",
+      "url": "/#contact"
+    }
   ]
 }
